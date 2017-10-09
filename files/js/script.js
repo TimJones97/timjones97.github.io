@@ -32,6 +32,52 @@
   // } );
 })();
 
+(function() {
+  $( document )
+    .on( "mousemove", ".svg-wrapper-1", function( event ) {
+
+
+    $('.qut-running-logo').css( '-webkit-filter', function() {
+      return 'grayscale(0)';
+    } )
+    $('.qut-running-logo').css( 'filter', function() {
+      return 'grayscale(0)';
+    } );
+  } )
+    .on( "mouseout", ".svg-wrapper-1", function() {
+    $('.qut-running-logo').removeAttr( 'style' )
+  } );
+})();
+(function() {
+  $( document )
+    .on( "mousemove", ".svg-wrapper-2", function( event ) {
+
+    $('.aml-logo').css( '-webkit-filter', function() {
+      return 'grayscale(0)';
+    } )
+    $('.aml-logo').css( 'filter', function() {
+      return 'grayscale(0)';
+    } );
+  } )
+    .on( "mouseout", ".svg-wrapper-2", function() {
+    $('.aml-logo').removeAttr( 'style' )
+  } );
+})();
+(function() {
+  $( document )
+    .on( "mousemove", ".svg-wrapper-3", function( event ) {
+
+    $('.qut-eb-logo').css( '-webkit-filter', function() {
+      return 'grayscale(0)';
+    } )
+    $('.qut-eb-logo').css( 'filter', function() {
+      return 'grayscale(0)';
+    } );
+  } )
+    .on( "mouseout", ".svg-wrapper-3", function() {
+    $('.qut-eb-logo').removeAttr( 'style' )
+  } );
+})();
 /*----------------------------------------------------------------------------------*/
 
 /*Broswer Height */
