@@ -7,10 +7,9 @@
 .portfolio-block > .text-white > #card {
   margin-bottom: 70px;
 }
-}
 
-.portfolio-block > .text-white > h1 {
-  margin-bottom: 70px;
+.title {
+  margin-bottom: 50px;
 }
 body {
   background: #fff;
@@ -24,8 +23,8 @@ body {
   margin: 0 auto;
   width: 100%;
   position: relative; 
+  margin-bottom: 120px;
 }
-
 .scene {
   margin: 0 auto;
   padding: 0; 
@@ -37,6 +36,8 @@ body {
 .img-responsive {
   width: 225px;
   height: auto;
+  display: inline-block;
+  margin-top: 50px;
 }
 .bg {
   width: 150vw;
@@ -46,7 +47,7 @@ body {
   bottom: 0;
   right: 0;
   margin-left: -50%;
-  margin-top: -20%;
+  margin-top: -30%;
   background-image: -webkit-linear-gradient(90deg,#fff,#0d0c2a);
   background-image: linear-gradient(0deg,#fff,#0d0c2a);
 }
@@ -68,7 +69,7 @@ body {
   display: flex;
   overflow: hidden;
   flex-direction: column;
-  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1), box-shadow 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: box-shadow 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
   border-radius: 6px;
   width: 40vw;
   background-image: url('../img/bg.jpeg');
@@ -109,7 +110,8 @@ body {
 .text-link {
   color: white;
   position: absolute;
-  font-family: 'Raleway', sans-serif;
+  display: inline-block;
+  font-family: 'Raleway', sans-serif;  
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -128,11 +130,12 @@ body {
   color: white;
 }
 .svg-wrapper {
-  height: 60px;
-  margin: 0 auto;
-  position: relative;
+  height: 100%;
   transform: translateY(-50%);
   margin-top: 30px;
+  text-align: center;
+  display: table;
+  vertical-align: middle;
 }
 
 .shape {
