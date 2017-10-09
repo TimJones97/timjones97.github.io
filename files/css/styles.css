@@ -14,9 +14,6 @@
 .title {
   margin-bottom: 50px;
 }
-#card figure .aml-logo {
-  margin-top: 20px;
-}
 body {
   background: #fff;
   color: #555;
@@ -24,7 +21,6 @@ body {
   border: 3px solid white;
   overflow-x: hidden;
 }
-
 .container {
   margin: 0 auto;
   width: 100%;
@@ -38,12 +34,19 @@ body {
   max-width: 75vw;
   padding-top: 40px;
   display: block;
+  pointer-events: auto !important; 
 }
 .img-responsive {
   width: 150px;
   height: auto;
   display: inline-block;
   margin-top: 50px;
+}
+#card figure .aml-logo {
+  margin-top: 20px;
+}
+#card figure .qut-eb-logo {
+  width: 100px;
 }
 .bg {
   width: 150vw;
@@ -53,7 +56,7 @@ body {
   bottom: 0;
   right: 0;
   margin-left: -50%;
-  margin-top: -30%;
+  margin-top: -50%;
   background-image: -webkit-linear-gradient(90deg,#fff,#0d0c2a);
   background-image: linear-gradient(0deg,#fff,#0d0c2a);
 }
@@ -63,11 +66,18 @@ body {
 }
 #card {
   transform: perspective( 1000px ) translate3d( 0, 0px, 230px );
+  transition: box-shadow 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+/*    -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -ms-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;*/
 }
 .card {
   width: 100%;
   height: 100%;
   z-index: 10;
+  transform: perspective( 1000px ) translate3d( 0, 0px, 230px );
   margin-top: 20vh;
 }
 .card-img {
@@ -142,7 +152,7 @@ body {
 .svg-wrapper-3 {
   height: 100%;
   transform: translateY(-50%);
-  margin-top: 30px;
+  margin-top: 50px;
   text-align: center;
   display: table;
   vertical-align: middle;

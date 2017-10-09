@@ -6,7 +6,7 @@
   $( document )
     .on( "mousemove", "body", function( event ) {
 
-    var elmnt = document.getElementById("card");
+    var elmnt = document.getElementById("banner-card");
 
     var halfW = ( elmnt.clientWidth / 2 );
     var halfH = ( elmnt.clientHeight / 2 );
@@ -28,22 +28,35 @@
   // } );
 })();
 
+
+
 (function() {
   $( document )
-    .on( "mousemove", ".svg-wrapper-1", function( event ) {
+    .on( "mousemove", "#card", function( event ) {
+    // $('.qut-running-logo').css( '-webkit-filter', function() {
+    //   return 'grayscale(0)';
+    // } )
+    // $('.qut-running-logo').css( 'filter', function() {
+    //   return 'grayscale(0)';
+    // } )
+    var elmnt = document.getElementById("banner-card");
 
+    var halfW = ( elmnt.clientWidth / 2 );
+    var halfH = ( elmnt.clientHeight / 2 );
+    var coorX = ( halfW - ( event.pageX - elmnt.offsetLeft ) );
+    var coorY = ( halfH - ( event.pageY - elmnt.offsetTop ) );
 
-    $('.qut-running-logo').css( '-webkit-filter', function() {
-      return 'grayscale(0)';
-    } )
-    $('.qut-running-logo').css( 'filter', function() {
-      return 'grayscale(0)';
+    var degX  = ( ( coorY / halfH ) * 10 ) + 'deg'; // max. degree = 10
+    var degY  = ( ( coorX / halfW ) * -10 ) + 'deg'; // max. degree = 10
+    $( this ).css( 'transform', function() {
+      return 'perspective( 1000px ) translate3d( 0, 0px, 230px ) rotateX('+ degX +') rotateY('+ degY +')';
     } );
   } )
     .on( "mouseout", ".svg-wrapper-1", function() {
-    $('.qut-running-logo').removeAttr( 'style' )
+    $( this ).removeAttr( 'style' )
   } );
 })();
+
 (function() {
   $( document )
     .on( "mousemove", ".svg-wrapper-2", function( event ) {
