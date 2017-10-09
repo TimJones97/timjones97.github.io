@@ -19,10 +19,6 @@
     $('.parallax').css( 'transform', function() {
 
       return 'perspective( 1000px ) translate3d( 0, 0px, 230px ) rotateX('+ degX +') rotateY('+ degY +')';
-    } )
-      .children( '.card__summary' )
-      .css( 'transform', function() {
-      return 'perspective( 1000px ) translate3d( 0, 0px, 230px ) rotateX('+ degX +') rotateY('+ degY +')';
     } );
   } )
   //   .on( "mouseout", ".container", function() {

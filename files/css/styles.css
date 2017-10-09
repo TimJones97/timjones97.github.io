@@ -7,9 +7,15 @@
 }
 .portfolio-block > .text-white > #card {
   margin-bottom: 70px;
+  padding: 10px;
+  border: 1px solid #3b3b3b;
+  border-radius: 6px;
 }
 .title {
   margin-bottom: 50px;
+}
+#card figure .aml-logo {
+  margin-top: 20px;
 }
 body {
   background: #fff;
@@ -125,7 +131,9 @@ body {
   transition: all 0.3s ease-out;
 }
 
-.text-link > a {
+.text-link-1 > a, 
+.text-link-2 > a, 
+.text-link-3 > a {
   text-decoration: none;
   color: white;
 }
