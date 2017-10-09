@@ -4,7 +4,7 @@
 
 (function() {
   $( document )
-    .on( "mousemove", ".container", function( event ) {
+    .on( "mousemove", "body", function( event ) {
 
     var elmnt = document.getElementById("card");
 
@@ -16,7 +16,7 @@
     var degX  = ( ( coorY / halfH ) * 10 ) + 'deg'; // max. degree = 10
     var degY  = ( ( coorX / halfW ) * -10 ) + 'deg'; // max. degree = 10
 
-    $('.card-img').css( 'transform', function() {
+    $('.parallax').css( 'transform', function() {
 
       return 'perspective( 1000px ) translate3d( 0, 0px, 230px ) rotateX('+ degX +') rotateY('+ degY +')';
     } )
