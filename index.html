@@ -38,11 +38,11 @@
 					<div class="bg" data-depth="1.0"></div>
 			<!-- 			<div data-depth="0.835"><img src="./files/img/layer1.png"></div>
 					<div data-depth="0.67"><img src="./files/img/layer2.png"></div> -->
-					<div id="card" class="card" data-depth="0.0">
-						<div class="card-img parallax" src="./files/img/bg.jpeg">
+					<div id="parallax" class="card" data-depth="0.0">
+						<div class="card-img" src="./files/img/bg.jpeg">
 							<div class="text-black">
-								<p>TIM J. JONES</p>
-								<h1>UI/UX Web Designer and Developer.<br><br>Stunning Responsive Websites.</h1>
+								<!-- <p>TIM J. JONES</p>
+								<h1>UI/UX Web Designer and Developer.<br><br>Stunning Responsive Websites.</h1> -->
 							</div>	
 						</div>
 					</div>
@@ -80,6 +80,40 @@
 						  <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
 						    <rect class="shape" height="60" width="200" />
 						  </svg>
+						   <div class="text-link-3"><a href="https://quteb.com" target="_blank">QUT EB</a></div>
+					   </div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="section">
+			<div class="skills-block">
+				<div class="text-white">
+					<h1 class="title">Skills</h1>
+					<div id="card" class="col-md-12 parallax">
+						<figure class="col-md-6"><img class="img-responsive qut-running-logo col-centered" src="./files/img/logos/qut_running.png"></figure>
+						<div class="svg-wrapper-1 col-md-6"">
+						  <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
+						    <rect class="shape" height="60" width="200" />
+						  </svg>
+						   <div class="text-link-1"><a href="https://qutrunning.com.au" target="_blank">QUT Running</a></div>
+						</div>
+					</div>
+					<div id="card" class="col-md-12 parallax">
+						<figure class="col-md-6"><img class="img-responsive aml-logo col-centered" src="./files/img/logos/aml.png"></figure>
+						<div class="svg-wrapper-2 col-md-6"">
+						  <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
+						    <rect class="shape" height="60" width="200" />
+						  </svg>
+						   <div class="text-link-2"><a href="https://amladvisory.com.au/home" target="_blank">AML Advisory</a></div>
+						</div>
+					</div>
+					<div id="card" class="col-md-12 parallax">
+						<figure class="col-md-6"><img class="img-responsive qut-eb-logo col-centered" src="./files/img/logos/quteb.png"></figure>
+						<div class="svg-wrapper-3 col-md-6"">
+						  <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
+						    <rect class="shape" height="60" width="200" />
+						  </svg>
 						   <div class="text-link-3"><a href="https://quteb.com" target="_blank">QUT EB</div>
 					   </div>
 					</div>
@@ -87,6 +121,7 @@
 			</div>
 		</div>
 	</div>
+
 
 	<!-- Scripts -->
 	<script src="./files/js/parallax.js"></script>
@@ -100,7 +135,7 @@
 		var parallax = new Parallax(scene);
 		var options = {
 		    loopBottom: true,
-		    navigation: true,
+		    navigation: false,
 		    animateAnchors: true,
 		    scrollingSpeed: 1000
 		};
