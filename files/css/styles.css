@@ -46,6 +46,7 @@ body {
   max-width: 75vw;
   padding-top: 40px;
   display: block;
+  pointer-events: auto !important;
 }
 .img-responsive {
   width: 150px;
