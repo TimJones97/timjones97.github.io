@@ -54,15 +54,6 @@
 
 /*----------------------------------------------------------------------------------*/
 
-
-$(window).scroll(function () {
-    if ($(this).scrollTop() > 500) {
-       $('#go-top:hidden').stop(true, true).fadeIn();
-    } else {
-      $('#go-top').stop(true, true).fadeOut();
-    } 
-});
-
 var ofs, x, y;
 $('.contact-btn').on('mouseenter', function(e){
   ofs = $(this).offset();

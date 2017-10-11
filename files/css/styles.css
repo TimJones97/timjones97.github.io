@@ -51,10 +51,12 @@
 }
 .card-img .text-black {
   padding-top: 10px;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
+  text-align: left;
+  width: 90%;
 }
 .col-xs-3 a img {
-    -webkit-transition: .3s ease-in-out;
+  -webkit-transition: .3s ease-in-out;
   transition: .3s ease-in-out;
 }
 .col-xs-3 a:hover img {
@@ -70,9 +72,30 @@
   width: 30px;
   height: 30px;
 }
-.card-img .text-black {
-  text-align: left;
-  width: 80%;
+.landscape-message {
+  height: 100vh;
+  width: 100vw;
+  display: none;
+  font-family: 'Raleway', sans-serif;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: #3b3b3b;
+  text-align: center;
+}
+.landscape-message h1 {
+  margin-top: 25%;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
 /*------------------Portfolio Block-----------------*/
 .backdrop {
@@ -193,9 +216,6 @@
   width: 100px;
   height: auto;
 }
-.skills-block > .text-white {
-  width: 70%;
-}
 /* Gray Scale 
 .language-block figure img {
   -webkit-transition: .3s ease-in-out;
@@ -213,7 +233,7 @@
   width: 250px;
   height: 60px;
   padding: 10px;
-  top: 80px;
+  top: 40px;
   cursor: pointer;
   border: 1px solid hsla(0, 0%, 25%, .2);
   border-radius: 6px;
@@ -276,10 +296,10 @@
 }
 footer {
   margin-top: -30px;
-  top: 58% !important;
+  top: 98vh !important;
   bottom: 0px !important;
   width: 100%;
-  text-align: center;
+  text-align: left;
   display: block;
   font-size: 10px;
   font-family: 'Raleway', sans-serif;
@@ -315,7 +335,11 @@ footer {
   background-repeat: no-repeat;
   background-image: url('../img/layer_bg2.jpg');
 }
-
+.skills-block > .text-white {
+  width: 100%; 
+  margin-top: 50px;
+  padding: 15%;
+}
 /*--------------------------------Global--------------------------------*/
 
 .title {
@@ -355,6 +379,7 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
+  width: 100%;
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
@@ -384,14 +409,15 @@ body {
 }
 .go-top {
   position: fixed;
-  right: 20px;
-  top: 290vh;
+  right: -20px;
+  top: 90vh;
   z-index: 10;
   width: 50px;
   height: 50px;
   padding: 5px 3px;
   border: 1px solid grey;
   border-radius: 50px;
+  display: block;
   background-image: url(../img/scroll_up.png),-webkit-linear-gradient(270deg,#fff,#fff);
   background-image: url(../img/scroll_up.png),linear-gradient(180deg,#fff,#fff);
   background-position: 50% 43%,0 0;
@@ -407,7 +433,12 @@ body {
     max-height: 50vh;
   }
   .text-black {
-    max-width: 30%;
+    max-width: 60%;
+  }
+  .skills-block > .text-white {
+    width: 100%; 
+    margin-top: 50px;
+    padding: 10%;
   }
 }
 
@@ -426,16 +457,19 @@ body {
   .bg {
     margin-top: -50%;
   }
+  .bg-2, .bg-3 {
+    margin-top: -60%;
+  }
   .col-md-2 {
     width: 33.33333333%;
     float: left;
     margin-bottom: 20px;
   }
-  .skills-block .text-white .col-md-12 .col-md-offset-3 {
-    margin-left: 0;
+  .skills-block .text-white .col-md-12 .col-md-offset-4 {
+    margin-left: -10%;
   }
   .skills-block .text-white .col-md-12 .col-md-offset-1 {
-    margin-left: -20%;
+    margin-left: 0;
   }
   .contact-btn {
     top: 220px;
@@ -471,8 +505,27 @@ body {
   .portfolio-title {
     margin-bottom: 100px;
   }
-  .skills-block .text-white .title {
-    margin-bottom: 10px;
+  .skills-title {
+    color: black;
+  }
+  .mobile-change-2 > *:nth-child(2) {
+    margin-left: -20%;
+  }
+  .skills-block > .text-white {
+    width: 70%; 
+    padding: 5%;
+  }
+  .bg-3 {
+    background-position: 75%;
+  }
+}
+@media (max-width: 767px) 
+and (orientation : landscape){
+  .landscape-message {
+    display: block;
+  }
+  #fullpage {
+    display: none;
   }
 }
 @media screen and ( max-width: 479px ) { 
@@ -487,10 +540,10 @@ body {
     -o-transition: all 0.4s ease-out;
     transition: all 0.4s ease-out;
   }
-  .skills-block .text-black .col-md-12 .col-md-offset-3 {
-    margin-left: -10%;
+  .skills-block .text-white .col-md-12 .col-md-offset-4 {
+    margin-left: -2%;
   }
-  .skills-block .text-black .col-md-12 .col-md-offset-1 {
+  .skills-block .text-white .col-md-12 .col-md-offset-1 {
     margin-left: 0%;
   }
   .bg {
@@ -521,7 +574,7 @@ body {
   .skills-block .text-white .col-md-12 .col-md-offset-1 {
      margin-left: 0%; 
   }
-  .skills-block .text-white .col-md-12 .col-md-offset-3 {
+  .skills-block .text-white .col-md-12 .col-md-offset-4 {
     margin-left: -10%;
   }
   .portfolio-title, .skills-title {
@@ -535,7 +588,9 @@ body {
     margin-top: 30px;
   }
   .skills-block > .text-white {
+    width: 100%; 
     margin-top: 0px;
+    padding: 30px;
   }
   #card .col-md-6 {
     padding-right: 0;
@@ -549,14 +604,18 @@ body {
   .pull-up {
     top: 40%;
   }
-  .skills-block > .text-white {
-    width: 80%;
-  }
   .contact-btn {
     top: 150px;
   }
   .mobile-change > *:nth-child(4) {
-    width: 60px;
+    width: 65px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+  }
+  .mobile-change > *:nth-child(5) {
+    margin-top: 10px;
+    margin-bottom: 0px;
   }
   .contact-btn {
     font-size: 20px;
@@ -613,6 +672,14 @@ body {
   .bg-3 {
     background-position: 75%;
   }
+  footer {
+    top: 58% !important;
+  }
+  .go-top {
+    width: 40px;
+    height: 40px;
+    background-size: 24px 14px,auto;
+  }
 }
 @media screen and ( max-width: 360px ) { /* Smaller, older phones */
   .contact-icon {
@@ -622,9 +689,9 @@ body {
   .contact-block {
     margin-left: -5%;
   }
-  .portfolio-block .text-black #card {
+  .portfolio-block .text-white a #card {
     min-height: 80px;
-    margin-bottom: 50px; 
+    margin-bottom: 30px; 
     min-width: 200px;
   }
   #card figure .qut-eb-logo {
@@ -646,10 +713,24 @@ body {
     padding-left: 25px;
   }
   .contact-btn {
-    top: 50px;
+    top: 120px;
   }
   .mobile-width {
     width: 80%;
+  }
+  .skills-block > .text-white {
+    width: 100%; 
+    margin-top: 50px;
+    padding: 10px;
+  }
+  .mobile-change > *:nth-child(4) {
+    width: 55px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+  }
+  footer {
+    top: 60% !important;
   }
 }
 
