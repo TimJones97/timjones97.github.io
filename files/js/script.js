@@ -44,7 +44,7 @@
 
     $( this ).css( 'transform', function() {
 
-      return 'perspective( 1000px ) translate3d( 0, 0px, 230px ) rotateX('+ degX +') rotateY('+ degY +')';
+      return 'perspective( 1000px ) translate3d( 0, 0px, 100px ) rotateX('+ degX +') rotateY('+ degY +')';
     } );
   } )
     .on( "mouseout", "#card", function() {
@@ -54,41 +54,11 @@
 
 /*----------------------------------------------------------------------------------*/
 
-/*Broswer Height */
-$(window).ready(function(){
-    $(function(){
-        $('.container').css({'height':(($(window).height()-0))+'px'});
-
-        $(window).resize(function(){
-        $('.container').css({'height':(($(window).height()-0))+'px'});
-        });
-    });
-});
-
-/*Broswer Width */
-$(window).ready(function(){
-    $(function(){
-        $('.container').css({'width':(($(window).width()-0))+'px'});
-
-        $(window).resize(function(){
-        $('.container').css({'width':(($(window).width()-0))+'px'});
-        });
-    });
-});
 
 $(window).scroll(function () {
-      // Get the height of the banner,
-      // and then set your menu.
-      var bannerHeight = $('.div-block-about-overview').height();
-
     if ($(this).scrollTop() > 500) {
-      $('.navbar-about-topics:hidden').stop(true, true).fadeIn();      
-      $('.div-block-64:hidden').stop(true, true).fadeIn();
        $('#go-top:hidden').stop(true, true).fadeIn();
-      
     } else {
-      $('.navbar-about-topics').stop(true, true).fadeOut();
-      $('.div-block-64').stop(true, true).fadeOut();     
       $('#go-top').stop(true, true).fadeOut();
     } 
 });
@@ -118,4 +88,28 @@ $('.contact-btn').on('mouseleave', function(e){
   setTimeout(function(){
       blob.remove();
 },800);
+});
+$( document ).ready(function() {
+  //Detect browser and disable transition on card-img if on Safari or IE/Edge
+  var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
+  var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+  var is_edge_or_ie;    
+  
+  var ua = window.navigator.userAgent;
+  var trident = ua.indexOf('Trident/');
+  var edge = ua.indexOf('Edge/');
+  if (trident > 0 || edge > 0) {
+    is_edge_or_ie = true;
+  }
+  if ((is_chrome)&&(is_safari)) {
+      is_safari=false;
+  }
+  if($( window ).width() > 1000 && !is_safari && !is_edge_or_ie){
+    console.log('added');
+    $('.card-img').addClass('touch');
+  }
+  else if( is_safari || is_edge_or_ie  ){
+    $('.card-img').removeClass('touch');
+    console.log('remove');
+  }
 });
