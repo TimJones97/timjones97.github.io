@@ -32,7 +32,7 @@
 </head>
 <body>
 	<div id="fullpage">
-		<div class="section">
+		<div class="section" id="banner">
 			<div id="container" class="container">
 				<div id="scene" class="scene">
 					<div class="bg" data-depth="1.0"></div>
@@ -42,8 +42,22 @@
 						<div class="card-img" src="./files/img/bg.jpeg">
 							<div class="text-black">
 								<p>TIM J. JONES</p>
-								<h1>UI/UX Web Designer and Developer.<br><br>Stunning Responsive Websites.</h1>
+								<h1>UI/UX Web Designer and Developer.<br><br>Stunning Responsive Websites.</h1>								
 							</div>	
+							<div class="contact-block col-md-4 col-md-offset-4">
+								<div class="col-xs-3">
+									<a href="https://www.facebook.com/tim.jones.3348" target="_blank"><img class="contact-icon" src="./files/img/icons/facebook.png"></a>
+								</div>
+								<div class="col-xs-3">
+									<a href="https://www.facebook.com/tim.jones.3348" target="_blank"><img class="contact-icon" src="./files/img/icons/github.png"></a>
+								</div>
+								<div class="col-xs-3">
+									<a href="https://www.facebook.com/tim.jones.3348" target="_blank"><img class="contact-icon" src="./files/img/icons/mail.png"></a>
+								</div>
+								<div class="col-xs-3">
+									<a href="mailto:timothyjones.1@outlook.com" class="contact-btn small-btn">Contact</a>
+								</div>
+							</div>
 						</div>
 					</div>
 			<!-- 			<div data-depth="0.34"><img src="./files/img/layer4.png"></div>
@@ -54,78 +68,61 @@
 		</div>
 		<div class="section">
 			<div class="portfolio-block">
-				<div class="text-white">
+				<div class="text-black">
 					<h1 class="title">Portfolio</h1>
 					<div id="card" class="col-md-12 parallax">
-						<figure class="col-md-6"><img class="img-responsive qut-running-logo col-centered" src="./files/img/logos/qut_running.png"></figure>
-						<div class="svg-wrapper-1 col-md-6"">
-						  <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
-						    <rect class="shape" height="60" width="200" />
-						  </svg>
-						   <div class="text-link-1"><a href="https://qutrunning.com.au" target="_blank">QUT Running</a></div>
-						</div>
+						<figure class="col-xs-6"><a href="https://qutrunning.com.au" target="_blank"><img class="logo qut-running-logo col-centered" src="./files/img/logos/qut_running.png"></a></figure>
+					   <div class="text-link col-xs-6"><a href="https://qutrunning.com.au" target="_blank">QUT Running</a></div>
+						
 					</div>
 					<div id="card" class="col-md-12 parallax">
-						<figure class="col-md-6"><img class="img-responsive aml-logo col-centered" src="./files/img/logos/aml.png"></figure>
-						<div class="svg-wrapper-2 col-md-6"">
-						  <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
-						    <rect class="shape" height="60" width="200" />
-						  </svg>
-						   <div class="text-link-2"><a href="https://amladvisory.com.au/home" target="_blank">AML Advisory</a></div>
-						</div>
+						<figure class="col-xs-6"><a href="https://amladvisory.com.au/home" target="_blank"><img class="logo aml-logo col-centered" src="./files/img/logos/aml.png"></a></figure>
+						   <div class="text-link col-xs-6"><a href="https://amladvisory.com.au/home" target="_blank">AML Advisory</a></div>
 					</div>
 					<div id="card" class="col-md-12 parallax">
-						<figure class="col-md-6"><img class="img-responsive qut-eb-logo col-centered" src="./files/img/logos/quteb.png"></figure>
-						<div class="svg-wrapper-3 col-md-6"">
-						  <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
-						    <rect class="shape" height="60" width="200" />
-						  </svg>
-						   <div class="text-link-3"><a href="https://quteb.com" target="_blank">QUT EB</a></div>
-					   </div>
+						<figure class="col-xs-6"><a href="https://quteb.com" target="_blank"><img class="logo qut-eb-logo col-centered" src="./files/img/logos/quteb.png"></a></figure>
+					   <div class="text-link col-xs-6"><a href="https://quteb.com" target="_blank">QUT EB</a></div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="section">
 			<div class="skills-block">
-				<div class="text-white">
-					<h1 class="title">Skills</h1>
-					<div id="card" class="col-md-12 parallax">
-						<figure class="col-md-6"><img class="img-responsive qut-running-logo col-centered" src="./files/img/logos/qut_running.png"></figure>
-						<div class="svg-wrapper-1 col-md-6"">
-						  <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
-						    <rect class="shape" height="60" width="200" />
-						  </svg>
-						   <div class="text-link-1"><a href="https://qutrunning.com.au" target="_blank">QUT Running</a></div>
-						</div>
+				<div class="text-black pull-up mobile-width">
+					<h1 class="title">Languages</h1>
+					<div class="col-md-12 language-block mobile-change">
+						<figure class="col-md-2"><img class="languages-smaller img-responsive" src="./files/img/languages/html5.png"></figure>
+						<figure class="col-md-2"><img class="languages-smaller img-responsive" src="./files/img/languages/css3.png"></figure>
+						<figure class="col-md-2"><img class="languages-smaller img-responsive" src="./files/img/languages/js.png"></figure>
+						<figure class="col-md-2"><img class="languages-smaller img-responsive" src="./files/img/languages/jquery.png"></figure>
+						<figure class="col-md-2"><img class="languages img-responsive" src="./files/img/languages/bootstrap.png"></figure>
+						<figure class="col-md-2"><img class="languages img-responsive" src="./files/img/languages/wordpress.png"></figure>
 					</div>
-					<div id="card" class="col-md-12 parallax">
-						<figure class="col-md-6"><img class="img-responsive aml-logo col-centered" src="./files/img/logos/aml.png"></figure>
-						<div class="svg-wrapper-2 col-md-6"">
-						  <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
-						    <rect class="shape" height="60" width="200" />
-						  </svg>
-						   <div class="text-link-2"><a href="https://amladvisory.com.au/home" target="_blank">AML Advisory</a></div>
-						</div>
+					<div class="col-md-12 language-block">
+						<figure class="col-md-2 col-md-offset-3"><img class="languages-larger img-responsive" src="./files/img/languages/webflow.png"></figure>
+						<figure class="col-md-2"><img class="languages img-responsive" src="./files/img/languages/php.png"></figure>
+						<figure class="col-md-2"><img class="languages img-responsive" src="./files/img/languages/MySQL.png"></figure>
 					</div>
-					<div id="card" class="col-md-12 parallax">
-						<figure class="col-md-6"><img class="img-responsive qut-eb-logo col-centered" src="./files/img/logos/quteb.png"></figure>
-						<div class="svg-wrapper-3 col-md-6"">
-						  <svg height="60" width="200" xmlns="http://www.w3.org/2000/svg">
-						    <rect class="shape" height="60" width="200" />
-						  </svg>
-						   <div class="text-link-3"><a href="https://quteb.com" target="_blank">QUT EB</div>
-					   </div>
+					<div class="col-md-12 language-block">
+						<figure class="col-md-2 col-md-offset-1"><img class="languages-larger img-responsive" src="./files/img/languages/python.png"></figure>
+						<figure class="col-md-2"><img class="languages-larger img-responsive" src="./files/img/languages/c_sharp.png"></figure>
+						<figure class="col-md-2"><img class="languages-larger img-responsive" src="./files/img/languages/java.jpg"></figure>
+						<figure class="col-md-2"><img class="languages-larger img-responsive" src="./files/img/languages/c++.png"></figure>
+						<figure class="col-md-2"><img class="languages img-responsive" src="./files/img/languages/c.png"></figure>
 					</div>
+					<a href="mailto:timothyjones.1@outlook.com" class="contact-btn">Work with me</a>
 				</div>
 			</div>
 		</div>
+		<footer>
+			<span>Copyright Tim Jones &copy; 2017.</span>
+		</footer>
 	</div>
-
 
 	<!-- Scripts -->
 	<script src="./files/js/parallax.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.4/jquery.fullpage.min.js"></script>
 	<script src="./files/js/script.js"></script>
