@@ -408,9 +408,10 @@ body {
   color: black;
 }
 .go-top {
-  position: fixed;
+  position: relative;
   right: -20px;
-  top: 90vh;
+  left: auto !important;
+  top: 90vh !important;
   z-index: 10;
   width: 50px;
   height: 50px;
