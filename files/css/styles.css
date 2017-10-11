@@ -509,9 +509,6 @@ body {
   #card figure .qut-eb-logo {
     width: 50px;
   }
-  .card-img {
-    transition: transform 0.5s ease;
-  }
   .bg {
     margin-top: -80%;
   }
@@ -611,7 +608,7 @@ body {
     margin-left: -7%;
   }
   .bg-2, .bg-3 {
-    margin-top: -40%;
+    margin-top: -50%;
   }
   .bg-3 {
     background-position: 75%;
