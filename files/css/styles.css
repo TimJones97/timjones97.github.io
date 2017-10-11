@@ -373,7 +373,7 @@ body {
     font-size: 10px;
   }
   .contact-block {
-    margin-left: -10%;
+    margin-left: 10%;
   }
   #card {
     min-height: 100px;
@@ -394,7 +394,7 @@ body {
   }
   .card-img {
     max-width: 60vw;
-    height: 60vh;
+    height: 55vh;
     -webkit-transition: all 0.4s ease-out;
     -moz-transition: all 0.4s ease-out;
     -o-transition: all 0.4s ease-out;
@@ -409,8 +409,10 @@ body {
   .bg {
     margin-top: -60%;
   }
-  #card figure .aml-logo,
   #card figure .qut-running-logo {
+    margin-top: 5px;
+  }
+  #card figure .aml-logo {
     margin-top: 15px;
   }
   .logo {
@@ -419,10 +421,6 @@ body {
   }
   #card figure .qut-eb-logo {
     width: 50px;
-  }
-  .qut-running-logo,
-  .aml-logo {
-    margin-bottom: 5px;
   }
   .card-img {
     transition: transform 0.5s ease;
@@ -449,7 +447,7 @@ body {
     width: 70%;
   }
   .contact-btn {
-    top: 140px;
+    top: 150px;
   }
   .mobile-change > *:nth-child(4) {
     width: 70px;
@@ -458,9 +456,6 @@ body {
   .contact-btn {
     font-size: 20px;
     height: 50px;
-  }
-  .card-img .text-black h1 {
-    font-size: 30px;
   }
   .small-btn {
     top: 0px;
@@ -471,10 +466,68 @@ body {
     font-size: 10px;
   }
   .contact-block {
-    margin-left: -25%;
+    margin-left: -2%;
+    margin-right: 20%;
   }
   footer {
     margin-top: -7%;
+  }
+  #parallax {
+    padding-top: 20vh;
+  }
+  .card-img .text-black h1 {
+    font-size: 25px;
+  }
+  .card-img .text-black {
+    padding-bottom: 20px;
+  }
+  .portfolio-block .text-black #card {
+    min-height: 80px;
+    margin-bottom: 50px; 
+    min-width: 230px;
+  }
+  .portfolio-block .text-black #card *:nth-child(1) {
+    padding-left: 3px;
+    padding-right: 7px;
+  }
+  .portfolio-block .text-black #card *:nth-child(2) {
+    padding-right: 0px;
+    padding-left: 20px;
+  }
+  .text-link {
+    margin-top: 3px;
+  }
+  .pull-down-sm {
+    margin-top: 15px;
+  }
+  #card figure .qut-eb-logo {
+    margin-top: 10px;
+  }
+  .skills-block .text-black .title {
+    margin-left: -7%;
+  }
+}
+@media screen and ( max-width: 360px ) { /* Smaller, older phones */
+  .contact-icon {
+    width: 20px;
+    height: 20px;
+  }
+  .contact-block {
+    margin-left: -5%;
+  }
+  .portfolio-block .text-black #card {
+    min-height: 80px;
+    margin-bottom: 50px; 
+    min-width: 200px;
+  }
+  #card figure .qut-eb-logo {
+    margin-top: 10px;
+  }
+  .pull-down-sm {
+    margin-top: 15px;
+  }
+  .text-link {
+    
   }
 }
 
