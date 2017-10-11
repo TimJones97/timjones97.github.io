@@ -9,7 +9,7 @@
     var elmnt = document.getElementById("parallax");
 
     var halfW = ( elmnt.clientWidth / 2 );
-    var halfH = ( elmnt.clientHeight / 3.5 );
+    var halfH = ( elmnt.clientHeight / 3 );
     var coorX = ( halfW - ( event.pageX - elmnt.offsetLeft ) );
     var coorY = ( halfH - ( event.pageY - elmnt.offsetTop ) );
 
