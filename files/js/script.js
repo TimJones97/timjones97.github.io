@@ -108,9 +108,9 @@ $( document ).ready(function() {
 //Script to fade out the banner when scrolled past
 $(window).scroll(function () {
     $('.panel').css({
-        'height':($(window).innerHeight())
+        'height':($(window).innerHeight() - 20)
     });
-    $('.bottom').css({
-        'opacity': ((height - scrollTop) / (height))
+    $('#slideContainer').css({
+        'height':($(window).innerHeight() * 4)
     });
 });
