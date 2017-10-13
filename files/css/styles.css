@@ -17,13 +17,18 @@
   width: 25%; /* relative to parent -> 25% of 400% = 100% of window width */
   float: left;
   background: transparent; 
+  border-radius: 8px;
   border: 60px solid transparent;
   -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.0); 
+}
+.section {
+  overflow: hidden;
 }
 .panel-lg {
   width: 100%; 
   height: 100%;
   background: transparent; 
+  border-radius: 8px;
   border: 60px solid transparent;
   -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.0); 
 }
@@ -31,7 +36,7 @@
 
 /*---------------------Banner Card-------------------*/
 
-.container, .container-2, .container-3, .container-4, .container-5 {
+.container {
   margin: 0 auto;
   width: 100%;
   position: relative; 
@@ -42,7 +47,8 @@
   border-radius: 8px;
   box-shadow: 0px 8px 57px 0px #222632;
 }
-.scene, .scene-2, .scene-3, .scene-4, .scene-5 {
+.scene, .scene-2, .scene-3, .scene-4, .scene-5,
+.scene-6, .scene-7, .scene-8, .scene-9, .scene-10 {
   margin: 0 auto;
   padding: 0; 
   z-index: 1;
@@ -66,7 +72,7 @@
   background-repeat: no-repeat;
   background-image: url('../img/layer_bg.jpg');
 }
-#parallax {
+#parallax, #parallax-2 {
   padding-top: 12vh;
 }
 .card {
@@ -448,7 +454,9 @@ body {
 .col-centered {
   margin: 0 auto;
 }
-
+#fullpage {
+  display: none;
+}
 #card {
   transform: perspective( 1000px ) translate3d( 0, 0px, 100px );
 }
@@ -541,7 +549,7 @@ body {
     width: 12.5%;
     margin-bottom: 40px;
   }
-  #parallax {
+  #parallax, #parallax-2 {
     padding-top: 17vh;
   }
   .contact-btn {
@@ -556,7 +564,7 @@ body {
 }
 
 @media screen and ( max-width: 991px ) {
-  #parallax {
+  #parallax, #parallax-2 {
     padding-top: 17vh;
   }
   .card-img {
@@ -643,16 +651,33 @@ body {
     -webkit-perspective: none;
     perspective: none;
   }
-  #slideContainer {
+  /*#slideContainer {
     width: 100%; 
-    height: 400%; /* to contain 4 panels, each with 100% of window height */
+    height: 400%; /* to contain 4 panels, each with 100% of window height 
   }
   .panel {
-    /*height: 25%;  relative to parent -> 25% of 400% = 100% of window height */
+    /*height: 25%;  relative to parent -> 25% of 400% = 100% of window height 
     width: 100%; 
+  }*/
+  #content-wrapper {
+    display: none;
+  }
+  #fullpage {
+    display: block;
   }
   .languages-block {
     margin-top: 80px;
+  }
+  .section {
+    width: 100%;
+    height: 100vh;
+  }
+  .panel, .panel-lg {
+    border: 0px solid transparent;
+  }
+  .container {
+    overflow: hidden;
+    height: 100vh;
   }
 }
 @media (max-width: 767px) 
@@ -739,12 +764,13 @@ and (orientation : landscape){
     top: 50%;
     width: auto;
   }
-  .contact-btn {
-    top: 0px;
-    margin-top: 60px;
+  .button-bg {
+    margin-top: 80px; 
   }
   .contact-btn {
     font-size: 20px;
+    margin-top: 0px;
+    top: 0px;
     height: 50px;
   }
   .small-btn {
@@ -759,7 +785,7 @@ and (orientation : landscape){
     margin-left: -2%;
     margin-right: 20%;
   }
-  #parallax {
+  #parallax, #parallax-2 {
     padding-top: 15vh;
   }
   .card-img .text-black h1 {
@@ -818,10 +844,10 @@ and (orientation : landscape){
     padding: 20px;
   }
   .panel {
-    border: 20px solid transparent;
+    /*border: 20px solid transparent;*/
   }
   .panel-lg {
-    border: 20px solid transparent;
+    /*border: 20px solid transparent;*/
   }
   .card-img .text-white h1 {
     font-size: 25px;
@@ -831,7 +857,7 @@ and (orientation : landscape){
     margin-bottom: 10px;
   }
   .languages-block {
-    margin-top: 90px;
+    margin-top: 100px;
     padding: 0;
   }
   .bg-4, .bg-5 {
@@ -860,53 +886,21 @@ and (orientation : landscape){
     background-image: url(../img/layer_bg5_sm.jpg)
   }
 }
-@media screen and ( max-width: 360px ) { /* Smaller, older phones */
-  .contact-icon {
-    width: 20px;
-    height: 20px;
+@media screen and ( max-width: 376px ) { /* Smaller, older phones */
+  .bio-block .text-white p {
+      margin-bottom: 10px;
+      font-size: 14px;
+      line-height: 18px;
   }
-  .contact-block {
-    margin-left: -5%;
-  }
-  .portfolio-block .text-white a #card {
-    min-height: 80px;
-    margin-bottom: 30px; 
-    min-width: 200px;
-  }
-  #card figure .qut-eb-logo {
-    margin-top: 10px;
-    margin-left: 30px;
-  }
-  .pull-down-sm {
-    margin-top: 7px;
-  }
-  .text-link {
-    font-size: 15px;
-  }
-  .portfolio-block .text-black #card *:nth-child(1) {
-    padding-left: 3px;
-    padding-right: 10px;
-  }
-  .portfolio-block .text-black #card *:nth-child(2) {
-    padding-right: 0px;
-    padding-left: 25px;
+  .languages-block {
+    margin-top: 90px;
+    padding: 0;
   }
   .contact-btn {
-    top: 120px;
-  }
-  .mobile-width {
-    width: 80%;
-  }
-  .skills-block > .text-white {
-    width: 100%; 
-    margin-top: 50px;
-    padding: 10px;
-  }
-  .mobile-change > *:nth-child(4) {
-    width: 55px;
     margin-top: 0px;
-    margin-bottom: 10px;
-    margin-left: 5px;
+  }
+  .button-bg {
+    margin-top: 0px;
   }
 }
 
