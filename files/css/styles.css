@@ -645,7 +645,7 @@ body {
     height: 400%; /* to contain 4 panels, each with 100% of window height */
   }
   .panel {
-    height: 25%; /* relative to parent -> 25% of 400% = 100% of window height */
+    /*height: 25%;  relative to parent -> 25% of 400% = 100% of window height */
     width: 100%; 
   }
 }
