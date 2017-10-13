@@ -211,7 +211,7 @@
 		$(function() {
 			$("body").swipe( { swipeStatus:swipe2, allowPageScroll:"vertical" } );
 		});
-		
+
 		var y = $(window).scrollTop();
 		function swipe2(event, phase, direction, distance) {
 			if(direction == "left"){
@@ -220,6 +220,13 @@
 			if(direction == "right"){
 				$(window).scrollTop(y+=distance);
 			}
+			// if(direction == "up"){
+			// 	// $(window).scrollTop(y);
+			// 	return false;
+			// }
+			// if(direction == "down"){
+			// 	return false;
+			// }
 		}
 
 		var controller;
