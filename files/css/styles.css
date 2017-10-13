@@ -766,7 +766,7 @@ and (orientation : landscape){
     margin-bottom: 50px; 
   }
   #slideContainer section:nth-child(4) {
-    height: 95vh;
+    height: 93vh;
   }
   .portfolio-block .text-white a #card *:nth-child(2) {
     padding-right: 0px;
