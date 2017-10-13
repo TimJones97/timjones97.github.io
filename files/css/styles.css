@@ -382,13 +382,13 @@ strong {
   margin-left: 0;
   margin-top: 0;
   border-radius: 50%;
-  border-color: #280050;
+  border-color: black;
   border-width: 1px;
   border-style: solid;
   transition: border-width 0.7s ease-in-out,margin-left 0.7s ease-in-out,margin-top 0.7s ease-in-out;
 }
 .expand{
-  border-color: #280050;
+  border-color: black;
   border-width: 300px;
   border-style: solid;
   transition: border-width 0.7s ease-in-out,margin-left 0.7s ease-in-out,margin-top 0.7s ease-in-out;
@@ -821,6 +821,21 @@ and (orientation : landscape){
   .bio-block .text-white .col-md-10 {
     padding-right: 4px;
     padding-left: 4px;
+  }
+  .bg {
+    background-image: url(../img/layer_bg_sm.jpg)
+  }
+  .bg-2 {
+    background-image: url(../img/layer_bg2_sm.jpg)
+  }
+  .bg-3 {
+    background-image: url(../img/layer_bg3_sm.jpg)
+  }
+  .bg-4 {
+    background-image: url(../img/layer_bg4_sm.jpg)
+  }
+  .bg-5 {
+    background-image: url(../img/layer_bg5_sm.jpg)
   }
 }
 @media screen and ( max-width: 360px ) { /* Smaller, older phones */
