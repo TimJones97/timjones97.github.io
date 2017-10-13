@@ -9,16 +9,16 @@
     var elmnt = document.getElementById("parallax");
 
     var halfW = ( elmnt.clientWidth / 2 );
-    var halfH = ( elmnt.clientHeight / 3 );
+    var halfH = ( elmnt.clientHeight / 2 );
     var coorX = ( halfW - ( event.pageX - elmnt.offsetLeft ) );
     var coorY = ( halfH - ( event.pageY - elmnt.offsetTop ) );
 
-    var degX  = ( ( coorY / halfH ) * 17 ) + 'deg'; // max. degree = 10
+    var degX  = ( ( coorY / halfH ) * 20 ) + 'deg'; // max. degree = 10
     var degY  = ( ( coorX / halfW ) * -10 ) + 'deg'; // max. degree = 10
 
     $('.card-img').css( 'transform', function() {
 
-      return 'perspective( 1000px ) translate3d( 0, 0px, 285px ) rotateX('+ degX +') rotateY('+ degY +')';
+      return 'perspective( 1200px ) translate3d( 0, 0px, 285px ) rotateX('+ degX +') rotateY('+ degY +')';
     } );
   } )
   //   .on( "mouseout", ".container", function() {
@@ -35,12 +35,12 @@
     var elmnt = document.getElementById("parallax");
 
     var halfW = ( elmnt.clientWidth / 1.5 );
-    var halfH = ( elmnt.clientHeight / 2 );
+    var halfH = ( elmnt.clientHeight / 2.5 );
     var coorX = ( halfW - ( event.pageX - elmnt.offsetLeft ) );
     var coorY = ( halfH - ( event.pageY - elmnt.offsetTop ) );
 
-    var degX  = ( ( coorY / halfH ) * 10 ) + 'deg'; // max. degree = 10
-    var degY  = ( ( coorX / halfW ) * -30 ) + 'deg'; // max. degree = 10
+    var degX  = ( ( coorY / halfH ) * 0 ) + 'deg'; // max. degree = 10
+    var degY  = ( ( coorX / halfW ) * -15 ) + 'deg'; // max. degree = 10
 
     $( this ).css( 'transform', function() {
 
@@ -78,7 +78,7 @@ $('.contact-btn').on('mouseleave', function(e){
   blob.removeClass("expand");
   setTimeout(function(){
       blob.remove();
-},800);
+  },800);
 });
 $( document ).ready(function() {
   //Detect browser and disable transition on card-img if on Safari or IE/Edge
