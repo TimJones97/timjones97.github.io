@@ -205,10 +205,23 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.4/jquery.fullpage.min.js"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>
 	<script src="./files/js/script.js"></script>
 	<script>
+		$(function() {
+			$("body").swipe( { swipeStatus:swipe2, allowPageScroll:"vertical" } );
+		});
 		
+		var y = $(window).scrollTop();
+		function swipe2(event, phase, direction, distance) {
+			if(direction == "left"){
+				$(window).scrollTop(y-=distance);
+			}
+			if(direction == "right"){
+				$(window).scrollTop(y+=distance);
+			}
+		}
+
 		var controller;
 		var smScene;
 		var wipeAnimation;
@@ -281,18 +294,18 @@
 				.to("#slideContainer", 1,   {x: "-75%"})
 				.to("#slideContainer", 0.5, {z: 0});
 			}
-			else if ($( window ).width() < 1024){
+			else{
 				wipeAnimation = new TimelineMax()
 				// animate to second panel
 				.to("#slideContainer", 0.5, {z: -150})		
 				.to("#slideContainer", 1,   {x: "-25%"})	
 				.to("#slideContainer", 0.5, {z: 0})				
 				// animate to third panel
-				.to("#slideContainer", 0.5, {z: -150, delay: 0.5})
+				.to("#slideContainer", 0.5, {z: -150, delay: -1})
 				.to("#slideContainer", 1,   {x: "-50%"})
 				.to("#slideContainer", 0.5, {z: 0})
 				// animate to forth panel
-				.to("#slideContainer", 0.5, {z: -150, delay: 0.5})
+				.to("#slideContainer", 0.5, {z: -150, delay: -1})
 				.to("#slideContainer", 1,   {x: "-75%"})
 				.to("#slideContainer", 0.5, {z: 0});
 			}
@@ -318,18 +331,18 @@
 				.to("#slideContainer", 1,   {x: "-75%"})
 				.to("#slideContainer", 0.5, {z: 0});
 	}
-	else if ($( window ).width() < 1024){
+	else {
 		wipeAnimation = new TimelineMax()
 		// animate to second panel
 		.to("#slideContainer", 0.5, {z: -150})		
 		.to("#slideContainer", 1,   {x: "-25%"})	
 		.to("#slideContainer", 0.5, {z: 0})				
 		// animate to third panel
-		.to("#slideContainer", 0.5, {z: -150, delay: 0})
+		.to("#slideContainer", 0.5, {z: -150, delay: -1})
 		.to("#slideContainer", 1,   {x: "-50%"})
 		.to("#slideContainer", 0.5, {z: 0})
 		// animate to forth panel
-		.to("#slideContainer", 0.5, {z: -150, delay: 0})
+		.to("#slideContainer", 0.5, {z: -150, delay: -1})
 		.to("#slideContainer", 1,   {x: "-75%"})
 		.to("#slideContainer", 0.5, {z: 0});
 	}

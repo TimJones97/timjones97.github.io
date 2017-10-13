@@ -636,6 +636,10 @@ body {
   footer {
     margin-top: 80%;
   }
+  #pinContainer {
+    -webkit-perspective: none;
+    perspective: none;
+  }
 }
 @media (max-width: 767px) 
 and (orientation : landscape){
@@ -647,6 +651,10 @@ and (orientation : landscape){
   }
 }
 @media screen and ( max-width: 479px ) { 
+  #pinContainer {
+    -webkit-perspective: none;
+    perspective: none;
+  }
   .portfolio-block {
     margin-top: 0px;
   }
