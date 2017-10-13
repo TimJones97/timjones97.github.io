@@ -316,7 +316,7 @@ strong {
   transform: translate(-50%, -50%);
 }
 .button-bg {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(255, 255, 255, 0.7);
   width: 250px;
   border-radius: 8px;
   margin: 0 auto;
@@ -339,8 +339,10 @@ strong {
   font-weight: bold;
   overflow: hidden;
   transition: all 0.3s ease-in;
-  background-image: -webkit-linear-gradient(0deg,#00fff5,#6457fc 53%,#e066ff);
-  background-image: linear-gradient(90deg,#00fff5,#6457fc 53%,#e066ff);
+    background-image: -webkit-linear-gradient(0deg,#0029ff,rgba(112,0,255,.99) 22%,#c0f 100%,#fff);
+  background-image: linear-gradient(90deg,#0029ff,rgba(112,0,255,.99) 22%,#c0f 100%,#fff);
+/*  background-image: -webkit-linear-gradient(0deg,#00fff5,#6457fc 53%,#e066ff);
+  background-image: linear-gradient(90deg,#00fff5,#6457fc 53%,#e066ff);*/
   color:transparent;
   -webkit-background-clip: text;
   transition: color 0.3s ease;
@@ -362,14 +364,18 @@ strong {
 .contact-btn:hover {
   border-color: white;
   text-decoration: none;
-  background-image: -webkit-linear-gradient(0deg,#0029ff,rgba(112,0,255,.99) 22%,#c0f 100%,#fff);
-  background-image: linear-gradient(90deg,#0029ff,rgba(112,0,255,.99) 22%,#c0f 100%,#fff);
+/*  background-image: -webkit-linear-gradient(0deg,#0029ff,rgba(112,0,255,.99) 22%,#c0f 100%,#fff);
+  background-image: linear-gradient(90deg,#0029ff,rgba(112,0,255,.99) 22%,#c0f 100%,#fff);*/
+  background-image: -webkit-linear-gradient(0deg,#00fff5,#6457fc 53%,#e066ff);
+  background-image: linear-gradient(90deg,#00fff5,#6457fc 53%,#e066ff);
   color:transparent;
 }
 .contact-btn:focus {
   border-color: white;
-  background-image: -webkit-linear-gradient(0deg,#0029ff,rgba(112,0,255,.99) 22%,#c0f 100%,#fff);
-  background-image: linear-gradient(90deg,#0029ff,rgba(112,0,255,.99) 22%,#c0f 100%,#fff);
+/*  background-image: -webkit-linear-gradient(0deg,#0029ff,rgba(112,0,255,.99) 22%,#c0f 100%,#fff);
+  background-image: linear-gradient(90deg,#0029ff,rgba(112,0,255,.99) 22%,#c0f 100%,#fff);*/
+  background-image: -webkit-linear-gradient(0deg,#00fff5,#6457fc 53%,#e066ff);
+  background-image: linear-gradient(90deg,#00fff5,#6457fc 53%,#e066ff);
   color:transparent;
   -webkit-background-clip: text;
   text-decoration: none;
@@ -382,13 +388,13 @@ strong {
   margin-left: 0;
   margin-top: 0;
   border-radius: 50%;
-  border-color: black;
+  border-color: white;
   border-width: 1px;
   border-style: solid;
   transition: border-width 0.7s ease-in-out,margin-left 0.7s ease-in-out,margin-top 0.7s ease-in-out;
 }
 .expand{
-  border-color: black;
+  border-color: white;
   border-width: 300px;
   border-style: solid;
   transition: border-width 0.7s ease-in-out,margin-left 0.7s ease-in-out,margin-top 0.7s ease-in-out;
@@ -544,6 +550,9 @@ body {
   .work-block {
     margin-top: 0px;
   }
+  footer {
+    margin-top: 18%;
+  }
 }
 
 @media screen and ( max-width: 991px ) {
@@ -575,23 +584,20 @@ body {
   .skills-block .text-white .col-md-12 .col-md-offset-1 {
     margin-left: 0;
   }
-  .contact-btn {
-    top: 120px;
+  .button-bg {
+    margin-top: 200px;  
   }
   .text-black, 
   .text-white {
     top: 50%;
     width: 60%;
   }
-  .pull-up {
-    top: 45%;
-  }
   .card-img .text-white h1 {
     font-size: 30px;
   }
   .small-btn {
     top: 0px;
-    padding: 2px;
+    padding: 0px 2px 2px 2px;
     width: 60px;
     margin-top: 5px !important;
     height: 20px;
@@ -610,9 +616,6 @@ body {
     width: 100%; 
     padding: 12%;
     margin-top: 120px;
-  }
-  strong {
-    font-size: 40px;
   }
   .bio-block .text-white {
     width: 100%;
@@ -634,7 +637,7 @@ body {
     font-size: 20px;
   }
   footer {
-    margin-top: 80%;
+    margin-top: 70%;
   }
   #pinContainer {
     -webkit-perspective: none;
@@ -647,6 +650,9 @@ body {
   .panel {
     /*height: 25%;  relative to parent -> 25% of 400% = 100% of window height */
     width: 100%; 
+  }
+  .languages-block {
+    margin-top: 80px;
   }
 }
 @media (max-width: 767px) 
@@ -683,17 +689,18 @@ and (orientation : landscape){
   .bg {
     margin-top: -60%;
   }
-  #card figure .qut-running-logo {
-    margin-top: 5px;
+  #card .qut-running-logo {
+    margin-top: 14px;
   }
-  #card figure .aml-logo {
+  #card .aml-logo {
     margin-top: 15px;
   }
   .logo {
     width: 100px;
     height: auto;
   }
-  #card figure .qut-eb-logo {
+  #card .qut-eb-logo {
+    margin-top: 10px;
     width: 50px;
   }
   .bg {

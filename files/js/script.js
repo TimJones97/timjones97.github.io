@@ -104,13 +104,3 @@ $( document ).ready(function() {
     console.log('remove');
   }
 });
-
-//Script to fade out the banner when scrolled past
-$(window).scroll(function () {
-    $('.panel').css({
-        'height':($(window).innerHeight() - 20)
-    });
-    $('#slideContainer').css({
-        'height':($(window).innerHeight() * 4)
-    });
-});
