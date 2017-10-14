@@ -308,7 +308,7 @@ strong {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  margin-top: 150px;
+  margin-top: 100px;
   left: 50%;
   top: 100%;
   width: 100%;
@@ -454,6 +454,11 @@ body {
 #fullpage {
   display: none;
 }
+#pinContainer {
+  /*width: 400% !important;*/
+  width: 100% !important;
+  height: 100vh !important;
+}
 #card {
   transform: perspective( 1000px ) translate3d( 0, 0px, 100px );
 }
@@ -555,13 +560,13 @@ body {
     padding-top: 17vh;
   }
   .contact-btn {
-    margin-top: 380px;
+    /*margin-top: 380px;*/
   }
   .work-block {
     margin-top: 0px;
   }
   footer {
-    margin-top: 18%;
+    margin-top: 15%;
   }
 }
 
@@ -686,6 +691,9 @@ body {
   }
   .desktop { 
     display: none; 
+  }
+  #pinContainer {
+    height: auto !important;
   }
 }
 @media (max-width: 800px) 
