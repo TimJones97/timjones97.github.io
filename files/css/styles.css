@@ -612,7 +612,7 @@ body {
   }
   .small-btn {
     top: 0px;
-    padding: 0px 2px 2px 2px;
+    padding: 2px 2px 2px 2px;
     width: 60px;
     margin-top: 5px !important;
     height: 20px;
@@ -902,11 +902,17 @@ and (orientation : landscape){
     background-image: url(../img/layer_bg5_sm.jpg)
   }
 }
-@media screen and ( max-width: 376px ) { /* Smaller, older phones */
+@media screen and ( max-width: 360px ) { /* Smaller, older phones */
   .bio-block .text-white p {
-      margin-bottom: 10px;
-      font-size: 14px;
-      line-height: 18px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    line-height: 16px;
+  }
+  strong {
+    font-size: 13px;
+  }
+  footer {
+    margin-top: 20%;
   }
   .languages-block {
     margin-top: 90px;
@@ -914,11 +920,35 @@ and (orientation : landscape){
   }
   .contact-btn {
     margin-top: 0px;
+    width: 240px;
   }
   .button-bg {
     margin-top: 0px;
+    width: 240px;
   }
-}
+  .portfolio-block .text-white a #card {
+    min-width: 200px;
+  }
+  .work-block {
+    margin-top: 180px;
+  }
+  .col-xs-3 {
+    width: 12.5%;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+  .small-btn {
+    width: 50px !important;
+    font-size: 9px;
+  }
+  .contact-block {
+    margin-left: -12.5%;
+    margin-right: 0%;
+  }
+  .card-img .text-white h1 {
+    font-size: 20px;
+  }
+} 
 
 /*-----------------------------------SCROLL MAGIC------------------------------------------*/
 
