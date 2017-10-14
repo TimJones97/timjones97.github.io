@@ -283,8 +283,11 @@
 		    }
 		    else {
 		    	// $(".panel").css("height", $(window).innerHeight());
-		    	fullPageCreated = false;
-        		$.fn.fullpage.destroy('all');
+		    	if(fullPageCreated == true) {
+		    		fullPageCreated = false;
+	        		$.fn.fullpage.destroy('all');
+	        	}
+		    	destroyScrollMagic();
 		  		addScrollMagic();
 		    	$(".container").css("height", "100%");
 		    	// $('#pinContainer').css("width", $(window).innerWidth() * 4);
@@ -324,7 +327,7 @@
 			// }
 		}
 		function createFullpage() {
-		    if (fullPageCreated === false) {
+		    if (fullPageCreated == false) {
 		        fullPageCreated = true;
 				$('#slideContainer').fullpage(options);
 		    }
