@@ -262,7 +262,7 @@ strong {
   height: 100vh;
   width: 100%;
   padding: 60px;
-  margin-top: 60px;
+  margin-top: 100px;
   position: relative;
   background: transparent;
   z-index: 10;
@@ -272,7 +272,7 @@ strong {
   margin-top: 5px;
 }
 .languages-block .col-xs-4 {
-  width: 17%;
+  width: 15%;
   margin-bottom: 20px;
 }
 .scene-4 {
