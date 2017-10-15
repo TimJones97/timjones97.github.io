@@ -59,14 +59,14 @@
   pointer-events: auto !important;
 }
 .bg {
-  width: 150vw;
-  height: 200vh;
+  width: 120vw;
+  height: 120vh;
   left: 0;
   top: 0;
   bottom: 0;
   right: 0;
-  margin-left: -50%;
-  margin-top: -30%;
+  margin-left: -20%;
+  margin-top: -10%;
   /*background-image: -webkit-linear-gradient(10deg,#fff 25%,#fff 43%,#ffb85e 62%,#fab362 63%,#3d00ff);
   background-image: linear-gradient(350deg,#fff 25%,#fff 43%,#ffb85e 62%,#fab362 63%,#3d00ff);*/
   background-size: cover;
@@ -194,14 +194,14 @@
   margin-top: 50px;
 }
 .bg-2 {
-  width: 140vw;
-  height: 170vh;
+  width: 120vw;
+  height: 120vh;
   left: 0;
   top: 0;
   bottom: 0;
   right: 0;
-  margin-left: -50%;
-  margin-top: -30%;
+  margin-left: -20%;
+  margin-top: -10%;
   background-size: cover;
   background-repeat: no-repeat;
   background-image: url('../img/layer_bg2.jpg');
@@ -210,7 +210,7 @@
 /*--------------------------Biography Block------------------------------*/
 
 strong {
-  color: rgb(255, 156, 70);
+  color: rgb(255, 151, 23);
   font-weight: 300;
 }
 .skills-block {
@@ -253,14 +253,14 @@ strong {
   pointer-events: auto !important;
 }
 .bg-3 {
-  width: 150vw;
-  height: 170vh;
+  width: 120vw;
+  height: 120vh;
   left: 0;
   top: 0;
   bottom: 0;
   right: 0;
-  margin-left: -70%;
-  margin-top: -30%;
+  margin-left: -20%;
+  margin-top: -10%;
   background-position: 0% 0%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -296,14 +296,14 @@ strong {
   pointer-events: auto !important;
 }
 .bg-4 {
-  width: 150vw;
-  height: 170vh;
+  width: 120vw;
+  height: 120vh;
   left: 0;
   top: 0;
   bottom: 0;
   right: 0;
-  margin-left: -70%;
-  margin-top: -30%;
+  margin-left: -20%;
+  margin-top: -10%;
   background-size: cover;
   background-repeat: no-repeat;
   background-image: url('../img/layer_bg4.jpg');
@@ -321,6 +321,7 @@ strong {
   position: absolute;
   margin-top: 250px;
   left: 50%;
+  z-index: 10;
   top: 100%;
   width: 100%;
   -webkit-transform: translate(-50%, -50%);
@@ -330,7 +331,7 @@ strong {
   transform: translate(-50%, -50%);
 }
 .button-bg {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.7);
   width: 250px;
   border-radius: 6px;
   margin: 0 auto;
@@ -426,17 +427,40 @@ footer {
   color: #e7e7e7;
 }
 .bg-5 {
-  width: 150vw;
-  height: 170vh;
+  width: 120vw;
+  height: 120vh;
   left: 0;
   top: 0;
   bottom: 0;
   right: 0;
-  margin-left: -70%;
-  margin-top: -30%;
+  margin-left: -20%;
+  margin-top: -10%;
   background-size: cover;
   background-repeat: no-repeat;
   background-image: url('../img/layer_bg5.jpg');
+}
+.panel-lg .container {
+  padding: 0;
+}
+.container .scene-6 {
+  max-width: 100%;
+  padding: 0;
+}
+#interactive-anim {
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  position: relative;
+  /*margin-left: -70%;*/
+  /*margin-top: -30%;*/
+  background-size: cover;
+  background-repeat: no-repeat;
+  background: black;
+  /*background-image: url('../img/layer_bg5.jpg');*/
 }
 /*--------------------------------GLOBAL--------------------------------*/
 
@@ -751,7 +775,7 @@ and (orientation : landscape){
     width: 50px;
   }
   .bg {
-    margin-top: -80%;
+    margin-top: -50%;
   }
   .portfolio-block .text-white a #card {
     min-width: 230px;
@@ -901,7 +925,8 @@ and (orientation : landscape){
     background-image: url(../img/layer_bg4_sm.jpg)
   }
   .bg-5 {
-    /*background-image: url(../img/layer_bg5_sm.jpg)*/
+    background-image: url(../img/layer_bg5_sm.jpg);
+    margin-top: -20%;
   }
   .title-text h6,
   .title-text h1 {

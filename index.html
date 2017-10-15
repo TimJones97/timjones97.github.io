@@ -18,6 +18,13 @@
 	<meta name="theme-color" content="#3b3b3b">
 	<!-- <link rel="icon" sizes="192x192" href="./files/img/favicon.ico"> -->
 	<title>Tim Jones | Freelance Web Designer in Brisbane</title>
+	<script type="application/ld+json">
+        {
+          "@type": "Organization",
+          "url": "https://timjones.com.au",
+          "logo": "./files/img/logo.png",
+        }
+    </script>
 	<link href="https://fonts.googleapis.com/css?family=Raleway:300|Raleway:400" rel="stylesheet">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -28,12 +35,6 @@
 
 	<!-- Styles -->
 	<link rel="stylesheet" type="text/css" href="./files/css/styles.css"/>
-
-	
-	<script type="text/javascript" src="./files/js/lib/greensock/TweenMax.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
-	<script type="text/javascript" src="./files/js/lib/debug.addIndicators.js"></script>
-	<script type="text/javascript" src="./files/js/lib/animation.gsap.js"></script>
 </head>
 <body>
 	<div class="landscape-message">
@@ -187,7 +188,9 @@
 		<section class="panel-lg desktop">
 			<div id="container" class="container">
 				<div id="scene-6" class="scene-6">
-					<div class="bg-5" data-depth="0.5">
+					<canvas id="interactive-anim">
+					</canvas>
+					<div class="bg-5" data-depth="0.5" id="bg-5">
 					</div>
 					<div class="work-block">
 						<div class="button-bg">
@@ -208,6 +211,11 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.4/jquery.fullpage.min.js"></script>
+	<script type="text/javascript" src="./files/js/lib/greensock/TweenMax.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+	<script type="text/javascript" src="./files/js/lib/debug.addIndicators.js"></script>
+	<script type="text/javascript" src="./files/js/lib/animation.gsap.js"></script>
+	<script src="./files/js/stylus.js"></script>
 	<script src="./files/js/script.js"></script>
 </body>
 </html>
