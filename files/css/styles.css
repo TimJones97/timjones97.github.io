@@ -607,6 +607,13 @@ body {
   #parallax, #parallax-2 {
     padding-top: 17vh;
   }
+  .bg, .bg-2, .bg-3, .bg-4, .bg-5 {
+    height: 150vh;
+  }
+  .title-text h6,
+  .title-text h1 {
+    line-height: 35px; 
+  }
   .card-img {
     width: 60vw;
     height: 50vh;
