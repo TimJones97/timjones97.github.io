@@ -161,7 +161,11 @@ $( document ).ready(function() {
     // animate to forth panel
     .to("#slideContainer", 0.5, {z: -150, delay: 1})
     .to("#slideContainer", 1,   {x: "-75%"})
-    .to("#slideContainer", 0.5, {z: 0});
+    .to("#slideContainer", 0.5, {z: 0})
+    // animate to fifth panel
+    .to(".panel-lg", 0.5, {z: 0, delay: 0})
+    .to(".panel-lg", 1,   {x: "0%"})
+    .to(".panel-lg", 0.5, {z: 0});
 
     controller = new ScrollMagic.Controller();  
     smScene = new ScrollMagic.Scene({
@@ -357,7 +361,11 @@ function addScrollMagic() {
   // animate to forth panel
   .to("#slideContainer", 0.5, {z: -150, delay: 1})
   .to("#slideContainer", 1,   {x: "-75%"})
-  .to("#slideContainer", 0.5, {z: 0});
+  .to("#slideContainer", 0.5, {z: 0})
+  // animate to fifth panel
+  .to(".panel-lg", 0.5, {z: 0, delay: 0})
+  .to(".panel-lg", 1,   {x: "0%"})
+  .to(".panel-lg", 0.5, {z: 0});
 
   controller = new ScrollMagic.Controller();  
   smScene = new ScrollMagic.Scene({
@@ -422,7 +430,9 @@ addScenes(scenes);
 //create the timelines for coming in from the right    
 $(".title-text").each(function(index){
     
-    $colorBlue = "rgb(255, 156, 70)";
+    // $colorBlue = "rgb(255, 156, 70)";
+    $colorBlue = "rgb(70, 204, 255)";
+    $colorPurple = "rgb(150, 70, 255)";
     
     //create a timeline
     var displayTl = new TimelineLite();
@@ -447,6 +457,11 @@ $(".title-text").each(function(index){
                    {color: $colorBlue},
                     0.3
                    )
+            .staggerTo(this.getElementsByClassName("highlight-purple"), 
+                    0.3,
+                   {color: $colorPurple},
+                    0.3
+                   )
     //build a scene
     var contentScene = new ScrollMagic.Scene({
         triggerElement: ".panel"
@@ -454,4 +469,10 @@ $(".title-text").each(function(index){
     .setTween(displayTl)
 //        .addIndicators()
     .addTo(controller);        
+});
+//collapse the navbar upon selection from hamburger menu
+$(document).on('click','.navbar-collapse.in',function(e) {
+  if( $(e.target).is('a') && $(e.target).attr('class') != 'dropdown-toggle' ) {
+      $(this).collapse('hide');
+  }
 });

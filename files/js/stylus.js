@@ -15,7 +15,7 @@
         target = {x: width/2, y: height/2};
 
         canvas = document.getElementById('interactive-anim');
-        if (document.getElementById('interactive-anim') != null && width > 600){
+        if (document.getElementById('interactive-anim') != null){
             canvas.width = width;
             canvas.height = height;
             ctx = canvas.getContext('2d');
@@ -71,7 +71,7 @@
 
     // Event handling
     function addListeners() {
-        if (document.getElementById('interactive-anim') != null && width > 600){
+        if (document.getElementById('interactive-anim') != null){
             if(!('ontouchstart' in window)) {
                 window.addEventListener('mousemove', mouseMove);
             }
@@ -100,9 +100,9 @@
     }
 
     function resize() {
-        if (document.getElementById('interactive-anim') != null && width > 600){
-            width = window.innerWidth;
-            height = window.innerHeight;
+        if (document.getElementById('interactive-anim') != null){
+            width = $(window).innerWidth();
+            height = $(window).innerHeight();
             canvas.width = width;
             canvas.height = height;
         }
@@ -117,7 +117,7 @@
     }
 
     function animate() {
-        if (document.getElementById('interactive-anim') != null && width > 600){
+        if (document.getElementById('interactive-anim') != null){
             if(animateHeader) {
                 ctx.clearRect(0,0,width,height);
                 for(var i in points) {
@@ -146,8 +146,8 @@
     }
 
     function shiftPoint(p) {
-        TweenLite.to(p, 1+1*Math.random(), {x:p.originX-50+Math.random()*100,
-            y: p.originY-50+Math.random()*100, ease:Circ.easeInOut,
+        TweenLite.to(p, 1+1*Math.random(), {x:p.originX-50+Math.random()*50,
+            y: p.originY-50+Math.random()*50, ease:Circ.ease,
             onComplete: function() {
                 shiftPoint(p);
             }});
@@ -160,7 +160,7 @@
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p.closest[i].x, p.closest[i].y);
-            ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+            ctx.strokeStyle = 'rgba(0,0,0,0)';
             ctx.stroke();
         }
     }
@@ -179,7 +179,7 @@
             if(!_this.active) return;
             ctx.beginPath();
             ctx.arc(_this.pos.x, _this.pos.y, _this.radius, 0, 2 * Math.PI, false);
-            ctx.fillStyle = 'rgba(255,255,255,0.1)';
+            ctx.fillStyle = 'rgba(255,255,255,1)';
             ctx.fill();
         };
     }
