@@ -4,31 +4,6 @@
 
 (function() {
   $( document )
-    .on( "mousemove", "#banner", function( event ) {
-
-    var elmnt = document.getElementById("parallax");
-
-    var halfW = ( elmnt.clientWidth / 2 );
-    var halfH = ( elmnt.clientHeight / 2 );
-    var coorX = ( halfW - ( event.pageX - elmnt.offsetLeft ) );
-    var coorY = ( halfH - ( event.pageY - elmnt.offsetTop ) );
-
-    var degX  = ( ( coorY / halfH ) * 20 ) + 'deg'; // max. degree = 10
-    var degY  = ( ( coorX / halfW ) * -10 ) + 'deg'; // max. degree = 10
-
-    $('.card-img').css( 'transform', function() {
-
-      return 'perspective( 1200px ) translate3d( 0, 0px, 285px ) rotateX('+ degX +') rotateY('+ degY +')';
-    } );
-  } )
-  //   .on( "mouseout", ".container", function() {
-  //   $('.card').removeAttr( 'style' )
-  //     .children( '.card__summary' )
-  //     .removeAttr( 'style' );
-  // } );
-})();
-(function() {
-  $( document )
     .on( "mousemove", "#card", function( event ) {
 
     var elmnt = document.getElementById("parallax");
@@ -96,11 +71,36 @@ $( document ).ready(function() {
   }
   if($( window ).width() > 1000 && !is_safari && !is_edge_or_ie){
     console.log('added');
+    (function() {
+      $( document )
+        .on( "mousemove", "#banner", function( event ) {
+
+        var elmnt = document.getElementById("parallax");
+
+        var halfW = ( elmnt.clientWidth / 2 );
+        var halfH = ( elmnt.clientHeight / 2 );
+        var coorX = ( halfW - ( event.pageX - elmnt.offsetLeft ) );
+        var coorY = ( halfH - ( event.pageY - elmnt.offsetTop ) );
+
+        var degX  = ( ( coorY / halfH ) * 20 ) + 'deg'; // max. degree = 10
+        var degY  = ( ( coorX / halfW ) * -10 ) + 'deg'; // max. degree = 10
+
+        $('.card-img').css( 'transform', function() {
+
+          return 'perspective( 1200px ) translate3d( 0, 0px, 285px ) rotateX('+ degX +') rotateY('+ degY +')';
+        } );
+      } )
+      //   .on( "mouseout", ".container", function() {
+      //   $('.card').removeAttr( 'style' )
+      //     .children( '.card__summary' )
+      //     .removeAttr( 'style' );
+      // } );
+    })();
     $('.card-img').addClass('touch');
   }
   else if( is_safari || is_edge_or_ie  ){
     $('.card-img').removeClass('touch');
-    console.log('remove');
+    $('.card-img').addClass('fixed');
   }
 });
 var controller;
