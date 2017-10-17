@@ -12,7 +12,7 @@ var safariOrEdge = false;
         var coorX = ( halfW - ( event.pageX - elmnt.offsetLeft ) );
         var coorY = ( halfH - ( event.pageY - elmnt.offsetTop ) );
         var degX, degY;
-      if(!safariOrEdge){
+      if($(window).width() > 2000 && $(window).height() > 1000){
         degX  = ( ( coorY / halfH ) * 20 ) + 'deg'; // max. degree = 10
       }
       else {
