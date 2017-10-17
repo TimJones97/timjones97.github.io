@@ -4,8 +4,8 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  -webkit-perspective: 500;
-  perspective: 500;
+  -webkit-perspective: 1000;
+  perspective: 1000;
 }
 #slideContainer {
   width: 400%; /* to contain 4 panels, each with 100% of window width */
@@ -58,7 +58,9 @@
   display: block;
   pointer-events: auto !important;
 }
-
+/*TO DO:*/
+/**/
+/*add class to bg if edge with absolute positioning and no margin-left*/
 .bg {
   width: 120vw;
   height: 120vh;
@@ -68,6 +70,7 @@
   right: 0;
   margin-left: -20%;
   margin-top: -10%;
+  /*position: absolute;*/
   /*background-image: -webkit-linear-gradient(10deg,#fff 25%,#fff 43%,#ffb85e 62%,#fab362 63%,#3d00ff);
   background-image: linear-gradient(350deg,#fff 25%,#fff 43%,#ffb85e 62%,#fab362 63%,#3d00ff);*/
   background-size: cover;
@@ -107,6 +110,11 @@
 }
 .fixed {
   transform: perspective( 1200px ) translate3d( 0, 0px, 285px ) !important;
+}
+.no-parallax {
+  margin-left: 0%;
+  margin-top: 0%;
+  position: absolute;
 }
 .card-img .text-white {
   padding: 10px 10% 40px 10%;
@@ -151,6 +159,7 @@
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
 }
+
 /*----------------------------Portfolio Block---------------------------*/
 .backdrop {
   height: 50%;
@@ -687,7 +696,7 @@ body {
   color: white !important;
   padding-top: 20px;
   padding-bottom: 20px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   -webkit-transition: all 0.1s ease;
   -o-transition: all 0.1s ease;
   transition: all 0.1s ease;
@@ -706,6 +715,103 @@ body {
   font-size:14px;
 }
 
+/*-----PAGE LOAD BAR-----*/
+
+.preloader-wrap {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0; 
+  bottom: 0;
+  background: rgba(0,0,0,1);
+  z-index : 100; 
+}
+
+.percentage {
+  z-index: 100;
+  text-align:center;
+  color: #fff;
+  font-family: 'Raleway', sans-serif;
+  /*transition: all 0.4s;*/
+  font-size : 15px;
+  line-height: 0px; /*Center percentage in middle of screen */
+  height: 1px;
+  font-weight: 300;
+  position: absolute; 
+  top: 0; 
+  bottom: 0; 
+  left: 0; 
+  right: 0;
+  margin : auto; 
+}
+.loader:after 
+.percentage:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.loader {
+  animation: rotate 2s linear infinite;
+  height: 100%;
+  transform-origin: center center;
+  width: 100px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.path {
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+  stroke-linecap: round;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px;
+  }
+}
+
+@keyframes color {
+  100%,
+  0% {
+    stroke: #d62d20;
+  }
+  40% {
+    stroke: #0057e7;
+  }
+  66% {
+    stroke: #008744;
+  }
+  80%,
+  90% {
+    stroke: #ffa700;
+  }
+}
 /*---------------------------------Media Queries-------------------------------------*/
 
 @media ( min-width: 2000px ) and ( min-height: 800px ) { /* For 21:9 aspect ratio screens */
@@ -772,10 +878,7 @@ body {
     -o-transition: all 0.4s ease-out;
     transition: all 0.4s ease-out;
   }
-  .bg {
-    margin-top: -50%;
-  }
-  .bg-2, .bg-3, .bg-4 {
+  .bg, .bg-2, .bg-3, .bg-4, .bg-5 {
     margin-top: -60%;
   }
   .col-md-2 {
@@ -900,6 +1003,9 @@ and (orientation : landscape){
   }
   #content-wrapper {
     display: none;
+  }
+  .navbar-toggle {
+    display: n;
   }
 }
 @media screen and ( max-width: 479px ) { 
@@ -1169,4 +1275,4 @@ div#content-wrapper {
 }
 html.touch div#content-wrapper {
     min-width: 700px;
-}*/
+}

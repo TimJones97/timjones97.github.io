@@ -1,6 +1,35 @@
 /* Scroll Postion for CSS Animations */
-
+var safariOrEdge = false;
 /*----------------------------------------------------------------------------------*/
+(function() {
+      $( document )
+        .on( "mousemove", "#banner", function( event ) {
+
+        var elmnt = document.getElementById("parallax");
+
+        var halfW = ( elmnt.clientWidth / 2 );
+        var halfH = ( elmnt.clientHeight / 2 );
+        var coorX = ( halfW - ( event.pageX - elmnt.offsetLeft ) );
+        var coorY = ( halfH - ( event.pageY - elmnt.offsetTop ) );
+        var degX, degY;
+      if(!safariOrEdge){
+        degX  = ( ( coorY / halfH ) * 20 ) + 'deg'; // max. degree = 10
+      }
+      else {
+        degX  = ( ( coorY / halfH ) * 12 ) + 'deg'; // max. degree = 10
+      }
+        degY  = ( ( coorX / halfW ) * -10 ) + 'deg'; // max. degree = 10
+        $('.card-img').css( 'transform', function() {
+
+          return 'perspective( 1200px ) translate3d( 0, 0px, 285px ) rotateX('+ degX +') rotateY('+ degY +')';
+        } );
+      } )
+      //   .on( "mouseout", ".container", function() {
+      //   $('.card').removeAttr( 'style' )
+      //     .children( '.card__summary' )
+      //     .removeAttr( 'style' );
+      // } );
+    })();
 
 (function() {
   $( document )
@@ -54,7 +83,8 @@ $('.contact-btn').on('mouseleave', function(e){
       blob.remove();
   },800);
 });
-$( document ).ready(function() {
+
+function checkSafariOrEdge() {
   //Detect browser and disable transition on card-img if on Safari or IE/Edge
   var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
   var is_safari = navigator.userAgent.indexOf("Safari") > -1;
@@ -70,39 +100,13 @@ $( document ).ready(function() {
       is_safari=false;
   }
   if($( window ).width() > 1000 && !is_safari && !is_edge_or_ie){
-    console.log('added');
-    (function() {
-      $( document )
-        .on( "mousemove", "#banner", function( event ) {
-
-        var elmnt = document.getElementById("parallax");
-
-        var halfW = ( elmnt.clientWidth / 2 );
-        var halfH = ( elmnt.clientHeight / 2 );
-        var coorX = ( halfW - ( event.pageX - elmnt.offsetLeft ) );
-        var coorY = ( halfH - ( event.pageY - elmnt.offsetTop ) );
-
-        var degX  = ( ( coorY / halfH ) * 20 ) + 'deg'; // max. degree = 10
-        var degY  = ( ( coorX / halfW ) * -10 ) + 'deg'; // max. degree = 10
-
-        $('.card-img').css( 'transform', function() {
-
-          return 'perspective( 1200px ) translate3d( 0, 0px, 285px ) rotateX('+ degX +') rotateY('+ degY +')';
-        } );
-      } )
-      //   .on( "mouseout", ".container", function() {
-      //   $('.card').removeAttr( 'style' )
-      //     .children( '.card__summary' )
-      //     .removeAttr( 'style' );
-      // } );
-    })();
-    $('.card-img').addClass('touch');
+    // console.log('added');   
+    safariOrEdge = false;
   }
   else if( is_safari || is_edge_or_ie  ){
-    $('.card-img').removeClass('touch');
-    $('.card-img').addClass('fixed');
+    safariOrEdge = true;
   }
-});
+}
 var controller;
 var smScene;
 var wipeAnimation;
@@ -136,7 +140,8 @@ var options = {
 
 
 $( document ).ready(function() {
-    setupParallax();
+  checkSafariOrEdge();
+  setupParallax();
   if ($( window ).width() < 991) {
         $(".section").css("padding-left", "20px");
         $(".section").css("padding-right", "20px");
@@ -144,41 +149,49 @@ $( document ).ready(function() {
         $(".panel-lg .container").css("width", $(window).innerWidth() -40);
       $(".container").css("height", $(window).innerHeight() - 55);
   }
-    else {
-      // destroyScrollMagic();
-      // addScrollMagic();
-        $(".panel-lg .container").css("width", $(window).innerWidth() - 120);
-      scrollMagicEnabled = true;
-      wipeAnimation = new TimelineMax()
-    // animate to second panel
-    .to("#slideContainer", 0.5, {z: -150})    // move back in 3D space
-    .to("#slideContainer", 1,   {x: "-25%"})  // move in to first panel
-    .to("#slideContainer", 0.5, {z: 0})       // move back to origin in 3D space
-    // animate to third panel
-    .to("#slideContainer", 0.5, {z: -150, delay: 1})
-    .to("#slideContainer", 1,   {x: "-50%"})
-    .to("#slideContainer", 0.5, {z: 0})
-    // animate to forth panel
-    .to("#slideContainer", 0.5, {z: -150, delay: 1})
-    .to("#slideContainer", 1,   {x: "-75%"})
-    .to("#slideContainer", 0.5, {z: 0})
-    // animate to fifth panel
-    .to(".panel-lg", 0.5, {z: 0, delay: 0})
-    .to(".panel-lg", 1,   {x: "0%"})
-    .to(".panel-lg", 0.5, {z: 0});
+  else {
+    // destroyScrollMagic();
+    // addScrollMagic();
+      $(".panel-lg .container").css("width", $(window).innerWidth() - 120);
+    scrollMagicEnabled = true;
+    wipeAnimation = new TimelineMax()
+  // animate to second panel
+  .to("#slideContainer", 0.5, {z: -150})    // move back in 3D space
+  .to("#slideContainer", 1,   {x: "-25%"})  // move in to first panel
+  .to("#slideContainer", 0.5, {z: 0})       // move back to origin in 3D space
+  // animate to third panel
+  .to("#slideContainer", 0.5, {z: -150, delay: 1})
+  .to("#slideContainer", 1,   {x: "-50%"})
+  .to("#slideContainer", 0.5, {z: 0})
+  // animate to forth panel
+  .to("#slideContainer", 0.5, {z: -150, delay: 1})
+  .to("#slideContainer", 1,   {x: "-75%"})
+  .to("#slideContainer", 0.5, {z: 0})
+  // animate to fifth panel
+  .to(".panel-lg", 0.5, {z: 0, delay: 0})
+  .to(".panel-lg", 1,   {x: "0%"})
+  .to(".panel-lg", 0.5, {z: 0});
 
-    controller = new ScrollMagic.Controller();  
-    smScene = new ScrollMagic.Scene({
-        triggerElement: "#pinContainer",
-      triggerHook: "onLeave",
-      duration: "450%"
-    })
-    .setPin("#pinContainer")
-    // .addIndicators() // add indicators (requires plugin)
-    .setTween(wipeAnimation)
-    .addTo(controller);
-    }
-    // setupParallax();
+  controller = new ScrollMagic.Controller();  
+  smScene = new ScrollMagic.Scene({
+      triggerElement: "#pinContainer",
+    triggerHook: "onLeave",
+    duration: "450%"
+  })
+  .setPin("#pinContainer")
+  // .addIndicators() // add indicators (requires plugin)
+  .setTween(wipeAnimation)
+  .addTo(controller);
+  }
+
+  if(!safariOrEdge){
+    $('.card-img').addClass('touch');
+  }
+  else{
+    $('.card-img').removeClass('touch');
+    // $('.card-img').addClass('fixed');
+    $('.bg').addClass('no-parallax');
+  }
   resizePanels();
 });
 $(window).resize(function () {
@@ -237,9 +250,35 @@ $(window).resize(function () {
  * @returns  {null}
  */
 function setupParallax() {
-  // if ($( window ).width() > 991) {
-    scene = document.getElementById('scene');
-    parallax = new Parallax(scene);
+
+  $('.bg').attr('data-depth', '0.5');
+  $('.bg-2').attr('data-depth', '0.5');
+  $('.bg-3').attr('data-depth', '0.5');
+  $('.bg-4').attr('data-depth', '0.5');
+  $('.bg-5').attr('data-depth', '0.5');
+  $('.card').attr('data-depth', '0.0');
+
+  // Turn on parallax for elements on desktop
+  if ($( window ).width() > 991) {
+    
+    $('.header-title').attr('data-depth', '0.1');
+    $('.skills-block').attr('data-depth', '0.1');
+    $('.portfolio-block').attr('data-depth', '0.1');
+    $('.languages-block').attr('data-depth', '0.1');
+    $('#interactive-anim').attr('data-depth', '0.5');
+  }
+  // And off for mobile
+  else{
+    $('.header-title').attr('data-depth', '0.0');
+    $('.skills-block').attr('data-depth', '0.0');
+    $('.portfolio-block').attr('data-depth', '0.0');
+    $('.languages-block').attr('data-depth', '0.0');
+    $('#interactive-anim').attr('data-depth', '0.0');
+  }
+    if(safariOrEdge == false){
+      scene = document.getElementById('scene');
+      parallax = new Parallax(scene);
+    } 
     scene2 = document.getElementById('scene-2');
     parallax2 = new Parallax(scene2);
     scene3 = document.getElementById('scene-3');
@@ -314,8 +353,10 @@ function resizePanels() {
  */
 function onWindowResizeRecreateParallax() {
   
-    parallax.destroy();
-    parallax = null;
+    if(safariOrEdge == false){
+      parallax.destroy();
+      parallax = null;
+    }
     parallax2.destroy();
     parallax2 = null;
     parallax3.destroy();
@@ -427,8 +468,59 @@ resizeTimeout = setTimeout(function() {
 
 // add initial scenes
 addScenes(scenes);
-//create the timelines for coming in from the right    
-$(".title-text").each(function(index){
+
+//collapse the navbar upon selection from hamburger menu
+$(document).on('click','.navbar-collapse.in',function(e) {
+  if( $(e.target).is('a') && $(e.target).attr('class') != 'dropdown-toggle' ) {
+      $(this).collapse('hide');
+  }
+});
+
+var width = 100,
+    perfData = window.performance.timing, // The PerformanceTiming interface represents timing-related performance information for the given page.
+    EstimatedTime = -(perfData.loadEventEnd - perfData.navigationStart),
+    time = parseInt((EstimatedTime/1000)%60)*100;
+
+// Loadbar Animation
+$(".loadbar").animate({
+  width: width + "%"
+}, time);
+
+// Loadbar Glow Animation
+$(".glow").animate({
+  width: width + "%"
+}, time);
+
+// Percentage Increment Animation
+var PercentageID = $("#percent"),
+    start = 0,
+    end = 100,
+    durataion = time;
+    animateValue(PercentageID, start, end, durataion);
+    
+function animateValue(id, start, end, duration) {
+  
+  var range = end - start,
+      current = start,
+      increment = end > start? 1 : -1,
+      stepTime = Math.abs(Math.floor(duration / range)),
+      obj = $(id);
+    
+  var timer = setInterval(function() {
+    current += increment;
+    $(obj).text(current + "%");
+      //obj.innerHTML = current;
+    if (current == end) {
+      clearInterval(timer);
+    }
+  }, stepTime);
+}
+
+// Fading Out Loadbar on Finised
+setTimeout(function(){
+  $('.preloader-wrap').slideUp(200);
+  // Make sure that the header animation doesn't start until page load finishes
+  $(".title-text").each(function(index){
     
     // $colorBlue = "rgb(255, 156, 70)";
     $colorBlue = "rgb(70, 204, 255)";
@@ -469,10 +561,5 @@ $(".title-text").each(function(index){
     .setTween(displayTl)
 //        .addIndicators()
     .addTo(controller);        
-});
-//collapse the navbar upon selection from hamburger menu
-$(document).on('click','.navbar-collapse.in',function(e) {
-  if( $(e.target).is('a') && $(e.target).attr('class') != 'dropdown-toggle' ) {
-      $(this).collapse('hide');
-  }
-});
+  });
+}, time);
