@@ -229,7 +229,7 @@ $( document ).ready(function() {
   }
   else{
     $('.card-img').removeClass('touch');
-    $('.card-img').addClass('fixed');
+    // $('.card-img').addClass('fixed');
   }
   resizePanels();
 });
@@ -286,7 +286,7 @@ $(window).resize(function () {
   }
   else{
     $('.card-img').removeClass('touch');
-    $('.card-img').addClass('fixed');
+    // $('.card-img').addClass('fixed');
   }
   onWindowResizeRecreateParallax();
   resizePanels();
@@ -297,7 +297,23 @@ $(window).resize(function () {
  * @returns  {null}
  */
 function setupParallax() {
-  // if ($( window ).width() > 991) {
+
+  // Turn on parallax for elements on desktop
+  if ($( window ).width() > 991) {
+    $('.header-title').attr('data-depth', '0.1');
+    $('.skills-block').attr('data-depth', '0.1');
+    $('.portfolio-block').attr('data-depth', '0.1');
+    $('.languages-block').attr('data-depth', '0.1');
+    $('#interactive-anim').attr('data-depth', '0.5');
+  }
+  // And off for mobile
+  else{
+    $('.header-title').attr('data-depth', '0.0');
+    $('.skills-block').attr('data-depth', '0.0');
+    $('.portfolio-block').attr('data-depth', '0.0');
+    $('.languages-block').attr('data-depth', '0.0');
+    $('#interactive-anim').attr('data-depth', '0.0');
+  }
     scene = document.getElementById('scene');
     parallax = new Parallax(scene);
     scene2 = document.getElementById('scene-2');
@@ -307,7 +323,7 @@ function setupParallax() {
     scene4 = document.getElementById('scene-4');
     parallax4 = new Parallax(scene4);
     scene5 = document.getElementById('scene-5');
-    parallax5 = new Parallax(scene5);       
+    parallax5 = new Parallax(scene5);        
     scene6 = document.getElementById('scene-6');
     parallax6 = new Parallax(scene6);  
     scene7 = document.getElementById('scene-7');
@@ -379,7 +395,7 @@ function resizePanels() {
  * @returns  {null}
  */
 function onWindowResizeRecreateParallax() {
-  
+    
     parallax.destroy();
     parallax = null;
     parallax2.destroy();

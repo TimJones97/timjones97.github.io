@@ -1092,7 +1092,7 @@ and (orientation : landscape){
   .skills-block .text-white .col-md-12 .col-md-offset-1 {
     margin-left: 0%;
   }
-  .bg, .bg-2, .bg-3, .bg-4, .bg-5, .bg-6 .bg-7 {
+  .bg, .bg-2, .bg-3, .bg-4, .bg-5, .bg-6, .bg-7 {
     margin-top: -60%;
   }
   #card .qut-running-logo {
@@ -1316,12 +1316,33 @@ and (orientation : landscape){
     font-size: 9px;
   }
   .contact-block {
-    margin-left: -12.5%;
+    margin-left: -5px;
     margin-right: 0%;
   }
   .card-img .text-white h1,
   .card-img-mb .text-white h1 {
     font-size: 20px;
+  }
+  .card-img .text-white h1,
+  .card-img-mb .text-white h1 {
+    font-size: 20px;
+  }
+  .card-img,
+  .card-img-mb {
+    max-width: 60vw;
+    height: 55vh;
+    -webkit-transition: all 0.4s ease-out;
+    -moz-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
+  }
+  .card-img .text-white h1,
+  .card-img-mb .text-white h1 {
+    font-size: 22px;
+  }
+  .card-img-mb .text-white {
+    margin-top: -20px;
+    width: 90%;
   }
 } 
 
