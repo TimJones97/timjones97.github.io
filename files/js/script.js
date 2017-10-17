@@ -477,81 +477,50 @@ resizeTimeout = setTimeout(function() {
 
 // add initial scenes
 addScenes(scenes);
-var width = 100,
-    perfData = window.performance.timing, // The PerformanceTiming interface represents timing-related performance information for the given page.
-    EstimatedTime = -(perfData.loadEventEnd - perfData.navigationStart),
-    time = parseInt((EstimatedTime/1000)%60)*100;
 
-
-// Percentage Increment Animation
-var PercentageID = $("#percent"),
-    start = 0,
-    end = 100,
-    duration = time;
-    animateValue(PercentageID, start, end, duration);
-    
-function animateValue(id, start, end, duration) {
-  
-  var range = end - start,
-      current = start,
-      increment = end > start? 1 : -1,
-      stepTime = Math.abs(Math.floor(duration / range)),
-      obj = $(id);
-    
-  var timer = setInterval(function() {
-    current += increment;
-    $(obj).text(current + "%");
-      //obj.innerHTML = current;
-    if (current == end) {
-      clearInterval(timer);
-    }
-  }, stepTime);
-}
-
-// Fading Out Loadbar on Finised
-setTimeout(function(){
-  $('.preloader-wrap').slideUp(200);
-  // Make sure that the header animation doesn't start until page load finishes
-  $(".title-text").each(function(index){
-    
-    // $colorBlue = "rgb(255, 156, 70)";
-    $colorBlue = "rgb(70, 204, 255)";
-    $colorPurple = "rgb(150, 70, 255)";
-    
-    //create a timeline
-    var displayTl = new TimelineLite();
-    displayTl
-            .fromTo(this, 
-                    0.3,
-                   {autoAlpha: 0, x: 150},
-                   {autoAlpha: 1, ease:Power1.easeOut, x: 0}
-                   )
-            .fromTo(this.getElementsByClassName("underline"), 
-                    0.3,
-                   {autoAlpha: 0, x: 350},
-                   {autoAlpha: 1, ease:Power1.easeOut, x: 0}
-                   )
-            .staggerTo(this.getElementsByClassName("fade"), 
-                    0.3,
-                   {opacity: 1},
-                    0.3
-                   )
-            .staggerTo(this.getElementsByClassName("highlight-blue"), 
-                    0.3,
-                   {color: $colorBlue},
-                    0.3
-                   )
-            .staggerTo(this.getElementsByClassName("highlight-purple"), 
-                    0.3,
-                   {color: $colorPurple},
-                    0.3
-                   )
-    //build a scene
-    var contentScene = new ScrollMagic.Scene({
-        triggerElement: ".panel"
-    })
-    .setTween(displayTl)
-//        .addIndicators()
-    .addTo(controller);        
-  });
-}, time);
+Pace.on("done", function(){
+    $('.preloader-wrap').slideUp(200);
+    // Make sure that the header animation doesn't start until page load finishes
+    $(".title-text").each(function(index){
+      
+      // $colorBlue = "rgb(255, 156, 70)";
+      $colorBlue = "rgb(70, 204, 255)";
+      $colorPurple = "rgb(150, 70, 255)";
+      
+      //create a timeline
+      var displayTl = new TimelineLite();
+      displayTl
+              .fromTo(this, 
+                      0.3,
+                     {autoAlpha: 0, x: 150},
+                     {autoAlpha: 1, ease:Power1.easeOut, x: 0}
+                     )
+              .fromTo(this.getElementsByClassName("underline"), 
+                      0.3,
+                     {autoAlpha: 0, x: 350},
+                     {autoAlpha: 1, ease:Power1.easeOut, x: 0}
+                     )
+              .staggerTo(this.getElementsByClassName("fade"), 
+                      0.3,
+                     {opacity: 1},
+                      0.3
+                     )
+              .staggerTo(this.getElementsByClassName("highlight-blue"), 
+                      0.3,
+                     {color: $colorBlue},
+                      0.3
+                     )
+              .staggerTo(this.getElementsByClassName("highlight-purple"), 
+                      0.3,
+                     {color: $colorPurple},
+                      0.3
+                     )
+      //build a scene
+      var contentScene = new ScrollMagic.Scene({
+          triggerElement: ".panel"
+      })
+      .setTween(displayTl)
+  //        .addIndicators()
+      .addTo(controller);        
+    });
+});
