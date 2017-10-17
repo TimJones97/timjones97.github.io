@@ -1289,7 +1289,8 @@ and (orientation : landscape){
     margin-top: 20%;
   }
   .languages-block {
-    margin-top: 90px;
+    margin-top: 70px;
+    margin-left: 10px;
     padding: 0;
   }
   .contact-btn {
@@ -1329,20 +1330,33 @@ and (orientation : landscape){
   }
   .card-img,
   .card-img-mb {
-    max-width: 60vw;
-    height: 55vh;
-    -webkit-transition: all 0.4s ease-out;
-    -moz-transition: all 0.4s ease-out;
-    -o-transition: all 0.4s ease-out;
-    transition: all 0.4s ease-out;
+    height: 52vh;
   }
   .card-img .text-white h1,
   .card-img-mb .text-white h1 {
     font-size: 22px;
+    margin-top: -10px;
   }
   .card-img-mb .text-white {
     margin-top: -20px;
     width: 90%;
+  }
+  .bio-block {
+    margin-top: -15px !important;
+  }
+  .navbar-nav > li {
+    top: 15%;
+  }
+  .languages-block .col-xs-4 {
+    width: 30%;
+    margin-bottom: 10px;
+  }
+  .portfolio-block > .text-white > a > #card {
+    margin-bottom: 30px;
+    height: 70px;
+  }
+  .portfolio-block > .text-white {
+    margin-top: -10px;
   }
 } 
 
