@@ -201,15 +201,15 @@ $( document ).ready(function() {
     // $(".panel").css("margin-left", $(".dots-horizontal").width());
     wipeAnimation = new TimelineMax()
       // animate to first panel
-      .to("#slideContainer", 0.5, {delay: -0.5})
+      // .to("#slideContainer", 0.5, {delay: -0.5})
       // animate to second panel
       .to("#slideContainer", 1,   {x: "-33.333333%"})  // move in to first panel
       // animate to third panel
       .to("#slideContainer", 1,   {x: "-50%"})
       // animate to forth panel
-      .to("#slideContainer", 1,   {x: "-66.666666%"})
+      .to("#slideContainer", 1,   {x: "-66.666666%"});
       // animate to fifth panel
-      .to("#slideContainer", 0.5, {delay: 0})
+      // .to("#slideContainer", 0.5, {delay: 0})
 
     controller = new ScrollMagic.Controller();  
 
@@ -253,15 +253,15 @@ $(window).resize(function () {
       if( scrollMagicEnabled == false ){
       wipeAnimation = new TimelineMax()
       // animate to first panel
-      .to("#slideContainer", 0.5, {delay: -0.5})
+      // .to("#slideContainer", 0.5, {delay: -0.5})
       // animate to second panel
       .to("#slideContainer", 1,   {x: "-33.333333%"})  // move in to first panel
       // animate to third panel
       .to("#slideContainer", 1,   {x: "-50%"})
       // animate to forth panel
-      .to("#slideContainer", 1,   {x: "-66.666666%"})
+      .to("#slideContainer", 1,   {x: "-66.666666%"});
       // animate to fifth panel
-      .to("#slideContainer", 0.5, {delay: 0})
+      // .to("#slideContainer", 0.5, {delay: 0})
 
     controller = new ScrollMagic.Controller();  
     smScene = new ScrollMagic.Scene({
