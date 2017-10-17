@@ -6,6 +6,11 @@
   overflow: hidden;
   -webkit-perspective: 1000;
   perspective: 1000;
+  width: 100% !important;
+  height: 100vh !important;
+}
+#fullpage {
+  display: none;
 }
 #slideContainer {
   width: 300%; /* to contain 4 panels, each with 100% of window width */
@@ -25,31 +30,40 @@
   height: 100%;
   background: transparent; 
   border-radius: 6px;
-  border: 60px solid transparent;
+  border: solid transparent;
   -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.0); 
+  border-width: 60px 60px 60px 60px;
 }
 #section-wipes {
   height: 100%;
   width: 100%;
   background-image: none;
 }
-.dots-vertical {
-  background-image: url(../img/dots_vertical.png);
-  height: 46px;
-  width: 16px;
-  background-size: 16px 46px;
-  background-repeat: no-repeat;
-  background-position: center;
+.line-vertical {
+  height: 600px;
+  width: 3px;
+  border: 2px dashed #3b3b3b;
+  z-index: 10;
   margin: 0 auto;
 }
-.dots-horizontal {
-  background-image: url(../img/dots_horizontal.png);
-  height: 100vh;
-  width: 46px !important;
-  background-size: 46px 14px;
-  background-repeat: no-repeat;
-  background-position: center;
-  float: left;
+.line-vertical-2 {
+  height: 1000px;
+  width: 3px;
+  border: 2px dashed #3b3b3b;
+  z-index: 0;
+  position: absolute;
+  left: 50%;
+  margin-top: -50%;
+}
+.line-horizontal {
+  width: 200px;
+  height: 3px;
+  border: 2px dashed #3b3b3b;
+  z-index: 10;
+  margin-right: -100px;
+  left: 100%;
+  margin-top: -25%;
+  position: relative;
 }
 .position {
   position: relative;
@@ -58,6 +72,9 @@
   margin: 0 auto;
   float: none;
 }
+.scrollmagic-pin-spacer {
+  z-index: 20;
+}
 
 /*---------------------Banner Card-------------------*/
 
@@ -65,7 +82,7 @@
   margin: 0 auto;
   width: 100%;
   position: relative; 
-  z-index: 4;
+  z-index: 20;
   padding: 20px;
   overflow: hidden;
   height: 100%;
@@ -73,7 +90,7 @@
   box-shadow: 0px 8px 57px 0px #222632;
 }
 .scene, .scene-2, .scene-3, .scene-4, .scene-5,
-.scene-6, .scene-7, .scene-8, .scene-9, .scene-10 {
+.scene-6, .scene-7 {
   margin: 0 auto;
   padding: 0; 
   z-index: 1;
@@ -83,7 +100,7 @@
   pointer-events: auto !important;
 }
 
-.bg {
+.bg, .bg-7 {
   width: 120vw;
   height: 120vh;
   left: 0;
@@ -112,7 +129,7 @@
   height: 100%;
   z-index: 10;
 }
-.card-img {
+.card-img, .card-img-mb {
   box-shadow: 0px 8px 55px 0px #222632;
   overflow: hidden;
   transition: box-shadow 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) ease;
@@ -351,7 +368,7 @@ strong {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  margin-top: 250px;
+  margin-top: 375px;
   left: 50%;
   z-index: 10;
   top: 100%;
@@ -458,7 +475,7 @@ footer {
   font-family: 'Raleway', sans-serif;
   color: #e7e7e7;
 }
-.bg-5 {
+.bg-5, .bg-6 {
   width: 120vw;
   height: 120vh;
   left: 0;
@@ -495,7 +512,9 @@ footer {
   /*background-image: url('../img/layer_bg5.jpg');*/
 }
 /*--------------------------------GLOBAL--------------------------------*/
-
+.fullpage {
+  display: none;
+}
 .title {
   margin-top: 15px;
   text-align: left;
@@ -520,14 +539,6 @@ body {
 }
 .col-centered {
   margin: 0 auto;
-}
-#fullpage {
-  display: none;
-}
-#pinContainer {
-  /*width: 400% !important;*/
-  width: 100% !important;
-  height: 100vh !important;
 }
 #card {
   transform: perspective( 1000px ) translate3d( 0, 0px, 100px );
@@ -855,14 +866,14 @@ body {
     width: 12.5%;
     margin-bottom: 40px;
   }
-  #parallax, #parallax-2 {
+  #parallax, #parallax-mb {
     padding-top: 17vh;
   }
   .contact-btn {
     /*margin-top: 380px;*/
   }
   .work-block {
-    margin-top: 350px;
+    margin-top: 550px;
   }
   footer {
     margin-top: 15%;
@@ -874,10 +885,20 @@ body {
   .title {
     margin-top: 50px;
   }
+  .line-vertical-2 {
+    height: 1000px;
+    margin-top: -35%;
+  }
+  /*.panel {
+    border-width: 120px 120px 120px 120px;
+  }
+  .panel-lg {
+    border-width: 120px 120px 120px 120px;
+  }*/
 }
 
 @media screen and ( max-width: 991px ) {
-  #parallax, #parallax-2 {
+  #parallax, #parallax-mb {
     padding-top: 17vh;
   }
   .bg, .bg-2, .bg-3, .bg-4, .bg-5 {
@@ -887,7 +908,8 @@ body {
   .title-text h1 {
     line-height: 35px; 
   }
-  .card-img {
+  .card-img,
+  .card-img-mb{
     width: 60vw;
     height: 50vh;
     -webkit-transition: all 0.4s ease-out;
@@ -895,7 +917,7 @@ body {
     -o-transition: all 0.4s ease-out;
     transition: all 0.4s ease-out;
   }
-  .bg, .bg-2, .bg-3, .bg-4, .bg-5 {
+  .bg, .bg-2, .bg-3, .bg-4, .bg-5, .bg-6 .bg-7 {
     margin-top: -60%;
   }
   .col-md-2 {
@@ -917,7 +939,8 @@ body {
     top: 50%;
     width: 60%;
   }
-  .card-img .text-white h1 {
+  .card-img .text-white h1,
+  .card-img-mb .text-white h1 {
     font-size: 30px;
   }
   .small-btn {
@@ -964,14 +987,16 @@ body {
   #pinContainer {
     -webkit-perspective: none;
     perspective: none;
+    height: 100%;
   }
-  /*#slideContainer {
-    width: 100%; 
-    height: 400%; /* to contain 4 panels, each with 100% of window height 
-  }*/
+  #slideContainer {
+    height: 100%; 
+    width: 100% !important; /* to contain 4 panels, each with 100% of window height */
+  }
   .panel {
-    width: 25% !important;
-    float: none; 
+    height: 20% !important; /* relative to parent -> 25% of 400% = 100% of window width */
+    float: none;
+    width: 100%; 
   }
   #content-wrapper {
     display: none;
@@ -983,7 +1008,7 @@ body {
     margin-top: 80px;
   }
   .section {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
   }
   .panel, .panel-lg {
@@ -1012,6 +1037,22 @@ body {
   .navbar-nav > li {
     top: 35%;
   }
+  .line-vertical {
+    display: none;
+  }
+  .line-vertical-2 {
+    display: none;
+  }
+  .line-horizontal {
+    display: none;
+  }
+  .position {
+    display: none;
+  }
+  .desktop-show {
+    display: none;
+  }
+
 }
 @media (max-width: 800px) 
 and (orientation : landscape){
@@ -1022,7 +1063,7 @@ and (orientation : landscape){
     display: none;
   }
   .navbar-toggle {
-    display: n;
+    display: none;
   }
 }
 @media screen and ( max-width: 479px ) { 
@@ -1033,7 +1074,8 @@ and (orientation : landscape){
   .portfolio-block {
     margin-top: 0px;
   }
-  .card-img {
+  .card-img,
+  .card-img-mb {
     max-width: 60vw;
     height: 55vh;
     -webkit-transition: all 0.4s ease-out;
@@ -1047,7 +1089,7 @@ and (orientation : landscape){
   .skills-block .text-white .col-md-12 .col-md-offset-1 {
     margin-left: 0%;
   }
-  .bg {
+  .bg, .bg-2, .bg-3, .bg-4, .bg-5, .bg-6 .bg-7 {
     margin-top: -60%;
   }
   #card .qut-running-logo {
@@ -1063,9 +1105,6 @@ and (orientation : landscape){
   #card .qut-eb-logo {
     margin-top: 10px;
     width: 50px;
-  }
-  .bg {
-    margin-top: -50%;
   }
   .portfolio-block .text-white a #card {
     min-width: 230px;
@@ -1121,13 +1160,15 @@ and (orientation : landscape){
     margin-left: -2%;
     margin-right: 20%;
   }
-  #parallax, #parallax-2 {
+  #parallax, #parallax-mb {
     padding-top: 15vh;
   }
-  .card-img .text-black h1 {
+  .card-img .text-black h1,
+  .card-img-mb .text-black h1 {
     font-size: 25px;
   }
-  .card-img .text-black {
+  .card-img .text-black,
+  .card-img-mb .text-black {
     padding-bottom: 20px;
   }
   .portfolio-block .text-white #card {
@@ -1152,9 +1193,6 @@ and (orientation : landscape){
   }
   .skills-block .text-white .title {
     margin-left: -7%;
-  }
-  .bg-2, .bg-3, .bg-4 {
-    margin-top: -60%;
   }
 /*  .go-top {
     width: 40px;
@@ -1182,7 +1220,8 @@ and (orientation : landscape){
     margin-top: -20px;
     /*border: 20px solid transparent;*/
   }
-  .card-img .text-white h1 {
+  .card-img .text-white h1,
+  .card-img-mb .text-white h1 {
     font-size: 25px;
   }
   .languages-block .col-xs-4 {
@@ -1203,7 +1242,7 @@ and (orientation : landscape){
     padding-right: 4px;
     padding-left: 4px;
   }
-  .bg {
+  .bg, .bg-7, .bg-6 {
     background-image: url(../img/layer_bg_sm.jpg)
   }
   .bg-2 {
@@ -1277,7 +1316,8 @@ and (orientation : landscape){
     margin-left: -12.5%;
     margin-right: 0%;
   }
-  .card-img .text-white h1 {
+  .card-img .text-white h1,
+  .card-img-mb .text-white h1 {
     font-size: 20px;
   }
 } 
