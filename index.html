@@ -40,12 +40,12 @@
 	<div class="landscape-message">
 		<h1>Please rotate your device.</h1>
 	</div>
-	<div class="preloader-wrap">
+	<!-- <div class="preloader-wrap">
 	  <div class="percentage" id="percent"></div>
 	  	<svg class="loader" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
 		   <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
 		</svg>
-	</div>
+	</div> -->
 	<nav class="navbar navbar-default">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle x collapsed" data-toggle="collapse" data-target="#navbar-collapse-x">
@@ -67,9 +67,7 @@
 		</div><!-- .navbar-collapse -->
 	</nav>
 	<section id="section-wipes">
-		<div id="pinContainer">
-			<div id="slideContainer">
-				<section class="panel section" data-anchor="banner" id="banner">
+			<section class="panel position section" data-anchor="banner" id="banner">
 					<div id="container" class="container">
 						<div id="scene" class="scene">
 							<div class="bg"></div>
@@ -98,7 +96,11 @@
 						</div>
 					</div>							
 				</section>
-				<section class="panel section panel-2" data-anchor="about">
+				<div class="dots-vertical"></div>
+		<div id="pinContainer">
+			<div id="slideContainer">
+			<span class="pin-trigger"></span>
+				<section class="panel section panel-2" id="about" data-anchor="about">
 					<div id="container" class="container">
 						<div id="scene-2" class="scene-2">
 							<div class="bg-2" data-depth="0.5">
@@ -117,7 +119,7 @@
 												Some of his current projects have been with reputable organisations such as <strong>Queensland Health</strong>, along with <strong>Education Queensland</strong> and <strong>Microsoft</strong>. Additionally, he has worked closely with <strong>local businesses</strong> such as asset management firm AML Advisory based in Melbourne, as well as smaller not-for-profit organisations such as QUT Running and QUT EB.<br>
 											</p>
 											<p>
-												He has experience with a variety of platforms ranging from <strong>Java</strong> and <strong>C#</strong> for desktop programs to <strong>JQuery</strong> and <strong>PHP</strong> for mobile web experiences.
+												He has strong experience with a variety of platforms ranging from <strong>Java</strong> and <strong>C#</strong> for desktop programs to <strong>JQuery</strong> and <strong>PHP</strong> for mobile web experiences.
 											</p>
 										</div>
 									</div>
@@ -126,6 +128,7 @@
 						</div>
 					</div>								
 				</section>
+				<!-- <div class="dots-horizontal"></div> -->
 				<section class="panel section" data-anchor="portfolio">
 					<div id="container" class="container">
 						<div id="scene-3" class="scene-3">
@@ -165,6 +168,7 @@
 						</div>
 					</div>							
 				</section>
+				<!-- <div class="dots-horizontal"></div> -->
 				<section class="panel section" data-anchor="skills">
 					<div id="container" class="container">
 						<div id="scene-4" class="scene-4">
@@ -209,10 +213,11 @@
 							</div>
 						</div>
 					</div>	
-				</section>						
+				</section>	
 			</div>
 		</div>
-		<section class="panel-lg desktop">
+		<div class="dots-vertical"></div>
+		<section class="panel-lg desktop" id="test">
 			<div id="container" class="container">
 				<div id="scene-6" class="scene-6">
 					<canvas id="interactive-anim">

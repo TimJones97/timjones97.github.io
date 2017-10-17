@@ -15,6 +15,9 @@ var safariOrEdge = false;
       if($(window).width() > 2000 && $(window).height() > 1000){
         degX  = ( ( coorY / halfH ) * 20 ) + 'deg'; // max. degree = 10
       }
+      if(safariOrEdge && $(window).width() > 2000 && $(window).height() > 1000){
+        degX  = ( ( coorY / halfH ) * 12 ) + 'deg'; // max. degree = 10
+      }
       else {
         degX  = ( ( coorY / halfH ) * 12 ) + 'deg'; // max. degree = 10
       }
@@ -152,37 +155,41 @@ $( document ).ready(function() {
   else {
     // destroyScrollMagic();
     // addScrollMagic();
-      $(".panel-lg .container").css("width", $(window).innerWidth() - 120);
+    $(".panel-lg .container").css("width", $(window).innerWidth() - 120);
+    // $(".panel").css("margin-left", $(".dots-horizontal").width());
     scrollMagicEnabled = true;
     wipeAnimation = new TimelineMax()
-  // animate to second panel
-  .to("#slideContainer", 0.5, {z: -150})    // move back in 3D space
-  .to("#slideContainer", 1,   {x: "-25%"})  // move in to first panel
-  .to("#slideContainer", 0.5, {z: 0})       // move back to origin in 3D space
-  // animate to third panel
-  .to("#slideContainer", 0.5, {z: -150, delay: 1})
-  .to("#slideContainer", 1,   {x: "-50%"})
-  .to("#slideContainer", 0.5, {z: 0})
-  // animate to forth panel
-  .to("#slideContainer", 0.5, {z: -150, delay: 1})
-  .to("#slideContainer", 1,   {x: "-75%"})
-  .to("#slideContainer", 0.5, {z: 0})
-  // animate to fifth panel
-  .to(".panel-lg", 0.5, {z: 0, delay: 0})
-  .to(".panel-lg", 1,   {x: "0%"})
-  .to(".panel-lg", 0.5, {z: 0});
+      .to("#slideContainer", 0.5, {delay: -0.5})
+      // animate to second panel
+      // .to("#slideContainer", 0.5, {z: -150})    // move back in 3D space
+      .to("#slideContainer", 1,   {x: "-33.333333%"})  // move in to first panel
+      // .to("#slideContainer", 0.5, {z: 0})       // move back to origin in 3D space
+      // animate to third panel
+      .to("#slideContainer", 1,   {x: "-50%"})
+      // .to("#slideContainer", 0.5, {z: 0})
+      // animate to forth panel
+      .to("#slideContainer", 1,   {x: "-66.666666%"})
+      // .to("#slideContainer", 0.5, {z: 0})
+      // animate to fifth panel
+      .to(".panel-lg", 0.5, {z: 0, delay: 0})
+      // .to(".panel-lg", 1,   {x: "0%"})
+      // .to(".panel-lg", 0.5, {z: 0});
 
-  controller = new ScrollMagic.Controller();  
-  smScene = new ScrollMagic.Scene({
+    controller = new ScrollMagic.Controller();  
+
+    
+    smScene = new ScrollMagic.Scene({
       triggerElement: "#pinContainer",
-    triggerHook: "onLeave",
-    duration: "450%"
-  })
-  .setPin("#pinContainer")
-  // .addIndicators() // add indicators (requires plugin)
-  .setTween(wipeAnimation)
-  .addTo(controller);
+      triggerHook: "onLeave",
+      duration: "450%"
+    })
+    .setPin("#pinContainer")
+    // .addIndicators() // add indicators (requires plugin)
+    .setTween(wipeAnimation)
+    .addTo(controller);
   }
+
+  
 
   if(!safariOrEdge){
     $('.card-img').addClass('touch');
@@ -481,22 +488,13 @@ var width = 100,
     EstimatedTime = -(perfData.loadEventEnd - perfData.navigationStart),
     time = parseInt((EstimatedTime/1000)%60)*100;
 
-// Loadbar Animation
-$(".loadbar").animate({
-  width: width + "%"
-}, time);
-
-// Loadbar Glow Animation
-$(".glow").animate({
-  width: width + "%"
-}, time);
 
 // Percentage Increment Animation
 var PercentageID = $("#percent"),
     start = 0,
     end = 100,
-    durataion = time;
-    animateValue(PercentageID, start, end, durataion);
+    duration = time;
+    animateValue(PercentageID, start, end, duration);
     
 function animateValue(id, start, end, duration) {
   

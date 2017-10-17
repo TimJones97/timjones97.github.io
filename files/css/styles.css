@@ -8,19 +8,18 @@
   perspective: 1000;
 }
 #slideContainer {
-  width: 400%; /* to contain 4 panels, each with 100% of window width */
+  width: 300%; /* to contain 4 panels, each with 100% of window width */
   height: 100%;
 }
 .panel {
   height: 100%;
-  width: 25%; /* relative to parent -> 25% of 400% = 100% of window width */
+  width: 33.333333%; /* relative to parent -> 25% of 400% = 100% of window width */
   float: left;
   background: transparent; 
   border-radius: 6px;
   border: 60px solid transparent;
   -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.0); 
 }
-
 .panel-lg {
   width: 100%; 
   height: 100%;
@@ -33,6 +32,31 @@
   height: 100%;
   width: 100%;
   background-image: none;
+}
+.dots-vertical {
+  background-image: url(../img/dots_vertical.png);
+  height: 46px;
+  width: 16px;
+  background-size: 16px 46px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0 auto;
+}
+.dots-horizontal {
+  background-image: url(../img/dots_horizontal.png);
+  height: 100vh;
+  width: 46px !important;
+  background-size: 46px 14px;
+  background-repeat: no-repeat;
+  background-position: center;
+  float: left;
+}
+.position {
+  position: relative;
+  height: 100vh;
+  width: 100%; 
+  margin: 0 auto;
+  float: none;
 }
 
 /*---------------------Banner Card-------------------*/
@@ -58,9 +82,7 @@
   display: block;
   pointer-events: auto !important;
 }
-/*TO DO:*/
-/**/
-/*add class to bg if edge with absolute positioning and no margin-left*/
+
 .bg {
   width: 120vw;
   height: 120vh;
@@ -70,12 +92,8 @@
   right: 0;
   margin-left: -20%;
   margin-top: -10%;
-  /*position: absolute;*/
-  /*background-image: -webkit-linear-gradient(10deg,#fff 25%,#fff 43%,#ffb85e 62%,#fab362 63%,#3d00ff);
-  background-image: linear-gradient(350deg,#fff 25%,#fff 43%,#ffb85e 62%,#fab362 63%,#3d00ff);*/
   background-size: cover;
   background-repeat: no-repeat;
-  background: #fff;
   background-image: url('../img/layer_bg.jpg');
 }
 #parallax {
@@ -224,7 +242,7 @@
 /*--------------------------Biography Block------------------------------*/
 
 strong {
-  color: rgb(255, 151, 23);
+  color: rgb(23, 169, 255);
   font-weight: 300;
 }
 .skills-block {
@@ -481,7 +499,6 @@ footer {
 .title {
   margin-top: 15px;
   text-align: left;
-  margin-left: -20%;
   font-size: 60px;
   text-transform: uppercase;
   font-family: 'Raleway', sans-serif;
