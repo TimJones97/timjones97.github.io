@@ -1312,10 +1312,6 @@ and (orientation : landscape){
     margin-right: 5px;
     margin-left: 5px;
   }
-  .small-btn {
-    width: 50px !important;
-    font-size: 9px;
-  }
   .contact-block {
     margin-left: -5px;
     margin-right: 0%;
@@ -1357,6 +1353,12 @@ and (orientation : landscape){
   }
   .portfolio-block > .text-white {
     margin-top: -10px;
+  }
+  .small-btn {
+    top: 3px;
+    width: 50px !important;
+    height: 16px;
+    font-size: 8px;
   }
 } 
 
