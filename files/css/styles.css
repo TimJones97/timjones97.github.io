@@ -371,7 +371,7 @@ strong {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  margin-top: 375px;
+  margin-top: 250px;
   left: 50%;
   z-index: 10;
   top: 100%;
@@ -790,7 +790,7 @@ body {
     /*margin-top: 380px;*/
   }
   .work-block {
-    margin-top: 550px;
+    margin-top: 350px;
   }
   footer {
     margin-top: 15%;
