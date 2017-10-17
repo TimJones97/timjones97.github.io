@@ -41,15 +41,17 @@
 }
 .line-vertical {
   height: 600px;
-  width: 3px;
-  border: 2px dashed #3b3b3b;
+  width: 1px;
+  border: dotted #3b3b3b;
+  border-width: 0px 0px 0px 10px;
   z-index: 10;
   margin: 0 auto;
 }
 .line-vertical-2 {
   height: 1000px;
-  width: 3px;
-  border: 2px dashed #3b3b3b;
+  width: 1px;
+  border: dotted #3b3b3b;
+  border-width: 0px 0px 0px 10px;
   z-index: 0;
   position: absolute;
   left: 50%;
@@ -57,9 +59,10 @@
 }
 .line-horizontal {
   width: 200px;
-  height: 3px;
-  border: 2px dashed #3b3b3b;
+  height: 1px;
+  border: dotted #3b3b3b;
   z-index: 10;
+  border-width: 10px 0px 0px 0px;
   margin-right: -100px;
   left: 100%;
   margin-top: -25%;
@@ -68,7 +71,7 @@
 .position {
   position: relative;
   height: 100vh;
-  width: 100%; 
+  width: 100% !important; 
   margin: 0 auto;
   float: none;
 }
@@ -259,7 +262,7 @@
 /*--------------------------Biography Block------------------------------*/
 
 strong {
-  color: rgb(23, 169, 255);
+  color: rgb(70, 204, 255);
   font-weight: 300;
 }
 .skills-block {
