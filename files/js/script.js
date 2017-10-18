@@ -60,11 +60,9 @@ var options = {
       return 'perspective( 1200px ) translate3d( 0, 0px, 285px ) rotateX('+ degX +') rotateY('+ degY +')';
     } );
   } )
-  //   .on( "mouseout", ".container", function() {
-  //   $('.card').removeAttr( 'style' )
-  //     .children( '.card__summary' )
-  //     .removeAttr( 'style' );
-  // } );
+    .on( "mouseout", "#banner", function() {
+    $('.card-img').removeAttr( 'style' )
+  } );
 })();
 if($( window ).width() < 991 ){
   (function() {
@@ -201,15 +199,15 @@ $( document ).ready(function() {
     // $(".panel").css("margin-left", $(".dots-horizontal").width());
     wipeAnimation = new TimelineMax()
       // animate to first panel
-      // .to("#slideContainer", 0.5, {delay: -0.5})
+      .to("#slideContainer", 0.5, {delay: -0.5})
       // animate to second panel
       .to("#slideContainer", 1,   {x: "-33.333333%"})  // move in to first panel
       // animate to third panel
       .to("#slideContainer", 1,   {x: "-50%"})
       // animate to forth panel
-      .to("#slideContainer", 1,   {x: "-66.666666%"});
+      .to("#slideContainer", 1,   {x: "-66.666666%"})
       // animate to fifth panel
-      // .to("#slideContainer", 0.5, {delay: 0})
+      .to("#slideContainer", 0.5, {delay: 0});
 
     controller = new ScrollMagic.Controller();  
 
@@ -253,15 +251,15 @@ $(window).resize(function () {
       if( scrollMagicEnabled == false ){
       wipeAnimation = new TimelineMax()
       // animate to first panel
-      // .to("#slideContainer", 0.5, {delay: -0.5})
+      .to("#slideContainer", 0.5, {delay: -0.5})
       // animate to second panel
       .to("#slideContainer", 1,   {x: "-33.333333%"})  // move in to first panel
       // animate to third panel
       .to("#slideContainer", 1,   {x: "-50%"})
       // animate to forth panel
-      .to("#slideContainer", 1,   {x: "-66.666666%"});
+      .to("#slideContainer", 1,   {x: "-66.666666%"})
       // animate to fifth panel
-      // .to("#slideContainer", 0.5, {delay: 0})
+      .to("#slideContainer", 0.5, {delay: -0.5});
 
     controller = new ScrollMagic.Controller();  
     smScene = new ScrollMagic.Scene({
@@ -330,8 +328,8 @@ function setupParallax() {
     parallax5 = new Parallax(scene5);        
     scene6 = document.getElementById('scene-6');
     parallax6 = new Parallax(scene6);  
-    scene7 = document.getElementById('scene-7');
-    parallax7 = new Parallax(scene7);     
+    // scene7 = document.getElementById('scene-7');
+    // parallax7 = new Parallax(scene7);     
   // }
   // else {
     // scene6 = document.getElementById('scene-6');
@@ -527,4 +525,15 @@ Pace.on("done", function(){
   //        .addIndicators()
       .addTo(controller);        
     });
+});
+
+$('.jarallax').jarallax({
+    speed: 0
+});
+
+//collapse the navbar upon selection from hamburger menu
+$(document).on('click','.navbar-collapse.in',function(e) {
+  if( $(e.target).is('a') && $(e.target).attr('class') != 'dropdown-toggle' ) {
+      $(this).collapse('hide');
+  }
 });

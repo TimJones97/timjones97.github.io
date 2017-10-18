@@ -15,17 +15,17 @@
         target = {x: width/2, y: height/2};
 
         canvas = document.getElementById('interactive-anim');
-        if (document.getElementById('interactive-anim') != null){
+        if (document.getElementById('interactive-anim') != null && width > 600){
             canvas.width = width;
             canvas.height = height;
             ctx = canvas.getContext('2d');
 
             // create points
             points = [];
-            for(var x = 0; x < width; x = x + width/13) {
-                for(var y = 0; y < height; y = y + height/13) {
-                    var px = x + Math.random()*width/13;
-                    var py = y + Math.random()*height/13;
+            for(var x = 0; x < width; x = x + width/9) {
+                for(var y = 0; y < height; y = y + height/9) {
+                    var px = x + Math.random()*width/9;
+                    var py = y + Math.random()*height/9;
                     var p = {x: px, originX: px, y: py, originY: py };
                     points.push(p);
                 }
@@ -71,7 +71,7 @@
 
     // Event handling
     function addListeners() {
-        if (document.getElementById('interactive-anim') != null){
+        if (document.getElementById('interactive-anim') != null && width > 600){
             if(!('ontouchstart' in window)) {
                 window.addEventListener('mousemove', mouseMove);
             }
@@ -100,7 +100,7 @@
     }
 
     function resize() {
-        if (document.getElementById('interactive-anim') != null){
+        if (document.getElementById('interactive-anim') != null && width > 600){
             width = $(window).innerWidth();
             height = $(window).innerHeight();
             canvas.width = width;
@@ -117,7 +117,7 @@
     }
 
     function animate() {
-        if (document.getElementById('interactive-anim') != null){
+        if (document.getElementById('interactive-anim') != null && width > 600){
             if(animateHeader) {
                 ctx.clearRect(0,0,width,height);
                 for(var i in points) {
@@ -170,9 +170,9 @@
 
         // constructor
         (function() {
-            _this.pos = pos || null;
-            _this.radius = rad || null;
-            _this.color = color || null;
+            _this.pos = pos || null && width > 600;
+            _this.radius = rad || null && width > 600;
+            _this.color = color || null && width > 600;
         })();
 
         this.draw = function() {
