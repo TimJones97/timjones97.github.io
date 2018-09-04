@@ -173,6 +173,9 @@ function checkSafariOrEdge() {
   else if( is_safari || is_edge_or_ie  ){
     safariOrEdge = true;
   }
+  if(is_chrome){
+  }
+
 }
 
 $( document ).ready(function() {

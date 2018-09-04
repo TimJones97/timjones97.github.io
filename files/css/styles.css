@@ -426,14 +426,13 @@ strong {
   font-size: 25px;
   font-weight: bold;
   overflow: hidden;
-  transition: all 0.3s ease-in;
+  transition: all 0.3s ease;
     background-image: -webkit-linear-gradient(0deg,#0029ff,rgba(112,0,255,.99) 22%,#c0f 100%,#fff);
   background-image: linear-gradient(90deg,#0029ff,rgba(112,0,255,.99) 22%,#c0f 100%,#fff);
 /*  background-image: -webkit-linear-gradient(0deg,#00fff5,#6457fc 53%,#e066ff);
   background-image: linear-gradient(90deg,#00fff5,#6457fc 53%,#e066ff);*/
   color:transparent;
   -webkit-background-clip: text;
-  transition: color 0.3s ease;
 }
 .small-btn {
   top: 0px;
@@ -448,7 +447,7 @@ strong {
   background-image: linear-gradient(90deg,#00fff5,#6457fc 53%,#e066ff);
   color:transparent;
   -webkit-background-clip: text;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease-in;
 }
 .contact-btn:hover {
   border-color: white;
