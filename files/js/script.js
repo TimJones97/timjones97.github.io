@@ -123,7 +123,7 @@ if($( window ).width() < 991 ){
 })();
 
 /*----------------------------------------------------------------------------------*/
-
+checkSafariOrEdge();
 var ofs, x, y;
 $('.contact-btn').on('mouseenter', function(e){
   ofs = $(this).offset();
@@ -172,8 +172,11 @@ function checkSafariOrEdge() {
   }
   else if( is_safari || is_edge_or_ie  ){
     safariOrEdge = true;
+    // $(".card-img-mb").css("transition", "transform 0.2s ease");
+    console.log('is_edge');
   }
   if(is_chrome){
+    console.log('is_chrome');
   }
 
 }
