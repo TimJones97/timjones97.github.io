@@ -207,11 +207,11 @@ $( document ).ready(function() {
       // animate to first panel
       .to("#slideContainer", 0.5, {delay: -0.5})
       // animate to second panel
-      .to("#slideContainer", 1,   {x: "-33.333333%"})  // move in to first panel
+      .to("#slideContainer", 0.5,   {x: "-33.333333%"})  // move in to first panel
       // animate to third panel
-      .to("#slideContainer", 1,   {x: "-50%"})
+      .to("#slideContainer", 0.5,   {x: "-50%"})
       // animate to forth panel
-      .to("#slideContainer", 1,   {x: "-66.666666%"})
+      .to("#slideContainer", 0.5,   {x: "-66.666666%"})
       // animate to fifth panel
       .to("#slideContainer", 0.5, {delay: 0});
 

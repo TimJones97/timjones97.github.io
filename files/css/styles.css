@@ -251,7 +251,9 @@
 #card {
   background: rgba(255,255,255, 0.5);
 }
-#card .qut-eb-logo {
+#card .qut-eb-logo,
+#card .tla-logo {
+
   height: auto;
   width: 65px;
 }
@@ -1042,7 +1044,8 @@ and (orientation : landscape){
     width: 100px;
     height: auto;
   }
-  #card .qut-eb-logo {
+  #card .qut-eb-logo,
+  #card .tla-logo {
     margin-top: 10px;
     width: 50px;
   }
@@ -1128,7 +1131,8 @@ and (orientation : landscape){
   .pull-down-sm {
     margin-top: 15px;
   }
-  #card figure .qut-eb-logo {
+  #card figure .qut-eb-logo,
+  #card figure .tla-logo {
     margin-top: 10px;
   }
   .skills-block .text-white .title {
