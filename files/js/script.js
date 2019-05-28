@@ -236,6 +236,8 @@ $( document ).ready(function() {
     // $('.card-img').addClass('fixed');
   }
   resizePanels();
+  var theDate = new Date(); 
+   $(".year").text(theDate.getFullYear());
 });
 
 $(window).resize(function () { 
