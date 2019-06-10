@@ -690,7 +690,7 @@ body {
   text-decoration: none;
   font-size: 18px;
   line-height: 70px;
-  color: black;
+  color: #363636;
 }
 .go-top {
   position: relative;
@@ -1085,6 +1085,18 @@ body {
   .languages-block {
     top: 52% !important;
   }
+  .portfolio-block .text-white a #card {
+    height: 60px;
+  }
+  .text-link {
+    line-height: 40px;
+  }
+  .logo {
+    width: 101px;
+  }
+  #card .qut-eb-logo, #card .tla-logo {
+    width: 40px;
+  }
 }
 @media (max-width: 800px) 
 and (orientation : landscape){
@@ -1308,6 +1320,9 @@ and (orientation : landscape){
   .contact-icon {
     width: 25px;
     height: 25px;
+  }
+  .text-link {
+    line-height: 26px;
   }
 }
 @media screen and ( max-width: 376px ) { /* Smaller, older phones */
