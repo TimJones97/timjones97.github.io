@@ -489,7 +489,7 @@ resizeTimeout = setTimeout(function() {
 addScenes(scenes);
 
 Pace.on("done", function(){
-    $('.preloader-wrap').slideUp(200);
+    $('.preloader-wrap').fadeOut(1000);
     // Make sure that the header animation doesn't start until page load finishes
     $(".title-text").each(function(index){
       

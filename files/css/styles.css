@@ -349,10 +349,6 @@
   height: auto;
   width: 65px;
 }
-#card .aml-logo {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
 #card .col-md-6 {
   padding-right: 0;
 }
@@ -440,14 +436,14 @@ strong {
 
 .languages-block {
   height: 100vh;
-  width: 100%;
   padding: 60px;
-  margin-top: 13vh;
-  position: relative;
+  left: 50% !important;
+  z-index: 10;
+  top: 65% !important;
+  width: 100%;
+  transform: translate(-50%, -50%) !important;
   background: transparent;
   z-index: 10;
-}
-.language-block {
   margin-bottom: 5px;
   margin-top: 5px;
 }
@@ -485,19 +481,12 @@ strong {
 /*--------------------------WORK BLOCK------------------------------*/
 
 .work-block {
-  width: 100vw;
-  height: 100vh;
   position: absolute;
-  margin-top: 250px;
-  left: 50%;
+  left: 50% !important;
   z-index: 10;
-  top: 100%;
+  top: 50% !important;
   width: 100%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) !important;
 }
 .button-bg {
   background: rgba(255, 255, 255, 0.8);
@@ -698,12 +687,10 @@ body {
 }
 .text-link {
   font-family: 'Raleway', sans-serif;  
-  margin-top: 20px;
-}
-.text-link { 
   text-decoration: none;
   font-size: 18px;
-  color: #3b3b3b;
+  line-height: 70px;
+  color: black;
 }
 .go-top {
   position: relative;
@@ -753,9 +740,10 @@ body {
   background: transparent !important;
 }
 .navbar-toggle .icon-bar {
-  width: 25px;
-  height: 3px;
-  border-radius: 6px;
+  width: 30px;
+  height: 4px;
+  border-radius: 1px;
+  border: 1px solid #e7e7e7;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   background-color: #adadad !important;
@@ -833,7 +821,7 @@ body {
   height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
-  background: rgba(36, 39, 54, 0.99);
+  background: rgba(0, 0, 0, 0.94);
   /*background-image: url('../img/layer_bg4.jpg');*/
 }
 .navbar-nav > li {
@@ -893,9 +881,6 @@ body {
     font-size: 23px;
     line-height: 50px;
   }
-  .languages-block {
-    margin-top: 200px;
-  }
   .languages-block .col-xs-4 {
     width: 12.5%;
     margin-bottom: 40px;
@@ -905,9 +890,6 @@ body {
   }
   .contact-btn {
     /*margin-top: 380px;*/
-  }
-  .work-block {
-    margin-top: 350px;
   }
   footer {
     margin-top: 15%;
@@ -930,7 +912,24 @@ body {
     border-width: 120px 120px 120px 120px;
   }*/
 }
-
+@media screen and ( min-width: 1280px ) and ( max-height: 720px ){
+  .portfolio-block .text-white a #card {
+    height: 48px;
+  }
+  .text-link {
+    line-height: 28px;
+    font-size: 15px;
+  }
+  .logo {
+    width: 71px;
+  }
+  #card .qut-eb-logo, #card .tla-logo {
+    width: 28px;
+  }
+  .languages-block {
+    top: 51% !important;
+  }
+}
 @media screen and ( max-width: 991px ) {
   #parallax, #parallax-mb {
     padding-top: 17vh;
@@ -941,6 +940,9 @@ body {
   .title-text h6,
   .title-text h1 {
     line-height: 35px; 
+  }
+  .title-text h6 {
+    margin-bottom: 16px;
   }
   .card-img,
   .card-img-mb{
@@ -991,9 +993,6 @@ body {
   #card {
     min-height: 100px;
   }
-  .header-title {
-    margin-bottom: 100px;
-  }
   .skills-block > .text-white {
     width: 100%; 
     padding: 12%;
@@ -1015,9 +1014,6 @@ body {
   .title {
     margin-left: 0%; 
   }
-  footer {
-    margin-top: 70%;
-  }
   #pinContainer {
     -webkit-perspective: none;
     perspective: none;
@@ -1037,9 +1033,6 @@ body {
   }
   #fullpage {
     display: block;
-  }
-  .languages-block {
-    margin-top: 80px;
   }
   .section {
     width: 100vw;
@@ -1086,7 +1079,12 @@ body {
   .desktop-show {
     display: none;
   }
-
+  .work-block {
+    top: 33% !important;
+  }
+  .languages-block {
+    top: 52% !important;
+  }
 }
 @media (max-width: 800px) 
 and (orientation : landscape){
@@ -1265,14 +1263,10 @@ and (orientation : landscape){
     margin-bottom: 10px;
   }
   .languages-block {
-    margin-top: 100px;
     padding: 0;
   }
   .bg-4, .bg-5 {
     background-position: 50% 50%;
-  }
-  footer {
-    margin-top: 70%;
   }
   .bio-block .text-white .col-md-10 {
     padding-right: 4px;
@@ -1308,11 +1302,12 @@ and (orientation : landscape){
   .navbar-nav > li {
     top: 25%;
   }
-  .work-block {
-    margin-top: 210px;
-  }
   .card-img, .card-img-mb {
     box-shadow: 0px 8px 35px 0px #222632;
+  }
+  .contact-icon {
+    width: 25px;
+    height: 25px;
   }
 }
 @media screen and ( max-width: 376px ) { /* Smaller, older phones */
@@ -1325,12 +1320,7 @@ and (orientation : landscape){
     padding-left: 0;
     padding-right: 0;
   }
-  footer {
-    margin-top: 20%;
-  }
   .languages-block {
-    margin-top: 70px;
-    margin-left: 10px;
     padding: 0;
   }
   .contact-btn {
@@ -1343,9 +1333,6 @@ and (orientation : landscape){
   }
   .portfolio-block .text-white a #card {
     min-width: 200px;
-  }
-  .work-block {
-    margin-top: 180px;
   }
   .col-xs-3 {
     width: 12.5%;
@@ -1380,11 +1367,7 @@ and (orientation : landscape){
   .bio-block {
     margin-top: -15px !important;
   }
-  .navbar-nav > li {
-    top: 15%;
-  }
   .languages-block .col-xs-4 {
-    width: 30%;
     margin-bottom: 10px;
   }
   .portfolio-block > .text-white > a > #card {
