@@ -169,6 +169,7 @@
 }
 .no-shadow {
   padding: 0 !important;
+  border-top: 120px transparent;
 }
 .no-shadow .container {
   box-shadow: 0px 0px 0px 0px transparent;
