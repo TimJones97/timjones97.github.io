@@ -131,7 +131,7 @@
   background-image: none;
 }
 .line-vertical {
-  height: 500px;
+  height: 120px;
   width: 1px;
   border: dotted #3b3b3b;
   border-width: 0px 0px 0px 7px;

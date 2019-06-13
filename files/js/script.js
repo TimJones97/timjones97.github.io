@@ -204,16 +204,19 @@ $( document ).ready(function() {
   
     // $(".panel").css("margin-left", $(".dots-horizontal").width());
     wipeAnimation = new TimelineMax()
+
+      //add fake slide for delay for scroll
+      .to("#slideContainer", 0, {delay: -0.2})
+
       // animate to first panel
-      .to("#slideContainer", 0.5, {delay: -0.5})
-      // animate to second panel
       .to("#slideContainer", 0.5,   {x: "-33.333333%"})  // move in to first panel
-      // animate to third panel
+      // animate to second panel
       .to("#slideContainer", 0.5,   {x: "-50%"})
-      // animate to forth panel
+      // animate to third panel
       .to("#slideContainer", 0.5,   {x: "-66.666666%"})
-      // animate to fifth panel
-      .to("#slideContainer", 0.5, {delay: 0});
+
+      //add fake slide for delay for scroll
+      .to("#slideContainer", 1, {delay: -0.7});
 
     controller = new ScrollMagic.Controller();  
 
@@ -241,6 +244,7 @@ $( document ).ready(function() {
 });
 
 $(window).resize(function () { 
+  console.log('RESIZED');
   if ($( window ).width() < 991) {
     // $('#pinContainer').css("height", ($(window).innerHeight() * 5));
     $(".section").css("padding-left", "20px");
@@ -267,7 +271,7 @@ $(window).resize(function () {
       // animate to forth panel
       .to("#slideContainer", 1,   {x: "-66.666666%"})
       // animate to fifth panel
-      .to("#slideContainer", 0.5, {delay: -0.5});
+      .to("#slideContainer", 0.5, {delay: 0});
 
     controller = new ScrollMagic.Controller();  
     smScene = new ScrollMagic.Scene({
@@ -368,7 +372,6 @@ function createFullpage() {
  * @returns  {null}
  */
 function resizePanels() {
-  console.log('RESIZED');
   if ($( window ).width() >= 991) {
     //Initialise all panels with height respective to device
     $('.panel').css({
