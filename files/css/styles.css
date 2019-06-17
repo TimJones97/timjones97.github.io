@@ -248,7 +248,6 @@
 .card-img, .card-img-mb {
   box-shadow: 0px 8px 55px 0px #222632;
   overflow: hidden;
-  transform: perspective(600px) translate3d(0, 0, 0);
   border-radius: 6px;
   width: 50vw;
   background-image: url('../img/card.jpg');
@@ -256,13 +255,13 @@
   background-size: cover;
   height: 50vh;
   margin: 0 auto;
-  transform: perspective( 1200px ) translate3d( 0, 0px, 285px );
+  transform: perspective( 1000px ) translate3d( 0, 0px, 200px ) ;
 }
 .card-img-mb {
   transition: transform 0.2s ease;
 }
 .fixed {
-  transform: perspective( 1200px ) translate3d( 0, 0px, 285px ) !important;
+  transform: perspective( 1000px ) translate3d( 0, 0px, 200px ) !important;
 }
 .no-parallax {
   margin-left: 0%;
@@ -270,8 +269,14 @@
   position: absolute;
 }
 .card-img .text-white {
+  left: 50% !important;
+  top: 50% !important;
+  position: absolute;
   padding: 10px 10% 40px 10%;
   width: 100%;
+}
+.perspective-fix {
+  transform: translate(-50%, -50%) perspective( 1600px ) translate3d( 0, 0px, 240px ) !important;
 }
 .card-img .text-white h1 {
   font-size: 25px;

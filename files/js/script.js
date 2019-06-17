@@ -45,6 +45,7 @@ var options = {
     var coorX = ( halfW - ( event.pageX - elmnt.offsetLeft ) );
     var coorY = ( halfH - ( event.pageY - elmnt.offsetTop ) );
     var degX, degY;
+    $(".card-img .text-white").removeClass("perspective-fix");
   if($(window).width() > 2000 && $(window).height() > 1000){
     degX  = ( ( coorY / halfH ) * 20 ) + 'deg'; // max. degree = 10
   }
@@ -53,15 +54,20 @@ var options = {
   }
   else {
     degX  = ( ( coorY / halfH ) * 12 ) + 'deg'; // max. degree = 10
+    degXText  = ( ( coorY / halfH ) * 6 ) + 'deg'; // max. degree = 10
   }
     degY  = ( ( coorX / halfW ) * -10 ) + 'deg'; // max. degree = 10
+    degYText  = ( ( coorX / halfW ) * -5 ) + 'deg'; // max. degree = 10
     $('.card-img').css( 'transform', function() {
-
-      return 'perspective( 1200px ) translate3d( 0, 0px, 285px ) rotateX('+ degX +') rotateY('+ degY +')';
+      return 'perspective( 1000px ) translate3d( 0, 0px, 200px ) rotateX('+ degX +') rotateY('+ degY +')';
+    } );
+    $('.card-img .text-white').css( 'transform', function() {
+      return 'translate(-50%, -50%) perspective( 1600px ) translate3d( 0, 0px, 240px ) rotateX('+ degXText +') rotateY('+ degYText +')';
     } );
   } )
     .on( "mouseout", "#banner", function() {
     $('.card-img').removeAttr( 'style' )
+    $(".card-img .text-white").addClass("perspective-fix");
   } );
 })();
 if($( window ).width() < 991 ){
@@ -88,7 +94,7 @@ if($( window ).width() < 991 ){
       degY  = ( ( coorX / halfW ) * -10 ) + 'deg'; // max. degree = 10
       $('.card-img-mb').css( 'transform', function() {
 
-        return 'perspective( 1200px ) translate3d( 0, 0px, 285px ) rotateX('+ degX +') rotateY('+ degY +')';
+        return 'perspective( 1200px ) translate3d( 0, 0px, 240px ) rotateX('+ degX +') rotateY('+ degY +')';
       } );
     } )
     //   .on( "mouseout", ".container", function() {
@@ -269,15 +275,15 @@ $(window).resize(function () {
       // animate to third panel
       .to("#slideContainer", 1,   {x: "-50%"})
       // animate to forth panel
-      .to("#slideContainer", 1,   {x: "-66.666666%"})
+      .to("#slideContainer", 0.5,   {x: "-66.666666%"})
       // animate to fifth panel
-      .to("#slideContainer", 0.5, {delay: 0});
+      .to("#slideContainer", 0.5, {delay: -0.5});
 
     controller = new ScrollMagic.Controller();  
     smScene = new ScrollMagic.Scene({
         triggerElement: "#pinContainer",
       triggerHook: "onLeave",
-      duration: "450%"
+      duration: "350%"
     })
     .setPin("#pinContainer")
     .setTween(wipeAnimation)
@@ -493,6 +499,7 @@ addScenes(scenes);
 
 Pace.on("done", function(){
     $('.preloader-wrap').fadeOut(1000);
+
     // Make sure that the header animation doesn't start until page load finishes
     $(".title-text").each(function(index){
       
