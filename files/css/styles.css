@@ -929,6 +929,9 @@ body {
   .languages-block {
     top: 51% !important;
   }
+  .no-shadow {
+    border-bottom: 25px solid transparent;
+  }
 }
 @media screen and ( max-width: 991px ) {
   #parallax, #parallax-mb {
@@ -1325,6 +1328,51 @@ and (orientation : landscape){
     line-height: 26px;
   }
 }
+
+@media screen and ( max-width: 450px ) and ( max-height: 500px ) { 
+  .bio-block .text-white p {
+    font-size: 13px;
+    line-height: 19px;
+  }
+  .portfolio-block .text-white a #card {
+    min-height: 50px;
+    height: 50px;
+  }
+  .logo {
+    width: 64px;
+  }
+  #card .qut-running-logo {
+     margin-top: auto; 
+  }
+  #card .aml-logo {
+     margin-top: auto; 
+  }
+  #card .qut-eb-logo, #card .tla-logo {
+     margin-top: auto; 
+  }
+  #card .qut-eb-logo, #card .tla-logo {
+    width: 34px;
+  }
+  .pull-down-sm {
+    margin-top: auto; 
+  }
+  .text-link {
+    font-size: 14px;
+  }
+  .languages-block {
+    width: 86%;
+  }
+  .center-middle {
+    top: 44% !important;
+  }
+  .title-text {
+    width: 77% !important;
+  }
+  .card-img .text-white h1, .card-img-mb .text-white h1 {
+    font-size: 17px;
+  }
+}
+
 @media screen and ( max-width: 376px ) { /* Smaller, older phones */
   .bio-block .text-white p {
     margin-bottom: 10px;
