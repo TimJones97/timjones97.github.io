@@ -1,192 +1,54 @@
-(function() {
-
-    var width, height, largeHeader, canvas, ctx, points, target, animateHeader = true;
-
-    // Main
-    initHeader();
-    initAnimation();
-    addListeners();
-    //console.log("width: "+width +"  height:  "+height);
-
-
-    function initHeader() {
-        width = window.innerWidth;
-        height = window.innerHeight;
-        target = {x: width/2, y: height/2};
-
-        canvas = document.getElementById('interactive-anim');
-        if (document.getElementById('interactive-anim') != null && width > 600){
-            canvas.width = width;
-            canvas.height = height;
-            ctx = canvas.getContext('2d');
-
-            // create points
-            points = [];
-            for(var x = 0; x < width; x = x + width/9) {
-                for(var y = 0; y < height; y = y + height/9) {
-                    var px = x + Math.random()*width/9;
-                    var py = y + Math.random()*height/9;
-                    var p = {x: px, originX: px, y: py, originY: py };
-                    points.push(p);
-                }
-            }
-
-            // for each point find the 5 closest points
-            for(var i = 0; i < points.length; i++) {
-                var closest = [];
-                var p1 = points[i];
-                for(var j = 0; j < points.length; j++) {
-                    var p2 = points[j]
-                    if(!(p1 == p2)) {
-                        var placed = false;
-                        for(var k = 0; k < 5; k++) {
-                            if(!placed) {
-                                if(closest[k] == undefined) {
-                                    closest[k] = p2;
-                                    placed = true;
-                                }
-                            }
-                        }
-
-                        for(var k = 0; k < 5; k++) {
-                            if(!placed) {
-                                if(getDistance(p1, p2) < getDistance(p1, closest[k])) {
-                                    closest[k] = p2;
-                                    placed = true;
-                                }
-                            }
-                        }
-                    }
-                }
-                p1.closest = closest;
-            }
-
-            // assign a circle to each point
-            for(var i in points) {
-                var c = new Circle(points[i], 2+Math.random()*2, 'rgba(255,255,255,0.3)');
-                points[i].circle = c;
-            }
-        }
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 115, density: { enable: true, value_area: 800 } },
+    color: { value: "#393939" },
+    shape: {
+      type: "circle",
+      stroke: { width: 0, color: "#000000" },
+      polygon: { nb_sides: 5 },
+    },
+    opacity: {
+      value: 0.5,
+      random: false,
+      anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false }
+    },
+    size: {
+      value: 3,
+      random: true,
+      anim: { enable: false, speed: 40, size_min: 0.1, sync: false }
+    },
+    line_linked: {
+      enable: false,
+      distance: 150,
+      color: "#ffffff",
+      opacity: 0.4,
+      width: 1
+    },
+    move: {
+      enable: true,
+      speed: 1,
+      direction: "none",
+      random: false,
+      straight: false,
+      out_mode: "out",
+      bounce: false,
+      attract: { enable: false, rotateX: 600, rotateY: 1200 }
     }
-
-    // Event handling
-    function addListeners() {
-        if (document.getElementById('interactive-anim') != null && width > 600){
-            if(!('ontouchstart' in window)) {
-                window.addEventListener('mousemove', mouseMove);
-            }
-            window.addEventListener('scroll', scrollCheck);
-            window.addEventListener('resize', resize);
-        }
+  },
+  interactivity: {
+    detect_on: "canvas",
+    events: {
+      onhover: { enable: false, mode: "repulse" },
+      onclick: { enable: true, mode: "repulse" },
+      resize: true
+    },
+    modes: {
+      grab: { distance: 400, line_linked: { opacity: 1 } },
+      bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
+      repulse: { distance: 200, duration: 0.4 },
+      push: { particles_nb: 4 },
+      remove: { particles_nb: 2 }
     }
-
-    function mouseMove(e) {
-        var posx = posy = 0;
-        if (e.pageX || e.pageY) {
-            posx = e.pageX;
-            posy = e.pageY;
-        }
-        else if (e.clientX || e.clientY) {
-            posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-            posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-        }
-        target.x = posx;
-        target.y = posy;
-    }
-
-    function scrollCheck() {
-        if(document.body.scrollTop > height) animateHeader = false;
-        else animateHeader = true;
-    }
-
-    function resize() {
-        if (document.getElementById('interactive-anim') != null && width > 600){
-            width = $(window).innerWidth();
-            height = $(window).innerHeight();
-            canvas.width = width;
-            canvas.height = height;
-        }
-    }
-
-    // animation
-    function initAnimation() {
-        animate();
-        for(var i in points) {
-            shiftPoint(points[i]);
-        }
-    }
-
-    function animate() {
-        if (document.getElementById('interactive-anim') != null && width > 600){
-            if(animateHeader) {
-                ctx.clearRect(0,0,width,height);
-                for(var i in points) {
-                    // detect points in range
-                    //console.log(points.length);
-                    if(Math.abs(getDistance(target, points[i])) < 4000) {
-                        points[i].active = 0.85;
-                        points[i].circle.active = 0.95;
-                    } else if(Math.abs(getDistance(target, points[i])) < 10000) {
-                        points[i].active = 0.5;
-                        points[i].circle.active = 0.7;
-                    } else if(Math.abs(getDistance(target, points[i])) < 40000) {
-                        points[i].active = 0.04;
-                        points[i].circle.active = 0.14;
-                    } else {
-                        points[i].active = 0.06;
-                        points[i].circle.active = 0.09;
-                    }
-
-                    drawLines(points[i]);
-                    points[i].circle.draw();
-                }
-            }
-            requestAnimationFrame(animate);
-        }
-    }
-
-    function shiftPoint(p) {
-        TweenLite.to(p, 1+1*Math.random(), {x:p.originX-50+Math.random()*50,
-            y: p.originY-50+Math.random()*50, ease:Circ.ease,
-            onComplete: function() {
-                shiftPoint(p);
-            }});
-    }
-
-    // Canvas manipulation
-    function drawLines(p) {
-        if(!p.active) return;
-        for(var i in p.closest) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p.closest[i].x, p.closest[i].y);
-            ctx.strokeStyle = 'rgba(0,0,0,0)';
-            ctx.stroke();
-        }
-    }
-
-    function Circle(pos,rad,color) {
-        var _this = this;
-
-        // constructor
-        (function() {
-            _this.pos = pos || null && width > 600;
-            _this.radius = rad || null && width > 600;
-            _this.color = color || null && width > 600;
-        })();
-
-        this.draw = function() {
-            if(!_this.active) return;
-            ctx.beginPath();
-            ctx.arc(_this.pos.x, _this.pos.y, _this.radius, 0, 2 * Math.PI, false);
-            ctx.fillStyle = 'rgba(255,255,255,1)';
-            ctx.fill();
-        };
-    }
-
-    // Util
-    function getDistance(p1, p2) {
-        return Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2);
-    }
-    
-})();
+  },
+  retina_detect: true
+});

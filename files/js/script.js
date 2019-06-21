@@ -5,128 +5,10 @@ var scenes = [];
 var activeScenes = [];
 
 var smScene;
-var wipeAnimation;
-var parallax;
-var parallax2;
-var parallax3;
-var parallax4;
-var parallax5;
-var parallax6;
-var parallax7;
-var scene;
-var scene2;
-var scene3;
-var scene4;
-var scene5;
-var scene6;
-var scene7;
 
 var scrollMagicEnabled = false;
-var fullPageCreated = false;
-var paddingSize = "10px";
 
-var options = {
-    loopBottom: true,
-    navigation: false,
-    loopTop: true,
-    paddingTop: paddingSize,
-    paddingBottom: paddingSize,
-    scrollingSpeed: 1000
-};
 /*----------------------------------------------------------------------------------*/
-(function() {
-  $( document )
-    .on( "mousemove", "#banner", function( event ) {
-
-    var elmnt = document.getElementById("parallax");
-
-    var halfW = ( elmnt.clientWidth / 2 );
-    var halfH = ( elmnt.clientHeight / 2 );
-    var coorX = ( halfW - ( event.pageX - elmnt.offsetLeft ) );
-    var coorY = ( halfH - ( event.pageY - elmnt.offsetTop ) );
-    var degX, degY;
-    $(".card-img .text-white").removeClass("perspective-fix");
-  if($(window).width() > 2000 && $(window).height() > 1000){
-    degX  = ( ( coorY / halfH ) * 20 ) + 'deg'; // max. degree = 10
-  }
-  if(safariOrEdge && $(window).width() > 2000 && $(window).height() > 1000){
-    degX  = ( ( coorY / halfH ) * 12 ) + 'deg'; // max. degree = 10
-  }
-  else {
-    degX  = ( ( coorY / halfH ) * 12 ) + 'deg'; // max. degree = 10
-    degXText  = ( ( coorY / halfH ) * 6 ) + 'deg'; // max. degree = 10
-  }
-    degY  = ( ( coorX / halfW ) * -10 ) + 'deg'; // max. degree = 10
-    degYText  = ( ( coorX / halfW ) * -5 ) + 'deg'; // max. degree = 10
-    $('.card-img').css( 'transform', function() {
-      return 'perspective( 1000px ) translate3d( 0, 0px, 200px ) rotateX('+ degX +') rotateY('+ degY +')';
-    } );
-    $('.card-img .text-white').css( 'transform', function() {
-      return 'translate(-50%, -50%) perspective( 1600px ) translate3d( 0, 0px, 240px ) rotateX('+ degXText +') rotateY('+ degYText +')';
-    } );
-  } )
-    .on( "mouseout", "#banner", function() {
-    $('.card-img').removeAttr( 'style' )
-    $(".card-img .text-white").addClass("perspective-fix");
-  } );
-})();
-if($( window ).width() < 991 ){
-  (function() {
-    $( document )
-      .on( "mousemove", "#banner-mb", function( event ) {
-
-      var elmnt = document.getElementById("parallax-mb");
-
-      var halfW = ( elmnt.clientWidth / 2 );
-      var halfH = ( elmnt.clientHeight / 2 );
-      var coorX = ( halfW - ( event.pageX - elmnt.offsetLeft ) );
-      var coorY = ( halfH - ( event.pageY - elmnt.offsetTop ) );
-      var degX, degY;
-    if($(window).width() > 2000 && $(window).height() > 1000){
-      degX  = ( ( coorY / halfH ) * 20 ) + 'deg'; // max. degree = 10
-    }
-    if(safariOrEdge && $(window).width() > 2000 && $(window).height() > 1000){
-      degX  = ( ( coorY / halfH ) * 12 ) + 'deg'; // max. degree = 10
-    }
-    else {
-      degX  = ( ( coorY / halfH ) * 12 ) + 'deg'; // max. degree = 10
-    }
-      degY  = ( ( coorX / halfW ) * -10 ) + 'deg'; // max. degree = 10
-      $('.card-img-mb').css( 'transform', function() {
-
-        return 'perspective( 1200px ) translate3d( 0, 0px, 240px ) rotateX('+ degX +') rotateY('+ degY +')';
-      } );
-    } )
-    //   .on( "mouseout", ".container", function() {
-    //   $('.card').removeAttr( 'style' )
-    //     .children( '.card__summary' )
-    //     .removeAttr( 'style' );
-    // } );
-  })();
-}
-(function() {
-  $( document )
-    .on( "mousemove", "#card", function( event ) {
-
-    var elmnt = document.getElementById("parallax");
-
-    var halfW = ( elmnt.clientWidth / 1.5 );
-    var halfH = ( elmnt.clientHeight / 2.5 );
-    var coorX = ( halfW - ( event.pageX - elmnt.offsetLeft ) );
-    var coorY = ( halfH - ( event.pageY - elmnt.offsetTop ) );
-
-    var degX  = ( ( coorY / halfH ) * 0 ) + 'deg'; // max. degree = 10
-    var degY  = ( ( coorX / halfW ) * -15 ) + 'deg'; // max. degree = 10
-
-    $( this ).css( 'transform', function() {
-
-      return 'perspective( 1200px ) translate3d( 0, 0px, 100px ) rotateX('+ degX +') rotateY('+ degY +')';
-    } );
-  } )
-    .on( "mouseout", "#card", function() {
-    $( this ).removeAttr( 'style' )
-  } );
-})();
 
 /*----------------------------------------------------------------------------------*/
 checkSafariOrEdge();
@@ -189,7 +71,8 @@ function checkSafariOrEdge() {
 
 $( document ).ready(function() {
   checkSafariOrEdge();
-  setupParallax();
+
+
   if ($( window ).width() < 991) {
         $(".section").css("padding-left", "20px");
         $(".section").css("padding-right", "20px");
@@ -244,11 +127,140 @@ $( document ).ready(function() {
     $('.card-img').removeClass('touch');
     // $('.card-img').addClass('fixed');
   }
-  resizePanels();
+  $(".portfolio-item").css("height", $(".portfolio-item").width());
+  hoverEffects();
+  animateNavbar();
+  var scroll = new SmoothScroll('a[href*="#"]', {
+    speed: 1000,
+    speedAsDuration: true
+  });
   var theDate = new Date(); 
-   $(".year").text(theDate.getFullYear());
+  $(".year").text(theDate.getFullYear());
 });
 
+function hoverEffects() {
+  $(".aml").hover(
+    function() {
+      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
+        $(".portfolio-title").text("AML Advisory").animate({'opacity': 1}, 200);
+      });
+      $(this).css("transform", "scale(1.05, 1.05)");
+      $(this).css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
+    },
+    function() {
+      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
+        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
+      });
+      $(this).css("transform", "scale(1, 1)");
+      $(this).css("box-shadow", "none");
+    }
+  );
+  $(".tla").hover(
+    function() {
+      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
+        $(".portfolio-title").text("The Logistics Alliance").animate({'opacity': 1}, 200);
+      });
+      $(this).css("transform", "scale(1.05, 1.05)");
+      $(this).css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
+    },
+    function() {
+      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
+        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
+      });
+      $(this).css("transform", "scale(1, 1)");
+      $(this).css("box-shadow", "none");
+    }
+  );
+  $(".qutrunning").hover(
+    function() {
+      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
+        $(".portfolio-title").text("QUT Running").animate({'opacity': 1}, 200);
+      });
+      $(this).css("transform", "scale(1.05, 1.05)");
+      $(this).css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
+    },
+    function() {
+      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
+        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
+      });
+      $(this).css("transform", "scale(1, 1)");
+      $(this).css("box-shadow", "none");
+    }
+  );
+  $(".quteb").hover(
+    function() {
+      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
+        $(".portfolio-title").text("QUT Exchange").animate({'opacity': 1}, 200);
+      });
+      $(this).css("transform", "scale(1.05, 1.05)");
+      $(this).css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
+    },
+    function() {
+      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
+        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
+      });
+      $(this).css("transform", "scale(1, 1)");
+      $(this).css("box-shadow", "none");
+    }
+  );
+  $(".daryl").hover(
+    function() {
+      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
+        $(".portfolio-title").text("Daryl Murphy Entertainment").animate({'opacity': 1}, 200);
+      });
+      $(this).css("transform", "scale(1.05, 1.05)");
+      $(this).css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
+    },
+    function() {
+      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
+        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
+      });
+      $(this).css("transform", "scale(1, 1)");
+      $(this).css("box-shadow", "none");
+    }
+  );
+  $(".aaron").hover(
+    function() {
+      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
+        $(".portfolio-title").text("Aaron Maybus Entertainer").animate({'opacity': 1}, 200);
+      });
+      $(this).css("transform", "scale(1.05, 1.05)");
+      $(this).css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
+    },
+    function() {
+      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
+        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
+      });
+      $(this).css("transform", "scale(1, 1)");
+      $(this).css("box-shadow", "none");
+    }
+  );
+}
+$(window).scroll(function() { 
+  animateNavbar();
+});
+
+function animateNavbar(){
+  console.log(($(".first").height() + $(".second").height()) + 10);
+  console.log($(document).scrollTop());
+  if($(document).scrollTop() > 10) {
+    $(".fade-last").css("opacity", "1");
+    $(".navbar-nav li a").css("color", "black");
+    $(".navbar-default").css("background-color", "#fff");
+  }
+  else {
+    $(".navbar-nav li a").css("color", "white");
+    $(".navbar-default").css("background-color", "transparent");
+  }
+  if($(document).scrollTop() > (($(".second").height()) + 10)) {
+    $(".navbar-nav li a").css("color", "white");
+    $(".navbar-default").css("background-color", "rgb(27, 27, 27)");
+  }
+  if($(document).scrollTop() > (($(".second").height() + $(".third").height()) + 10)) {
+    $(".navbar-nav li a").css("color", "black");
+    $(".navbar-default").css("background-color", "#fff");
+  }
+}
 $(window).resize(function () { 
   console.log('RESIZED');
   if ($( window ).width() < 991) {
@@ -257,186 +269,13 @@ $(window).resize(function () {
     $(".section").css("padding-right", "20px");
     $(".panel-lg .container").css("width", $(window).innerWidth() -40);
     $(".container").css("height", $(window).innerHeight() - 55);
-    createFullpage();
   }
-  else {   
-    $(".panel-lg .container").css("width", $(window).innerWidth() - 120);
-    // $(".panel").css("height", $(window).innerHeight());
-    if(fullPageCreated == true) {
-      fullPageCreated = false;
-        $.fn.fullpage.destroy('all');
-      }
-      if( scrollMagicEnabled == false ){
-      wipeAnimation = new TimelineMax()
-      // animate to first panel
-      .to("#slideContainer", 0.5, {delay: -0.5})
-      // animate to second panel
-      .to("#slideContainer", 1,   {x: "-33.333333%"})  // move in to first panel
-      // animate to third panel
-      .to("#slideContainer", 1,   {x: "-50%"})
-      // animate to forth panel
-      .to("#slideContainer", 0.5,   {x: "-66.666666%"})
-      // animate to fifth panel
-      .to("#slideContainer", 0.5, {delay: -0.5});
-
-    controller = new ScrollMagic.Controller();  
-    smScene = new ScrollMagic.Scene({
-        triggerElement: "#pinContainer",
-      triggerHook: "onLeave",
-      duration: "350%"
-    })
-    .setPin("#pinContainer")
-    .setTween(wipeAnimation)
-    .addTo(controller);
-      }
-    // destroyScrollMagic();
-    // addScrollMagic();
-    $(".container").css("height", "100%");
-    // $('#pinContainer').css("width", $(window).innerWidth() * 4);
-  }
-  if ($( window ).width() > 2000 ) {
-    $(".line-horizontal").css("margin-top", ($(window).innerHeight() / 2.25 ) * -1);
-  }
-  else {
-    $(".line-horizontal").css("top", "0px");
-    $(".line-horizontal").css("margin-top", ($(window).innerHeight() / 2 ) * -1);
-  }
-  if(!safariOrEdge && $(window).width() > 991){
-    $('.card-img').addClass('touch');
-  }
-  else{
-    $('.card-img').removeClass('touch');
-    // $('.card-img').addClass('fixed');
-  }
-  onWindowResizeRecreateParallax();
-  resizePanels();
+  //Debounce the height change function for the portfolio items
+  setTimeout(function(){
+    $(".portfolio-item").css("height", $(".portfolio-item").width());
+  }, 200);
 });
-/**
- * Set/Remove the padding for the fullpage slider responsively
- * @param  {object} slider The slider container
- * @returns  {null}
- */
-function setupParallax() {
 
-  // Turn on parallax for elements on desktop
-  if ($( window ).width() > 991) {
-    $('.header-title').attr('data-depth', '0.1');
-    $('.skills-block').attr('data-depth', '0.1');
-    $('.portfolio-block').attr('data-depth', '0.1');
-    $('.languages-block').attr('data-depth', '0.1');
-    $('#interactive-anim').attr('data-depth', '0.5');
-  }
-  // And off for mobile
-  else{
-    $('.header-title').attr('data-depth', '0.0');
-    $('.skills-block').attr('data-depth', '0.0');
-    $('.portfolio-block').attr('data-depth', '0.0');
-    $('.languages-block').attr('data-depth', '0.0');
-    $('#interactive-anim').attr('data-depth', '0.0');
-  }
-    scene = document.getElementById('scene');
-    parallax = new Parallax(scene);
-    scene2 = document.getElementById('scene-2');
-    parallax2 = new Parallax(scene2);
-    scene3 = document.getElementById('scene-3');
-    parallax3 = new Parallax(scene3);
-    scene4 = document.getElementById('scene-4');
-    parallax4 = new Parallax(scene4);
-    scene5 = document.getElementById('scene-5');
-    parallax5 = new Parallax(scene5);        
-    scene6 = document.getElementById('scene-6');
-    parallax6 = new Parallax(scene6);  
-    // scene7 = document.getElementById('scene-7');
-    // parallax7 = new Parallax(scene7);     
-  // }
-  // else {
-    // scene6 = document.getElementById('scene-6');
-    // parallax6 = new Parallax(scene6);
-    // scene7 = document.getElementById('scene-7');
-    // parallax7 = new Parallax(scene7);
-    // scene8 = document.getElementById('scene-8');
-    // parallax8 = new Parallax(scene8);
-    // scene9 = document.getElementById('scene-9');
-    // parallax9 = new Parallax(scene9);
-    // scene10 = document.getElementById('scene-10');
-    // parallax10 = new Parallax(scene10);
-  // }
-}
-function createFullpage() {
-    if (fullPageCreated == false) {
-        fullPageCreated = true;
-        $('#slideContainer').fullpage(options);
-    }
-    else {
-      $(".section").css("height", window.innerHeight);
-      $('#fullpage').fullpage.reBuild();
-    }
-}
-/**
- * Set/Remove the padding for the fullpage slider responsively
- * @param  {object} slider The slider container
- * @returns  {null}
- */
-function resizePanels() {
-  if ($( window ).width() >= 991) {
-    //Initialise all panels with height respective to device
-    $('.panel').css({
-          'height':($(window).innerHeight())
-      });
-      $('.panel-lg').css({
-          'height':($(window).innerHeight())
-      });
-      $('#slideContainer').css({
-          'height':($(window).innerHeight() * 4)
-      });
-    }
-    else {
-      // $('#pinContainer').css({
-      //     'width': 'auto'
-      // });
-      // $('#pinContainer').css({
-      //     'height': 'auto'
-      // });
-      $('.panel').css({
-          'height': ($(window).innerHeight() - 15)
-      });
-      $('.panel-lg').css({
-          'height': ($(window).innerHeight() - 15)
-      });
-      // $('#slideContainer').css({
-      //     'height':($(window).innerHeight() * 4)
-      // });
-    }
-  } 
-/**
- * Set/Remove the padding for the fullpage slider responsively
- * @param  {object} slider The slider container
- * @returns  {null}
- */
-function onWindowResizeRecreateParallax() {
-    
-    parallax.destroy();
-    parallax = null;
-    parallax2.destroy();
-    parallax2 = null;
-    parallax3.destroy();
-    parallax3 = null;
-    parallax4.destroy();
-    parallax4 = null;
-    parallax5.destroy();
-    parallax5 = null;
-    parallax6.destroy();
-    parallax6 = null;
-    // parallax7.destroy();
-    parallax7 = null;
-    setupParallax();
-    // $('#slideContainer').fullpage(options);
-}
-/**
- * Set/Remove the padding for the fullpage slider responsively
- * @param  {object} slider The slider container
- * @returns  {null}
- */
 function destroyScrollMagic() {
   wipeAnimation = null;
   smScene.destroy();
@@ -497,57 +336,78 @@ resizeTimeout = setTimeout(function() {
 // add initial scenes
 addScenes(scenes);
 
-Pace.on("done", function(){
-    $('.preloader-wrap').fadeOut(1000);
+// Pace.on("done", function(){
+//     $('.preloader-wrap').fadeOut(1000);
 
     // Make sure that the header animation doesn't start until page load finishes
-    $(".title-text").each(function(index){
+    setTimeout(function(){
+
+      $(".title-text").each(function(index){
       
       // $colorBlue = "rgb(255, 156, 70)";
-      $colorBlue = "rgb(70, 204, 255)";
-      $colorPurple = "rgb(150, 70, 255)";
+      $colorOrange = "rgb(255, 149, 1)";
+      $colorRed = "rgb(220, 66, 34)";
       
       //create a timeline
       var displayTl = new TimelineLite();
       displayTl
               .fromTo(this, 
-                      0.3,
+                     0.6,
                      {autoAlpha: 0, x: 150},
                      {autoAlpha: 1, ease:Power1.easeOut, x: 0}
                      )
-              .fromTo(this.getElementsByClassName("underline"), 
-                      0.3,
-                     {autoAlpha: 0, x: 350},
-                     {autoAlpha: 1, ease:Power1.easeOut, x: 0}
-                     )
               .staggerTo(this.getElementsByClassName("fade"), 
-                      0.3,
+                      1,
                      {opacity: 1},
-                      0.3
+                      0.5
                      )
               .staggerTo(this.getElementsByClassName("highlight-blue"), 
-                      0.3,
-                     {color: $colorBlue},
-                      0.3
+                      0.5,
+                     {color: $colorOrange},
+                      0.5
                      )
               .staggerTo(this.getElementsByClassName("highlight-purple"), 
-                      0.3,
-                     {color: $colorPurple},
-                      0.3
+                      0.5,
+                     {color: $colorRed},
+                      0.5
+                     )
+              .staggerTo(this.getElementsByClassName("fade-last"), 
+                      0.5,
+                     {opacity: 1},
+                      0.5
                      )
       //build a scene
       var contentScene = new ScrollMagic.Scene({
           triggerElement: ".panel"
       })
       .setTween(displayTl)
-  //        .addIndicators()
       .addTo(controller);        
     });
-});
+  }, 1000);
+  setTimeout(function(){
+    $(".navbar-nav").each(function(index){
+      var displayT2 = new TimelineLite();
+      displayT2
+              .fromTo(this, 
+                     0.6,
+                     {autoAlpha: 0, x: 150},
+                     {autoAlpha: 1, ease:Power1.easeOut, x: 0}
+                     )
+              .staggerTo(this.getElementsByClassName("fade-last"), 
+                      0.5,
+                     {opacity: 1},
+                      0.5
+                     )
+      //build a scene
+      var contentScene = new ScrollMagic.Scene({
+          triggerElement: ".panel"
+      })
+      .setTween(displayT2)
+      .addTo(controller);
+    });        
+  }, 4000);
+// });
 
-$('.jarallax').jarallax({
-    speed: 0
-});
 
 //collapse the navbar upon selection from hamburger menu
 $(document).on('click','.navbar-collapse.in',function(e) {
