@@ -241,24 +241,26 @@ $(window).scroll(function() {
 });
 
 function animateNavbar(){
-  console.log(($(".first").height() + $(".second").height()) + 10);
-  console.log($(document).scrollTop());
   if($(document).scrollTop() > 10) {
     $(".fade-last").css("opacity", "1");
     $(".navbar-nav li a").css("color", "black");
     $(".navbar-default").css("background-color", "#fff");
+    $(".navbar-default").css("border-top", "1px solid rgb(220, 66, 34)");
   }
   else {
     $(".navbar-nav li a").css("color", "white");
     $(".navbar-default").css("background-color", "transparent");
+    $(".navbar-default").css("border-top", "none");
   }
   if($(document).scrollTop() > (($(".second").height()) + 10)) {
     $(".navbar-nav li a").css("color", "white");
     $(".navbar-default").css("background-color", "rgb(27, 27, 27)");
+    $(".navbar-default").css("border-top", "1px solid rgb(220, 66, 34)");
   }
   if($(document).scrollTop() > (($(".second").height() + $(".third").height()) + 10)) {
     $(".navbar-nav li a").css("color", "black");
     $(".navbar-default").css("background-color", "#fff");
+    $(".navbar-default").css("border-top", "1px solid rgb(220, 66, 34)");
   }
 }
 $(window).resize(function () { 
@@ -336,8 +338,8 @@ resizeTimeout = setTimeout(function() {
 // add initial scenes
 addScenes(scenes);
 
-// Pace.on("done", function(){
-//     $('.preloader-wrap').fadeOut(1000);
+Pace.on("done", function(){
+    $('.preloader-wrap').fadeOut(1000);
 
     // Make sure that the header animation doesn't start until page load finishes
     setTimeout(function(){
@@ -371,11 +373,6 @@ addScenes(scenes);
                      {color: $colorRed},
                       0.5
                      )
-              .staggerTo(this.getElementsByClassName("fade-last"), 
-                      0.5,
-                     {opacity: 1},
-                      0.5
-                     )
       //build a scene
       var contentScene = new ScrollMagic.Scene({
           triggerElement: ".panel"
@@ -384,29 +381,37 @@ addScenes(scenes);
       .addTo(controller);        
     });
   }, 1000);
-  setTimeout(function(){
-    $(".navbar-nav").each(function(index){
-      var displayT2 = new TimelineLite();
-      displayT2
-              .fromTo(this, 
-                     0.6,
-                     {autoAlpha: 0, x: 150},
-                     {autoAlpha: 1, ease:Power1.easeOut, x: 0}
-                     )
-              .staggerTo(this.getElementsByClassName("fade-last"), 
-                      0.5,
-                     {opacity: 1},
-                      0.5
-                     )
-      //build a scene
-      var contentScene = new ScrollMagic.Scene({
-          triggerElement: ".panel"
-      })
-      .setTween(displayT2)
-      .addTo(controller);
-    });        
-  }, 4000);
-// });
+  if($(document).scrollTop() > 10) {
+    $(".fade-last").css("opacity", "1");
+    $(".navbar-nav li a").css("color", "black");
+    $(".navbar-default").css("background-color", "#fff");
+    $(".navbar-default").css("border-top", "1px solid rgb(220, 66, 34)");
+  }
+  else {
+    setTimeout(function(){
+      $(".navbar-nav").each(function(index){
+        var displayT2 = new TimelineLite();
+        displayT2
+                .fromTo(this, 
+                       0.6,
+                       {autoAlpha: 0, x: 150},
+                       {autoAlpha: 1, ease:Power1.easeOut, x: 0}
+                       )
+                .staggerTo(this.getElementsByClassName("fade-last"), 
+                        0.5,
+                       {opacity: 1},
+                        0.5
+                       )
+        //build a scene
+        var contentScene = new ScrollMagic.Scene({
+            triggerElement: ".panel"
+        })
+        .setTween(displayT2)
+        .addTo(controller);
+      });        
+    }, 4200);
+  }
+});
 
 
 //collapse the navbar upon selection from hamburger menu
