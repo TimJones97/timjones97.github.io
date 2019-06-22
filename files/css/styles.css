@@ -357,7 +357,7 @@ body {
 ------------------MEDIA QUERIES-----------------
 ------------------------------------------------*/
 
-@media screen and (max-width: 991px) {
+@media only screen and (max-width: 991px) {
   .skill-item {
     width: 14%;
     margin-bottom: 1.6%;
@@ -372,7 +372,7 @@ body {
     transform: translate(0%, -53%) !important;
   }
 }
-@media screen and (max-width: 479px) {
+@media only screen and (max-width: 479px) {
   .title-text {
     left: 20px;
     top: 52%;
