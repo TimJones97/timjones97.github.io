@@ -76,7 +76,6 @@ $( document ).ready(function() {
   if ($( window ).width() < 991) {
         $(".section").css("padding-left", "20px");
         $(".section").css("padding-right", "20px");
-        createFullpage(); 
       $(".panel-lg .container").css("width", $(window).innerWidth() -40);
       $(".container").css("height", $(window).innerHeight() - 55);
   }
@@ -130,6 +129,7 @@ $( document ).ready(function() {
   $(".portfolio-item").css("height", $(".portfolio-item").width());
   hoverEffects();
   animateNavbar();
+  createScrollRevealEffects();
   var scroll = new SmoothScroll('a[href*="#"]', {
     speed: 1000,
     speedAsDuration: true
@@ -236,6 +236,7 @@ function hoverEffects() {
     }
   );
 }
+
 $(window).scroll(function() { 
   animateNavbar();
 });
@@ -252,12 +253,12 @@ function animateNavbar(){
     $(".navbar-default").css("background-color", "transparent");
     $(".navbar-default").css("border-top", "none");
   }
-  if($(document).scrollTop() > (($(".second").height()) + 10)) {
+  if($(document).scrollTop() > (($(".about").outerHeight()) + 10)) {
     $(".navbar-nav li a").css("color", "white");
     $(".navbar-default").css("background-color", "rgb(27, 27, 27)");
     $(".navbar-default").css("border-top", "1px solid rgb(220, 66, 34)");
   }
-  if($(document).scrollTop() > (($(".second").height() + $(".third").height()) + 10)) {
+  if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight()) + 10)) {
     $(".navbar-nav li a").css("color", "black");
     $(".navbar-default").css("background-color", "#fff");
     $(".navbar-default").css("border-top", "1px solid rgb(220, 66, 34)");
@@ -277,6 +278,39 @@ $(window).resize(function () {
     $(".portfolio-item").css("height", $(".portfolio-item").width());
   }, 200);
 });
+
+function createScrollRevealEffects(){
+  var fadeInFirst = {
+    delay: 400,
+    move: 0
+  }
+  var fadeInSecond = {
+    delay: 600,
+    move: 0
+  }
+  var fadeInThird = {
+    delay: 800,
+    move: 0
+  }
+  var fadeInFourth = {
+    delay: 1000,
+    move: 0
+  }
+  var fadeInFifth = {
+    delay: 1200,
+    move: 0
+  }
+  var fadeInSixth = {
+    delay: 1400,
+    move: 0
+  }
+  ScrollReveal().reveal('.fadeInFirst', fadeInFirst);
+  ScrollReveal().reveal('.fadeInSecond', fadeInSecond);
+  ScrollReveal().reveal('.fadeInThird', fadeInThird);
+  ScrollReveal().reveal('.fadeInFourth', fadeInFourth);
+  ScrollReveal().reveal('.fadeInFifth', fadeInFifth);
+  ScrollReveal().reveal('.fadeInSixth', fadeInSixth);
+}
 
 function destroyScrollMagic() {
   wipeAnimation = null;
