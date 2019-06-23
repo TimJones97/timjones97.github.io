@@ -42,6 +42,10 @@ $( document ).ready(function() {
   $(".portfolio-item").css("height", $(".portfolio-item").width());
   // $(".contact-item").css("height", $(".contact-item").outerWidth());
 
+  if($(window).width() < 991) {
+    $(".main").css("height", $(window).innerHeight());
+  }
+  
   checkSafariOrEdge();
   hoverEffects();
   animateNavbar();
@@ -296,11 +300,11 @@ function resetMainElements(){
     if($(window).width() < 991) {
       $(".title-text").css("top", "53%");
       $(".title-text").css("transform", "translate(0%, -53%");
-      $(".arrow-down").css("z-index", "100");
     }
     else {
       $(".title-text").css("top", "49%");
       $(".title-text").css("transform", "translate(0%, -49%");
+      $(".arrow-down").css("z-index", "100");
     }
     if($(window).width() < 767) {
       $(".title-text").css("top", "58%");
