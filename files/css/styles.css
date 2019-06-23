@@ -398,7 +398,7 @@ body {
   width: 100%;
   text-align: right;
   float: right;
-  margin-right: -30px;
+  transform: none !important; 
 }
 .navbar-nav hr {
   display: none;
@@ -545,11 +545,14 @@ body {
 ------------------------------------------------*/
 
 .arrow-down {
-  opacity: 0;
   position: absolute;
   bottom: 16px;
   right: 20px;
   z-index: 100;
+  opacity: 0;
+}
+.arrow-down a {
+  opacity: inherit;
 }
 .arrow-down img {
   width: 30px;
@@ -664,6 +667,33 @@ body {
     right: 10px;
   }
 }
+@media only screen and (max-width: 767px) {
+  .navbar-default {
+    top: 0;
+    right: 0;
+    /*background: rgba(0,0,0,0.8) !important;*/
+  }
+  .title-text h1 {
+    font-size: 3em;
+  }
+  .title-text {
+    top: 58%;
+    transform: translate(0%, -58%) !important;
+  }
+  .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    margin-top: 8px;
+  }
+  .navbar-collapse.in {
+    margin-top: 8px;
+  }
+  .about, .portfolio, .skills, .experience, .contact {
+    padding: 40px;
+  }
+  .navbar-default .navbar-nav > li, .navbar-default .navbar-nav > li > a {
+    font-size: 16px;
+    line-height: 31px;
+  }
+}
 @media only screen and (max-width: 479px) {
   .title-text {
     left: 20px;
@@ -686,11 +716,6 @@ body {
   .skills {
     padding: 20px 30px 60px 30px;    
   }
-  .navbar-default {
-    top: 0;
-    right: 0;
-    /*background: rgba(0,0,0,0.8) !important;*/
-  }
   .navbar-collapse {
     border-top: 1px solid rgb(220, 66, 34);
     border-bottom: 1px solid rgb(220, 66, 34);
@@ -709,7 +734,6 @@ body {
     font-size: 17px;
     display: inherit;
     text-align: right;
-    padding-right: 15px;
   }
   .experience-item {
     margin-bottom: 5px;

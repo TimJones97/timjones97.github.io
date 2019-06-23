@@ -296,10 +296,16 @@ function resetMainElements(){
     if($(window).width() < 991) {
       $(".title-text").css("top", "53%");
       $(".title-text").css("transform", "translate(0%, -53%");
+      $(".arrow-down").css("z-index", "100");
     }
     else {
       $(".title-text").css("top", "49%");
       $(".title-text").css("transform", "translate(0%, -49%");
+    }
+    if($(window).width() < 767) {
+      $(".title-text").css("top", "58%");
+      $(".title-text").css("transform", "translate(0%, -58%");
+      $(".arrow-down").css("z-index", "20");
     }
     if($(window).width() < 479){
       $(".title-text").css("top", "52%");
@@ -500,7 +506,6 @@ Pace.on("done", function(){
         .setTween(displayT2)
         .addTo(controller);
       });
-          
     }, 3900);
     setTimeout(function(){
       $(".arrow-down").each(function(index){
@@ -511,7 +516,7 @@ Pace.on("done", function(){
                        {autoAlpha: 0, x: 150},
                        {autoAlpha: 1, ease:Power1.easeOut, x: 0}
                        )
-                .staggerTo(this.getElementsByClassName(".arrow-down"), 
+                .staggerTo(this.getElementsByClassName(".fade-last"), 
                         0.5,
                        {opacity: 1},
                         0.5
