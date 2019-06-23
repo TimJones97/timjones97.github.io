@@ -37,6 +37,7 @@ body {
   overflow: hidden;
   height: 100%;
   width: 100%;
+  transition: all 0.4s ease;
   position: relative;
 }
 .about, .portfolio, .skills, 
@@ -48,6 +49,9 @@ body {
 }
 .fade, .fade-last {
   opacity: 0;
+}
+.opaque {
+  opacity: 1 !important;
 }
 .title-text {
   color: #3b3b3b;
@@ -582,13 +586,15 @@ body {
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-#return-to-top i {
-  color: #fff;
+#return-to-top .arrow-up {
+  background: url('../img/icons/arrow_up.png');
+  background-size: cover;
   margin: 0;
-  position: relative;
+  position: absolute;
   left: 11px;
   top: 10px;
-  font-size: 19px;
+  width: 19px;
+  height: 15px;
   -webkit-transition: all 0.3s ease;
 	-webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
@@ -603,7 +609,7 @@ body {
 #return-to-top:hover {
   background: rgba(0, 0, 0, 0.9);
 }
-#return-to-top:hover i {
+#return-to-top:hover arrow-up {
   color: #fff;
   top: 10px;
 }
@@ -692,6 +698,9 @@ body {
   .navbar-default .navbar-nav > li, .navbar-default .navbar-nav > li > a {
     font-size: 16px;
     line-height: 31px;
+  }
+  .navbar-nav {
+    height: 100vh;
   }
 }
 @media only screen and (max-width: 479px) {

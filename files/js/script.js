@@ -45,18 +45,30 @@ $( document ).ready(function() {
   if($(window).width() < 991) {
     $(".main").css("height", $(window).innerHeight());
   }
-  
-  checkSafariOrEdge();
+
+  // checkSafariOrEdge();
   hoverEffects();
   animateNavbar();
   createScrollRevealEffects();
   bindVelocity();
   createGoTopArrow();
+  setMainElements();
 
   $(window).scroll(function() { 
     animateNavbar();
+    //If the dropdown menu on mobile is open
+    if ($(".in").length){
+      $("body").css("overflow-y", "hidden");
+    } 
+    //Prevent scrolling until menu is closed
+    else {
+      $("body").css("overflow-y", "scroll");
+    }
   });
-
+  //Ensure that the arrow-down element has opacity of 1 at all times
+  setTimeout(function(){
+    $(".arrow-down").addClass("opaque");
+  }, 5000);
   //Ensure page always loads from top
   // setTimeout(function(){
   //   var scrollTop = $(this).scrollTop();
@@ -65,7 +77,6 @@ $( document ).ready(function() {
   //   }, 0);
   // }, 200);
   
-
   var theDate = new Date(); 
   $(".year").text(theDate.getFullYear());
 });
@@ -224,11 +235,11 @@ function animateNavbar(){
       addWhiteNav();
     }
     //Scroll position is in Experience section
-    if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight() + $(".skills").outerHeight()) + 600)) {
+    if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight() + $(".skills").outerHeight()) + 500)) {
       addBlackNav();
     }
     //Scroll position is in Contact section
-    if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight() + $(".skills").outerHeight()) + 600)) {
+    if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight() + $(".skills").outerHeight() + $(".experience").outerHeight()) + 600)) {
       addWhiteNav();
     }
   }
@@ -280,22 +291,19 @@ function createGoTopArrow(){
 }
 
 //Reset the elements that require resizing
-function resetMainElements(){
+function setMainElements(){
 
   //Reset all styles on navbar
   $(".navbar-default").removeAttr("style");
   $(".navbar-nav li a").removeAttr("style");
   $(".navbar-collapse").removeAttr("style");
-  $(".title-text").css("display", "none");
-  $(".ribbon").css("display", "none");
   $(".ribbon").css("animation", "none");
 
   //Debounce the height change function for the portfolio items and navbar animations
   setTimeout(function(){
     animateNavbar();
-    $(".ribbon").css("display", "block");
     $(".ribbon").css("top", "50%");
-    $(".title-text").css("display", "block");
+    $(".main").css("height", $(window).innerHeight());
 
     if($(window).width() < 991) {
       $(".title-text").css("top", "53%");
@@ -314,6 +322,7 @@ function resetMainElements(){
     if($(window).width() < 479){
       $(".title-text").css("top", "52%");
       $(".title-text").css("transform", "translate(0%, -52%");
+      $(".arrow-down").css("z-index", "20");
     }
     
     $(".portfolio-item").css("height", $(".portfolio-item").width());
@@ -322,8 +331,8 @@ function resetMainElements(){
 }
 
 $(window).resize(function () { 
-  console.log('RESIZED');
-  resetMainElements();
+  console.log('RESIZED'); 
+  setMainElements();
 });
 
 function createScrollRevealEffects(){
@@ -369,13 +378,21 @@ function bindVelocity(){
       var target = $(this).attr('href');
 
       if(target == "#home" || target == "#about" || target == "#portfolio" 
-        || target == "#skills" || target == "#experience" || target == "#contact" ) {
-        $('.navbar-collapse.in').collapse('hide');
-        document.getElementById('bars').classList.toggle('active')
+        || target == "#skills" || target == "#experience" || 
+        target == "#contact" || target == "#about2") {
+
+        //If arrow up or arrow down pressed, convert ID to actual ID instead of toggling menu bar active class
+        if(target == "#about2"){
+          target = "#about";
+        }
+        else {
+          $('.navbar-collapse.in').collapse('hide');
+          document.getElementById('bars').classList.toggle('active')
+        }
       }
       // scroll to each target
       if($(window).width() < 767){
-        $(target).velocity("scroll", { duration: 1000, offset: -50 });
+        $(target).velocity("scroll", { duration: 1000, offset: -51 });
       }
       else {
         $(target).velocity("scroll", 1000);
@@ -520,7 +537,7 @@ Pace.on("done", function(){
                        {autoAlpha: 0, x: 150},
                        {autoAlpha: 1, ease:Power1.easeOut, x: 0}
                        )
-                .staggerTo(this.getElementsByClassName(".fade-last"), 
+                .staggerTo(this.getElementsByClassName(".arrow-down"), 
                         0.5,
                        {opacity: 1},
                         0.5
@@ -531,15 +548,7 @@ Pace.on("done", function(){
         })
         .setTween(displayT3)
         .addTo(controller);
-      });    
+      });          
     }, 4200);
-  }
-});
-
-
-//collapse the navbar upon selection from hamburger menu
-$(document).on('click','.navbar-collapse.in',function(e) {
-  if( $(e.target).is('a') && $(e.target).attr('class') != 'dropdown-toggle' ) {
-    $(this).collapse('hide');
   }
 });
