@@ -17,13 +17,14 @@
   background: rgba(0,0,0,1);
   z-index: 100;
 }
-.main, .about, .portfolio, .skills {
+.main, .about, .portfolio, 
+.skills, .experience, .contact {
   overflow: hidden;
   height: 100%;
   width: 100%;
   position: relative;
 }
-.about, .portfolio, .skills {
+.about, .portfolio, .skills, .experience {
   border-top: 2px solid rgb(255, 149, 1);
 }
 .main {
@@ -134,7 +135,7 @@ body {
 ------------------------------------------------*/
 
 .portfolio {
-  padding: 60px 60px 80px 60px;
+  padding: 80px 60px 100px 60px;
   overflow: hidden;
   background: rgba(0,0,0,0.85);
 }
@@ -185,13 +186,13 @@ body {
 }
 
 /*----------------------------------------------
-------------------THIRD SECTION-----------------
+------------------SKILLS SECTION-----------------
 ------------------------------------------------*/
 
 .skills {
   overflow: hidden;
   background: #fff;
-  padding: 120px 60px 150px 60px; 
+  padding: 100px 60px 120px 60px; 
 }
 .skills h1 {
   font-family: 'Open Sans', serif;
@@ -202,7 +203,7 @@ body {
   float: left;
   width: 6.65%;
   height: auto;
-  background: rgba(255, 149, 1, 0.4);
+  background: #d9d9d9;
   margin-right: 1.6%;
   padding: 10px;
   border-radius: 4px;
@@ -211,21 +212,167 @@ body {
   display: inline-block;
 }
 .skill-item:hover {
-  transform: scale(1.1, 1.1);
   background: rgba(255, 149, 1, 0.6);
-  -webkit-box-shadow: 0 7px 48px rgba(183,198,212,.28);
-  box-shadow: 0 7px 48px rgba(183,198,212,.28);
+  transform: scale(1.05, 1.05);
+  -webkit-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
+  -moz-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
+  box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
 }
 .skill-item img { 
   width: 100%;
 }
-/*.skill-item img:hover { 
+
+
+/*----------------------------------------------
+------------------EXPERIENCE SECTION-----------------
+------------------------------------------------*/
+
+.experience {
+  overflow: hidden;
+  padding: 60px 60px 80px 60px; 
+  background: rgba(0,0,0,0.8);
+}
+.experience h1 {
+  font-family: 'Open Sans', serif;
+  font-size: 40px;
+  color: #fff;
+  margin-bottom: 30px;
+}
+.experience h3 {
+  font-family: 'Open Sans', serif;
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.experience-item {
+  float: left;
+  width: 24%;
+  min-width: 250px;
+  max-width: 350px;
+  height: auto;
+  background: #fff;
+  margin-right: 1%;
+  padding: 10px 10px 10px 20px;
+  border-radius: 4px;
+  min-height: 140px;
+  overflow: hidden;
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  padding-bottom: 20px;
+  position: relative;
+  display: inline-block;
+  border-radius: 4px;
+  background: white;
+  transition: all 0.3s ease;
+}
+.experience-item:hover {
+  transform: scale(1.05, 1.05);
+  -webkit-box-shadow: -1px 3px 26px 0px rgba(0,0,0,0.75);
+  box-shadow: -1px 3px 26px 0px rgba(0,0,0,0.75);
+}
+.experience-item h6 {
+  font-size: 18px;
+}
+.experience-item p {
+  font-size: 12px;
+  color: #9b9b9b;
+  margin-bottom: 0px;
+}
+.experience-logo {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+.experience-logo img {
+  width: 80px;
+}
+/*.experience-item p:nth-child(3) {
+  color: rgb(255, 149, 1);
+}*/
+.work-experience, .education {
+  width: 100%;
+  display: inline-block;
+}
+.work-experience {
+  margin-bottom: 30px;
+}
+
+/*----------------------------------------------
+------------------CONTACT SECTION-----------------
+------------------------------------------------*/
+
+.contact {
+  padding: 60px 60px 120px 60px; 
+  background: #fff;
+}
+.contact h1 {
+  font-family: 'Open Sans', serif;
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+.experience h3 {
+  font-family: 'Open Sans', serif;
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.contact-item {
+  float: left;
+  width: 6.65%;
+  margin-right: 1.6%;
+  height: auto;
+  background: #e7e7e7;
+  margin-right: 1%;
+  padding: 20px;
+  border-radius: 4px;
+  overflow: hidden;
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  padding-bottom: 20px;
+  position: relative;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+.contact-item:hover {
+  background: rgba(255, 149, 1, 0.6);
+  transform: scale(1.05, 1.05);
+  -webkit-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
+  -moz-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
+  box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
+}
+.contact-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  max-width: 80px;
+  display: block;
+  transition: all 0.3s ease;
+}
+.contact-image img {
+  width: 100%;
+}
+.contact-item h6 {
+  font-size: 18px;
+}
+.contact-item p {
+  font-size: 12px;
+  color: #9b9b9b;
+  margin-bottom: 0px;
+}
+.contact-item:hover .contact-image { 
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+}
+/*.contact-item img:hover { 
   filter: grayscale(100%);
   -webkit-filter: grayscale(100%);
 }*/
 
-
-/*------------NAVBAR STYLES-------------*/
+/*----------------------------------------------
+------------------NAVBAR STYLES-----------------
+------------------------------------------------*/
 
 .navbar-default {
   background-color: transparent;
@@ -310,20 +457,20 @@ body {
   font-weight: 300;
   color: #e7e7e7;
 }
-.navbar-default .navbar-nav li a:hover,
-.navbar-default .navbar-nav li a:focus {
+.navbar-default .navbar-nav li a:hover {
   -webkit-transition: all 0.4s;
    -moz-transition: all 0.4s;
   transition: all 0.4s;
   color: rgb(255, 149, 1) !important; 
 }
 .navbar-default .navbar-nav .active a:focus {
-  color: rgb(255, 149, 1) !important;
+  color: inherit;
 }
 .navbar-brand {
   padding: 0px;
 }
 .navbar-toggle {
+  margin-top: 17px;
   float: right;
 }
 .navbar-default .navbar-toggle,
@@ -343,7 +490,8 @@ body {
 }
 .navbar-default .navbar-nav > li,
 .navbar-default .navbar-nav > li > a {
-  line-height: 18px;
+  font-size: 13px;
+  display: inherit;
 }
 .navbar-toggle {
   -webkit-transition: all 0.4s;
@@ -352,6 +500,102 @@ body {
   -o-transition: all 0.4s;
   transition: all 0.4s;
 }
+.navbar-collapse.in {
+  overflow: hidden;
+}
+.navbar-nav {
+  opacity: 0;
+}
+.navbar-collapse.in  .navbar-nav {
+  transition: all 0.4s ease-in-out;
+  opacity: 1;
+}
+
+/*----------------------------------------------
+------------------MENU ANIMATION-----------------
+------------------------------------------------*/
+
+.trigger {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.bars {
+  width: 60px;
+  cursor: pointer;
+}
+.bars .line {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 4;
+  stroke-linecap: square;
+  transition: stroke-dasharray 400ms,  stroke-dashoffset 400ms;
+}
+.bars .line.top {
+  stroke-dasharray: 40 172;
+}
+.bars .line.middle {
+  stroke-dasharray: 40 111;
+}
+.bars .line.bottom {
+  stroke-dasharray: 40 172;
+}
+.bars.active .top {
+  stroke-dashoffset: -132px;
+}
+.bars.active .middle {
+  stroke-dashoffset: -71px;
+}
+.bars.active .bottom {
+  stroke-dashoffset: -132px;
+}
+
+/*----------------------------------------------
+------------------GO TOP ARROW------------------
+------------------------------------------------*/
+
+#return-to-top {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.7);
+  width: 50px;
+  height: 50px;
+  display: block;
+  text-decoration: none;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  display: none;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+#return-to-top i {
+  color: #fff;
+  margin: 0;
+  position: relative;
+  left: 16px;
+  top: 15px;
+  font-size: 19px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+#return-to-top:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+#return-to-top:hover i {
+  color: #fff;
+  top: 10px;
+}
 
 /*----------------------------------------------
 ------------------MEDIA QUERIES-----------------
@@ -359,17 +603,24 @@ body {
 
 @media only screen and (max-width: 991px) {
   .skill-item {
-    width: 14%;
+    width: 15%;
     margin-bottom: 1.6%;
   }
   .portfolio-item {
-    width: 30%;
-    margin-right: 3%;
+    width: 31%;
     margin-bottom: 3%;
+    margin-right: 0;
+  }
+  .aml, .tla, .quteb, .daryl {
+    margin-right: 3%;
   }
   .title-text {
     top: 53%;
     transform: translate(0%, -53%) !important;
+  }
+  .experience-item {
+    margin-bottom: 1%;
+    width: 49%;
   }
 }
 @media only screen and (max-width: 479px) {
@@ -381,27 +632,49 @@ body {
   .title-text h1 {
     font-size: 2em;
   }
-  .about, .portfolio, .skills {
-    padding: 20px;    
+  .about, .portfolio, .skills, .experience {
+    padding: 20px 30px 20px 30px;    
   }
-  .about h1, .portfolio h1, .skills h1 {
+  .about h1, .portfolio h1, .skills h1, .experience h1 {
     font-size: 2em;
     margin-bottom: 50px;
   }
-  .portfolio-item {
-    width: 45%;
-    margin-right: 2.5%;
+  .experience h1 {
+    margin-bottom: 10px;
   }
   .skills {
-    padding: 20px 20px 100px 20px;
+    padding: 20px 30px 60px 30px;    
   }
   .navbar-default {
     top: 0;
     right: 0;
-    background: rgba(0,0,0,0.8) !important;
+    /*background: rgba(0,0,0,0.8) !important;*/
   }
   .navbar-collapse {
-    border: none;
-    background: rgba(0,0,0,0.8);
+    border-top: 1px solid rgb(220, 66, 34);
+    border-bottom: 1px solid rgb(220, 66, 34);
+    margin-top: 7.5px;
+  }
+  .skill-item {
+    width: 23%;
+    margin-right: 2%;
+    margin-bottom: 2%
+  }
+  .skill-item:hover {
+    transform: scale(1.05, 1.05);
+  }
+  .navbar-default .navbar-nav > li, .navbar-default .navbar-nav > li > a {
+    line-height: 47px;
+    font-size: 17px;
+    display: inherit;
+    text-align: right;
+    padding-right: 15px;
+  }
+  .experience-item {
+    margin-bottom: 5px;
+    width: 100%;
+  }
+  .work-experience {
+    margin-bottom: 10px;
   }
 }

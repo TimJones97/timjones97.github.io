@@ -1,43 +1,11 @@
-/* Scroll Postion for CSS Animations */
 var safariOrEdge = false;
 var controller;
 var scenes = [];
 var activeScenes = [];
-
 var smScene;
-
 var scrollMagicEnabled = false;
 
-/*----------------------------------------------------------------------------------*/
-
-/*----------------------------------------------------------------------------------*/
 checkSafariOrEdge();
-var ofs, x, y;
-$('.contact-btn').on('mouseenter', function(e){
-  ofs = $(this).offset();
-  x = (e.pageX - ofs.left);
-  y = (e.pageY - ofs.top);
-var name = $(this).text().toLowerCase().split(' ')[0];
-  
-$(this).append('<div class="blob ' + name + '" style="left:' + x + 'px; top: ' + y + 'px;"></div>');
-  
-var blob = $(this).find('.blob');
-setTimeout(function(){
-    blob.addClass("expand");
-},20);
-});
-
-$('.contact-btn').on('mouseleave', function(e){
-  ofs = $(this).offset();
-  x = (e.pageX - ofs.left);
-  y = (e.pageY - ofs.top);
-  var blob = $(this).find('.blob');
-  blob.css({'left':x, 'top':y});
-  blob.removeClass("expand");
-  setTimeout(function(){
-      blob.remove();
-  },800);
-});
 
 function checkSafariOrEdge() {
   //Detect browser and disable transition on card-img if on Safari or IE/Edge
@@ -66,74 +34,34 @@ function checkSafariOrEdge() {
   if(is_chrome){
     console.log('is_chrome');
   }
-
 }
 
 $( document ).ready(function() {
-  checkSafariOrEdge();
 
-
-  if ($( window ).width() < 991) {
-        $(".section").css("padding-left", "20px");
-        $(".section").css("padding-right", "20px");
-      $(".panel-lg .container").css("width", $(window).innerWidth() -40);
-      $(".container").css("height", $(window).innerHeight() - 55);
-  }
-  else {
-    // destroyScrollMagic();
-    if ($( window ).width() > 2000 ) {
-      $(".line-horizontal").css("margin-top", ($(window).innerHeight() / 2.25 ) * -1);
-    }
-    else {
-      $(".line-horizontal").css("top", "0px");
-      $(".line-horizontal").css("margin-top", ($(window).innerHeight() / 2 )* -1);
-    }
-    // $(".panel-lg .container").css("width", $(window).innerWidth() - 120);
-  
-    // $(".panel").css("margin-left", $(".dots-horizontal").width());
-    wipeAnimation = new TimelineMax()
-
-      //add fake slide for delay for scroll
-      .to("#slideContainer", 0, {delay: -0.2})
-
-      // animate to first panel
-      .to("#slideContainer", 0.5,   {x: "-33.333333%"})  // move in to first panel
-      // animate to second panel
-      .to("#slideContainer", 0.5,   {x: "-50%"})
-      // animate to third panel
-      .to("#slideContainer", 0.5,   {x: "-66.666666%"})
-
-      //add fake slide for delay for scroll
-      .to("#slideContainer", 1, {delay: -0.7});
-
-    controller = new ScrollMagic.Controller();  
-
-    smScene = new ScrollMagic.Scene({
-    triggerElement: "#pinContainer",
-    triggerHook: "onLeave",
-    duration: "450%"
-    })
-    .setPin("#pinContainer")
-    // .addIndicators() // add indicators (requires plugin)
-    .setTween(wipeAnimation)
-    .addTo(controller);
-    scrollMagicEnabled = true;
-  }
-  if(!safariOrEdge && $(window).width() > 991){
-    $('.card-img').addClass('touch');
-  }
-  else{
-    $('.card-img').removeClass('touch');
-    // $('.card-img').addClass('fixed');
-  }
+  //Ensure that the portfolio and contact boxes are same as width for square shape
   $(".portfolio-item").css("height", $(".portfolio-item").width());
+  $(".contact-item").css("height", $(".contact-item").outerWidth());
+
+  checkSafariOrEdge();
   hoverEffects();
   animateNavbar();
   createScrollRevealEffects();
-  var scroll = new SmoothScroll('a[href*="#"]', {
-    speed: 1000,
-    speedAsDuration: true
+  bindVelocity();
+  createGoTopArrow();
+
+  $(window).scroll(function() { 
+    animateNavbar();
   });
+
+  //Ensure page always loads from top
+  // setTimeout(function(){
+  //   var scrollTop = $(this).scrollTop();
+  //   $("html, body").animate({
+  //       scrollTop: 0
+  //   }, 0);
+  // }, 200);
+  
+
   var theDate = new Date(); 
   $(".year").text(theDate.getFullYear());
 });
@@ -144,7 +72,7 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("AML Advisory").animate({'opacity': 1}, 200);
       });
-      $(this).css("transform", "scale(1.05, 1.05)");
+      $(this).css("transform", "scale(1.1, 1.1)");
       $(this).css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
     },
     function() {
@@ -160,7 +88,7 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("The Logistics Alliance").animate({'opacity': 1}, 200);
       });
-      $(this).css("transform", "scale(1.05, 1.05)");
+      $(this).css("transform", "scale(1.1, 1.1)");
       $(this).css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
     },
     function() {
@@ -176,7 +104,7 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("QUT Running").animate({'opacity': 1}, 200);
       });
-      $(this).css("transform", "scale(1.05, 1.05)");
+      $(this).css("transform", "scale(1.1, 1.1)");
       $(this).css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
     },
     function() {
@@ -192,7 +120,7 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("QUT Exchange").animate({'opacity': 1}, 200);
       });
-      $(this).css("transform", "scale(1.05, 1.05)");
+      $(this).css("transform", "scale(1.1, 1.1)");
       $(this).css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
     },
     function() {
@@ -208,7 +136,7 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Daryl Murphy Entertainment").animate({'opacity': 1}, 200);
       });
-      $(this).css("transform", "scale(1.05, 1.05)");
+      $(this).css("transform", "scale(1.1, 1.1)");
       $(this).css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
     },
     function() {
@@ -224,7 +152,7 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Aaron Maybus Entertainer").animate({'opacity': 1}, 200);
       });
-      $(this).css("transform", "scale(1.05, 1.05)");
+      $(this).css("transform", "scale(1.1, 1.1)");
       $(this).css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
     },
     function() {
@@ -237,45 +165,124 @@ function hoverEffects() {
   );
 }
 
-$(window).scroll(function() { 
-  animateNavbar();
-});
+function addWhiteNav(){
+  $(".navbar-nav li a").css("color", "black");
+  $(".navbar-default").css("background-color", "rgba(255,255,255,0.9)");
+  $(".navbar-collapse").css("background-color", "rgba(255,255,255,0.9)");
+  $(".navbar-default").css("border-bottom", "1px solid rgb(220, 66, 34)");
+  $(".bars .line").css("stroke", "#3b3b3b");
+}
+
+function addBlackNav(){
+  $(".navbar-nav li a").css("color", "white");
+  $(".navbar-default").css("background-color", "rgba(0,0,0,0.8)");
+  $(".navbar-collapse").css("background-color", "rgba(0,0,0,0.8)");
+  $(".navbar-default").css("border-bottom", "1px solid rgb(220, 66, 34)");
+  $(".bars .line").css("stroke", "#fff");
+}
+
+function addTransparentNav(){
+  //Make navbar transparent if scroll position is on main section
+  $(".navbar-nav li a").css("color", "white");
+  $(".navbar-default").css("background-color", "transparent");
+  $(".navbar-default").css("border-top", "none");
+}
+
+function addWhiteNavDesktop(){
+  $(".navbar-nav li a").css("color", "black");
+  $(".navbar-default").css("background-color", "#fff");
+  $(".navbar-default").css("border-top", "1px solid rgb(220, 66, 34)");
+}
+
+function addBlackNavDesktop(){
+  $(".navbar-nav li a").css("color", "white");
+  $(".navbar-default").css("background-color", "rgb(27, 27, 27)");
+  $(".navbar-default").css("border-top", "1px solid rgb(220, 66, 34)");
+}
 
 function animateNavbar(){
-  if($(document).scrollTop() > 10) {
-    $(".fade-last").css("opacity", "1");
-    $(".navbar-nav li a").css("color", "black");
-    $(".navbar-default").css("background-color", "#fff");
-    $(".navbar-default").css("border-top", "1px solid rgb(220, 66, 34)");
+  if($(window).width() < 767 ){
+    $(".navbar-nav").removeClass("fade-last");
+    //Scroll position is in About section
+    if($(document).scrollTop() > 300) {
+      addWhiteNav();
+    }
+    //Scroll position is in Main section
+    else {
+      addBlackNav();
+    }
+    //Scroll position is in Portfolio section
+    if($(document).scrollTop() > (($(".about").outerHeight()) + 400)) {
+      addBlackNav();
+    }
+    //Scroll position is in Skills section
+    if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight()) + 500)) {
+      addWhiteNav();
+    }
+    //Scroll position is in Experience section
+    if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight() + $(".skills").outerHeight()) + 600)) {
+      addBlackNav();
+    }
+    //Scroll position is in Contact section
+    if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight() + $(".skills").outerHeight()) + 600)) {
+      addWhiteNav();
+    }
   }
+  //If on desktop
   else {
-    $(".navbar-nav li a").css("color", "white");
-    $(".navbar-default").css("background-color", "transparent");
-    $(".navbar-default").css("border-top", "none");
-  }
-  if($(document).scrollTop() > (($(".about").outerHeight()) + 10)) {
-    $(".navbar-nav li a").css("color", "white");
-    $(".navbar-default").css("background-color", "rgb(27, 27, 27)");
-    $(".navbar-default").css("border-top", "1px solid rgb(220, 66, 34)");
-  }
-  if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight()) + 10)) {
-    $(".navbar-nav li a").css("color", "black");
-    $(".navbar-default").css("background-color", "#fff");
-    $(".navbar-default").css("border-top", "1px solid rgb(220, 66, 34)");
+    $(".navbar-nav").addClass("fade-last");
+    //Scroll position is in About section
+    if($(document).scrollTop() > 10) {
+      addWhiteNavDesktop();
+    }
+    //Scroll position is in Main section
+    else {
+      //Make navbar transparent if scroll position is on main section
+      addTransparentNav();
+    }
+    //Scroll position is in Portfolio section
+    if($(document).scrollTop() > (($(".about").outerHeight()) + 10)) {
+      addBlackNavDesktop();
+    }
+    //Scroll position is in Skills section
+    if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight())  + 10)) {
+      addWhiteNavDesktop();     
+    }
+    //Scroll position is in Experience section
+    if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight() + $(".skills").outerHeight())  + 10)) {
+      addBlackNavDesktop();
+    }
+    //Scroll position is in Experience section
+    if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight() + $(".skills").outerHeight() + $(".experience").outerHeight())  + 10)) {
+      addWhiteNavDesktop();
+    }
   }
 }
+
+function createGoTopArrow(){
+  // ===== Scroll to Top ==== 
+  $(window).scroll(function() {
+      if ($(this).scrollTop() > 70) {        // If page is scrolled more than 50px
+          $('#return-to-top').fadeIn(200);    // Fade in the arrow
+      } else {
+          $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+      }
+  });
+  $('#return-to-top').click(function() {      // When arrow is clicked
+      $('body,html').animate({
+          scrollTop : 0                       // Scroll to top of body
+      }, 500);
+  });
+}
+
 $(window).resize(function () { 
   console.log('RESIZED');
-  if ($( window ).width() < 991) {
-    // $('#pinContainer').css("height", ($(window).innerHeight() * 5));
-    $(".section").css("padding-left", "20px");
-    $(".section").css("padding-right", "20px");
-    $(".panel-lg .container").css("width", $(window).innerWidth() -40);
-    $(".container").css("height", $(window).innerHeight() - 55);
-  }
+  animateNavbar();
+
   //Debounce the height change function for the portfolio items
   setTimeout(function(){
     $(".portfolio-item").css("height", $(".portfolio-item").width());
+    $(".contact-item").css("height", $(".contact-item").outerWidth());
   }, 200);
 });
 
@@ -312,6 +319,29 @@ function createScrollRevealEffects(){
   ScrollReveal().reveal('.fadeInSixth', fadeInSixth);
 }
 
+function bindVelocity(){
+  // bind click event to all internal page anchors
+  $('a[href*="#"]').on('click', function (e) {
+      // prevent default action and bubbling
+      e.preventDefault();
+      e.stopPropagation();
+      // set target to anchor's "href" attribute
+      var target = $(this).attr('href');
+
+      if(target == "#home" || target == "#about" || target == "#portfolio" 
+        || target == "#skills" || target == "#experience" || target == "#contact" ) {
+        $('.navbar-collapse.in').collapse('hide');
+        document.getElementById('bars').classList.toggle('active')
+      }
+      // scroll to each target
+      if($(window).width() < 767){
+        $(target).velocity("scroll", { duration: 1000, offset: -50 });
+      }
+      else {
+        $(target).velocity("scroll", 1000);
+      }
+  });
+}
 function destroyScrollMagic() {
   wipeAnimation = null;
   smScene.destroy();
@@ -415,11 +445,12 @@ Pace.on("done", function(){
       .addTo(controller);        
     });
   }, 1000);
-  if($(document).scrollTop() > 10) {
+  if($(document).scrollTop() > 10 || $(window).width() < 767) {
+    $(".navbar-nav li a").css("color", "white");
+    $(".navbar-default").css("background-color", "rgba(0,0,0,0.8)");
+    $(".navbar-default").css("border-bottom", "1px solid rgb(220, 66, 34)");
+    $(".icon-bar").css("background-color", "#fff");
     $(".fade-last").css("opacity", "1");
-    $(".navbar-nav li a").css("color", "black");
-    $(".navbar-default").css("background-color", "#fff");
-    $(".navbar-default").css("border-top", "1px solid rgb(220, 66, 34)");
   }
   else {
     setTimeout(function(){
@@ -451,6 +482,6 @@ Pace.on("done", function(){
 //collapse the navbar upon selection from hamburger menu
 $(document).on('click','.navbar-collapse.in',function(e) {
   if( $(e.target).is('a') && $(e.target).attr('class') != 'dropdown-toggle' ) {
-      $(this).collapse('hide');
+    $(this).collapse('hide');
   }
 });
