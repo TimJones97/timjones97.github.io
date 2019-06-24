@@ -4,6 +4,7 @@ var scenes = [];
 var activeScenes = [];
 var smScene;
 var scrollMagicEnabled = false;
+var firstTime = true;
 
 checkSafariOrEdge();
 
@@ -303,7 +304,13 @@ function setMainElements(){
   $(".navbar-nav li a").removeAttr("style");
   $(".navbar-collapse").removeAttr("style");
   $(".ribbon").css("animation", "none");
+  var delay = 1000;
 
+  //Check if the page has only loaded once, if yes then set elements after 1000 ms
+  if(!firstTime){
+    //If page has already loaded and this is new execution, set delay as 400 ms
+    delay = 10;
+  }
   //Debounce the height change function for the portfolio items and navbar animations
   setTimeout(function(){
     animateNavbar();
@@ -320,8 +327,13 @@ function setMainElements(){
       $(".arrow-down").css("z-index", "100");
     }
     if($(window).width() < 767) {
-      $(".title-text").css("top", "58%");
-      $(".title-text").css("transform", "translate(0%, -58%");
+      if($(window).height() > 479) {
+        $(".title-text").css("top", "53%");
+      }
+      else {
+        $(".title-text").css("top", "58%");
+        $(".title-text").css("transform", "translate(0%, -58%");
+      }
       $(".arrow-down").css("z-index", "20");
     }
     if($(window).width() < 479){
@@ -332,7 +344,10 @@ function setMainElements(){
     
     $(".portfolio-item").css("height", $(".portfolio-item").width());
     // $(".contact-item").css("height", $(".contact-item").outerWidth());
-  }, 400);
+  }, delay);
+
+  //Set firstTime as false after first execution of function
+  firstTime = false;
 }
 
 $(window).resize(function () { 
