@@ -65,8 +65,9 @@ $( document ).ready(function() {
       $("body").css("overflow-y", "scroll");
     }
   });
-  //Ensure that the arrow-down element has opacity of 1 at all times
+  //Ensure that the arrow-down and navbar elements have an opacity of 1 at all times
   setTimeout(function(){
+    $(".navbar-nav").addClass("opaque");
     $(".arrow-down").addClass("opaque");
   }, 5000);
   //Ensure page always loads from top
@@ -219,6 +220,10 @@ function animateNavbar(){
   if($(window).width() < 767 ){
     $(".navbar-nav").removeClass("fade-last");
     //Scroll position is in About section
+    var offset = 500;
+    if($(window).width() > 479){
+      offset = 50;
+    }
     if($(document).scrollTop() > 300) {
       addWhiteNav();
     }
@@ -227,19 +232,19 @@ function animateNavbar(){
       addBlackNav();
     }
     //Scroll position is in Portfolio section
-    if($(document).scrollTop() > (($(".about").outerHeight()) + 400)) {
+    if($(document).scrollTop() > (($(".about").outerHeight()) + offset)) {
       addBlackNav();
     }
     //Scroll position is in Skills section
-    if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight()) + 500)) {
+    if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight()) + offset)) {
       addWhiteNav();
     }
     //Scroll position is in Experience section
-    if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight() + $(".skills").outerHeight()) + 500)) {
+    if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight() + $(".skills").outerHeight()) + offset)) {
       addBlackNav();
     }
     //Scroll position is in Contact section
-    if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight() + $(".skills").outerHeight() + $(".experience").outerHeight()) + 600)) {
+    if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight() + $(".skills").outerHeight() + $(".experience").outerHeight()) + offset)) {
       addWhiteNav();
     }
   }
