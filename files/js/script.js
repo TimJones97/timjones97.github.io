@@ -61,21 +61,28 @@ $( document ).ready(function() {
   $(".year").text(theDate.getFullYear());
 });
 
+function applyEffects(element){
+  element.css("transform", "scale(0.95)");
+  element.css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
+}
+
+function resetEffects(element){
+  element.css("transform", "scale(1)");
+  element.css("box-shadow", "none");
+}
 function hoverEffects() {
   $(".aml").hover(
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("AML Advisory").animate({'opacity': 1}, 200);
       });
-      $(this).css("transform", "scale(0.9)");
-      $(this).css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
+      applyEffects($(this));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
-      $(this).css("transform", "scale(1, 1)");
-      $(this).css("box-shadow", "none");
+      resetEffects($(this));
     }
   );
   $(".tla").hover(
@@ -83,15 +90,13 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("The Logistics Alliance").animate({'opacity': 1}, 200);
       });
-      $(this).css("transform", "scale(0.9)");
-      $(this).css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
+      applyEffects($(this));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
-      $(this).css("transform", "scale(1, 1)");
-      $(this).css("box-shadow", "none");
+      resetEffects($(this));
     }
   );
   $(".qutrunning").hover(
@@ -99,15 +104,13 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("QUT Running").animate({'opacity': 1}, 200);
       });
-      $(this).css("transform", "scale(0.9)");
-      $(this).css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
+      applyEffects($(this));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
-      $(this).css("transform", "scale(1, 1)");
-      $(this).css("box-shadow", "none");
+      resetEffects($(this));
     }
   );
   $(".quteb").hover(
@@ -115,15 +118,13 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("QUT Exchange").animate({'opacity': 1}, 200);
       });
-      $(this).css("transform", "scale(0.9)");
-      $(this).css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
+      applyEffects($(this));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
-      $(this).css("transform", "scale(1, 1)");
-      $(this).css("box-shadow", "none");
+      resetEffects($(this));
     }
   );
   $(".daryl").hover(
@@ -131,15 +132,13 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Daryl Murphy Entertainment").animate({'opacity': 1}, 200);
       });
-      $(this).css("transform", "scale(0.9)");
-      $(this).css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
+      applyEffects($(this));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
-      $(this).css("transform", "scale(1, 1)");
-      $(this).css("box-shadow", "none");
+      resetEffects($(this));
     }
   );
   $(".aaron").hover(
@@ -147,15 +146,13 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Aaron Maybus Entertainer").animate({'opacity': 1}, 200);
       });
-      $(this).css("transform", "scale(0.9)");
-      $(this).css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
+      applyEffects($(this));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
-      $(this).css("transform", "scale(1, 1)");
-      $(this).css("box-shadow", "none");
+      resetEffects($(this));
     }
   );
 }
@@ -351,6 +348,10 @@ function setMainElements(){
     if($(window).width() < 767) {
       if($(window).height() > 450) {
         $(".title-text").css("top", "54%");
+      }
+      //For VERY long phones in landscape 
+      else if($(window).height() < 300) {
+        $(".title-text").css("top", "52%");
       }
       else {
         $(".title-text").css("top", "58%");
