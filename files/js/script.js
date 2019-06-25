@@ -68,7 +68,14 @@ $( document ).ready(function() {
   });
   //Ensure that the arrow-down and navbar elements have an opacity of 1 at all times
   setTimeout(function(){
-    $(".navbar-nav").addClass("opaque");
+    if($(window).width() < 767){
+      $(".navbar-collapse .navbar-nav").removeClass("opaque");
+      $(".navbar-collapse .navbar-nav").addClass("transparent");
+    }
+    else{
+      $(".navbar-collapse .navbar-nav").addClass("opaque");
+      $(".navbar-collapse .navbar-nav").removeClass("transparent");
+    }
     $(".arrow-down").addClass("opaque");
   }, 5000);
   //Ensure page always loads from top
@@ -78,7 +85,6 @@ $( document ).ready(function() {
   //       scrollTop: 0
   //   }, 0);
   // }, 200);
-  
   var theDate = new Date(); 
   $(".year").text(theDate.getFullYear());
 });
@@ -225,6 +231,9 @@ function animateNavbar(){
     if($(window).width() > 479){
       offset = 50;
     }
+    if($(window).height() > 479){
+      offset = 500;
+    }
     if($(document).scrollTop() > 300) {
       addWhiteNav();
     }
@@ -304,12 +313,15 @@ function setMainElements(){
   $(".navbar-nav li a").removeAttr("style");
   $(".navbar-collapse").removeAttr("style");
   $(".ribbon").css("animation", "none");
+  $(".navbar-collapse .navbar-nav").addClass("opaque");
+  $(".navbar-collapse .navbar-nav").removeClass("transparent");
+
   var delay = 1000;
 
   //Check if the page has only loaded once, if yes then set elements after 1000 ms
   if(!firstTime){
     //If page has already loaded and this is new execution, set delay as 400 ms
-    delay = 10;
+    delay = 100;
   }
   //Debounce the height change function for the portfolio items and navbar animations
   setTimeout(function(){
@@ -335,15 +347,19 @@ function setMainElements(){
         $(".title-text").css("transform", "translate(0%, -58%");
       }
       $(".arrow-down").css("z-index", "20");
+      $(".navbar-collapse .navbar-nav").removeClass("opaque");
+      $(".navbar-collapse .navbar-nav").addClass("transparent");
     }
     if($(window).width() < 479){
       $(".title-text").css("top", "52%");
       $(".title-text").css("transform", "translate(0%, -52%");
       $(".arrow-down").css("z-index", "20");
     }
-    
+    else{
+      $(".navbar-collapse .navbar-nav").addClass("opaque");
+      $(".navbar-collapse .navbar-nav").removeClass("transparent");
+    }
     $(".portfolio-item").css("height", $(".portfolio-item").width());
-    // $(".contact-item").css("height", $(".contact-item").outerWidth());
   }, delay);
 
   //Set firstTime as false after first execution of function

@@ -50,11 +50,8 @@ body {
 .fade, .fade-last {
   opacity: 0;
 }
-.opaque {
-  opacity: 1 !important;
-}
 .title-text {
-  color: #3b3b3b;
+  color: #575757;
   position: absolute;
   left: 60px;
   top: 49%;
@@ -407,10 +404,6 @@ body {
   width: 100%;
   text-align: right;
   float: right;
-  transform: none !important; 
-}
-.navbar-nav hr {
-  display: none;
 }
 .navbar-nav li {
   display: inline-block;
@@ -500,14 +493,16 @@ body {
 .navbar-collapse.in {
   overflow: hidden;
 }
-.navbar-nav {
-  opacity: 0;
-}
 .navbar-collapse.in  .navbar-nav {
-  transition: all 0.4s ease-in-out;
-  opacity: 1;
+  transition: all 0.3s ease-in-out;
+  opacity: 1 !important;
 }
-
+.transparent {
+  opacity: 0 !important;
+}
+.opaque {
+  opacity: 1 !important;
+}
 /*----------------------------------------------
 ------------------MENU ANIMATION-----------------
 ------------------------------------------------*/
@@ -652,7 +647,7 @@ body {
   }
   .portfolio-item {
     width: 31%;
-    margin-bottom: 3%;
+    margin-bottom: 10px;
     margin-right: 0;
   }
  /* .aml, .tla, .quteb, .daryl {
@@ -667,7 +662,7 @@ body {
     max-width: 100%;
   }
   .contact-item {
-    width: 18.5%;
+    width: 18.8%;
     min-width: 50px;
   }
   #return-to-top {
@@ -707,6 +702,10 @@ body {
   }
   .navbar-nav {
     height: 100vh;
+    transform: none !important; 
+  }
+  .experience-item {
+    width: 100%;
   }
 }
 @media only screen and (max-width: 479px) {
