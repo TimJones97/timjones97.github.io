@@ -1,4 +1,3 @@
-var safariOrEdge = false;
 var controller;
 var scenes = [];
 var activeScenes = [];
@@ -6,53 +5,20 @@ var smScene;
 var scrollMagicEnabled = false;
 var firstTime = true;
 
-checkSafariOrEdge();
-
-function checkSafariOrEdge() {
-  //Detect browser and disable transition on card-img if on Safari or IE/Edge
-  var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
-  var is_safari = navigator.userAgent.indexOf("Safari") > -1;
-  var is_edge_or_ie;    
-  
-  var ua = window.navigator.userAgent;
-  var trident = ua.indexOf('Trident/');
-  var edge = ua.indexOf('Edge/');
-  if (trident > 0 || edge > 0) {
-    is_edge_or_ie = true;
-  }
-  if ((is_chrome)&&(is_safari)) {
-      is_safari=false;
-  }
-  if($( window ).width() > 1000 && !is_safari && !is_edge_or_ie){
-    // console.log('added');   
-    safariOrEdge = false;
-  }
-  else if( is_safari || is_edge_or_ie  ){
-    safariOrEdge = true;
-    // $(".card-img-mb").css("transition", "transform 0.2s ease");
-    console.log('is_edge');
-  }
-  if(is_chrome){
-    console.log('is_chrome');
-  }
-}
-
 $( document ).ready(function() {
 
-  //Ensure that the portfolio and contact boxes are same as width for square shape
+  //Ensure that the portfolio boxes are same as width for square shape
   $(".portfolio-item").css("height", $(".portfolio-item").width());
-  // $(".contact-item").css("height", $(".contact-item").outerWidth());
 
   if($(window).width() < 991) {
     $(".main").css("height", $(window).innerHeight());
   }
 
-  // checkSafariOrEdge();
+  createGoTopArrow();
   hoverEffects();
   animateNavbar();
   createScrollRevealEffects();
   bindVelocity();
-  createGoTopArrow();
   setMainElements();
 
   $(window).scroll(function() { 
@@ -68,16 +34,22 @@ $( document ).ready(function() {
   });
   //Ensure that the arrow-down and navbar elements have an opacity of 1 at all times
   setTimeout(function(){
+    $(".navbar-collapse .navbar-nav").removeClass("transparent");
     if($(window).width() < 767){
+      $(".navbar-default").addClass("opaque");
+      $(".navbar-brand").addClass("opaque");
       $(".navbar-collapse .navbar-nav").removeClass("opaque");
       $(".navbar-collapse .navbar-nav").addClass("transparent");
     }
     else{
+      $(".navbar-default").addClass("opaque");
+      $(".navbar-brand").removeClass("opaque");
       $(".navbar-collapse .navbar-nav").addClass("opaque");
       $(".navbar-collapse .navbar-nav").removeClass("transparent");
     }
     $(".arrow-down").addClass("opaque");
-  }, 5000);
+  }, 6000);
+
   //Ensure page always loads from top
   // setTimeout(function(){
   //   var scrollTop = $(this).scrollTop();
@@ -95,7 +67,7 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("AML Advisory").animate({'opacity': 1}, 200);
       });
-      $(this).css("transform", "scale(1.05, 1.05)");
+      $(this).css("transform", "scale(0.9)");
       $(this).css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
     },
     function() {
@@ -111,7 +83,7 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("The Logistics Alliance").animate({'opacity': 1}, 200);
       });
-      $(this).css("transform", "scale(1.05, 1.05)");
+      $(this).css("transform", "scale(0.9)");
       $(this).css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
     },
     function() {
@@ -127,7 +99,7 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("QUT Running").animate({'opacity': 1}, 200);
       });
-      $(this).css("transform", "scale(1.05, 1.05)");
+      $(this).css("transform", "scale(0.9)");
       $(this).css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
     },
     function() {
@@ -143,7 +115,7 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("QUT Exchange").animate({'opacity': 1}, 200);
       });
-      $(this).css("transform", "scale(1.05, 1.05)");
+      $(this).css("transform", "scale(0.9)");
       $(this).css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
     },
     function() {
@@ -159,7 +131,7 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Daryl Murphy Entertainment").animate({'opacity': 1}, 200);
       });
-      $(this).css("transform", "scale(1.05, 1.05)");
+      $(this).css("transform", "scale(0.9)");
       $(this).css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
     },
     function() {
@@ -175,7 +147,7 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Aaron Maybus Entertainer").animate({'opacity': 1}, 200);
       });
-      $(this).css("transform", "scale(1.05, 1.05)");
+      $(this).css("transform", "scale(0.9)");
       $(this).css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
     },
     function() {
@@ -197,8 +169,8 @@ function addWhiteNav(){
 }
 function addBlackNav(){
   $(".navbar-nav li a").css("color", "white");
-  $(".navbar-default").css("background-color", "rgba(0,0,0,0.8)");
-  $(".navbar-collapse").css("background-color", "rgba(0,0,0,0.8)");
+  $(".navbar-default").css("background-color", "rgba(0,0,0,0.9)");
+  $(".navbar-collapse").css("background-color", "rgba(0,0,0,0.9)");
   $(".navbar-default").css("border-bottom", "1px solid rgb(220, 66, 34)");
   $(".bars .line").css("stroke", "#fff");
 }
@@ -224,7 +196,8 @@ function addBlackNavDesktop(){
 
 function animateNavbar(){
   //If on mobile
-  if($(window).width() < 767 ){
+  if($(window).width() < 767){
+    $(".navbar-default").addClass("opaque");
     $(".navbar-nav").removeClass("fade-last");
     //Scroll position is in About section
     var offset = 500;
@@ -290,33 +263,71 @@ function animateNavbar(){
 }
 
 function createGoTopArrow(){
-  // ===== Scroll to Top ==== 
+  var target = "#home";
+  var offset = 0;
+
+  // Set the background arrow dependent on the page scroll location  
+  if ($(this).scrollTop() > 70) {        // If page is scrolled more than 70px
+    $('.arrow-img').css("background", "url('./files/img/icons/arrow_up.png");    // Change arrow to up
+    $('.arrow').css("background", "rgba(0, 0, 0, 0.7)");    // Add background
+    if($(window).width() > 767){
+      $('.arrow').css("bottom", "70px");
+    }
+    target = "#home";
+  } 
+  else {
+    $('.arrow-img').css("background", "url('./files/img/icons/arrow_down.png");    // Change arrow to down
+    $('.arrow').css("background", "none");    // Remove background
+    if($(window).width() > 767){
+      $('.arrow').css("bottom", "6px");   
+    }
+    target = "#about";
+  }
   $(window).scroll(function() {
-    if ($(this).scrollTop() > 70) {        // If page is scrolled more than 50px
-      $('.arrow-down').fadeOut(200);    // Fade in the arrow
-      $('#return-to-top').fadeIn(200);    // Fade in the arrow
-    } else {
-      $('#return-to-top').fadeOut(200);   // Else fade out the arrow
-      $('.arrow-down').fadeIn(200);    // Fade in the arrow
+    if ($(this).scrollTop() > 70) {        
+      $('.arrow-img').css("background", "url('./files/img/icons/arrow_up.png");   
+      $('.arrow').css("background", "rgba(0, 0, 0, 0.7)");  
+      if($(window).width() > 767){
+        $('.arrow').css("bottom", "70px");  
+      }  
+      target = "#home";
+    } 
+    else {
+      $('.arrow-img').css("background", "url('./files/img/icons/arrow_down.png");    
+      $('.arrow').css("background", "none");
+      if($(window).width() > 767){
+        $('.arrow').css("bottom", "6px");
+      }
+      target = "#about";
     }
   });
-  $('#return-to-top').click(function() {      // When arrow is clicked
-      $("#home").velocity("scroll", 1000);
+
+  //If not on desktop, make offset -51px for mobile screens to line up with top of section headers
+  if($(window).width() < 767){
+    offset = -51;
+  }
+  else {
+    offset = 0;
+  }
+
+  $('.arrow').click(function() {      // When arrow is clicked
+      $(target).velocity("scroll", { duration: 1000, offset: offset });
   });
 }
 
 //Reset the elements that require resizing
 function setMainElements(){
 
-  //Reset all styles on navbar
-  $(".navbar-default").removeAttr("style");
-  $(".navbar-nav li a").removeAttr("style");
-  $(".navbar-collapse").removeAttr("style");
-  $(".ribbon").css("animation", "none");
-  $(".navbar-collapse .navbar-nav").addClass("opaque");
-  $(".navbar-collapse .navbar-nav").removeClass("transparent");
+  //Reset all styles on navbar if on desktop width
+  if($(window).width() > 767) {
+    $(".navbar-default").removeAttr("style");
+    $(".navbar-nav li a").removeAttr("style");
+    $(".navbar-collapse").removeAttr("style");
+    $(".ribbon").css("animation", "none");
+    $(".navbar-collapse .navbar-nav").removeClass("transparent");
+  }
 
-  var delay = 1000;
+  var delay = 1200;
 
   //Check if the page has only loaded once, if yes then set elements after 1000 ms
   if(!firstTime){
@@ -336,34 +347,38 @@ function setMainElements(){
     else {
       $(".title-text").css("top", "49%");
       $(".title-text").css("transform", "translate(0%, -49%");
-      $(".arrow-down").css("z-index", "100");
     }
     if($(window).width() < 767) {
-      if($(window).height() > 479) {
-        $(".title-text").css("top", "53%");
+      if($(window).height() > 450) {
+        $(".title-text").css("top", "54%");
       }
       else {
         $(".title-text").css("top", "58%");
         $(".title-text").css("transform", "translate(0%, -58%");
       }
-      $(".arrow-down").css("z-index", "20");
-      $(".navbar-collapse .navbar-nav").removeClass("opaque");
-      $(".navbar-collapse .navbar-nav").addClass("transparent");
+      //If not first time this function is executed, apply styles 
+      if(!firstTime){
+        $(".navbar-collapse .navbar-nav").removeClass("opaque");
+        $(".navbar-collapse .navbar-nav").addClass("transparent");
+      }
     }
     if($(window).width() < 479){
       $(".title-text").css("top", "52%");
       $(".title-text").css("transform", "translate(0%, -52%");
-      $(".arrow-down").css("z-index", "20");
     }
     else{
-      $(".navbar-collapse .navbar-nav").addClass("opaque");
-      $(".navbar-collapse .navbar-nav").removeClass("transparent");
+      if(!firstTime){
+        $(".navbar-collapse .navbar-nav").addClass("opaque");
+        $(".navbar-collapse .navbar-nav").removeClass("transparent");
+      }
     }
     $(".portfolio-item").css("height", $(".portfolio-item").width());
+    //Set firstTime as false after first execution of function
+    firstTime = false;
   }, delay);
-
-  //Set firstTime as false after first execution of function
-  firstTime = false;
+  setTimeout(function(){
+    $(".navbar-default").css("z-index", "102");
+  }, delay);
 }
 
 $(window).resize(function () { 
@@ -498,6 +513,7 @@ addScenes(scenes);
 Pace.on("done", function(){
     $('.preloader-wrap').fadeOut(1000);
 
+
     // Make sure that the header animation doesn't start until page load finishes
     setTimeout(function(){
 
@@ -538,23 +554,57 @@ Pace.on("done", function(){
       .addTo(controller);        
     });
   }, 700);
-  if($(document).scrollTop() > 10) {
+  if($(document).scrollTop() > 10 || $(window).width() < 767) {
+    if($(window).width() < 767 && $(document).scrollTop() > 10){
+      //If on mobile and the screen is past 10px scroll position, 
+      //make the arrow opaque instead of waiting for fade in animation
+      $(".arrow").addClass("opaque");
+    }
     $(".fade-last").css("opacity", "1");
+    $(".navbar-brand").addClass("opaque");
   }
   else {
     setTimeout(function(){
-      $(".navbar-nav").each(function(index){
+      $(".navbar-default").each(function(index){
         var displayT2 = new TimelineLite();
         displayT2
                 .fromTo(this, 
-                       0.6,
-                       {autoAlpha: 0, x: 150},
-                       {autoAlpha: 1, ease:Power1.easeOut, x: 0}
+                       0.5,
+                       {autoAlpha: 0, x: 0},
+                       {autoAlpha: 1, ease:Power1.easeOut, x: 0},
+                       0.5,
                        )
-                .staggerTo(this.getElementsByClassName("fade-last"), 
+                .staggerTo(this.getElementsByClassName("navbar-brand"), 
                         0.5,
                        {opacity: 1},
                         0.5
+                       )
+                .staggerTo(this.getElementsByClassName("navbar-nav"), 
+                        0.5,
+                       {opacity: 1},
+                        0.5
+                       )
+                
+        //build a scene
+        var contentScene = new ScrollMagic.Scene({
+            triggerElement: ".panel"
+        })
+        .setTween(displayT2)
+        .addTo(controller);
+      });
+    }, 3200);
+
+    
+  }
+  setTimeout(function(){
+      $(".arrow").each(function(index){
+        var displayT2 = new TimelineLite();
+        displayT2
+                .fromTo(this, 
+                       0.5,
+                       {autoAlpha: 0, x: 0},
+                       {autoAlpha: 1, ease:Power1.easeOut, x: 0},
+                       0.5
                        )
         //build a scene
         var contentScene = new ScrollMagic.Scene({
@@ -563,28 +613,5 @@ Pace.on("done", function(){
         .setTween(displayT2)
         .addTo(controller);
       });
-    }, 3900);
-    setTimeout(function(){
-      $(".arrow-down").each(function(index){
-        var displayT3 = new TimelineLite();
-        displayT3
-                .fromTo(this, 
-                       0.6,
-                       {autoAlpha: 0, x: 150},
-                       {autoAlpha: 1, ease:Power1.easeOut, x: 0}
-                       )
-                .staggerTo(this.getElementsByClassName(".arrow-down"), 
-                        0.5,
-                       {opacity: 1},
-                        0.5
-                       )
-        //build a scene
-        var contentScene = new ScrollMagic.Scene({
-            triggerElement: ".panel"
-        })
-        .setTween(displayT3)
-        .addTo(controller);
-      });          
-    }, 4200);
-  }
+    }, 3500);
 });
