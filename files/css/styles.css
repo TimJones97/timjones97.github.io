@@ -133,11 +133,11 @@ body {
 .portfolio-title {
   font-family: 'Open Sans', serif;
   font-size: 40px;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
   color: #fff;
 }
-.about h1, .portfolio h1, .skills h1 {
-  line-height: 1px;
+.about h1, .skills h1, .contact h1 {
+  color: #3b3b3b;
 }
 .portfolio-item {
   float: left;
@@ -306,7 +306,7 @@ body {
 .contact h1 {
   font-family: 'Open Sans', serif;
   font-size: 40px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 .experience h3 {
   font-family: 'Open Sans', serif;
@@ -715,12 +715,15 @@ footer {
   .about, .portfolio, .skills, .experience {
     padding: 20px 30px 20px 30px;    
   }
-  .about h1, .portfolio h1, .skills h1, .experience h1 {
+  .about h1, .portfolio h1, .skills h1, .experience h1, .contact h1 {
     font-size: 2em;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
   .experience h1 {
     margin-bottom: 10px;
+  }
+  .contact h1 {
+    margin-bottom: 30px;
   }
   .skills {
     padding: 20px 30px 60px 30px;    

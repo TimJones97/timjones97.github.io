@@ -14,12 +14,12 @@ $( document ).ready(function() {
     $(".main").css("height", $(window).innerHeight());
   }
 
+  setMainElements();
   createGoTopArrow();
   hoverEffects();
   animateNavbar();
   createScrollRevealEffects();
   bindVelocity();
-  setMainElements();
 
   $(window).scroll(function() { 
     animateNavbar();
@@ -51,12 +51,12 @@ $( document ).ready(function() {
   }, 6000);
 
   //Ensure page always loads from top
-  // setTimeout(function(){
-  //   var scrollTop = $(this).scrollTop();
-  //   $("html, body").animate({
-  //       scrollTop: 0
-  //   }, 0);
-  // }, 200);
+  setTimeout(function(){
+    var scrollTop = $(this).scrollTop();
+    $("html, body").animate({
+        scrollTop: 0
+    }, 0);
+  }, 200);
   var theDate = new Date(); 
   $(".year").text(theDate.getFullYear());
 });
@@ -299,16 +299,17 @@ function createGoTopArrow(){
     }
   });
 
-  //If not on desktop, make offset -51px for mobile screens to line up with top of section headers
-  if($(window).width() < 767){
-    offset = -51;
-  }
-  else {
-    offset = 0;
-  }
+  
 
   $('.arrow').click(function() {      // When arrow is clicked
-      $(target).velocity("scroll", { duration: 1000, offset: offset });
+    //If not on desktop, make offset -51px for mobile screens to line up with top of section headers
+    if($(window).width() < 767){
+      offset = -51;
+    }
+    else {
+      offset = 0;
+    }
+    $(target).velocity("scroll", { duration: 1000, offset: offset });
   });
 }
 
@@ -324,12 +325,12 @@ function setMainElements(){
     $(".navbar-collapse .navbar-nav").removeClass("transparent");
   }
 
-  var delay = 1200;
+  var delay = 1000;
 
   //Check if the page has only loaded once, if yes then set elements after 1000 ms
   if(!firstTime){
     //If page has already loaded and this is new execution, set delay as 400 ms
-    delay = 100;
+    delay = 250;
   }
   //Debounce the height change function for the portfolio items and navbar animations
   setTimeout(function(){
@@ -555,6 +556,8 @@ Pace.on("done", function(){
       .addTo(controller);        
     });
   }, 700);
+
+  var delay = 4200;
   if($(document).scrollTop() > 10 || $(window).width() < 767) {
     if($(window).width() < 767 && $(document).scrollTop() > 10){
       //If on mobile and the screen is past 10px scroll position, 
@@ -564,7 +567,7 @@ Pace.on("done", function(){
     $(".fade-last").css("opacity", "1");
     $(".navbar-brand").addClass("opaque");
   }
-  else {
+  else {    
     setTimeout(function(){
       $(".navbar-default").each(function(index){
         var displayT2 = new TimelineLite();
@@ -597,6 +600,10 @@ Pace.on("done", function(){
 
     
   }
+  //Less delay for arrow to fade in if on mobile
+  if($(window).width() < 767) {
+    delay = 3200;
+  }
   setTimeout(function(){
       $(".arrow").each(function(index){
         var displayT2 = new TimelineLite();
@@ -614,5 +621,5 @@ Pace.on("done", function(){
         .setTween(displayT2)
         .addTo(controller);
       });
-    }, 3500);
+    }, delay);
 });
