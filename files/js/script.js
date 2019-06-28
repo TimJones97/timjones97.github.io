@@ -622,10 +622,10 @@ Pace.on("done", function(){
         var displayT2 = new TimelineLite();
         displayT2
                 .fromTo(this, 
-                       0.5,
+                       0.2,
                        {autoAlpha: 0, x: 0},
                        {autoAlpha: 1, ease:Power1.easeOut, x: 0},
-                       0.5
+                       0.2
                        )
         //build a scene
         var contentScene = new ScrollMagic.Scene({
