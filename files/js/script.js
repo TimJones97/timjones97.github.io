@@ -7,6 +7,7 @@ var firstTime = true;
 
 $( document ).ready(function() {
 
+  var delay = 6000;
   //Ensure that the portfolio boxes are same as width for square shape
   $(".portfolio-item").css("height", $(".portfolio-item").width());
 
@@ -16,8 +17,8 @@ $( document ).ready(function() {
 
   setMainElements();
   createGoTopArrow();
-  hoverEffects();
   animateNavbar();
+  particleJSHoverEffects();
   createScrollRevealEffects();
   bindVelocity();
 
@@ -33,6 +34,7 @@ $( document ).ready(function() {
     }
   });
   //Ensure that the arrow-down and navbar elements have an opacity of 1 at all times
+  //following the fade in animation
   setTimeout(function(){
     $(".navbar-collapse .navbar-nav").removeClass("transparent");
     if($(window).width() < 767){
@@ -157,19 +159,33 @@ function hoverEffects() {
   );
 }
 
+function particleJSHoverEffects(){
+  //Modify particles JS colours on hover
+  $('#particles-js')
+    .mouseover(function() {
+      const newColor = '#ff9501';
+      $.each(pJSDom[0].pJS.particles.array, function(i,p){
+        pJSDom[0].pJS.particles.array[i].color.value = newColor;
+        pJSDom[0].pJS.particles.array[i].color.rgb = hexToRgb(newColor);
+        pJSDom[0].pJS.particles.line_linked.color_rgb_line = hexToRgb(newColor);
+      });
+    })
+    .mouseout(function() {
+      const newColor = '#9b9b9b';
+      $.each(pJSDom[0].pJS.particles.array, function(i,p){
+        pJSDom[0].pJS.particles.array[i].color.value = newColor;
+        pJSDom[0].pJS.particles.array[i].color.rgb = hexToRgb(newColor);
+        pJSDom[0].pJS.particles.line_linked.color_rgb_line = hexToRgb(newColor);
+      });
+  });
+}
+
 function addWhiteNav(){
   $(".navbar-nav li a").css("color", "black");
   $(".navbar-default").css("background-color", "rgba(255,255,255,0.9)");
   $(".navbar-collapse").css("background-color", "rgba(255,255,255,0.9)");
-  $(".navbar-default").css("border-bottom", "1px solid rgb(220, 66, 34)");
+  $(".navbar-default").css("border-top", "none");
   $(".bars .line").css("stroke", "#3b3b3b");
-}
-function addBlackNav(){
-  $(".navbar-nav li a").css("color", "white");
-  $(".navbar-default").css("background-color", "rgba(0,0,0,0.9)");
-  $(".navbar-collapse").css("background-color", "rgba(0,0,0,0.9)");
-  $(".navbar-default").css("border-bottom", "1px solid rgb(220, 66, 34)");
-  $(".bars .line").css("stroke", "#fff");
 }
 function addTransparentNav(){
   //Make navbar transparent if scroll position is on main section
@@ -181,13 +197,13 @@ function addTransparentNav(){
 function addWhiteNavDesktop(){
   $(".navbar-nav li a").css("color", "black");
   $(".navbar-default").css("background-color", "#fff");
-  $(".navbar-default").css("border-top", "1px solid rgb(220, 66, 34)");
+  $(".navbar-default").css("border-top", "none");
   $(".navbar-collapse").css("background-color", "none");
 }
 function addBlackNavDesktop(){
   $(".navbar-nav li a").css("color", "white");
   $(".navbar-default").css("background-color", "rgb(27, 27, 27)");
-  $(".navbar-default").css("border-top", "1px solid rgb(220, 66, 34)");
+  $(".navbar-default").css("border-top", "none");
   $(".navbar-collapse").css("background-color", "none");
 }
 
@@ -196,37 +212,7 @@ function animateNavbar(){
   if($(window).width() < 767){
     $(".navbar-default").addClass("opaque");
     $(".navbar-nav").removeClass("fade-last");
-    //Scroll position is in About section
-    var offset = 500;
-    if($(window).width() > 479){
-      offset = 50;
-    }
-    if($(window).height() > 479){
-      offset = 500;
-    }
-    if($(document).scrollTop() > 300) {
-      addWhiteNav();
-    }
-    //Scroll position is in Main section
-    else {
-      addBlackNav();
-    }
-    //Scroll position is in Portfolio section
-    if($(document).scrollTop() > (($(".about").outerHeight()) + offset)) {
-      addBlackNav();
-    }
-    //Scroll position is in Skills section
-    if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight()) + offset)) {
-      addWhiteNav();
-    }
-    //Scroll position is in Experience section
-    if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight() + $(".skills").outerHeight()) + offset)) {
-      addBlackNav();
-    }
-    //Scroll position is in Contact section
-    if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight() + $(".skills").outerHeight() + $(".experience").outerHeight()) + offset)) {
-      addWhiteNav();
-    }
+    addWhiteNav();
   }
   //If on desktop
   else {
@@ -299,12 +285,10 @@ function createGoTopArrow(){
     }
   });
 
-  
-
   $('.arrow').click(function() {      // When arrow is clicked
     //If not on desktop, make offset -51px for mobile screens to line up with top of section headers
     if($(window).width() < 767){
-      offset = -51;
+      offset = -52.5;
     }
     else {
       offset = 0;
@@ -325,7 +309,7 @@ function setMainElements(){
     $(".navbar-collapse .navbar-nav").removeClass("transparent");
   }
 
-  var delay = 1000;
+  var delay = 1200;
 
   //Check if the page has only loaded once, if yes then set elements after 1000 ms
   if(!firstTime){
@@ -384,41 +368,61 @@ function setMainElements(){
 }
 
 $(window).resize(function () { 
-  console.log('RESIZED'); 
+  // console.log('RESIZED'); 
   setMainElements();
 });
 
 function createScrollRevealEffects(){
-  var fadeInFirst = {
-    delay: 400,
-    move: 0
+  var slideInConfig = {
+    origin: 'right',
+    duration: 700,
+    distance: '400px',
+    //If effect has already occured, remove styles applied by scrollReveal
+    //to allow for hover transform effects to still occur
+    afterReveal: function() {
+      setTimeout(function(){
+        $('.portfolio-item').removeAttr("style");
+        //Reset the height again after removal
+        $(".portfolio-item").css("height", $(".portfolio-item").width());
+        hoverEffects();
+      }, 1000);
+    }
   }
-  var fadeInSecond = {
-    delay: 600,
-    move: 0
+  var fadeInConfig = {
+    duration: 700,
+    origin: 'right',
+    distance: '400px',
+    afterReveal: function() {
+      setTimeout(function(){
+        $('.skill-item').removeAttr("style");
+        hoverEffects();
+      }, 1600);
+    }
   }
-  var fadeInThird = {
-    delay: 800,
-    move: 0
-  }
-  var fadeInFourth = {
-    delay: 1000,
-    move: 0
-  }
-  var fadeInFifth = {
-    delay: 1200,
-    move: 0
-  }
-  var fadeInSixth = {
-    delay: 1400,
-    move: 0
-  }
-  ScrollReveal().reveal('.fadeInFirst', fadeInFirst);
-  ScrollReveal().reveal('.fadeInSecond', fadeInSecond);
-  ScrollReveal().reveal('.fadeInThird', fadeInThird);
-  ScrollReveal().reveal('.fadeInFourth', fadeInFourth);
-  ScrollReveal().reveal('.fadeInFifth', fadeInFifth);
-  ScrollReveal().reveal('.fadeInSixth', fadeInSixth);
+  window.sr = ScrollReveal();
+
+  sr.reveal('.portfolio-item', slideInConfig);
+  sr.reveal('.skill-item', fadeInConfig);
+
+  sr.reveal('.portfolio-item.aml',   { delay: 400  });
+  sr.reveal('.portfolio-item.tla',   { delay: 500  });
+  sr.reveal('.portfolio-item.qutrunning', { delay: 600 });
+  sr.reveal('.portfolio-item.quteb', { delay: 700 });
+  sr.reveal('.portfolio-item.daryl', { delay: 800 });
+  sr.reveal('.portfolio-item.aaron', { delay: 900 });
+
+  sr.reveal('.skill-item.one',   { delay: 400  });
+  sr.reveal('.skill-item.two',   { delay: 450  });
+  sr.reveal('.skill-item.three', { delay: 500 });
+  sr.reveal('.skill-item.four', { delay: 650 });
+  sr.reveal('.skill-item.five', { delay: 700 });
+  sr.reveal('.skill-item.six', { delay: 750 });
+  sr.reveal('.skill-item.seven', { delay: 800 });
+  sr.reveal('.skill-item.eight', { delay: 850 });
+  sr.reveal('.skill-item.nine', { delay: 900 });
+  sr.reveal('.skill-item.ten', { delay: 950 });
+  sr.reveal('.skill-item.eleven', { delay: 1000 });
+  sr.reveal('.skill-item.twelve', { delay: 1050 });
 }
 
 function bindVelocity(){
@@ -445,7 +449,7 @@ function bindVelocity(){
       }
       // scroll to each target
       if($(window).width() < 767){
-        $(target).velocity("scroll", { duration: 1000, offset: -51 });
+        $(target).velocity("scroll", { duration: 1000, offset: -52.5 });
       }
       else {
         $(target).velocity("scroll", 1000);
@@ -514,8 +518,17 @@ addScenes(scenes);
 
 Pace.on("done", function(){
     $('.preloader-wrap').fadeOut(1000);
+    var counter = 0;
 
-
+    //Only activate once
+    $(window).scroll(function() { 
+      if($(document).scrollTop() > 20 && $(window).width() > 767 && counter < 1){
+        $(".navbar-default").addClass("opaque");
+        $(".navbar-collapse .navbar-nav").addClass("opaque");
+        $(".arrow").addClass("opaque");
+        counter = 1;
+      }
+    });
     // Make sure that the header animation doesn't start until page load finishes
     setTimeout(function(){
 

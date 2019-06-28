@@ -39,6 +39,7 @@ body {
   width: 100%;
   transition: all 0.4s ease;
   position: relative;
+  z-index: 2;
 }
 .about, .portfolio, .skills, 
 .experience, .contact {
@@ -73,7 +74,7 @@ body {
   height: 100vh;
   left: 0;
   top: 0;
-  z-index: -1;
+  z-index: 1;
   position: fixed;
   background-size: cover;
   background-repeat: no-repeat;
@@ -140,6 +141,7 @@ body {
   color: #3b3b3b;
 }
 .portfolio-item {
+  visibility: none;
   float: left;
   width: 15.3%;
   max-width: 300px;
@@ -147,8 +149,8 @@ body {
   display: inline-block;
   border-radius: 6px;
   background: white;
-  transition: all 0.3s ease !important; /*Need to override scrollMagic.js inline styles*/
-	-webkit-transition: all 0.3s ease !important;
+  transition: all 0.3s ease; /*Need to override scrollMagic.js inline styles*/
+	-webkit-transition: all 0.3s ease;
 }
 .aml {
   background: url('../img/aml.jpg');
@@ -594,7 +596,7 @@ footer {
   -o-transition: all 0.1s ease;
   transition: all 0.1s ease;
 }
-#return-to-top:hover {
+.arrow:hover {
   background: rgba(0, 0, 0, 0.9);
 }
 
@@ -702,6 +704,9 @@ footer {
   .arrow {
     z-index: 101;
   }
+  .spacer {
+    min-width: 10px;
+  }
 }
 @media only screen and (max-width: 479px) {
   .title-text {
@@ -729,8 +734,6 @@ footer {
     padding: 20px 30px 60px 30px;    
   }
   .navbar-collapse {
-    border-top: 1px solid rgb(220, 66, 34);
-    border-bottom: 1px solid rgb(220, 66, 34);
     margin-top: 7.5px;
   }
   .skill-item {
@@ -766,6 +769,7 @@ footer {
   }
   .spacer {
     width: 2%;
+    min-width: 0;
     max-width: 20px;
   }
 }
