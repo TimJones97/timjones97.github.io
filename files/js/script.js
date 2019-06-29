@@ -254,7 +254,9 @@ function createGoTopArrow(){
     $('.arrow-img').css("background", "url('./files/img/icons/arrow_up.png");    // Change arrow to up
     $('.arrow').css("background", "rgba(0, 0, 0, 0.7)");    // Add background
     if($(window).width() > 767){
-      $('.arrow').css("bottom", "70px");
+      setTimeout(function(){ //Add delay in case of resizing
+        $('.arrow').css("bottom", "70px");
+      }, 200);
     }
     target = "#home";
   } 
@@ -262,7 +264,9 @@ function createGoTopArrow(){
     $('.arrow-img').css("background", "url('./files/img/icons/arrow_down.png");    // Change arrow to down
     $('.arrow').css("background", "none");    // Remove background
     if($(window).width() > 767){
-      $('.arrow').css("bottom", "6px");   
+      setTimeout(function(){
+        $('.arrow').css("bottom", "6px");   
+      }, 200);
     }
     target = "#about";
   }
@@ -271,7 +275,9 @@ function createGoTopArrow(){
       $('.arrow-img').css("background", "url('./files/img/icons/arrow_up.png");   
       $('.arrow').css("background", "rgba(0, 0, 0, 0.7)");  
       if($(window).width() > 767){
-        $('.arrow').css("bottom", "70px");  
+        setTimeout(function(){
+          $('.arrow').css("bottom", "70px");  
+        }, 200);
       }  
       target = "#home";
     } 
@@ -279,7 +285,9 @@ function createGoTopArrow(){
       $('.arrow-img').css("background", "url('./files/img/icons/arrow_down.png");    
       $('.arrow').css("background", "none");
       if($(window).width() > 767){
-        $('.arrow').css("bottom", "6px");
+        setTimeout(function(){
+          $('.arrow').css("bottom", "6px");
+        }, 200);
       }
       target = "#about";
     }
@@ -377,6 +385,9 @@ function createScrollRevealEffects(){
     origin: 'right',
     duration: 700,
     distance: '400px',
+    viewOffset: {
+      top: 250
+    },
     //If effect has already occured, remove styles applied by scrollReveal
     //to allow for hover transform effects to still occur
     afterReveal: function() {
@@ -392,6 +403,9 @@ function createScrollRevealEffects(){
     duration: 700,
     origin: 'right',
     distance: '400px',
+    viewOffset: {
+      top: 250
+    },
     afterReveal: function() {
       setTimeout(function(){
         $('.skill-item').removeAttr("style");
