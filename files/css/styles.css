@@ -159,7 +159,7 @@ body {
   transform: perspective(1px) scale(1.25);
   transition: opacity .5s ease, transform 5s ease;
   background-repeat: no-repeat;
-  background: url('../img/food.jpg');
+  background: url('../img/food_dssmld_c_scale,w_2560.jpg');
   background-blend-mode: multiply;
   background-color: rgba(0,0,0,0.5);
   background-position: 0% 30%;
@@ -238,27 +238,27 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 .aml {
-  background: url('../img/aml.jpg');
+  background: url('../img/aml_fwvuaa_c_scale,w_640.jpg');
 }
 .tla {
-  background: url('../img/tla.jpg');
+  background: url('../img/tla_mzabny_c_scale,w_640.jpg');
 }
 .qutrunning {
-  background: url('../img/qutrunning.jpg');
+  background: url('../img/qutrunning_hxt50h_c_scale,w_425.jpg');
 }
 .quteb {
-  background: url('../img/quteb.jpg');
+  background: url('../img/quteb_pltsn7_c_scale,w_500.jpg');
 }
 .daryl {
-  background: url('../img/daryl.jpg');
+  background: url('../img/daryl_nio8qn_c_scale,w_640.jpg');
 }
 .aaron {
-  background: url('../img/aaron.jpg');
+  background: url('../img/aaron_vyhhmm_c_scale,w_640.jpg');
 }
 .aml, .tla, .qutrunning,
 .quteb, .daryl, .aaron {
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
   background-position: 0% 20%;
@@ -752,6 +752,9 @@ footer {
     width: 19px;
     height: 15px;
   }
+  .food-background {
+    background: url('../img/food_dssmld_c_scale,w_1380.jpg');
+  }
 }
 @media only screen and (max-width: 767px) {
   .navbar-default {
@@ -796,6 +799,27 @@ footer {
     width: 1%;
     min-width: 5px;
     max-width: 5px;
+  }
+  .food-background {
+    background: url('../img/food_dssmld_c_scale,w_732.jpg');
+  }
+  .aaron {
+    background: url('../img/aaron_vyhhmm_c_scale,w_498.jpg');
+  }
+  .daryl {
+    background: url('../img/daryl_nio8qn_c_scale,w_491.jpg');
+  }
+  .aml {
+    background: url('../img/aml_fwvuaa_c_scale,w_541.jpg');
+  }
+  .tla {
+    background: url('../img/tla_mzabny_c_scale,w_531.jpg');
+  }
+  .quteb {
+    background: url('../img/quteb_pltsn7_c_scale,w_417.jpg');
+  }
+  .qutrunning {
+    background: url('../img/qutrunning_hxt50h_c_scale,w_370.jpg');
   }
 }
 @media only screen and (max-width: 479px) {
@@ -861,5 +885,20 @@ footer {
   }
   .portfolio-item {
     width: 100%;
+  }
+  .aaron {
+    background: url('../img/aaron_vyhhmm_c_scale,w_369.jpg');
+  }
+  .daryl {
+    background: url('../img/daryl_nio8qn_c_scale,w_372.jpg');
+  }
+  .aml {
+    background: url('../img/aml_fwvuaa_c_scale,w_393.jpg');
+  }
+  .tla {
+    background: url('../img/tla_mzabny_c_scale,w_531.jpg');
+  }
+  .quteb {
+    background: url('../img/quteb_pltsn7_c_scale,w_319.jpg');
   }
 }
