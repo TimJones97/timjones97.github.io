@@ -124,6 +124,7 @@ body {
   font-family: 'Proxima Nova Rg';
   font-variant: small-caps;
   font-weight: 700;
+  letter-spacing: 2px;
 }
 .about p {
   color: #636363;
@@ -183,9 +184,9 @@ body {
   border-radius: 6px;
   position: absolute;
   z-index: 3;
-  width: 90%; 
+  width: 90%;
 }
-.portfolio-description {
+.backdrop {
   background: rgba(0,0,0,0.7);
   position: absolute;
   height: 195px;
@@ -197,12 +198,13 @@ body {
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
 }
-.portfolio-description p {
+.portfolio-description {
   position: absolute;
-  margin-bottom: 7px;
-  bottom: 0px;
-  right: 12px;
+  margin-bottom: 0px;
+  bottom: 2px;
+  right: 30px;
   color: #e7e7e7;
+  z-index: 3;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
   font-family: 'Poppins', sans-serif;
@@ -228,9 +230,8 @@ body {
 .aml, .tla, .qutrunning,
 .quteb, .daryl, .aaron {
   background-size: cover;
-  background-blend-mode: multiply;
   background-repeat: no-repeat;
-  -webkit-transition: all 0.3s ease;
+  -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
   background-position: 0% 20%;
 }

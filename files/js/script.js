@@ -82,13 +82,13 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Melbourne Asset Management").animate({'opacity': 1}, 200);
       });
-      applyEffects($(this).find('.portfolio-description'));
+      applyEffects($(this).find('.backdrop'));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
-      resetEffects($(this).find('.portfolio-description'));
+      resetEffects($(this).find('.backdrop'));
     }
   );
   $(".tla").parent().hover(
@@ -96,13 +96,13 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Government and Defence Logistics Management").animate({'opacity': 1}, 200);
       });
-      applyEffects($(this).find('.portfolio-description'));
+      applyEffects($(this).find('.backdrop'));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
-      resetEffects($(this).find('.portfolio-description'));
+      resetEffects($(this).find('.backdrop'));
     }
   );
   $(".qutrunning").parent().hover(
@@ -110,13 +110,13 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Running Club of QUT").animate({'opacity': 1}, 200);
       });
-      applyEffects($(this).find('.portfolio-description'));
+      applyEffects($(this).find('.backdrop'));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
-      resetEffects($(this).find('.portfolio-description'));
+      resetEffects($(this).find('.backdrop'));
     }
   );
   $(".quteb").parent().hover(
@@ -124,13 +124,13 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Exchange Club of QUT").animate({'opacity': 1}, 200);
       });
-      applyEffects($(this).find('.portfolio-description'));
+      applyEffects($(this).find('.backdrop'));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
-      resetEffects($(this).find('.portfolio-description'));
+      resetEffects($(this).find('.backdrop'));
     }
   );
   $(".daryl").parent().hover(
@@ -138,13 +138,13 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Brisbane Entertainer").animate({'opacity': 1}, 200);
       });
-      applyEffects($(this).find('.portfolio-description'));
+      applyEffects($(this).find('.backdrop'));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
-      resetEffects($(this).find('.portfolio-description'));
+      resetEffects($(this).find('.backdrop'));
     }
   );
   $(".aaron").parent().hover(
@@ -152,13 +152,13 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Brisbane Entertainer and DJ").animate({'opacity': 1}, 200);
       });
-      applyEffects($(this).find('.portfolio-description'));
+      applyEffects($(this).find('.backdrop'));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
-      resetEffects($(this).find('.portfolio-description'));
+      resetEffects($(this).find('.backdrop'));
     }
   );
 }
