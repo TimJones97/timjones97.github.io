@@ -62,10 +62,10 @@ $( document ).ready(function() {
 });
 
 function applyEffects(element){
-  element.css("width", "100%");
+  element.css("width", "95%");
   element.css("height", "220px");
-  element.css("left", "0");
-  element.css("top", "0");
+  element.css("left", "0px");
+  element.css("top", "0px");
   element.css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
 }
 
@@ -159,6 +159,14 @@ function hoverEffects() {
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
       resetEffects($(this).find('.backdrop'));
+    }
+  );
+  $(".food-interact").hover(
+    function() {
+      $(".food-background").addClass("active");
+    },
+    function() {
+      $(".food-background").removeClass("active");
     }
   );
 }
