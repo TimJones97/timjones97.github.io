@@ -62,20 +62,24 @@ $( document ).ready(function() {
 });
 
 function applyEffects(element){
-  element.css("width", "95%");
-  element.css("height", "220px");
-  element.css("left", "0px");
-  element.css("top", "0px");
+  element.css("width", "100%");
+  element.css("height", "230px");
+  element.css("left", "-10px");
+  element.css("top", "-10px");
   element.css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
+
+  //Trigger the number fade in on element hover
+  element.prev().prev().css("left", "-15px");
+  element.prev().prev().css("opacity", "1");
 }
 
 function resetEffects(element){
-  element.css("width", "90%");
-  element.css("height", "195px");
-  element.css("left", "20px");
-  element.css("top", "20px");
-  element.css("box-shadow", "none");
+  element.removeAttr("style");
+
+  //For the number
+  element.prev().prev().removeAttr("style");
 }
+
 function hoverEffects() {
   $(".aml").parent().hover(
     function() {
@@ -169,6 +173,16 @@ function hoverEffects() {
       $(".food-background").removeClass("active");
     }
   );
+  // //Make skill item disappear on hover for 800ms
+  // $('.skill-item')
+  //   .mouseover(function() {
+  //     $(this).css("opacity", "0");
+  //   })
+  //   .mouseout(function() {
+  //     setTimeout( function(){
+  //       $(this).css("opacity", "1");
+  //     }, 3200);
+  //   });
 }
 
 function particleJSHoverEffects(){
