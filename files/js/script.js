@@ -52,13 +52,13 @@ $( document ).ready(function() {
     $(".arrow-down").addClass("opaque");
   }, 6000);
 
-  //Ensure page always loads from top
-  setTimeout(function(){
-    var scrollTop = $(this).scrollTop();
-    $("html, body").animate({
-        scrollTop: 0
-    }, 0);
-  }, 200);
+  // //Ensure page always loads from top
+  // setTimeout(function(){
+  //   var scrollTop = $(this).scrollTop();
+  //   $("html, body").animate({
+  //       scrollTop: 0
+  //   }, 0);
+  // }, 200);
   var theDate = new Date(); 
   $(".year").text(theDate.getFullYear());
 });
@@ -377,6 +377,7 @@ function setMainElements(){
 
 $(window).resize(function () { 
   // console.log('RESIZED'); 
+  $(".bars").removeClass("active");
   setMainElements();
 });
 

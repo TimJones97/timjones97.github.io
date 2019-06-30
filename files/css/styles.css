@@ -90,9 +90,6 @@ body {
   height: 100%;
   -webkit-animation: slide 0.8s forwards;
   animation: slide 0.8s forwards;
-  -webkit-animation-delay: 1.3s;
-  -moz-animation-delay: 1.3s;
-  animation-delay: 1.3s;
   padding: 20px;
   transition: all 0.7s ease;
   transform-origin: right;
@@ -656,7 +653,9 @@ footer {
     right: 10px;
   }
   .spacer {
-    /*display: none;*/
+    width: 1%;
+    min-width: 5px;
+    max-width: 5px;
   }
   .arrow {
     width: 40px;
@@ -703,9 +702,12 @@ footer {
   }
   .arrow {
     z-index: 101;
+    right: 6px;
   }
   .spacer {
-    min-width: 10px;
+    width: 1%;
+    min-width: 5px;
+    max-width: 5px;
   }
 }
 @media only screen and (max-width: 479px) {

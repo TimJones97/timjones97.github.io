@@ -1,10 +1,10 @@
 particlesJS("particles-js", {
   particles: {
     number: { value: 115, density: { enable: true, value_area: 800 } },
-    color: { value: "#e7e7e7" },
+    color: { value: "#393939" },
     shape: {
       type: "circle",
-      stroke: { width: 0, color: "#e7e7e7" },
+      stroke: { width: 0, color: "#000000" },
       polygon: { nb_sides: 5 },
     },
     opacity: {

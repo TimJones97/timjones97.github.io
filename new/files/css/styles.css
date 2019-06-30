@@ -1,0 +1,86 @@
+/*----------------------------------------------
+----------------------GENERAL--------------------
+------------------------------------------------*/
+
+body {
+  background: #dcdcdc;
+  overflow-x: hidden;
+}
+
+*::selection { 
+  background: rgb(255, 149, 1);
+  color: white;
+}
+
+@font-face {
+  font-family: "Brandon Grotesque Regular";
+  src: url("../fonts/brandon_reg.woff") format("woff");
+  src: url("../fonts/brandon_reg.woff2") format("woff2"),
+  url("../fonts/brandon_reg.otf") format("opentype");
+}
+
+/*----------------------------------------------
+-------------------MAIN SECTION-----------------
+------------------------------------------------*/
+
+.preloader-wrap {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  /*background: rgba(0,0,0,1);*/
+  z-index: 150;
+}
+.main, .about, .portfolio, 
+.skills, .experience, .contact {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 2;
+}
+.move-container {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  width:300px; height:120px;
+  margin: -60px 0 0 -150px;
+  transform: translate(-50%);
+}
+.wrapper {
+  width: 700px;
+  height: 300px;
+  background: #e7e7e7;
+  position: absolute;
+  border: 1px solid #3b3b3b;
+  transform-style: preserve-3d;
+  perspective: 800px;
+  box-shadow: 0 0 40px 20px rgba(0,0,0,.1);
+}
+.inner-box {
+  height: 30px;
+  border-bottom: 1px solid #3b3b3b;
+  color: #e7e7e7;
+}
+.box-right {
+  color: #3b3b3b;
+  float: right;
+  width: 100px;
+  height: 100%;
+  padding: 3px 0 0 10px;
+  font-weight: 300;
+  font-family: 'Open Sans', serif;
+  border-left: 1px solid #3b3b3b;
+}
+.title {
+  color: #3b3b3b;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 100%;
+  text-align: center;
+  transform: translate(-50%);
+  font-family: 'Raleway', sans-serif;
+}
