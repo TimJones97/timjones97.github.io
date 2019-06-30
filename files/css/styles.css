@@ -13,11 +13,21 @@ body {
 }
 
 @font-face {
-  font-family: "Brandon Grotesque Regular";
-  src: url("../fonts/brandon_reg.woff") format("woff");
-  src: url("../fonts/brandon_reg.woff2") format("woff2"),
-  url("../fonts/brandon_reg.otf") format("opentype");
+  font-family: 'Proxima Nova Rg';
+  src: url('../fonts/ProximaNova-Regular.woff2') format('woff2'),
+      url('../fonts/ProximaNova-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
+
+@font-face {
+  font-family: 'Futura PT';
+  src: url('../fonts/FuturaPT-Medium.woff2') format('woff2'),
+      url('../fonts/FuturaPT-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
 
 /*----------------------------------------------
 -------------------MAIN SECTION-----------------
@@ -66,8 +76,8 @@ body {
 .title-text h1 {
   font-size: 4em; 
   line-height: 1.1em;
-  font-family: 'Open Sans', serif;
-  font-weight: 200;
+  font-weight: 700;
+  font-family: 'Proxima Nova Rg';
 }
 #particles-js {
   width: 100%;
@@ -88,11 +98,11 @@ body {
   z-index: 100;
   opacity: 0.9;
   height: 100%;
-  -webkit-animation: slide 0.8s forwards;
-  animation: slide 0.8s forwards;
   padding: 20px;
   transition: all 0.7s ease;
   transform-origin: right;
+  animation-delay: 1s;
+  -webkit-animation-delay: 1s;
 }
 
 /*----------------------------------------------
@@ -105,20 +115,37 @@ body {
   padding: 80px 60px 90px 60px; 
 }
 .about h1 {
-  font-family: 'Open Sans', serif;
   color: black;
   font-size: 40px;
   margin-bottom: 50px;
 }
+.about h1, .portfolio h1, 
+.skills h1, .experience h1, .contact h1 {
+  font-family: 'Proxima Nova Rg';
+  font-variant: small-caps;
+  font-weight: 700;
+}
 .about p {
+  color: #636363;
   max-width: 1080px;
   font-family: 'Poppins', sans-serif;
   font-size: 15px;
 }
 .about p strong {
-  color: rgb(255, 149, 1)
+  color: rgb(255, 149, 1);
+  transition: all 0.3s ease; 
+  -webkit-transition: all 0.3s ease; 
 }
-
+.about p strong:hover {
+  cursor: default;
+  font-size: 16px;
+  color: rgb(220, 66, 34);
+}
+.leading-quote {
+  font-family: 'Proxima Nova Rg';
+  font-variant: small-caps;
+  font-weight: 700;
+}
 /*----------------------------------------------
 ------------------PORTFOLIO SECTION-----------------
 ------------------------------------------------*/
@@ -129,7 +156,6 @@ body {
   background: rgba(0,0,0,0.85);
 }
 .portfolio-title {
-  font-family: 'Open Sans', serif;
   font-size: 40px;
   margin-bottom: 60px;
   color: #fff;
@@ -138,16 +164,48 @@ body {
   color: #3b3b3b;
 }
 .portfolio-item {
-  visibility: none;
   float: left;
-  width: 15.3%;
-  max-width: 300px;
+  position: relative;
+  width: 31.5%;
+  max-width: 400px;
   margin: 0 auto;
   display: inline-block;
   border-radius: 6px;
-  background: white;
-  transition: all 0.3s ease; /*Need to override scrollMagic.js inline styles*/
+  transition: all 0.3s ease; 
 	-webkit-transition: all 0.3s ease;
+  height: 220px;
+  margin-bottom: 10px;
+}
+.portfolio-image {
+  top: 10px;
+  height: 170px;
+  left: 10px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 3;
+  width: 90%; 
+}
+.portfolio-description {
+  background: rgba(0,0,0,0.7);
+  position: absolute;
+  height: 195px;
+  width: 90%;
+  border-radius: 6px;
+  left: 20px;
+  top: 20px;
+  z-index: 2;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.portfolio-description p {
+  position: absolute;
+  margin-bottom: 7px;
+  bottom: 0px;
+  right: 12px;
+  color: #e7e7e7;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  font-family: 'Poppins', sans-serif;
 }
 .aml {
   background: url('../img/aml.jpg');
@@ -172,6 +230,9 @@ body {
   background-size: cover;
   background-blend-mode: multiply;
   background-repeat: no-repeat;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.4s ease;
+  background-position: 0% 20%;
 }
 .spacer {
   position: relative;
@@ -191,7 +252,6 @@ body {
   padding: 100px 60px 120px 60px; 
 }
 .skills h1 {
-  font-family: 'Open Sans', serif;
   font-size: 40px;
   margin-bottom: 60px;
 }
@@ -209,7 +269,7 @@ body {
 }
 .skill-item:hover {
   background: rgba(255, 149, 1, 0.6);
-  transform: scale(0.9);
+  transform: scale(1.03);
   -webkit-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
   -moz-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
   box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
@@ -229,14 +289,14 @@ body {
   background: rgba(0,0,0,0.8);
 }
 .experience h1 {
-  font-family: 'Open Sans', serif;
   font-size: 40px;
   color: #fff;
   margin-bottom: 30px;
 }
 .experience h3 {
-  font-family: 'Open Sans', serif;
+  font-family: 'Proxima Nova Rg';
   color: #fff;
+  font-variant: small-caps;
   font-size: 20px;
   margin-bottom: 20px;
 }
@@ -263,7 +323,7 @@ body {
 	-webkit-transition: all 0.3s ease;
 }
 .experience-item:hover {
-  transform: scale(0.96);
+  transform: scale(1.02);
   -webkit-box-shadow: -1px 3px 26px 0px rgba(0,0,0,0.75);
   box-shadow: -1px 3px 26px 0px rgba(0,0,0,0.75);
 }
@@ -303,15 +363,8 @@ body {
   background: #fff;
 }
 .contact h1 {
-  font-family: 'Open Sans', serif;
   font-size: 40px;
   margin-bottom: 50px;
-}
-.experience h3 {
-  font-family: 'Open Sans', serif;
-  color: #fff;
-  font-size: 20px;
-  margin-bottom: 20px;
 }
 .contact-item {
   float: left;
@@ -332,7 +385,7 @@ body {
 }
 .contact-item:hover {
   background: rgba(255, 149, 1, 0.6);
-  transform: scale(0.9);
+  transform: scale(1.03);
   -webkit-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
   -moz-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
   box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
@@ -458,13 +511,18 @@ footer {
 }
 .navbar-brand {
   opacity: 0;
+  position: fixed;
+  top: 5px;
+  left: 5px;
   transform: none !important;
   display: inline-block;
-  padding: 10px 0px 0px 14px;
+  padding: 0;
+  z-index: 999;
+  transition: all 0.4s ease;
 }
 .navbar-brand img {
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
 }
 .navbar-toggle {
   margin-top: 17px;
@@ -703,6 +761,7 @@ footer {
   .arrow {
     z-index: 101;
     right: 6px;
+    bottom: 16px !important;
   }
   .spacer {
     width: 1%;
@@ -742,7 +801,7 @@ footer {
     width: 23%;
   }
   .skill-item:hover {
-    transform: scale(0.9);
+    transform: scale(1.05);
   }
   .navbar-default .navbar-nav > li, .navbar-default .navbar-nav > li > a {
     line-height: 47px;
@@ -766,12 +825,12 @@ footer {
   .contact {
     padding: 20px 30px 20px 30px;    
   }
-  .arrow-down {
-    left: 20px;
-  }
   .spacer {
     width: 2%;
     min-width: 0;
     max-width: 20px;
+  }
+  .portfolio-item {
+    width: 100%;
   }
 }

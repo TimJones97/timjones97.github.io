@@ -8,13 +8,12 @@ var firstTime = true;
 $( document ).ready(function() {
 
   var delay = 6000;
-  //Ensure that the portfolio boxes are same as width for square shape
-  $(".portfolio-item").css("height", $(".portfolio-item").width());
 
   if($(window).width() < 991) {
     $(".main").css("height", $(window).innerHeight());
   }
 
+  hoverEffects();
   setMainElements();
   createGoTopArrow();
   animateNavbar();
@@ -39,16 +38,15 @@ $( document ).ready(function() {
     $(".navbar-collapse .navbar-nav").removeClass("transparent");
     if($(window).width() < 767){
       $(".navbar-default").addClass("opaque");
-      $(".navbar-brand").addClass("opaque");
       $(".navbar-collapse .navbar-nav").removeClass("opaque");
       $(".navbar-collapse .navbar-nav").addClass("transparent");
     }
     else{
       $(".navbar-default").addClass("opaque");
-      $(".navbar-brand").removeClass("opaque");
       $(".navbar-collapse .navbar-nav").addClass("opaque");
       $(".navbar-collapse .navbar-nav").removeClass("transparent");
     }
+    $(".navbar-brand").addClass("opaque");
     $(".arrow-down").addClass("opaque");
   }, 6000);
 
@@ -64,97 +62,103 @@ $( document ).ready(function() {
 });
 
 function applyEffects(element){
-  element.css("transform", "scale(0.95)");
+  element.css("width", "100%");
+  element.css("height", "220px");
+  element.css("left", "0");
+  element.css("top", "0");
   element.css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
 }
 
 function resetEffects(element){
-  element.css("transform", "scale(1)");
+  element.css("width", "90%");
+  element.css("height", "195px");
+  element.css("left", "20px");
+  element.css("top", "20px");
   element.css("box-shadow", "none");
 }
 function hoverEffects() {
-  $(".aml").hover(
+  $(".aml").parent().hover(
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("AML Advisory").animate({'opacity': 1}, 200);
+        $(".portfolio-title").text("Melbourne Asset Management").animate({'opacity': 1}, 200);
       });
-      applyEffects($(this));
+      applyEffects($(this).find('.portfolio-description'));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
-      resetEffects($(this));
+      resetEffects($(this).find('.portfolio-description'));
     }
   );
-  $(".tla").hover(
+  $(".tla").parent().hover(
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("The Logistics Alliance").animate({'opacity': 1}, 200);
+        $(".portfolio-title").text("Government and Defence Logistics Management").animate({'opacity': 1}, 200);
       });
-      applyEffects($(this));
+      applyEffects($(this).find('.portfolio-description'));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
-      resetEffects($(this));
+      resetEffects($(this).find('.portfolio-description'));
     }
   );
-  $(".qutrunning").hover(
+  $(".qutrunning").parent().hover(
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("QUT Running").animate({'opacity': 1}, 200);
+        $(".portfolio-title").text("Running Club of QUT").animate({'opacity': 1}, 200);
       });
-      applyEffects($(this));
+      applyEffects($(this).find('.portfolio-description'));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
-      resetEffects($(this));
+      resetEffects($(this).find('.portfolio-description'));
     }
   );
-  $(".quteb").hover(
+  $(".quteb").parent().hover(
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("QUT Exchange").animate({'opacity': 1}, 200);
+        $(".portfolio-title").text("Exchange Club of QUT").animate({'opacity': 1}, 200);
       });
-      applyEffects($(this));
+      applyEffects($(this).find('.portfolio-description'));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
-      resetEffects($(this));
+      resetEffects($(this).find('.portfolio-description'));
     }
   );
-  $(".daryl").hover(
+  $(".daryl").parent().hover(
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Daryl Murphy Entertainment").animate({'opacity': 1}, 200);
+        $(".portfolio-title").text("Brisbane Entertainer").animate({'opacity': 1}, 200);
       });
-      applyEffects($(this));
+      applyEffects($(this).find('.portfolio-description'));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
-      resetEffects($(this));
+      resetEffects($(this).find('.portfolio-description'));
     }
   );
-  $(".aaron").hover(
+  $(".aaron").parent().hover(
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Aaron Maybus Entertainer").animate({'opacity': 1}, 200);
+        $(".portfolio-title").text("Brisbane Entertainer and DJ").animate({'opacity': 1}, 200);
       });
-      applyEffects($(this));
+      applyEffects($(this).find('.portfolio-description'));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
-      resetEffects($(this));
+      resetEffects($(this).find('.portfolio-description'));
     }
   );
 }
@@ -163,7 +167,7 @@ function particleJSHoverEffects(){
   //Modify particles JS colours on hover
   $('#particles-js')
     .mouseover(function() {
-      const newColor = '#ff9501';
+      const newColor = '#dc4222';
       $.each(pJSDom[0].pJS.particles.array, function(i,p){
         pJSDom[0].pJS.particles.array[i].color.value = newColor;
         pJSDom[0].pJS.particles.array[i].color.rgb = hexToRgb(newColor);
@@ -171,7 +175,7 @@ function particleJSHoverEffects(){
       });
     })
     .mouseout(function() {
-      const newColor = '#9b9b9b';
+      const newColor = '#ff9501';
       $.each(pJSDom[0].pJS.particles.array, function(i,p){
         pJSDom[0].pJS.particles.array[i].color.value = newColor;
         pJSDom[0].pJS.particles.array[i].color.rgb = hexToRgb(newColor);
@@ -366,7 +370,6 @@ function setMainElements(){
         $(".navbar-collapse .navbar-nav").removeClass("transparent");
       }
     }
-    $(".portfolio-item").css("height", $(".portfolio-item").width());
     //Set firstTime as false after first execution of function
     firstTime = false;
   }, delay);
@@ -393,9 +396,8 @@ function createScrollRevealEffects(){
     //to allow for hover transform effects to still occur
     afterReveal: function() {
       setTimeout(function(){
-        $('.portfolio-item').removeAttr("style");
+        $('.portfolio-image').removeAttr("style");
         //Reset the height again after removal
-        $(".portfolio-item").css("height", $(".portfolio-item").width());
         hoverEffects();
       }, 1000);
     }
@@ -410,6 +412,7 @@ function createScrollRevealEffects(){
     afterReveal: function() {
       setTimeout(function(){
         $('.skill-item').removeAttr("style");
+        $('.portfolio-item').removeAttr("style");
         hoverEffects();
       }, 1600);
     }
@@ -419,25 +422,25 @@ function createScrollRevealEffects(){
   sr.reveal('.portfolio-item', slideInConfig);
   sr.reveal('.skill-item', fadeInConfig);
 
-  sr.reveal('.portfolio-item.aml',   { delay: 400  });
-  sr.reveal('.portfolio-item.tla',   { delay: 500  });
-  sr.reveal('.portfolio-item.qutrunning', { delay: 600 });
-  sr.reveal('.portfolio-item.quteb', { delay: 700 });
-  sr.reveal('.portfolio-item.daryl', { delay: 800 });
-  sr.reveal('.portfolio-item.aaron', { delay: 900 });
+  sr.reveal($('.portfolio-image.aml').parent(),  { delay: 400  });
+  sr.reveal($('.portfolio-image.tla').parent(),  { delay: 500  });
+  sr.reveal($('.portfolio-image.qutrunning').parent(),  { delay: 600 });
+  sr.reveal($('.portfolio-image.quteb').parent(),  { delay: 700 });
+  sr.reveal($('.portfolio-image.daryl').parent(),  { delay: 800 });
+  sr.reveal($('.portfolio-image.aaron').parent(),  { delay: 900 });
 
-  sr.reveal('.skill-item.one',   { delay: 400  });
-  sr.reveal('.skill-item.two',   { delay: 450  });
-  sr.reveal('.skill-item.three', { delay: 500 });
-  sr.reveal('.skill-item.four', { delay: 650 });
-  sr.reveal('.skill-item.five', { delay: 700 });
-  sr.reveal('.skill-item.six', { delay: 750 });
-  sr.reveal('.skill-item.seven', { delay: 800 });
-  sr.reveal('.skill-item.eight', { delay: 850 });
-  sr.reveal('.skill-item.nine', { delay: 900 });
-  sr.reveal('.skill-item.ten', { delay: 950 });
-  sr.reveal('.skill-item.eleven', { delay: 1000 });
-  sr.reveal('.skill-item.twelve', { delay: 1050 });
+  sr.reveal('.skill-item.one',  { delay: 400  });
+  sr.reveal('.skill-item.two',  { delay: 450  });
+  sr.reveal('.skill-item.three',  { delay: 500 });
+  sr.reveal('.skill-item.four',  { delay: 650 });
+  sr.reveal('.skill-item.five',  { delay: 700 });
+  sr.reveal('.skill-item.six',  { delay: 750 });
+  sr.reveal('.skill-item.seven',  { delay: 800 });
+  sr.reveal('.skill-item.eight',  { delay: 850 });
+  sr.reveal('.skill-item.nine',  { delay: 900 });
+  sr.reveal('.skill-item.ten',  { delay: 950 });
+  sr.reveal('.skill-item.eleven',  { delay: 1000 });
+  sr.reveal('.skill-item.twelve',  { delay: 1050 });
 }
 
 function bindVelocity(){
@@ -533,6 +536,8 @@ addScenes(scenes);
 
 Pace.on("done", function(){
     $('.preloader-wrap').fadeOut(1000);
+    $('.ribbon').css("animation", "slide 0.8s forwards");
+    $('.ribbon').css("-webkit-animation", "slide 0.8s forwards");
     var counter = 0;
 
     //Only activate once
@@ -544,6 +549,7 @@ Pace.on("done", function(){
         counter = 1;
       }
     });
+
     // Make sure that the header animation doesn't start until page load finishes
     setTimeout(function(){
 
@@ -649,5 +655,6 @@ Pace.on("done", function(){
         .setTween(displayT2)
         .addTo(controller);
       });
+      $(".navbar-brand").addClass("opaque");
     }, delay);
 });
