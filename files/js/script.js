@@ -22,15 +22,8 @@ $( document ).ready(function() {
   bindVelocity();
 
   $(window).scroll(function() { 
-    animateNavbar();
-    //If the dropdown menu on mobile is open
-    if ($(".in").length){
-      $("body").css("overflow-y", "hidden");
-    } 
-    //Prevent scrolling until menu is closed
-    else {
-      $("body").css("overflow-y", "scroll");
-    }
+    animateNavbar();   
+    preventScrollOnMenuOpen();
   });
   //Ensure that the arrow-down and navbar elements have an opacity of 1 at all times
   //following the fade in animation
@@ -61,15 +54,32 @@ $( document ).ready(function() {
   $(".year").text(theDate.getFullYear());
 });
 
+
+function preventScrollOnMenuOpen(){
+  //If the dropdown menu on mobile is open
+  if ($(".collapse.in").length){
+    $("body").css("overflow-y", "hidden");
+    //If user scrolls when menu open 
+    //Then closes menu without selection
+    //Check if the menu has been closed after 1000msecs
+    setTimeout(function(){
+      preventScrollOnMenuOpen();
+    }, 1500);
+  } 
+  //Prevent scrolling until menu is closed
+  else {
+    $("body").css("overflow-y", "scroll");
+  }
+}
 function applyEffects(element){
   element.css("width", "100%");
   element.css("height", "230px");
-  element.css("left", "-10px");
-  element.css("top", "-10px");
+  element.css("left", "-8px");
+  element.css("top", "-8px");
   element.css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
 
   //Trigger the number fade in on element hover
-  element.prev().prev().css("left", "-15px");
+  element.prev().prev().css("left", "-25px");
   element.prev().prev().css("opacity", "1");
 }
 
@@ -244,7 +254,7 @@ function animateNavbar(){
   else {
     $(".navbar-nav").addClass("fade-last");
     //Scroll position is in About section
-    if($(document).scrollTop() > 10) {
+    if($(document).scrollTop() > 1) {
       addWhiteNavDesktop();
     }
     //Scroll position is in Main section
@@ -558,8 +568,8 @@ addScenes(scenes);
 
 Pace.on("done", function(){
     $('.preloader-wrap').fadeOut(1000);
-    $('.ribbon').css("animation", "slide 0.8s forwards");
     $('.ribbon').css("-webkit-animation", "slide 0.8s forwards");
+    $('.ribbon').css("animation", "slide 0.8s forwards");
     var counter = 0;
 
     //Only activate once

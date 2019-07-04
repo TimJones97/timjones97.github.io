@@ -12,6 +12,10 @@ body {
   color: white;
 }
 
+p {
+  transition: all 0.4s ease; 
+}
+
 @font-face {
   font-family: 'Proxima Nova Rg';
   src: url('../fonts/ProximaNova-Regular.woff2') format('woff2'),
@@ -94,15 +98,15 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  background: black;
+  background: #0b0028;
   z-index: 100;
   opacity: 0.9;
   height: 100%;
   padding: 20px;
   transition: all 0.7s ease;
   transform-origin: right;
-  animation-delay: 1s;
   -webkit-animation-delay: 1s;
+  animation-delay: 1s;
 }
 
 /*----------------------------------------------
@@ -135,8 +139,8 @@ body {
 }
 .about p strong {
   color: rgb(255, 149, 1);
-  transition: all 0.3s ease; 
   -webkit-transition: all 0.3s ease; 
+  transition: all 0.3s ease; 
 }
 /*.about p strong:hover {
   cursor: default;
@@ -161,14 +165,14 @@ body {
   background-repeat: no-repeat !important;
   background: url('../img/food_dssmld_c_scale,w_2560.jpg');
   background-blend-mode: multiply;
-  background-color: rgba(0,0,0,0.5) !important;
+  background-color: rgba(255,255,255,0.5) !important;
   background-position: 0% 30% !important;
   background-size: cover !important;
   transition: all 0.8s ease;
 }
 
 .food-background.active {
-  opacity: 0.25;
+  opacity: 0.3;
   transform: perspective(1px) scale(1);
   transition: opacity .5s ease, transform 2s ease;
 }
@@ -184,11 +188,13 @@ body {
 .portfolio {
   padding: 80px 60px 100px 60px;
   overflow: hidden;
-  background: rgba(0,0,0,0.85);
+  background: rgba(6, 0, 21, 0.9);
 }
 .portfolio-title {
   font-size: 40px;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
+  height: 80px;
+  box-sizing: border-box;
   color: #fff;
 }
 .about h1, .skills h1, .contact h1 {
@@ -197,15 +203,21 @@ body {
 .portfolio-item {
   float: left;
   position: relative;
-  width: 31.5%;
-  max-width: 400px;
+  width: 32.5%;
+  max-width: 440px;
   margin: 0 auto;
   display: inline-block;
   border-radius: 6px;
-  transition: all 0.3s ease; 
 	-webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease; 
   height: 220px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
+}
+.portfolio .spacer {
+  max-width: 10px;
+  width: 1%;
+  display: inline-block;
+  height: 1px;
 }
 .number {
   font-family: 'Futura PT';
@@ -244,7 +256,7 @@ body {
   position: absolute;
   margin-bottom: 0px;
   bottom: -1px;
-  right: 30px;
+  right: 35px;
   color: #e7e7e7;
   z-index: 3;
   font-family: 'Poppins', sans-serif;
@@ -327,7 +339,7 @@ body {
 .experience {
   overflow: hidden;
   padding: 60px 60px 60px 60px; 
-  background: rgba(0,0,0,0.8);
+  background: rgba(6, 0, 21, 0.9);
 }
 .experience h1 {
   font-size: 40px;
@@ -360,8 +372,8 @@ body {
   display: inline-block;
   border-radius: 6px;
   background: white;
+  -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
-	-webkit-transition: all 0.3s ease;
 }
 .experience-item:hover {
   transform: scale(1.02);
@@ -421,8 +433,8 @@ body {
   padding-bottom: 20px;
   position: relative;
   display: inline-block;
+  -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
-	-webkit-transition: all 0.3s ease;
 }
 .contact-item:hover {
   background: rgba(255, 149, 1, 0.6);
@@ -439,8 +451,8 @@ body {
   width: 50%;
   max-width: 70px;
   display: block;
-  transition: all 0.3s ease;
 	-webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 .contact-image img {
   width: 100%;
@@ -553,7 +565,7 @@ footer {
 .navbar-brand {
   opacity: 0;
   position: fixed;
-  top: 5px;
+  top: 3px;
   left: 5px;
   transform: none !important;
   display: inline-block;
@@ -721,14 +733,21 @@ footer {
 /*----------------------------------------------
 ------------------MEDIA QUERIES-----------------
 ------------------------------------------------*/
-
+@media only screen and (min-width: 2000px){
+  .portfolio-item {
+    max-width: 350px;
+  }
+  .portfolio-description {
+    right: 30px;
+  }
+}
 @media only screen and (max-width: 991px) {
   .skill-item {
     width: 15%;
     margin-bottom: 6px;
   }
   .portfolio-item {
-    width: 31%;
+    width: 49%;
     margin-bottom: 10px;
     margin-right: 0;
   }
@@ -772,7 +791,10 @@ footer {
   }
   .portfolio-description {
     bottom: 2px;
-    right: 13px;
+    right: 23px;
+  }
+  .portfolio-title {
+    margin-bottom: 0px;
   }
 }
 @media only screen and (max-width: 767px) {
@@ -792,8 +814,9 @@ footer {
   .navbar-default .navbar-collapse, .navbar-default .navbar-form {
     margin-top: 3px;
   }
-  .navbar-collapse.in {
-    margin-top: 3px;
+  .navbar-collapse.in,
+  .navbar-collapse.collapsing {
+    margin-top: 8px;
   }
   .about, .portfolio, .skills, .experience, .contact {
     padding: 40px;
@@ -850,6 +873,10 @@ footer {
   .work-experience .spacer {
     height: 0;
   }
+  .navbar-brand img {
+    width: 45px;
+    height: 45px;
+  }
 }
 @media only screen and (max-width: 479px) {
   .title-text {
@@ -872,6 +899,9 @@ footer {
   }
   .contact h1 {
     margin-bottom: 30px;
+  }
+  .portfolio h1 {
+    margin-bottom: 10px;
   }
   .skills {
     padding: 20px 30px 60px 30px;    
@@ -929,5 +959,11 @@ footer {
   }
   .quteb {
     background: url('../img/quteb_pltsn7_c_scale,w_319.jpg');
+  }
+  .work-experience .spacer {
+    height: 7px;
+  }
+  .portfolio-description {
+    right: 26px;
   }
 }
