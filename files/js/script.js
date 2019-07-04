@@ -236,9 +236,9 @@ function addWhiteNavDesktop(){
   $(".navbar-default").css("border-top", "none");
   $(".navbar-collapse").css("background-color", "none");
 }
-function addBlackNavDesktop(){
+function addDarkNavDesktop(){
   $(".navbar-nav li a").css("color", "white");
-  $(".navbar-default").css("background-color", "rgb(27, 27, 27)");
+  $(".navbar-default").css("background-color", "rgb(30, 25, 44)");
   $(".navbar-default").css("border-top", "none");
   $(".navbar-collapse").css("background-color", "none");
 }
@@ -264,7 +264,7 @@ function animateNavbar(){
     }
     //Scroll position is in Portfolio section
     if($(document).scrollTop() > (($(".about").outerHeight()) + 10)) {
-      addBlackNavDesktop();
+      addDarkNavDesktop();
     }
     //Scroll position is in Skills section
     if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight())  + 10)) {
@@ -272,7 +272,7 @@ function animateNavbar(){
     }
     //Scroll position is in Experience section
     if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight() + $(".skills").outerHeight())  + 10)) {
-      addBlackNavDesktop();
+      addDarkNavDesktop();
     }
     //Scroll position is in Experience section
     if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight() + $(".skills").outerHeight() + $(".experience").outerHeight())  + 10)) {
