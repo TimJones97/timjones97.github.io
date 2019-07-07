@@ -7,11 +7,10 @@ var firstTime = true;
 
 $( document ).ready(function() {
 
-  var delay = 6000;
-
   if($(window).width() < 991) {
     $(".main").css("height", $(window).innerHeight());
   }
+  $(".bars").removeClass("active");
 
   hoverEffects();
   setMainElements();
@@ -183,6 +182,22 @@ function hoverEffects() {
       $(".food-background").removeClass("active");
     }
   );
+  $(".skill-item").click(function() {
+    var thisElement = $(this);
+    thisElement.css("opacity", "0");
+    setTimeout( function(){
+      $('skills').find("skill-item").css('opacity', '0');
+      thisElement.css("opacity", "1");
+    }, 1000);
+  });
+  $(".experience-item").click(function() {
+    var thisElement = $(this);
+    thisElement.css("opacity", "0");
+    setTimeout( function(){
+      $('experience').find("experience-item").css('opacity', '0');
+      thisElement.css("opacity", "1");
+    }, 1000);
+  });
   // //Make skill item disappear on hover for 800ms
   // $('.skill-item')
   //   .mouseover(function() {
@@ -422,7 +437,7 @@ function createScrollRevealEffects(){
     duration: 700,
     distance: '400px',
     viewOffset: {
-      top: 250
+      bottom: 250
     },
     //If effect has already occured, remove styles applied by scrollReveal
     //to allow for hover transform effects to still occur
@@ -446,7 +461,7 @@ function createScrollRevealEffects(){
         $('.skill-item').removeAttr("style");
         $('.portfolio-item').removeAttr("style");
         hoverEffects();
-      }, 1600);
+      }, 300);
     }
   }
   window.sr = ScrollReveal();
@@ -566,6 +581,7 @@ resizeTimeout = setTimeout(function() {
 // add initial scenes
 addScenes(scenes);
 
+Pace.restart();
 Pace.on("done", function(){
     $('.preloader-wrap').fadeOut(1000);
     $('.ribbon').css("-webkit-animation", "slide 0.8s forwards");

@@ -204,7 +204,6 @@ p {
   float: left;
   position: relative;
   width: 32.5%;
-  max-width: 440px;
   margin: 0 auto;
   display: inline-block;
   border-radius: 6px;
@@ -735,7 +734,7 @@ footer {
 ------------------------------------------------*/
 @media only screen and (min-width: 2000px){
   .portfolio-item {
-    max-width: 350px;
+    max-width: 300px;
   }
   .portfolio-description {
     right: 30px;
@@ -876,6 +875,9 @@ footer {
   .navbar-brand img {
     width: 45px;
     height: 45px;
+  }
+  .title-text {
+    left: 40px;
   }
 }
 @media only screen and (max-width: 479px) {
