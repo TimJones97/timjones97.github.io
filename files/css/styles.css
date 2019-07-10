@@ -918,12 +918,16 @@ footer {
     background-position: 53% 30% !important;
   }
   .skill-item {
-    margin-bottom: 5px;
-    margin-right: 5px;
+    margin-bottom: 3px;
+    margin-right: 3px;
     width: 15.8%;
   }
   .work-experience .spacer {
     height: 0;
+  }
+  .skills .spacer {
+    min-width: 0px;
+    max-width: 0px;
   }
   .navbar-brand img {
     width: 45px;
@@ -931,6 +935,13 @@ footer {
   }
   .title-text {
     left: 40px;
+  }
+  .about, .portfolio, .skills, 
+  .experience, .contact {
+    z-index: 102;
+  }
+  .main {
+    z-index: 101;
   }
 }
 @media only screen and (max-width: 479px) {

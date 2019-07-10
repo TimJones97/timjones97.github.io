@@ -5,55 +5,6 @@ var smScene;
 var scrollMagicEnabled = false;
 var firstTime = true;
 
-$( document ).ready(function() {
-
-  if($(window).width() < 991) {
-    $(".main").css("height", $(window).innerHeight());
-  }
-  $(".bars").removeClass("active");
-
-  hoverEffects();
-  setMainElements();
-  createGoTopArrow();
-  animateNavbar();
-  particleJSHoverEffects();
-  createScrollRevealEffects();
-  bindVelocity();
-
-  $(window).scroll(function() { 
-    animateNavbar();   
-    preventScrollOnMenuOpen();
-  });
-  //Ensure that the arrow-down and navbar elements have an opacity of 1 at all times
-  //following the fade in animation
-  setTimeout(function(){
-    $(".navbar-collapse .navbar-nav").removeClass("transparent");
-    if($(window).width() < 767){
-      $(".navbar-default").addClass("opaque");
-      $(".navbar-collapse .navbar-nav").removeClass("opaque");
-      $(".navbar-collapse .navbar-nav").addClass("transparent");
-    }
-    else{
-      $(".navbar-default").addClass("opaque");
-      $(".navbar-collapse .navbar-nav").addClass("opaque");
-      $(".navbar-collapse .navbar-nav").removeClass("transparent");
-    }
-    $(".navbar-brand").addClass("opaque");
-    $(".arrow-down").addClass("opaque");
-  }, 6000);
-
-  // //Ensure page always loads from top
-  // setTimeout(function(){
-  //   var scrollTop = $(this).scrollTop();
-  //   $("html, body").animate({
-  //       scrollTop: 0
-  //   }, 0);
-  // }, 200);
-  var theDate = new Date(); 
-  $(".year").text(theDate.getFullYear());
-});
-
-
 function preventScrollOnMenuOpen(){
   //If the dropdown menu on mobile is open
   if ($(".collapse.in").length){
@@ -578,9 +529,6 @@ resizeTimeout = setTimeout(function() {
 }, timeoutDuration);
 });
 
-// add initial scenes
-addScenes(scenes);
-
 Pace.restart();
 Pace.on("done", function(){
     $('.preloader-wrap').fadeOut(1000);
@@ -705,4 +653,49 @@ Pace.on("done", function(){
       });
       $(".navbar-brand").addClass("opaque");
     }, delay);
+});
+
+
+$( document ).ready(function() {
+
+  if($(window).width() < 991) {
+    $(".main").css("height", $(window).innerHeight());
+  }
+  $(".bars").removeClass("active");
+  
+  // add initial scenes
+  addScenes(scenes);
+  setMainElements();
+  hoverEffects();
+  createGoTopArrow();
+  animateNavbar();
+  particleJSHoverEffects();
+  createScrollRevealEffects();
+  bindVelocity();
+
+  $(window).scroll(function() { 
+    animateNavbar();   
+    preventScrollOnMenuOpen();
+  });
+
+  //Ensure that the arrow-down and navbar elements have an opacity of 1 at all times
+  //following the fade in animation
+  setTimeout(function(){
+    $(".navbar-collapse .navbar-nav").removeClass("transparent");
+    if($(window).width() < 767){
+      $(".navbar-default").addClass("opaque");
+      $(".navbar-collapse .navbar-nav").removeClass("opaque");
+      $(".navbar-collapse .navbar-nav").addClass("transparent");
+    }
+    else{
+      $(".navbar-default").addClass("opaque");
+      $(".navbar-collapse .navbar-nav").addClass("opaque");
+      $(".navbar-collapse .navbar-nav").removeClass("transparent");
+    }
+    $(".navbar-brand").addClass("opaque");
+    $(".arrow-down").addClass("opaque");
+  }, 6000);
+
+  var theDate = new Date(); 
+  $(".year").text(theDate.getFullYear());
 });
