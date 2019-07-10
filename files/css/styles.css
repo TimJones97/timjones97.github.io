@@ -53,6 +53,28 @@ p {
   /*background: rgba(0,0,0,1);*/
   z-index: 150;
 }
+.too-small-message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #3b3b3b;
+  z-index: 1000;
+  font-family: 'Proxima Nova Rg';
+  color: white;
+  text-align: center;
+  display: none;
+  transition: all 0.7s ease;
+  animation: fadeIn 0.6s forwards;
+}
+.too-small-message p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 17px;
+}
 .main, .about, .portfolio, 
 .skills, .experience, .contact {
   overflow: hidden;
@@ -226,16 +248,16 @@ p {
   height: 1px;
 }
 .number {
-  font-family: 'Futura PT';
+  font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  font-size: 70px;
-  color: #ff9501;
+  font-size: 15px;
+  color: #fff;
   transition: all 0.3s ease;
   opacity: 0;
   position: absolute;
-  top: -55px;
-  left: -50px;
-  z-index: 4;
+  left: 10px;
+  top: 50px;
+  z-index: 3;
 }
 .portfolio-image {
   top: 10px;
@@ -262,7 +284,7 @@ p {
   position: absolute;
   margin-bottom: 0px;
   bottom: -1px;
-  right: 35px;
+  right: 28px;
   color: #e7e7e7;
   z-index: 3;
   font-family: 'Poppins', sans-serif;
@@ -474,7 +496,7 @@ p {
 footer {
   display: inline-block;
   font-family: 'Poppins', sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   width: 100%;
   height: 100%;
   text-align: left;
@@ -736,6 +758,28 @@ footer {
   }
 }
 
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: perspective(1px) scale(1.5);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1px) scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: perspective(1px) scale(1.5);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1px) scale(1);
+  }
+}
+
 /*----------------------------------------------
 ------------------MEDIA QUERIES-----------------
 ------------------------------------------------*/
@@ -744,7 +788,7 @@ footer {
     max-width: 351px;
   }
   .portfolio-description {
-    right: 30px;
+    right: 28px;
   }
 }
 @media only screen and (max-width: 991px) {
@@ -845,8 +889,9 @@ footer {
   }
   .spacer {
     width: 1%;
-    min-width: 5px;
-    max-width: 5px;
+    min-width: 3px;
+    max-width: 3px;
+    max-height: 1px;
   }
   .food-background {
     background: url('../img/food_dssmld_c_scale,w_732.jpg');
@@ -874,6 +919,7 @@ footer {
   }
   .skill-item {
     margin-bottom: 5px;
+    margin-right: 5px;
     width: 15.8%;
   }
   .work-experience .spacer {
@@ -950,6 +996,7 @@ footer {
     width: 2%;
     min-width: 0;
     max-width: 20px;
+    height: 0;
   }
   .portfolio-item {
     width: 100%;
@@ -969,10 +1016,17 @@ footer {
   .quteb {
     background: url('../img/quteb_pltsn7_c_scale,w_319.jpg');
   }
-  .work-experience .spacer {
+  .work-experience .spacer,
+  .contact .spacer {
     height: 7px;
+    max-height: 7px;
   }
   .portfolio-description {
     right: 26px;
+  }
+}
+@media only screen and (max-width: 300px) {
+  .too-small-message {
+    display: block;  
   }
 }

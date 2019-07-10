@@ -72,14 +72,14 @@ function preventScrollOnMenuOpen(){
 }
 function applyEffects(element){
   element.css("width", "100%");
-  element.css("height", "230px");
+  element.css("height", "240px");
   element.css("left", "-8px");
-  element.css("top", "-8px");
+  element.css("top", "-18px");
   element.css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
 
   //Trigger the number fade in on element hover
-  element.prev().prev().css("left", "-25px");
-  element.prev().prev().css("opacity", "0.7");
+  element.prev().prev().css("top", "-11px");
+  element.prev().prev().css("opacity", "1");
 }
 
 function resetEffects(element){
