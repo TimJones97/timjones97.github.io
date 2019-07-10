@@ -372,7 +372,7 @@ function setMainElements(){
     firstTime = false;
   }, delay);
   setTimeout(function(){
-    $(".navbar-default").css("z-index", "102");
+    $(".navbar-default").css("z-index", "103");
   }, delay);
 }
 
