@@ -584,8 +584,8 @@ addScenes(scenes);
 Pace.restart();
 Pace.on("done", function(){
     $('.preloader-wrap').fadeOut(1000);
-    $('.ribbon').css("-webkit-animation", "slide 0.8s forwards");
     $('.ribbon').css("animation", "slide 0.8s forwards");
+    $('.ribbon').css("-webkit-animation", "slide 0.8s forwards");
     var counter = 0;
 
     //Only activate once
