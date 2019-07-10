@@ -531,110 +531,111 @@ resizeTimeout = setTimeout(function() {
 
 Pace.restart();
 Pace.on("done", function(){
-    $('.preloader-wrap').fadeOut(1000);
-    $('.ribbon').css("animation", "slide 0.8s forwards");
-    // $('.ribbon').css("-webkit-animation", "slide 0.8s forwards");
-    var counter = 0;
+  if ( $('.pace-progress').attr('data-progress-text') == '100%' ) {
+      $('.preloader-wrap').fadeOut(1000);
+      $('.ribbon').css("animation", "slide 0.8s forwards");
+      // $('.ribbon').css("-webkit-animation", "slide 0.8s forwards");
+      var counter = 0;
 
-    //Only activate once
-    $(window).scroll(function() { 
-      if($(document).scrollTop() > 20 && $(window).width() > 767 && counter < 1){
-        $(".navbar-default").addClass("opaque");
-        $(".navbar-collapse .navbar-nav").addClass("opaque");
-        $(".arrow").addClass("opaque");
-        counter = 1;
-      }
-    });
+      //Only activate once
+      $(window).scroll(function() { 
+        if($(document).scrollTop() > 20 && $(window).width() > 767 && counter < 1){
+          $(".navbar-default").addClass("opaque");
+          $(".navbar-collapse .navbar-nav").addClass("opaque");
+          $(".arrow").addClass("opaque");
+          counter = 1;
+        }
+      });
 
-    // Make sure that the header animation doesn't start until page load finishes
-    setTimeout(function(){
+      // Make sure that the header animation doesn't start until page load finishes
+      setTimeout(function(){
 
-      $(".title-text").each(function(index){
-      
-      // $colorBlue = "rgb(255, 156, 70)";
-      $colorOrange = "rgb(255, 149, 1)";
-      $colorRed = "rgb(220, 66, 34)";
-      
-      //create a timeline
-      var displayTl = new TimelineLite();
-      displayTl
-              .fromTo(this, 
-                     0.6,
-                     {autoAlpha: 0, x: 150},
-                     {autoAlpha: 1, ease:Power1.easeOut, x: 0}
-                     )
-              .staggerTo(this.getElementsByClassName("fade"), 
-                      1,
-                     {opacity: 1},
-                      0.5
-                     )
-              .staggerTo(this.getElementsByClassName("highlight-blue"), 
-                      0.5,
-                     {color: $colorOrange},
-                      0.5
-                     )
-              .staggerTo(this.getElementsByClassName("highlight-purple"), 
-                      0.5,
-                     {color: $colorRed},
-                      0.5
-                     )
-      //build a scene
-      var contentScene = new ScrollMagic.Scene({
-          triggerElement: ".panel"
-      })
-      .setTween(displayTl)
-      .addTo(controller);        
-    });
-  }, 700);
-
-  var delay = 4200;
-  if($(document).scrollTop() > 10 || $(window).width() < 767) {
-    if($(window).width() < 767 && $(document).scrollTop() > 10){
-      //If on mobile and the screen is past 10px scroll position, 
-      //make the arrow opaque instead of waiting for fade in animation
-      $(".arrow").addClass("opaque");
-    }
-    $(".fade-last").css("opacity", "1");
-    $(".navbar-brand").addClass("opaque");
-  }
-  else {    
-    setTimeout(function(){
-      $(".navbar-default").each(function(index){
-        var displayT2 = new TimelineLite();
-        displayT2
+        $(".title-text").each(function(index){
+        
+        // $colorBlue = "rgb(255, 156, 70)";
+        $colorOrange = "rgb(255, 149, 1)";
+        $colorRed = "rgb(220, 66, 34)";
+        
+        //create a timeline
+        var displayTl = new TimelineLite();
+        displayTl
                 .fromTo(this, 
-                       0.5,
-                       {autoAlpha: 0, x: 0},
-                       {autoAlpha: 1, ease:Power1.easeOut, x: 0},
-                       0.5,
+                       0.6,
+                       {autoAlpha: 0, x: 150},
+                       {autoAlpha: 1, ease:Power1.easeOut, x: 0}
                        )
-                .staggerTo(this.getElementsByClassName("navbar-brand"), 
-                        0.5,
+                .staggerTo(this.getElementsByClassName("fade"), 
+                        1,
                        {opacity: 1},
                         0.5
                        )
-                .staggerTo(this.getElementsByClassName("navbar-nav"), 
+                .staggerTo(this.getElementsByClassName("highlight-blue"), 
                         0.5,
-                       {opacity: 1},
+                       {color: $colorOrange},
                         0.5
                        )
-                
+                .staggerTo(this.getElementsByClassName("highlight-purple"), 
+                        0.5,
+                       {color: $colorRed},
+                        0.5
+                       )
         //build a scene
         var contentScene = new ScrollMagic.Scene({
             triggerElement: ".panel"
         })
-        .setTween(displayT2)
-        .addTo(controller);
+        .setTween(displayTl)
+        .addTo(controller);        
       });
-    }, 3200);
+    }, 700);
 
-    
-  }
-  //Less delay for arrow to fade in if on mobile
-  if($(window).width() < 767) {
-    delay = 3200;
-  }
-  setTimeout(function(){
+    var delay = 4200;
+    if($(document).scrollTop() > 10 || $(window).width() < 767) {
+      if($(window).width() < 767 && $(document).scrollTop() > 10){
+        //If on mobile and the screen is past 10px scroll position, 
+        //make the arrow opaque instead of waiting for fade in animation
+        $(".arrow").addClass("opaque");
+      }
+      $(".fade-last").css("opacity", "1");
+      $(".navbar-brand").addClass("opaque");
+    }
+    else {    
+      setTimeout(function(){
+        $(".navbar-default").each(function(index){
+          var displayT2 = new TimelineLite();
+          displayT2
+                  .fromTo(this, 
+                         0.5,
+                         {autoAlpha: 0, x: 0},
+                         {autoAlpha: 1, ease:Power1.easeOut, x: 0},
+                         0.5,
+                         )
+                  .staggerTo(this.getElementsByClassName("navbar-brand"), 
+                          0.5,
+                         {opacity: 1},
+                          0.5
+                         )
+                  .staggerTo(this.getElementsByClassName("navbar-nav"), 
+                          0.5,
+                         {opacity: 1},
+                          0.5
+                         )
+                  
+          //build a scene
+          var contentScene = new ScrollMagic.Scene({
+              triggerElement: ".panel"
+          })
+          .setTween(displayT2)
+          .addTo(controller);
+        });
+      }, 3200);
+
+      
+    }
+    //Less delay for arrow to fade in if on mobile
+    if($(window).width() < 767) {
+      delay = 3200;
+    }
+    setTimeout(function(){
       $(".arrow").each(function(index){
         var displayT2 = new TimelineLite();
         displayT2
@@ -653,6 +654,8 @@ Pace.on("done", function(){
       });
       $(".navbar-brand").addClass("opaque");
     }, delay);
+  } 
+    
 });
 
 
