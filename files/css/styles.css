@@ -710,8 +710,8 @@ footer {
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-.arrow:hover {
-  background: rgba(0, 0, 0, 0.9);
+.arrow:hover .arrow-img {
+  transform: scale(1.15);
 }
 
 /*----------------------------------------------
