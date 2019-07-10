@@ -12,6 +12,13 @@ body {
   color: white;
 }
 
+img {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
 p {
   transition: all 0.4s ease; 
 }
@@ -321,7 +328,7 @@ p {
 }
 .skill-item:hover {
   background: rgba(255, 149, 1, 0.6);
-  transform: scale(1.03);
+  transform: scale(1.05);
   -webkit-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
   -moz-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
   box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
@@ -437,7 +444,7 @@ p {
 }
 .contact-item:hover {
   background: rgba(255, 149, 1, 0.6);
-  transform: scale(1.03);
+  transform: scale(1.05);
   -webkit-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
   -moz-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
   box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
@@ -734,7 +741,7 @@ footer {
 ------------------------------------------------*/
 @media only screen and (min-width: 2000px){
   .portfolio-item {
-    max-width: 300px;
+    max-width: 351px;
   }
   .portfolio-description {
     right: 30px;

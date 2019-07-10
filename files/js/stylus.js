@@ -51,8 +51,8 @@ particlesJS("particles-js", {
         opacity: 8,
         speed: 3
       },
-      repulse: { distance: 200, duration: 0.4 },
-      push: { particles_nb: 10 },
+      repulse: { distance: 400, duration: 0.4 },
+      push: { particles_nb: 50 },
       remove: { particles_nb: 2 }
     }
   },

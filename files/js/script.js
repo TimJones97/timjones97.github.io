@@ -79,7 +79,7 @@ function applyEffects(element){
 
   //Trigger the number fade in on element hover
   element.prev().prev().css("left", "-25px");
-  element.prev().prev().css("opacity", "1");
+  element.prev().prev().css("opacity", "0.7");
 }
 
 function resetEffects(element){
