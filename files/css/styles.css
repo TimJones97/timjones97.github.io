@@ -785,7 +785,7 @@ footer {
 ------------------------------------------------*/
 @media only screen and (min-width: 2000px){
   .portfolio-item {
-    max-width: 351px;
+    max-width: 385px;
   }
   .portfolio-description {
     right: 28px;
