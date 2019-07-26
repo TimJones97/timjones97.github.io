@@ -883,7 +883,7 @@ footer {
     width: 100%;
   }
   .arrow {
-    z-index: 101;
+    z-index: 110;
     right: 6px;
     bottom: 16px !important;
   }

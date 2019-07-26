@@ -459,8 +459,10 @@ function bindVelocity(){
           target = "#about";
         }
         else {
-          $('.navbar-collapse.in').collapse('hide');
-          document.getElementById('bars').classList.toggle('active')
+          if($(window).width() < 767){
+            $('.navbar-collapse.in').collapse('hide');
+            document.getElementById('bars').classList.toggle('active');
+          }
         }
       }
       // scroll to each target
