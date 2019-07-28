@@ -24,13 +24,19 @@ p {
 }
 
 @font-face {
+  font-family: 'Proxima Nova Bold';
+  src: url('../fonts/ProximaNovaS-Bold.woff2') format('woff2'),
+      url('../fonts/ProximaNovaS-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
   font-family: 'Proxima Nova Rg';
   src: url('../fonts/ProximaNova-Regular.woff2') format('woff2'),
       url('../fonts/ProximaNova-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
-
 @font-face {
   font-family: 'Futura PT';
   src: url('../fonts/FuturaPT-Medium.woff2') format('woff2'),
@@ -155,9 +161,8 @@ p {
 }
 .about h1, .portfolio h1, 
 .skills h1, .experience h1, .contact h1 {
-  font-family: 'Proxima Nova Rg';
-  font-variant: small-caps;
-  font-weight: normal;
+  font-family: 'Proxima Nova Bold';
+  font-weight: bold;
   letter-spacing: 2px;
 }
 .about p {
