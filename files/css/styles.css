@@ -29,6 +29,7 @@ p {
       url('../fonts/ProximaNovaS-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
+  font-display: block;
 }
 @font-face {
   font-family: 'Proxima Nova Rg';
@@ -36,6 +37,7 @@ p {
       url('../fonts/ProximaNova-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+  font-display: block;
 }
 @font-face {
   font-family: 'Futura PT';
@@ -43,6 +45,7 @@ p {
       url('../fonts/FuturaPT-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
+  font-display: block;
 }
 
 
