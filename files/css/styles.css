@@ -42,6 +42,15 @@ p {
   font-display: block;
 }
 @font-face {
+  font-family: 'Proxima Nova Semi Bold';
+  src: url('../fonts/proxima-nova-semibold.woff2') format('woff2'),
+      url('../fonts/proxima-nova-semibold.woff') format('woff');
+  font-weight: 500;
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
   font-family: 'Futura PT';
   src: url('../fonts/FuturaPT-Medium.woff2') format('woff2'),
       url('../fonts/FuturaPT-Medium.woff') format('woff');
@@ -120,8 +129,7 @@ p {
 .title-text h1 {
   font-size: 4em; 
   line-height: 1.1em;
-  font-weight: 400;
-  font-family: 'Proxima Nova Rg';
+  font-family: 'Proxima Nova Semi Bold';
 }
 #particles-js {
   width: 100%;
