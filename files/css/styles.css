@@ -120,6 +120,7 @@ p {
 .title-text h1 {
   font-size: 4em; 
   line-height: 1.1em;
+  font-weight: 400;
   font-family: 'Proxima Nova Rg';
 }
 #particles-js {
@@ -166,6 +167,7 @@ p {
 .about h1, .portfolio h1, 
 .skills h1, .experience h1, .contact h1 {
   font-family: 'Proxima Nova Bold';
+  font-weight: bold;
   letter-spacing: 2px;
 }
 .about p {
