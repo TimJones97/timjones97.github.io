@@ -22,37 +22,50 @@ function preventScrollOnMenuOpen(){
   }
 }
 function applyEffects(element){
-  element.css("width", "100%");
-  element.css("height", "240px");
-  element.css("left", "-8px");
-  element.css("top", "-18px");
-  element.css("box-shadow", "-1px 3px 26px 0px rgba(0,0,0,0.75)");
-
-  //Trigger the number fade in on element hover
-  element.prev().prev().css("top", "-11px");
-  element.prev().prev().css("opacity", "1");
+  $(".portfolio-image").not(element).css("-webkit-filter", "blur(5px)");
+  $(".portfolio-image").not(element).css("filter", "blur(5px)");
+  $(".portfolio-image").not(element).css("opacity", "0.8");
+  // element.parent().css("transform", "scale(1.05)");
+  // $(".portfolio-image").parent().not(element.parent()).css("transform", "scale(0.95)");
+  $(".portfolio-image").not(element).next().css("opacity", "0.3");
 }
 
 function resetEffects(element){
   element.removeAttr("style");
-
-  //For the number
-  element.prev().prev().removeAttr("style");
+  $(".portfolio-image").not(element).removeAttr("style");
+  $(".portfolio-image").not(element).next().removeAttr("style");
+  // element.parent().removeAttr("style");
+  // $(".portfolio-image").parent().not(element.parent()).removeAttr("style");
+  // element.prev().prev().removeAttr("style");
 }
 
 function hoverEffects() {
-  $(".aml").parent().hover(
+  $(".brendan").parent().hover(
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Melbourne Asset Management").animate({'opacity': 1}, 200);
+        $(".portfolio-title").text("Brisbane Wedding Celebrant").animate({'opacity': 1}, 200);
       });
-      applyEffects($(this).find('.backdrop'));
+      applyEffects($(this).find(".portfolio-image"));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
-      resetEffects($(this).find('.backdrop'));
+      resetEffects($(this).find(".portfolio-image"));
+    }
+  );
+  $(".aml").parent().hover(
+    function() {
+      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
+        $(".portfolio-title").text("Melbourne Asset Management").animate({'opacity': 1}, 200);
+      });
+      applyEffects($(this).find(".portfolio-image"));
+    },
+    function() {
+      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
+        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
+      });
+      resetEffects($(this).find(".portfolio-image"));
     }
   );
   $(".tla").parent().hover(
@@ -60,13 +73,13 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Government and Defence Logistics Management").animate({'opacity': 1}, 200);
       });
-      applyEffects($(this).find('.backdrop'));
+      applyEffects($(this).find(".portfolio-image"));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
-      resetEffects($(this).find('.backdrop'));
+      resetEffects($(this).find(".portfolio-image"));
     }
   );
   $(".qutrunning").parent().hover(
@@ -74,13 +87,13 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Running Club of QUT").animate({'opacity': 1}, 200);
       });
-      applyEffects($(this).find('.backdrop'));
+      applyEffects($(this).find(".portfolio-image"));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
-      resetEffects($(this).find('.backdrop'));
+      resetEffects($(this).find(".portfolio-image"));
     }
   );
   $(".quteb").parent().hover(
@@ -88,13 +101,13 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Exchange Club of QUT").animate({'opacity': 1}, 200);
       });
-      applyEffects($(this).find('.backdrop'));
+      applyEffects($(this).find(".portfolio-image"));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
-      resetEffects($(this).find('.backdrop'));
+      resetEffects($(this).find(".portfolio-image"));
     }
   );
   $(".daryl").parent().hover(
@@ -102,13 +115,13 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Brisbane Entertainer").animate({'opacity': 1}, 200);
       });
-      applyEffects($(this).find('.backdrop'));
+      applyEffects($(this).find(".portfolio-image"));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
-      resetEffects($(this).find('.backdrop'));
+      resetEffects($(this).find(".portfolio-image"));
     }
   );
   $(".aaron").parent().hover(
@@ -116,13 +129,27 @@ function hoverEffects() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Brisbane Entertainer and DJ").animate({'opacity': 1}, 200);
       });
-      applyEffects($(this).find('.backdrop'));
+      applyEffects($(this).find(".portfolio-image"));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
         $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
       });
-      resetEffects($(this).find('.backdrop'));
+      resetEffects($(this).find(".portfolio-image"));
+    }
+  );
+  $(".new").parent().hover(
+    function() {
+      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
+        $(".portfolio-title").text("And more to come.").animate({'opacity': 1}, 200);
+      });
+      applyEffects($(this).find(".portfolio-image"));
+    },
+    function() {
+      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
+        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
+      });
+      resetEffects($(this).find(".portfolio-image"));
     }
   );
   $(".food-interact").hover(
@@ -359,8 +386,8 @@ function setMainElements(){
       }
     }
     if($(window).width() < 479){
-      $(".title-text").css("top", "52%");
-      $(".title-text").css("transform", "translate(0%, -52%");
+      $(".title-text").css("top", "58%");
+      $(".title-text").css("transform", "translate(0%, -59%");
     }
     else{
       if(!firstTime){
@@ -412,7 +439,7 @@ function createScrollRevealEffects(){
         $('.skill-item').removeAttr("style");
         $('.portfolio-item').removeAttr("style");
         hoverEffects();
-      }, 300);
+      }, 400);
     }
   }
   window.sr = ScrollReveal();
@@ -426,6 +453,7 @@ function createScrollRevealEffects(){
   sr.reveal($('.portfolio-image.quteb').parent(),  { delay: 700 });
   sr.reveal($('.portfolio-image.daryl').parent(),  { delay: 800 });
   sr.reveal($('.portfolio-image.aaron').parent(),  { delay: 900 });
+  sr.reveal($('.portfolio-image.new').parent(),  { delay: 1000 });
 
   sr.reveal('.skill-item.one',  { delay: 400  });
   sr.reveal('.skill-item.two',  { delay: 450  });

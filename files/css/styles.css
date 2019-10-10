@@ -22,7 +22,9 @@ img {
 p {
   transition: all 0.4s ease; 
 }
-
+b, strong {
+  font-weight: 200 !important; 
+}
 @font-face {
   font-family: 'Proxima Nova Bold';
   src: url('../fonts/ProximaNovaS-Bold.woff2') format('woff2'),
@@ -244,68 +246,63 @@ p {
   box-sizing: border-box;
   color: #fff;
 }
+.portfolio-container {
+  max-width: 1300px;
+}
 .about h1, .skills h1, .contact h1 {
   color: #3b3b3b;
 }
 .portfolio-item {
   float: left;
   position: relative;
-  width: 32.5%;
+  width: 45%;
+  max-width: 450px; 
   margin: 0 auto;
   display: inline-block;
-  border-radius: 6px;
-	-webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease; 
+  border-radius: 12px;
   height: 220px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.7s ease;
 }
-.portfolio .spacer {
+.spacer {
+  position: relative;
+  float: left;
   max-width: 10px;
   width: 1%;
+  height: 10px;
+}
+.portfolio .spacer {
+  max-width: 15px;
+  width: 15px;
   display: inline-block;
   height: 1px;
 }
-.number {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-  font-size: 15px;
-  color: #fff;
-  transition: all 0.3s ease;
-  opacity: 0;
-  position: absolute;
-  left: 10px;
-  top: 50px;
-  z-index: 3;
-}
 .portfolio-image {
-  top: 10px;
-  height: 170px;
-  left: 10px;
-  border-radius: 6px;
+  top: 0;
+  left: 0px;
   position: absolute;
-  z-index: 3;
-  width: 90%;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  transition: all 0.7s ease;
+  overflow: hidden;
+  -webkit-mask-image: -webkit-radial-gradient(white, white);
 }
-.backdrop {
-  background: rgba(0,0,0,0.7);
-  position: absolute;
-  height: 195px;
-  width: 90%;
-  border-radius: 6px;
-  left: 20px;
-  top: 30px;
-  z-index: 2;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-.portfolio-description {
+.portfolio-logo {
   position: absolute;
   margin-bottom: 0px;
-  bottom: -1px;
-  right: 28px;
-  color: #e7e7e7;
-  z-index: 3;
-  font-family: 'Poppins', sans-serif;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+}
+.brendan {
+  background: url('../img/brendan.jpg');
 }
 .aml {
   background: url('../img/aml_fwvuaa_c_scale,w_640.jpg');
@@ -317,7 +314,7 @@ p {
   background: url('../img/qutrunning_hxt50h_c_scale,w_425.jpg');
 }
 .quteb {
-  background: url('../img/quteb_pltsn7_c_scale,w_500.jpg');
+  background: url('../img/quteb.jpeg');
 }
 .daryl {
   background: url('../img/daryl_nio8qn_c_scale,w_640.jpg');
@@ -325,22 +322,78 @@ p {
 .aaron {
   background: url('../img/aaron_vyhhmm_c_scale,w_640.jpg');
 }
-.aml, .tla, .qutrunning,
-.quteb, .daryl, .aaron {
-  background-size: cover !important;
+.new {
+  background: url('../img/new.png');
+}
+.brendan-logo {
+  background: url('../img/logos/brendan.png');
+  background-color: #151712 !important;
+}
+.aml-logo {
+  background: url('../img/logos/aml.png');
+  background-color: #ffd499 !important;
+}
+.tla-logo {
+  background: url('../img/logos/tla.png');
+  background-color: #fff !important;
+}
+.qutrunning-logo {
+  background: url('../img/logos/qutrunning.png');
+  background-color: #e6f3fc !important;
+}
+.quteb-logo {
+  background: url('../img/logos/quteb.png');
+  background-color: #0386c5 !important;
+}
+.daryl-logo {
+  background: url('../img/logos/dme.png');
+  background-color: #0e0339 !important;
+}
+.aaron-logo {
+  background: url('../img/logos/aaron.png');
+  background-color: #210339 !important;
+}
+.new-logo {
+  background: url('../img/logos/question_mark.png');
+  background-color: #fff !important;
+}
+.brendan, .aml, .tla, .qutrunning,
+.quteb, .daryl, .aaron, .new {
+  background-size: 150% !important;
+  background-repeat: no-repeat !important;
+  -webkit-animation: slideRight 20s linear infinite;
+  animation: slideRight 20s linear infinite;
+}
+.brendan-logo, .aml-logo, .tla-logo, .qutrunning-logo,
+.quteb-logo, .daryl-logo, .aaron-logo, .new-logo {
+  background-size: 60% !important;
   background-repeat: no-repeat !important;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
-  background-position: 0% 20%;
+  background-position: 50% 50%;
 }
-.spacer {
-  position: relative;
-  float: left;
-  max-width: 10px;
-  width: 1%;
-  height: 10px;
+@-webkit-keyframes slideRight {
+  0%   { 
+    background-position: 0% 0%;
+  }
+  50%   { 
+    background-position: 100% 0%;
+  }
+  100%   { 
+    background-position: 0% 0%;
+  }
 }
-
+@keyframes slideRight {
+  0%   { 
+    background-position: 0% 20%;
+  }
+  50%   { 
+    background-position: 100% 20%;
+  }
+  100%   { 
+    background-position: 0% 20%;
+  }
+}
 /*----------------------------------------------
 ------------------SKILLS SECTION-----------------
 ------------------------------------------------*/
@@ -802,9 +855,6 @@ footer {
 ------------------MEDIA QUERIES-----------------
 ------------------------------------------------*/
 @media only screen and (min-width: 2000px){
-  .portfolio-item {
-    max-width: 385px;
-  }
   .portfolio-description {
     right: 28px;
   }
@@ -815,8 +865,8 @@ footer {
     margin-bottom: 6px;
   }
   .portfolio-item {
-    width: 49%;
-    margin-bottom: 10px;
+    width: 47%;
+    margin-bottom: 1.5%;
     margin-right: 0;
   }
  /* .aml, .tla, .quteb, .daryl {
@@ -842,6 +892,10 @@ footer {
     width: 1%;
     min-width: 5px;
     max-width: 5px;
+  }
+  .portfolio .spacer {
+    max-width: 1.5%;
+    width: 1.5%;
   }
   .arrow {
     width: 40px;
@@ -912,27 +966,6 @@ footer {
     max-height: 1px;
   }
   .food-background {
-    background: url('../img/food_dssmld_c_scale,w_732.jpg');
-  }
-  .aaron {
-    background: url('../img/aaron_vyhhmm_c_scale,w_498.jpg');
-  }
-  .daryl {
-    background: url('../img/daryl_nio8qn_c_scale,w_491.jpg');
-  }
-  .aml {
-    background: url('../img/aml_fwvuaa_c_scale,w_541.jpg');
-  }
-  .tla {
-    background: url('../img/tla_mzabny_c_scale,w_531.jpg');
-  }
-  .quteb {
-    background: url('../img/quteb_pltsn7_c_scale,w_417.jpg');
-  }
-  .qutrunning {
-    background: url('../img/qutrunning_hxt50h_c_scale,w_370.jpg');
-  }
-  .food-background {
     background-position: 53% 30% !important;
   }
   .skill-item {
@@ -964,12 +997,12 @@ footer {
 }
 @media only screen and (max-width: 479px) {
   .title-text {
-    left: 20px;
-    top: 52%;
-    transform: translate(0%, -52%) !important;
+    left: 27px;
+    top: 58% !important;
+    transform: translate(0%, -59%) !important;
   }
   .title-text h1 {
-    font-size: 2em;
+    font-size: 3em;
   }
   .about, .portfolio, .skills, .experience {
     padding: 20px 30px 20px 30px;    
@@ -1030,21 +1063,6 @@ footer {
   .portfolio-item {
     width: 100%;
   }
-  .aaron {
-    background: url('../img/aaron_vyhhmm_c_scale,w_369.jpg');
-  }
-  .daryl {
-    background: url('../img/daryl_nio8qn_c_scale,w_372.jpg');
-  }
-  .aml {
-    background: url('../img/aml_fwvuaa_c_scale,w_393.jpg');
-  }
-  .tla {
-    background: url('../img/tla_mzabny_c_scale,w_531.jpg');
-  }
-  .quteb {
-    background: url('../img/quteb_pltsn7_c_scale,w_319.jpg');
-  }
   .work-experience .spacer,
   .contact .spacer {
     height: 7px;
@@ -1052,6 +1070,12 @@ footer {
   }
   .portfolio-description {
     right: 24px;
+  }
+  .navbar-brand {
+    left: 22px;
+  }
+  .navbar-toggle {
+    margin-right: 32px;
   }
 }
 @media only screen and (max-width: 300px) {
