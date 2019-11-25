@@ -998,7 +998,7 @@ footer {
 @media only screen and (max-width: 479px) {
   .title-text {
     left: 27px;
-    top: 58% !important;
+    top: 59% !important;
     transform: translate(0%, -59%) !important;
   }
   .title-text h1 {
@@ -1076,6 +1076,9 @@ footer {
   }
   .navbar-toggle {
     margin-right: 32px;
+  }
+  .navbar-collapse {
+    padding-right: 29px;
   }
 }
 @media only screen and (max-width: 300px) {

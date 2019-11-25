@@ -386,7 +386,7 @@ function setMainElements(){
       }
     }
     if($(window).width() < 479){
-      $(".title-text").css("top", "58%");
+      $(".title-text").css("top", "59%");
       $(".title-text").css("transform", "translate(0%, -59%");
     }
     else{
