@@ -473,6 +473,7 @@ b, strong {
   background: white;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  cursor: default;
 }
 .experience-item:hover {
   transform: scale(1.02);
@@ -481,6 +482,7 @@ b, strong {
 }
 .experience-item h6 {
   font-size: 18px;
+  transition: all 0.3s ease;
 }
 .experience-item p {
   font-size: 13px;
