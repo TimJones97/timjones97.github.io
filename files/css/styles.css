@@ -3,7 +3,7 @@
 ------------------------------------------------*/
 
 body {
-  background: #FFF;
+  background: #000927;
   overflow-x: hidden;
 }
 
@@ -113,11 +113,50 @@ b, strong {
 .main {
   height: 100vh;
 }
-.fade, .fade-last {
+.fade {
+  margin-bottom: -80px;
+}
+.fade, .fade-second, .view-work {
+  margin-bottom: -80px;
   opacity: 0;
+  transition: margin 1s ease, padding 1s ease, opacity 2s ease; 
+}
+.fade-second {
+  margin-bottom: -100px;
+}
+.fade-last { 
+  position: absolute;
+  top: 200px;
+  overflow: hidden;
+  width: 200px;
+  height: 60px;
+}
+.view-work {
+  position: absolute;
+  margin-bottom: -150px;
+  transition: all 1s ease;
+  width: 200px;
+  border-radius: 6px;
+  border: 1px solid #acacac;
+  height: 60px;
+  background: transparent;
+  color: white;
+  opacity: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+}
+.highlight-blue,
+.highlight-purple {
+  transition: all 1s ease;
+}
+.highlight-blue.active {
+  color: #00a1ff;
+}
+.highlight-purple.active {
+  color: #8300ff;
 }
 .title-text {
-  color: #575757;
+  color: #fff;
   position: absolute;
   left: 60px;
   top: 49%;
@@ -158,7 +197,58 @@ b, strong {
   -webkit-animation-delay: 1s;
   animation-delay: 1s;
 }
-
+.background-wrapper {
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  transform: scale(1.245);
+  width: 100%;
+}
+.background-wrapper.active {
+  transform: scale(1.001);
+  transition: transform 2.5s cubic-bezier(.34,.615,.4,.985);
+}
+.background {
+  background-color: #000927;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  transform: translateY(-101%) translateZ(0);
+  width: 100%;
+  z-index: 200;
+}
+.background:before {
+  /*background-image: url(../img/background.jpg);*/
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateY(101%) translateZ(0); 
+}
+.background-wrapper[data-anim=true] .background,
+.background-wrapper[data-anim=true] .background video,
+.background-wrapper[data-anim=true] .background:before {
+  transform: translateY(0) translateZ(0);
+  transition: transform 1s cubic-bezier(.76,.09,.215,1);
+}
+.background video {
+  width: 100vw;
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateY(101%) translateZ(0); 
+}
 /*----------------------------------------------
 ------------------ABOUT SECTION-----------------
 ------------------------------------------------*/
@@ -590,16 +680,16 @@ footer {
   color: white;
   margin: 0 auto;
   width: 100%;
-  height: 53px;
+  height: 65px;
   -webkit-box-pack: start;
   -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
   justify-content: flex-start;
   background: none;
-  bottom: 0;
+  top: 0;
   left: 0;
   position: fixed;
-  transition: all 0.2s ease;
+  transition: all 0.7s ease;
 }
 .navbar {
   border-radius: 0px 0px 0px 0px;
@@ -701,6 +791,7 @@ footer {
 .navbar-default .navbar-nav > li > a {
   font-size: 13px;
   display: inherit;
+  line-height: 35px;
 }
 .navbar-toggle {
   -webkit-transition: all 0.4s;

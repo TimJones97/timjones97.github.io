@@ -240,12 +240,10 @@ function animateNavbar(){
   //If on mobile
   if($(window).width() < 767){
     $(".navbar-default").addClass("opaque");
-    $(".navbar-nav").removeClass("fade-last");
     addWhiteNav();
   }
   //If on desktop
   else {
-    $(".navbar-nav").addClass("fade-last");
     //Scroll position is in About section
     if($(document).scrollTop() > 1) {
       addWhiteNavDesktop();
@@ -336,7 +334,7 @@ function createGoTopArrow(){
 
 //Reset the elements that require resizing
 function setMainElements(){
-
+  $(".main").css("height", $(window).height() + "px");
   //Reset all styles on navbar if on desktop width
   if($(window).width() > 767) {
     $(".navbar-default").removeAttr("style");
@@ -563,7 +561,26 @@ Pace.restart();
 Pace.on("done", function(){
   if ( $('.pace-progress').attr('data-progress-text') == '100%' ) {
       $('.preloader-wrap').fadeOut(1000);
-      $('.ribbon').css("animation", "slide 0.8s forwards");
+      $(".background-wrapper").attr("data-anim","true");
+      $('.background-wrapper').addClass("active");
+      setTimeout(function(){
+        $('.fade').css("margin-bottom", "0px");
+        $('.fade').css("opacity", "1");
+      },1000);
+      setTimeout(function(){
+        $('.fade-second').css("opacity", "1");
+        $('.fade-second').css("margin-bottom", "0px")
+      },1300);
+      setTimeout(function(){
+        $('.view-work').css("opacity", "1");
+        $('.view-work').css("margin-bottom", "0px")
+      },1600);
+      setTimeout(function(){
+        $('.highlight-blue').addClass('active');
+      },2000);
+      setTimeout(function(){
+        $('.highlight-purple').addClass('active');
+      },2400);
       // $('.ribbon').css("-webkit-animation", "slide 0.8s forwards");
       var counter = 0;
 
@@ -577,46 +594,7 @@ Pace.on("done", function(){
         }
       });
 
-      // Make sure that the header animation doesn't start until page load finishes
-      setTimeout(function(){
-
-        $(".title-text").each(function(index){
-        
-        // $colorBlue = "rgb(255, 156, 70)";
-        $colorOrange = "rgb(255, 149, 1)";
-        $colorRed = "rgb(220, 66, 34)";
-        
-        //create a timeline
-        var displayTl = new TimelineLite();
-        displayTl
-                .fromTo(this, 
-                       0.6,
-                       {autoAlpha: 0, x: 150},
-                       {autoAlpha: 1, ease:Power1.easeOut, x: 0}
-                       )
-                .staggerTo(this.getElementsByClassName("fade"), 
-                        1,
-                       {opacity: 1},
-                        0.5
-                       )
-                .staggerTo(this.getElementsByClassName("highlight-blue"), 
-                        0.5,
-                       {color: $colorOrange},
-                        0.5
-                       )
-                .staggerTo(this.getElementsByClassName("highlight-purple"), 
-                        0.5,
-                       {color: $colorRed},
-                        0.5
-                       )
-        //build a scene
-        var contentScene = new ScrollMagic.Scene({
-            triggerElement: ".panel"
-        })
-        .setTween(displayTl)
-        .addTo(controller);        
-      });
-    }, 700);
+      
 
     var delay = 4200;
     if($(document).scrollTop() > 10 || $(window).width() < 767) {
@@ -630,33 +608,8 @@ Pace.on("done", function(){
     }
     else {    
       setTimeout(function(){
-        $(".navbar-default").each(function(index){
-          var displayT2 = new TimelineLite();
-          displayT2
-                  .fromTo(this, 
-                         0.5,
-                         {autoAlpha: 0, x: 0},
-                         {autoAlpha: 1, ease:Power1.easeOut, x: 0},
-                         0.5,
-                         )
-                  .staggerTo(this.getElementsByClassName("navbar-brand"), 
-                          0.5,
-                         {opacity: 1},
-                          0.5
-                         )
-                  .staggerTo(this.getElementsByClassName("navbar-nav"), 
-                          0.5,
-                         {opacity: 1},
-                          0.5
-                         )
-                  
-          //build a scene
-          var contentScene = new ScrollMagic.Scene({
-              triggerElement: ".panel"
-          })
-          .setTween(displayT2)
-          .addTo(controller);
-        });
+        $(".navbar-default").css("opacity", "1");
+        $(".arrow").css("opacity", "1");
       }, 3200);
 
       
@@ -665,25 +618,6 @@ Pace.on("done", function(){
     if($(window).width() < 767) {
       delay = 3200;
     }
-    setTimeout(function(){
-      $(".arrow").each(function(index){
-        var displayT2 = new TimelineLite();
-        displayT2
-                .fromTo(this, 
-                       0.2,
-                       {autoAlpha: 0, x: 0},
-                       {autoAlpha: 1, ease:Power1.easeOut, x: 0},
-                       0.2
-                       )
-        //build a scene
-        var contentScene = new ScrollMagic.Scene({
-            triggerElement: ".panel"
-        })
-        .setTween(displayT2)
-        .addTo(controller);
-      });
-      $(".navbar-brand").addClass("opaque");
-    }, delay);
   } 
     
 });
