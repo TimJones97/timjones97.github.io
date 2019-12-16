@@ -335,6 +335,17 @@ function createGoTopArrow(){
 //Reset the elements that require resizing
 function setMainElements(){
   $(".main").css("height", $(window).height() + "px");
+
+  //If the window is a square and not rectangular
+  if($(window).width() < $(window).height() * 1.5) {
+    $("video").css("height", "100vh");
+    $("video").css("width", "auto");
+  }
+  else {
+    $("video").css("height", "auto");
+    $("video").css("width", "100vw");
+  }
+  
   //Reset all styles on navbar if on desktop width
   if($(window).width() > 767) {
     $(".navbar-default").removeAttr("style");
