@@ -188,27 +188,6 @@ function hoverEffects() {
   //   });
 }
 
-function particleJSHoverEffects(){
-  //Modify particles JS colours on hover
-  $('#particles-js')
-    .mouseover(function() {
-      const newColor = '#dc4222';
-      $.each(pJSDom[0].pJS.particles.array, function(i,p){
-        pJSDom[0].pJS.particles.array[i].color.value = newColor;
-        pJSDom[0].pJS.particles.array[i].color.rgb = hexToRgb(newColor);
-        pJSDom[0].pJS.particles.line_linked.color_rgb_line = hexToRgb(newColor);
-      });
-    })
-    .mouseout(function() {
-      const newColor = '#ff9501';
-      $.each(pJSDom[0].pJS.particles.array, function(i,p){
-        pJSDom[0].pJS.particles.array[i].color.value = newColor;
-        pJSDom[0].pJS.particles.array[i].color.rgb = hexToRgb(newColor);
-        pJSDom[0].pJS.particles.line_linked.color_rgb_line = hexToRgb(newColor);
-      });
-  });
-}
-
 function addWhiteNav(){
   $(".navbar-nav li a").css("color", "black");
   $(".navbar-default").css("background-color", "rgba(255,255,255,0.9)");
@@ -222,18 +201,16 @@ function addTransparentNav(){
   $(".navbar-default").css("background-color", "transparent");
   $(".navbar-default").css("border-top", "none");
   $(".navbar-collapse").css("background-color", "none");
+  $(".navbar-nav li a").css("line-height", "80px");
+  $(".navbar-default").css("height", "100px");
 }
 function addWhiteNavDesktop(){
   $(".navbar-nav li a").css("color", "black");
   $(".navbar-default").css("background-color", "#fff");
   $(".navbar-default").css("border-top", "none");
   $(".navbar-collapse").css("background-color", "none");
-}
-function addDarkNavDesktop(){
-  $(".navbar-nav li a").css("color", "white");
-  $(".navbar-default").css("background-color", "rgb(30, 25, 44)");
-  $(".navbar-default").css("border-top", "none");
-  $(".navbar-collapse").css("background-color", "none");
+  $(".navbar-nav li a").css("line-height", "35px");
+  $(".navbar-default").css("height", "65px");
 }
 
 function animateNavbar(){
@@ -252,22 +229,6 @@ function animateNavbar(){
     else {
       //Make navbar transparent if scroll position is on main section
       addTransparentNav();
-    }
-    //Scroll position is in Portfolio section
-    if($(document).scrollTop() > (($(".about").outerHeight()) + 10)) {
-      addDarkNavDesktop();
-    }
-    //Scroll position is in Skills section
-    if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight())  + 10)) {
-      addWhiteNavDesktop();     
-    }
-    //Scroll position is in Experience section
-    if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight() + $(".skills").outerHeight())  + 10)) {
-      addDarkNavDesktop();
-    }
-    //Scroll position is in Experience section
-    if($(document).scrollTop() > (($(".about").outerHeight() + $(".portfolio").outerHeight() + $(".skills").outerHeight() + $(".experience").outerHeight())  + 10)) {
-      addWhiteNavDesktop();
     }
   }
 }
@@ -337,7 +298,7 @@ function setMainElements(){
   $(".main").css("height", $(window).height() + "px");
 
   //If the window is a square and not rectangular
-  if($(window).width() < $(window).height() * 1.5) {
+  if($(window).width() < $(window).height() * 1.7) {
     $("video").css("height", "100vh");
     $("video").css("width", "auto");
   }
@@ -647,7 +608,6 @@ $( document ).ready(function() {
   hoverEffects();
   createGoTopArrow();
   animateNavbar();
-  particleJSHoverEffects();
   createScrollRevealEffects();
   bindVelocity();
 

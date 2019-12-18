@@ -72,8 +72,11 @@ b, strong {
   position: fixed;
   top: 0;
   bottom: 0;
-  /*background: rgba(0,0,0,1);*/
+  background: #fff;
   z-index: 150;
+}
+.pace .pace-progress {
+  display: none !important;
 }
 .too-small-message {
   position: fixed;
@@ -265,14 +268,17 @@ b, strong {
 }
 .about h1 {
   color: black;
-  font-size: 40px;
   margin-bottom: 50px;
 }
 .about h1, .portfolio h1, 
 .skills h1, .experience h1, .contact h1 {
-  font-family: 'Proxima Nova Bold';
+  font-family: 'Proxima Nova Rg';
   font-weight: bold;
+  font-size: 42px;
   letter-spacing: 2px;
+}
+.about h1, .skills h1, .contact h1 {
+  color: #3b3b3b;
 }
 .about p {
   color: #636363;
@@ -334,7 +340,6 @@ b, strong {
   background: rgba(6, 0, 21, 0.9);
 }
 .portfolio-title {
-  font-size: 40px;
   margin-bottom: 30px;
   height: 80px;
   box-sizing: border-box;
@@ -342,9 +347,6 @@ b, strong {
 }
 .portfolio-container {
   max-width: 1300px;
-}
-.about h1, .skills h1, .contact h1 {
-  color: #3b3b3b;
 }
 .portfolio-item {
   float: left;
@@ -498,7 +500,6 @@ b, strong {
   padding: 100px 60px 120px 60px; 
 }
 .skills h1 {
-  font-size: 40px;
   margin-bottom: 60px;
 }
 .skill-item {
@@ -535,7 +536,6 @@ b, strong {
   background: rgba(6, 0, 21, 0.9);
 }
 .experience h1 {
-  font-size: 40px;
   color: #fff;
   margin-bottom: 30px;
 }
@@ -611,7 +611,6 @@ b, strong {
   background: #fff;
 }
 .contact h1 {
-  font-size: 40px;
   margin-bottom: 50px;
 }
 .contact-item {
@@ -693,18 +692,11 @@ footer {
   top: 0;
   left: 0;
   position: fixed;
-  transition: all 0.7s ease;
+  transition: all 0.4s ease;
 }
 .navbar {
   border-radius: 0px 0px 0px 0px;
   border: 0px;
-}
-.navbar-default {
-  width: 100%;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
 }
 .container {
   width: auto;
@@ -796,6 +788,7 @@ footer {
   font-size: 13px;
   display: inherit;
   line-height: 35px;
+  transition: all 0.4s ease;
 }
 .navbar-toggle {
   -webkit-transition: all 0.4s;
@@ -876,9 +869,7 @@ footer {
   height: 50px;
   z-index: 150;
   opacity: 0;
-  -webkit-border-radius: 35px;
-  -moz-border-radius: 35px;
-  border-radius: 35px;
+  border-radius: 4px;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
@@ -899,9 +890,6 @@ footer {
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
-}
-.arrow:hover .arrow-img {
-  transform: scale(1.15);
 }
 
 /*----------------------------------------------
