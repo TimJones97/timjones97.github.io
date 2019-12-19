@@ -3,7 +3,8 @@
 ------------------------------------------------*/
 
 body {
-  background: #000927;
+  background: #fff;
+  /*background: #000927;*/
   overflow-x: hidden;
 }
 
@@ -217,7 +218,7 @@ b, strong {
   transition: transform 2.5s cubic-bezier(.34,.615,.4,.985);
 }
 .background {
-  background-color: #000927;
+  /*background-color: #000927;*/
   height: 100%;
   left: 0;
   overflow: hidden;
