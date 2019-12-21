@@ -201,16 +201,19 @@ function addTransparentNav(){
   $(".navbar-default").css("background-color", "transparent");
   $(".navbar-default").css("border-top", "none");
   $(".navbar-collapse").css("background-color", "none");
-  $(".navbar-nav li a").css("line-height", "80px");
+  $(".navbar-nav li a").css("margin-top", "40px");
   $(".navbar-default").css("height", "100px");
+  $(".navbar-nav li a:hover").css("color", "#fff");
+  $(".navbar-default").removeClass("strip");
 }
 function addWhiteNavDesktop(){
   $(".navbar-nav li a").css("color", "black");
   $(".navbar-default").css("background-color", "#fff");
   $(".navbar-default").css("border-top", "none");
   $(".navbar-collapse").css("background-color", "none");
-  $(".navbar-nav li a").css("line-height", "35px");
-  $(".navbar-default").css("height", "65px");
+  $(".navbar-nav li a").css("margin-top", "10px");
+  $(".navbar-default").css("height", "75px");
+  $(".navbar-default").addClass("strip");
 }
 
 function animateNavbar(){
@@ -310,10 +313,18 @@ function setMainElements(){
   //Reset all styles on navbar if on desktop width
   if($(window).width() > 767) {
     $(".navbar-default").removeAttr("style");
-    $(".navbar-nav li a").removeAttr("style");
+    // $(".navbar-nav li a").removeAttr("style");
+    $( ".navbar-nav li a" ).each(function( index ) {
+      $(this).css('width', $(this).outerWidth() + 'px');
+    });
     $(".navbar-collapse").removeAttr("style");
     $(".ribbon").css("animation", "none");
     $(".navbar-collapse .navbar-nav").removeClass("transparent");
+  }
+  else {
+    $( ".navbar-nav li a" ).each(function( index ) {
+      $(this).css('width', '100%');
+    });
   }
 
   var delay = 1200;
