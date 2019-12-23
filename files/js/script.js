@@ -200,28 +200,28 @@ function navbarElementHoverAnim(){
 }
 function addWhiteNav(){
   $(".navbar-nav li a").css("color", "black");
-  $(".navbar-default").css("background-color", "rgba(255,255,255,0.9)");
-  $(".navbar-collapse").css("background-color", "rgba(255,255,255,0.9)");
+  $(".navbar-default").css("background-color", "rgba(59, 59, 59, 0.9)");
+  $(".navbar-collapse").css("background-color", "rgba(59, 59, 59, 0.9)");
   $(".navbar-default").css("border-top", "none");
-  $(".bars .line").css("stroke", "#3b3b3b");
+  $(".navbar-default").css("height", "57px");
 }
 function addTransparentNav(){
   //Make navbar transparent if scroll position is on main section
-  $(".navbar-nav li a").css("color", "white");
   $(".navbar-default").css("background-color", "transparent");
   $(".navbar-default").css("border-top", "none");
   $(".navbar-collapse").css("background-color", "none");
   $(".navbar-nav li a").css("margin-top", "40px");
   $(".navbar-default").css("height", "100px");
   $(".navbar-nav li a:hover").css("color", "#fff");
+  $(".navbar-nav li .navbar-brand").css("margin-top", "25px");
 }
 function addWhiteNavDesktop(){
-  $(".navbar-nav li a").css("color", "#fff");
   $(".navbar-default").css("background-color", "rgba(59, 59, 59, 0.9)");
   $(".navbar-default").css("border-top", "none");
   $(".navbar-collapse").css("background-color", "none");
   $(".navbar-nav li a").css("margin-top", "10px");
   $(".navbar-default").css("height", "75px");
+  $(".navbar-nav li .navbar-brand").css("margin-top", "-5px");
 }
 
 function animateNavbar(){
@@ -401,7 +401,7 @@ $(window).resize(function () {
 
 function createScrollRevealEffects(){
   var slideInConfig = {
-    origin: 'right',
+    origin: 'bottom',
     duration: 700,
     distance: '400px',
     viewOffset: {
@@ -419,7 +419,7 @@ function createScrollRevealEffects(){
   }
   var fadeInConfig = {
     duration: 700,
-    origin: 'right',
+    origin: 'bottom',
     distance: '400px',
     viewOffset: {
       top: 250
@@ -596,7 +596,6 @@ Pace.on("done", function(){
         $(".arrow").addClass("opaque");
       }
       $(".fade-last").css("opacity", "1");
-      $(".navbar-brand").addClass("opaque");
     }
     else {    
       setTimeout(function(){
@@ -641,24 +640,6 @@ $( document ).ready(function() {
     preventScrollOnMenuOpen();
     // fadeOutVideo();
   });
-
-  //Ensure that the arrow-down and navbar elements have an opacity of 1 at all times
-  //following the fade in animation
-  setTimeout(function(){
-    $(".navbar-collapse .navbar-nav").removeClass("transparent");
-    if($(window).width() < 767){
-      $(".navbar-default").addClass("opaque");
-      $(".navbar-collapse .navbar-nav").removeClass("opaque");
-      $(".navbar-collapse .navbar-nav").addClass("transparent");
-    }
-    else{
-      $(".navbar-default").addClass("opaque");
-      $(".navbar-collapse .navbar-nav").addClass("opaque");
-      $(".navbar-collapse .navbar-nav").removeClass("transparent");
-    }
-    $(".navbar-brand").addClass("opaque");
-    $(".arrow-down").addClass("opaque");
-  }, 6000);
 
   var theDate = new Date(); 
   $(".year").text(theDate.getFullYear());

@@ -527,7 +527,7 @@ b, strong {
   float: left;
   width: 7.13%;
   height: auto;
-  background: #d9d9d9;
+  background: #e5e5e5;
   padding: 10px;
   border-radius: 6px;
   overflow: hidden;
@@ -779,15 +779,11 @@ footer {
   color: inherit;
 }
 .navbar-brand {
-  opacity: 0;
-  position: fixed;
-  top: 3px;
-  left: 5px;
-  transform: none !important;
-  display: inline-block;
   padding: 0;
   z-index: 999;
+  width: 50px;
   transition: all 0.4s ease;
+  padding-left: 5px !important;
 }
 .navbar-brand img {
   width: 50px;
@@ -821,6 +817,13 @@ footer {
   margin-right: 10px;
   margin-bottom: 10px;
 }
+.navbar-default .navbar-nav li a:focus {
+  color: #fff;
+}
+.navbar-default .navbar-nav li a:hover,
+.navbar-default .navbar-nav li:hover a {
+  color: #e34c15 !important;
+}
 .navbar-toggle {
   -webkit-transition: all 0.4s;
   -moz-transition: all 0.4s;
@@ -837,12 +840,6 @@ footer {
 }
 .navbar-collapse.in  .navbar-nav {
   transition: all 0.3s ease-in-out;
-  opacity: 1 !important;
-}
-.transparent {
-  opacity: 0 !important;
-}
-.opaque {
   opacity: 1 !important;
 }
 /*----------------------------------------------
@@ -992,7 +989,7 @@ footer {
     margin-bottom: 6px;
   }
   .portfolio-item {
-    width: 47%;
+    max-width: 300px;
     margin-bottom: 1.5%;
     margin-right: 0;
   }
@@ -1045,6 +1042,12 @@ footer {
   .portfolio-title {
     margin-bottom: 0px;
   }
+  .fade-last {
+    top: 250px;
+  }
+  .title-text h1 {
+    font-size: 3.5em;
+  }
 }
 @media only screen and (max-width: 767px) {
   .navbar-default {
@@ -1065,7 +1068,7 @@ footer {
   }
   .navbar-collapse.in,
   .navbar-collapse.collapsing {
-    margin-top: 8px;
+    margin-top: 12px;
   }
   .about, .portfolio, .skills, .experience, .contact {
     padding: 40px;
@@ -1123,6 +1126,14 @@ footer {
   }
   .portfolio-item {
     max-width: 350px;
+  }
+  .experience-item h6 {
+    font-size: 17px;
+  }
+  .experience-logo {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
   }
 }
 @media only screen and (max-width: 479px) {
@@ -1208,7 +1219,7 @@ footer {
     margin-right: 32px;
   }
   .navbar-collapse {
-    padding-right: 31px;
+    padding-right: 23px;
   }
 }
 @media only screen and (max-width: 300px) {
