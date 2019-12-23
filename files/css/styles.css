@@ -9,7 +9,8 @@ body {
 }
 
 *::selection { 
-  background: rgb(255, 149, 1);
+  /*background: rgb(255, 149, 1);*/
+  background: #e34c15;
   color: white;
 }
 
@@ -112,7 +113,7 @@ b, strong {
 }
 .about, .portfolio, .skills, 
 .experience, .contact {
-  border-top: 2px solid rgb(255, 149, 1);
+  border-top: 2px solid #555;
 }
 .main {
   height: 100vh;
@@ -153,15 +154,15 @@ b, strong {
   background: #fff;
   color: #3b3b3b;
 }
-.highlight-blue,
+.highlight-red,
 .highlight-purple {
   transition: all 1s ease;
 }
-.highlight-blue.active {
-  color: #00a1ff;
+.highlight-red.active {
+  color: #e34c15;
 }
 .highlight-purple.active {
-  color: #8300ff;
+  color: #6002ee;
 }
 .title-text {
   color: #fff;
@@ -178,7 +179,9 @@ b, strong {
 .title-text h1 {
   font-size: 4em; 
   line-height: 1.1em;
-  font-family: 'Proxima Nova Semi Bold';
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.71px;;
 }
 #particles-js {
   width: 100%;
@@ -218,7 +221,7 @@ b, strong {
   transition: transform 3s cubic-bezier(.34,.615,.4,.985);
 }
 .background {
-  /*background-color: #000927;*/
+  background-color: #000927;
   height: 100%;
   left: 0;
   overflow: hidden;
@@ -257,6 +260,23 @@ b, strong {
   top: 0;
   transform: translateY(101%) translateZ(0); 
 }
+.video-overlay {
+  position:absolute;
+  left:0; 
+  top:0;
+  width:100%; 
+  height:100%;
+  display:inline-block;
+  background: -moz-linear-gradient(top, rgba(0,47,75,0.5) 0%, rgba(220, 66, 37, 0.5) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(220, 66, 37, 0.5)), color-stop(100%,rgba(0,47,75,0.5))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(0,47,75,0.5) 0%,rgba(220, 66, 37, 0.5) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(0,47,75,0.5) 0%,rgba(220, 66, 37, 0.5) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(0,47,75,0.5) 0%,rgba(220, 66, 37, 0.5) 100%); /* IE10+ */
+  background: linear-gradient(to bottom, rgba(0,47,75,0.5) 0%,rgba(220, 66, 37, 0.5) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f4b', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+  z-index: 200;
+  opacity: 0.8;
+}
 /*----------------------------------------------
 ------------------ABOUT SECTION-----------------
 ------------------------------------------------*/
@@ -268,23 +288,22 @@ b, strong {
   position: relative;
 }
 .about h1 {
-  color: black;
   margin-bottom: 50px;
 }
 .about h1, .portfolio h1, 
 .skills h1, .experience h1, .contact h1 {
-  font-family: 'Proxima Nova Rg';
-  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
   font-size: 42px;
-  letter-spacing: 2px;
 }
 .about h1, .skills h1, .contact h1 {
   color: #3b3b3b;
 }
 .about p {
-  color: #636363;
+  color: #3b3b3b;
   max-width: 1080px;
   font-family: 'Poppins', sans-serif;
+  font-weight: 200;
   font-size: 15px;
 }
 .about p strong {
@@ -338,7 +357,7 @@ b, strong {
 .portfolio {
   padding: 80px 60px 100px 60px;
   overflow: hidden;
-  background: rgba(6, 0, 21, 0.9);
+  background: #0d0d0d;
 }
 .portfolio-title {
   margin-bottom: 30px;
@@ -497,10 +516,11 @@ b, strong {
 
 .skills {
   overflow: hidden;
-  background: #fff;
+  background: #bfbfbf;
   padding: 100px 60px 120px 60px; 
 }
 .skills h1 {
+  color: #3b3b3b;
   margin-bottom: 60px;
 }
 .skill-item {
@@ -516,8 +536,9 @@ b, strong {
   display: inline-block;
 }
 .skill-item:hover {
-  background: rgba(255, 149, 1, 0.6);
-  transform: scale(1.05);
+  /*background: rgba(255, 149, 1, 0.6);*/
+  background: #fff;
+  transform: scale(0.95);
   -webkit-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
   -moz-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
   box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
@@ -534,7 +555,7 @@ b, strong {
 .experience {
   overflow: hidden;
   padding: 60px 60px 60px 60px; 
-  background: rgba(6, 0, 21, 0.9);
+  background: rgba(0,0,0,0.5);
 }
 .experience h1 {
   color: #fff;
@@ -542,7 +563,7 @@ b, strong {
 }
 .experience h3 {
   font-family: 'Proxima Nova Rg';
-  color: #fff;
+  color: #bfbfbf;
   font-variant: small-caps;
   font-size: 20px;
   margin-bottom: 20px;
@@ -571,7 +592,7 @@ b, strong {
   cursor: default;
 }
 .experience-item:hover {
-  transform: scale(1.02);
+  transform: scale(0.97);
   -webkit-box-shadow: -1px 3px 26px 0px rgba(0,0,0,0.75);
   box-shadow: -1px 3px 26px 0px rgba(0,0,0,0.75);
 }
@@ -633,7 +654,7 @@ b, strong {
 }
 .contact-item:hover {
   background: rgba(255, 149, 1, 0.6);
-  transform: scale(1.05);
+  transform: scale(0.95);
   -webkit-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
   -moz-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
   box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
@@ -693,26 +714,23 @@ footer {
   top: 0;
   left: 0;
   position: fixed;
-  transition: all 0.4s ease;
-}
-.navbar-default.strip:after {
-  display: block;
-  width: 0;
-  transition: width 2s ease;
-}
-.navbar-default.strip:after {
-  content: "";
-  background: url("../img/color_strip.jpg");
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background-size: cover;
-  height: 2px;
-  width: 0%;
+  transition: all 0.4s ease, background-size 2s ease;
 }
 .navbar {
   border-radius: 0px 0px 0px 0px;
   border: 0px;
+}
+.underline {
+  position: absolute;
+  bottom: 25px;
+  left: 15px;
+  width: 0%;
+  height: 2px;
+  border-bottom: 1px solid #e34c15;
+  transition: width 0.7s ease; 
+}
+.underline.full-width {
+  width: 100%;
 }
 .container {
   width: auto;
@@ -756,13 +774,6 @@ footer {
   font-weight: 200;
   color: #e7e7e7;
   transition: all 0.7s ease;
-  border-radius: 6px;
-}
-.navbar-default .navbar-nav li a:hover {
-  /*color: rgb(255, 149, 1) !important; */
-  /*color: #3b3b3b !important; */
-  border: 1px solid #acacac;
-  /*transform: rotate(2deg);*/
 }
 .navbar-default .navbar-nav .active a:focus {
   color: inherit;
@@ -970,6 +981,9 @@ footer {
   .portfolio-logo {
     width: 90px;
     height: 90px;
+  }
+  .background {
+    transform: translateY(-121%) translateZ(0);
   }
 }
 @media only screen and (max-width: 991px) {

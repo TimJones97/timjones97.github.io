@@ -188,6 +188,16 @@ function hoverEffects() {
   //   });
 }
 
+function navbarElementHoverAnim(){
+  $(".navbar-nav li").hover(
+    function() {
+      $(this).children().next().addClass('full-width');
+    },
+    function() {
+      $(this).children().next().removeClass('full-width');
+    }
+  );
+}
 function addWhiteNav(){
   $(".navbar-nav li a").css("color", "black");
   $(".navbar-default").css("background-color", "rgba(255,255,255,0.9)");
@@ -204,16 +214,14 @@ function addTransparentNav(){
   $(".navbar-nav li a").css("margin-top", "40px");
   $(".navbar-default").css("height", "100px");
   $(".navbar-nav li a:hover").css("color", "#fff");
-  $(".navbar-default").removeClass("strip");
 }
 function addWhiteNavDesktop(){
-  $(".navbar-nav li a").css("color", "black");
-  $(".navbar-default").css("background-color", "#fff");
+  $(".navbar-nav li a").css("color", "#fff");
+  $(".navbar-default").css("background-color", "rgba(59, 59, 59, 0.9)");
   $(".navbar-default").css("border-top", "none");
   $(".navbar-collapse").css("background-color", "none");
   $(".navbar-nav li a").css("margin-top", "10px");
   $(".navbar-default").css("height", "75px");
-  $(".navbar-default").addClass("strip");
 }
 
 function animateNavbar(){
@@ -315,7 +323,8 @@ function setMainElements(){
     $(".navbar-default").removeAttr("style");
     // $(".navbar-nav li a").removeAttr("style");
     $( ".navbar-nav li a" ).each(function( index ) {
-      $(this).css('width', $(this).outerWidth() + 'px');
+      //Set each of the underline to the width of each nav element text
+      $(this).next().css('max-width', $(this).width() + 'px');
     });
     $(".navbar-collapse").removeAttr("style");
     $(".ribbon").css("animation", "none");
@@ -559,7 +568,7 @@ Pace.on("done", function(){
         $('.view-work').css("margin-bottom", "0px")
       },1600);
       setTimeout(function(){
-        $('.highlight-blue').addClass('active');
+        $('.highlight-red').addClass('active');
       },2000);
       setTimeout(function(){
         $('.highlight-purple').addClass('active');
@@ -604,8 +613,12 @@ Pace.on("done", function(){
   } 
     
 });
-
-
+function fadeOutVideo(){
+  var height = ($(window).height() / 1.5);
+  $('video').css({
+    'opacity': ((height - $(document).scrollTop()) / (height))
+  });
+}
 $( document ).ready(function() {
 
   if($(window).width() < 991) {
@@ -619,12 +632,14 @@ $( document ).ready(function() {
   hoverEffects();
   createGoTopArrow();
   animateNavbar();
+  navbarElementHoverAnim();
   createScrollRevealEffects();
   bindVelocity();
 
   $(window).scroll(function() { 
     animateNavbar();   
     preventScrollOnMenuOpen();
+    // fadeOutVideo();
   });
 
   //Ensure that the arrow-down and navbar elements have an opacity of 1 at all times
