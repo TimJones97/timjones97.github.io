@@ -117,6 +117,8 @@ b, strong {
 }
 .main {
   height: 100vh;
+  box-sizing: border-box; 
+  transition: margin 1s ease; 
 }
 .fade {
   margin-bottom: -80px;
@@ -124,7 +126,9 @@ b, strong {
 .fade, .fade-second, .view-work {
   margin-bottom: -80px;
   opacity: 0;
-  transition: margin 1s ease, padding 1s ease, opacity 2s ease; 
+  display: block;
+  -webkit-transition: margin 1s ease, opacity 2s ease; 
+  transition: margin 1s ease, opacity 2s ease; 
 }
 .fade-second {
   margin-bottom: -100px;
