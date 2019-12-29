@@ -210,38 +210,24 @@ function addTransparentNav(){
   $(".navbar-default").css("background-color", "transparent");
   $(".navbar-default").css("border-top", "none");
   $(".navbar-collapse").css("background-color", "none");
-  // $( ".navbar-nav li a" ).each(function( index ) {
-  //     //Animate the margin of each nav element
-  //     $(this)
-  //     .delay(200)
-  //     .queue(function (next) { 
-  //       $(this).css("margin-top", "40px"); 
-  //       next(); 
-  //     });
-  // });
   $(".navbar-nav li a").css("margin-top", "40px");
   $(".navbar-default").css("height", "100px");
+  $(".navbar-nav li:nth-of-type(2)").css("padding-left", "40px");
   $(".navbar-nav li a:hover").css("color", "#fff");
   $(".navbar-nav li .navbar-brand").css("margin-top", "25px");
+  $(".navbar-brand").attr("src", "https://timothyjones.com.au/files/img/logo_nav_ow.png");
 }
 function addWhiteNavDesktop(){
   $(".navbar-default").css("background-color", "rgba(0, 0, 0, 0.8)");
   $(".navbar-default").css("border-top", "none");
   $(".navbar-default").css("display", "block");
   $(".navbar-collapse").css("background-color", "none");
-  // $( ".navbar-nav li a" ).each(function( index ) {
-  //   //Animate the margin of each nav element
-  //   $(this)
-  //   .delay(200)
-  //   .queue(function (next) { 
-  //     $(this).css("margin-top", "10px"); 
-  //     next(); 
-  //   });
-  // });
+  $(".navbar-nav li:nth-of-type(2)").css("padding-left", "0px");
   $(".navbar-nav li a").css("margin-top", "10px");
   $(".navbar-nav li a").css("opacity", "1");
   $(".navbar-default").css("height", "75px");
   $(".navbar-nav li .navbar-brand").css("margin-top", "-5px");
+  $(".navbar-brand").attr("src", "https://timothyjones.com.au/files/img/logo_nav_wo.png");
 }
 
 function animateNavbar(){
@@ -255,6 +241,10 @@ function animateNavbar(){
     //Scroll position is in About section
     if($(document).scrollTop() > 1) {
       addWhiteNavDesktop();     
+      $( ".navbar-nav li a" ).each(function( index ) {
+        //Set each of the underline to the width of each nav element text
+        $(this).next().css('max-width', $(this).width() + 'px');
+      });
     }
     //Scroll position is in Main section
     else {
@@ -484,9 +474,9 @@ function bindVelocity(){
       // set target to anchor's "href" attribute
       var target = $(this).attr('href');
 
-      if(target == "#home" || target == "#about" || target == "#portfolio" ||
-        target == "#portfolio2" || target == "#skills" || target == "#experience" || 
-        target == "#contact" || target == "#about2") {
+      if(target == "#home" || target == "#home2" || target == "#about" || 
+        target == "#portfolio" || target == "#portfolio2" || target == "#skills" || 
+        target == "#experience" || target == "#contact" || target == "#about2") {
 
         //If arrow up or arrow down pressed, convert ID to actual ID instead of toggling menu bar active class
         if(target == "#about2"){

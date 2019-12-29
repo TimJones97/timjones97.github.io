@@ -3,7 +3,7 @@
 ------------------------------------------------*/
 
 body {
-  background: #fff;
+  /*background: #fff;*/
   /*background: #000927;*/
   overflow-x: hidden;
 }
@@ -147,15 +147,17 @@ b, strong {
   color: white;
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
-  
+  transition: all 0.7s ease;
 }
 .view-work:hover {
   background: #fff;
   color: #3b3b3b;
 }
-.title-text h1,
-.title-text h1 span {
+.title-text h1 {
   transition: all 0.7s ease;
+}
+.title-text h1 span {
+  transition: color 0.5s ease;
 }
 .highlight-red.active {
   color: #e34c15;
@@ -214,6 +216,7 @@ b, strong {
   top: 0;
   transform: scale(1.245);
   width: 100%;
+  z-index: 20;
 }
 .background-wrapper.active {
   transform: scale(1.001);
@@ -228,7 +231,6 @@ b, strong {
   top: 0;
   transform: translateY(-101%) translateZ(0);
   width: 100%;
-  z-index: 200;
 }
 .background:before {
   /*background-image: url(../img/background.jpg);*/
@@ -271,9 +273,7 @@ b, strong {
   background: -o-linear-gradient(top, rgba(0, 37, 75, 0.5) 0%,rgb(82, 24, 24) 100%); /* Opera 11.10+ */
   background: -ms-linear-gradient(top, rgba(0, 37, 75, 0.5) 0%,rgb(82, 24, 24) 100%); /* IE10+ */
   background: linear-gradient(to bottom, rgba(0, 37, 75, 0.5) 0%,rgb(82, 24, 24) 100%); /* W3C */
-      background: linear-gradient(to bottom,rgba(0, 37, 75, 0.5) 0%,rgb(82, 24, 24) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f4b', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
-  z-index: 200;
   opacity: 0.6;
 }
 /*----------------------------------------------
@@ -568,7 +568,9 @@ b, strong {
 .experience {
   overflow: hidden;
   padding: 60px 60px 60px 60px; 
-  background: rgba(0,0,0,0.5);
+  display: inline-block;
+  background: linear-gradient(to bottom,rgba(0, 0, 0, 0.5) 0%,rgb(0, 0, 0) 100%);
+  margin-bottom: -4px;
 }
 .experience h1 {
   color: #fff;
@@ -772,13 +774,21 @@ footer {
 .navbar-default .navbar-nav li a::after {
   bottom: -4px;
 }
+.navbar-default .navbar-nav li,
+.navbar-default .navbar-nav li a {
+  font-size: 13px;
+  display: inherit;
+  line-height: 25px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
 .navbar-default .navbar-nav li a {
   color: white;
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
   font-weight: 200;
   color: #e7e7e7;
-  transition: all 0.7s ease;
+  transition: all 0.4s ease;
 }
 .navbar-default .navbar-nav li {
   -webkit-animation-name: fadeNavElements;
@@ -788,6 +798,8 @@ footer {
   animation-duration: 1000ms;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
+  transition: padding 0.5s ease;
+  transition-delay: 0.4s;
 }
 .navbar-default .navbar-nav li:nth-of-type(1) {
   -webkit-animation-delay: 200ms;
@@ -848,15 +860,6 @@ footer {
 .navbar-default .navbar-toggle:focus, 
 .navbar-default .navbar-toggle:hover {
     background-color: transparent;
-}
-.navbar-default .navbar-nav li,
-.navbar-default .navbar-nav li a {
-  font-size: 13px;
-  display: inherit;
-  line-height: 25px;
-  transition: all 0.4s ease;
-  margin-right: 10px;
-  margin-bottom: 10px;
 }
 .navbar-default .navbar-nav li a:focus {
   color: #fff;
@@ -1207,13 +1210,16 @@ footer {
   .navbar-default {
     display: block !important;
   }
+  .underline {
+    display: none;
+  }
 }
 @media only screen and (max-width: 479px) {
   .title-text {
     left: 27px;
   }
   .title-text h1 {
-    font-size: 2.2em;
+    font-size: 2.25em;
   }
   .about, .portfolio, .skills, .experience {
     padding: 20px 30px 40px 30px;    
