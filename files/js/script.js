@@ -204,6 +204,8 @@ function addWhiteNav(){
   $(".navbar-collapse").css("background-color", "rgba(0, 0, 0, 0.8)");
   $(".navbar-default").css("border-top", "none");
   $(".navbar-default").css("height", "57px");
+  $(".navbar-brand img").css('height', '50px');
+  $(".navbar-brand img").css('width', '50px');
 }
 function addTransparentNav(){
   //Make navbar transparent if scroll position is on main section
@@ -213,21 +215,29 @@ function addTransparentNav(){
   $(".navbar-nav li a").css("margin-top", "40px");
   $(".navbar-default").css("height", "100px");
   $(".navbar-nav li:nth-of-type(2)").css("padding-left", "40px");
+  $(".navbar-nav li:nth-of-type(2) .underline").css("left", "55px");
   $(".navbar-nav li a:hover").css("color", "#fff");
   $(".navbar-nav li .navbar-brand").css("margin-top", "25px");
-  $(".navbar-brand").attr("src", "https://timothyjones.com.au/files/img/logo_nav_ow.png");
+  $(".navbar-brand img").css('height', '70px');
+  $(".navbar-brand img").css('width', '70px');
+  $(".navbar-brand .first").css('opacity', '1');
+  $(".navbar-brand .second").css('opacity', '0');
 }
 function addWhiteNavDesktop(){
   $(".navbar-default").css("background-color", "rgba(0, 0, 0, 0.8)");
   $(".navbar-default").css("border-top", "none");
   $(".navbar-default").css("display", "block");
   $(".navbar-collapse").css("background-color", "none");
-  $(".navbar-nav li:nth-of-type(2)").css("padding-left", "0px");
   $(".navbar-nav li a").css("margin-top", "10px");
   $(".navbar-nav li a").css("opacity", "1");
   $(".navbar-default").css("height", "75px");
+  $(".navbar-nav li:nth-of-type(2)").css("padding-left", "10px");
+  $(".navbar-nav li:nth-of-type(2) .underline").css("left", "25px");
   $(".navbar-nav li .navbar-brand").css("margin-top", "-5px");
-  $(".navbar-brand").attr("src", "https://timothyjones.com.au/files/img/logo_nav_wo.png");
+  $(".navbar-brand img").css('height', '50px');
+  $(".navbar-brand img").css('width', '50px');
+  $(".navbar-brand .first").css('opacity', '0');
+  $(".navbar-brand .second").css('opacity', '1');
 }
 
 function animateNavbar(){

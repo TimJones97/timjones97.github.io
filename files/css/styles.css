@@ -734,7 +734,7 @@ footer {
   width: 0%;
   height: 2px;
   border-bottom: 1px solid #e34c15;
-  transition: width 0.7s ease; 
+  transition: width 0.7s ease, left 0.4s 0.3s ease; 
 }
 .underline.full-width {
   width: 100%;
@@ -799,7 +799,7 @@ footer {
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
   transition: padding 0.5s ease;
-  transition-delay: 0.4s;
+  transition-delay: 0.3s;
 }
 .navbar-default .navbar-nav li:nth-of-type(1) {
   -webkit-animation-delay: 200ms;
@@ -843,6 +843,19 @@ footer {
   width: 50px;
   height: 50px;
 }
+.navbar-brand .first,
+.navbar-brand .second {
+  position: absolute;
+  transition: opacity 0.3s ease, width 0.6s ease, height 0.6s ease;
+}
+.navbar-brand .first {
+  z-index: 1000;
+}
+.navbar-brand .second {
+  z-index: 1001;
+  opacity: 0;
+}
+
 .navbar-brand-mobile {
   display: none;
 }
