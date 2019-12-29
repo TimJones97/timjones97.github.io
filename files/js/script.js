@@ -200,8 +200,8 @@ function navbarElementHoverAnim(){
 }
 function addWhiteNav(){
   $(".navbar-nav li a").css("color", "black");
-  $(".navbar-default").css("background-color", "rgba(0, 0, 0, 0.8)");
-  $(".navbar-collapse").css("background-color", "rgba(0, 0, 0, 0.8)");
+  $(".navbar-default").css("background-color", "rgb(23, 23, 23)");
+  $(".navbar-collapse").css("background-color", "rgb(23, 23, 23)");
   $(".navbar-default").css("border-top", "none");
   $(".navbar-default").css("height", "57px");
   $(".navbar-brand img").css('height', '50px');
@@ -224,7 +224,7 @@ function addTransparentNav(){
   $(".navbar-brand .second").css('opacity', '0');
 }
 function addWhiteNavDesktop(){
-  $(".navbar-default").css("background-color", "rgba(0, 0, 0, 0.8)");
+  $(".navbar-default").css("background-color", "rgb(23, 23, 23)");
   $(".navbar-default").css("border-top", "none");
   $(".navbar-default").css("display", "block");
   $(".navbar-collapse").css("background-color", "none");
