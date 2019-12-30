@@ -28,15 +28,6 @@ b, strong {
   font-weight: 200 !important; 
 }
 @font-face {
-  font-family: 'Proxima Nova Bold';
-  src: url('../fonts/ProximaNovaS-Bold.woff2') format('woff2'),
-      url('../fonts/ProximaNovaS-Bold.woff') format('woff');
-  font-weight: 500;
-  font-weight: bold;
-  font-style: normal;
-  font-display: block;
-}
-@font-face {
   font-family: 'Proxima Nova Rg';
   src: url('../fonts/ProximaNova-Regular.woff2') format('woff2'),
       url('../fonts/ProximaNova-Regular.woff') format('woff');
@@ -45,24 +36,6 @@ b, strong {
   font-style: normal;
   font-display: block;
 }
-@font-face {
-  font-family: 'Proxima Nova Semi Bold';
-  src: url('../fonts/proxima-nova-semibold.woff2') format('woff2'),
-      url('../fonts/proxima-nova-semibold.woff') format('woff');
-  font-weight: 500;
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
-}
-@font-face {
-  font-family: 'Futura PT';
-  src: url('../fonts/FuturaPT-Medium.woff2') format('woff2'),
-      url('../fonts/FuturaPT-Medium.woff') format('woff');
-  font-weight: 500;
-  font-style: normal;
-  font-display: block;
-}
-
 
 /*----------------------------------------------
 -------------------MAIN SECTION-----------------
@@ -148,9 +121,29 @@ b, strong {
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
   transition: all 0.7s ease;
+  position: relative;
+  overflow: hidden;
+}
+.view-work:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 490%;
+  width: 140%;
+  background: #fff;
+  z-index: -1;
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+  -webkit-transform: translateX(-98%) translateY(0%) rotate(45deg);
+  transform: translateX(-98%) translateY(0%) rotate(45deg);
+}
+
+.view-work:hover:after {
+  -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+  transform: translateX(-9%) translateY(-25%) rotate(45deg);
 }
 .view-work:hover {
-  background: #fff;
   color: #3b3b3b;
 }
 .title-text h1 {
@@ -371,7 +364,7 @@ b, strong {
   float: left;
   position: relative;
   width: 45%;
-  max-width: 250px; 
+  max-width: 310px; 
   margin: 0 auto;
   display: inline-block;
   border-radius: 12px;
@@ -535,9 +528,25 @@ b, strong {
   color: #3b3b3b;
   margin-bottom: 60px;
 }
-.skill-item {
+.skills .spacer {
+  float: none;
+  display: inline-block;
+}
+.skill-row {
+  width: 25%;
+  max-width: 450px;
+  min-width: 330px;
   float: left;
-  width: 7.13%;
+  display: table;
+  border-collapse: separate;
+  border-spacing: 5px;
+}
+.skill-row.two,
+.skill-row.three {
+  margin-left: -5px;
+}
+.skill-item {
+  width: 24%;
   height: auto;
   background: #e5e5e5;
   padding: 10px;
@@ -545,8 +554,11 @@ b, strong {
   overflow: hidden;
   transition: all 0.3s ease;
 	-webkit-transition: all 0.3s ease; 
-  display: inline-block;
   transform: scale(1.0);
+  position: relative;
+  z-index: 1;
+  margin-right: 1%;
+  display: table-cell;
 }
 .skill-item:hover {
   /*background: rgba(255, 149, 1, 0.6);*/
@@ -555,6 +567,21 @@ b, strong {
   -webkit-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
   -moz-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
   box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
+}
+.skill-item.twelve img {
+  opacity: 1 !important;
+}
+.hidden-text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  position: absolute;
+  top: 56%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: 0;
+  color: #6b6b6b;
 }
 .skill-item img { 
   width: 100%;
@@ -1038,6 +1065,13 @@ footer {
     width: 90px;
     height: 90px;
   }
+  .skill-row {
+    min-width: 570px;
+    max-width: 570px;
+  }
+  .hidden-text {
+    font-size: 25px;
+  }
   .background {
     transform: translateY(-121%) translateZ(0);
   }
@@ -1102,6 +1136,18 @@ footer {
   }
   .title-text h1 {
     font-size: 3.5em;
+  }
+  .skill-row.two, .skill-row.three {
+    margin-left: 0px;
+  }
+  .skill-row {
+    width: 100%;
+    max-width: 580px;
+    margin-top: 5px;
+    -webkit-border-vertical-spacing: 0;
+  }
+  .hidden-text {
+    font-size: 20px; 
   }
 }
 @media only screen and (max-width: 767px) {
@@ -1207,6 +1253,8 @@ footer {
   }
   .portfolio-item h2 {
     display: block;
+    bottom: -27px;
+    font-size: 12px;
   }
   .navbar-collapse .navbar-nav {
     opacity: 0;
@@ -1294,6 +1342,7 @@ footer {
   }
   .portfolio-item {
     width: 100%;
+    max-width: 100%;
     margin-bottom: 0;
   }
   .portfolio-container .spacer {
@@ -1328,6 +1377,9 @@ footer {
     left: 16px;
     z-index: 201;
     display: block;
+  }
+  .hidden-text {
+    font-size: 12px; 
   }
 }
 @media only screen and (max-width: 300px) {

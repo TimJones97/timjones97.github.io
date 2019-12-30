@@ -162,10 +162,12 @@ function hoverEffects() {
   );
   $(".skill-item").hover(function() {
     var thisElement = $(this);
-    thisElement.css("opacity", "0");
+    thisElement.find('img').css("opacity", "0");
+    thisElement.find('.hidden-text').css("opacity", "1");
     setTimeout( function(){
-      $('skills').find("skill-item").css('opacity', '0');
-      thisElement.css("opacity", "1");
+      $('skills').find("skill-item img").css('opacity', '0');
+      thisElement.find('img').css("opacity", "1");
+      thisElement.find('.hidden-text').css("opacity", "0");
     }, 1000);
   });
   $(".experience-item").click(function() {
@@ -427,6 +429,7 @@ function createScrollRevealEffects(){
         setTimeout(function(){
           $('.skill-item').removeAttr("style");
           $('.portfolio-item').removeAttr("style");
+          // $(".hidden-text").css('opacity', '0');
           hoverEffects();
         }, 400);
       }
