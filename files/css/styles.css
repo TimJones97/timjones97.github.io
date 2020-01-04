@@ -3,7 +3,7 @@
 ------------------------------------------------*/
 
 body {
-  /*background: #fff;*/
+  /*background: #3b3b3b;*/
   /*background: #000927;*/
   overflow-x: hidden;
 }
@@ -47,8 +47,40 @@ b, strong {
   position: fixed;
   top: 0;
   bottom: 0;
-  background: #fff;
+  background: #3b3b3b;
   z-index: 150;
+}
+.loader-centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100px;
+  width: 100px;
+}
+.loader-img,
+.loader-img-two {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+.loader-img-two {
+  -webkit-animation: fadeLoader 2s infinite;
+  animation: fadeLoader 2s infinite;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeLoader {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 .pace .pace-progress {
   display: none !important;
@@ -567,9 +599,6 @@ b, strong {
   -webkit-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
   -moz-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
   box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
-}
-.skill-item.twelve img {
-  opacity: 1 !important;
 }
 .hidden-text {
   font-family: 'Poppins', sans-serif;
