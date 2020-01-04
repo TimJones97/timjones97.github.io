@@ -92,7 +92,7 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	background: url(tiny_background.jpg);
+	background: url(background.jpg);
 	background-size: cover !important;
 	height: 100%;
 	width: 100%;
@@ -133,6 +133,6 @@
 	    bottom: 0%;
 	}
 	.background {
-		background: url(background.jpg);
+		background: url(tiny_background.jpg);
 	}
 }
