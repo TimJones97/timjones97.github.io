@@ -4,12 +4,12 @@ $( document ).ready(function() {
   if($(window).width() < 767){
     $(".cracker").hover(
       function() {
-        $(".touch-message").css("opacity", "0");
+        $(".touch-message").text("Close egg").animate({'opacity': 1}, 100);
         $(".background").addClass('active')
         $('.background').css('opacity', '0.5');
       },
       function() {
-        $(".touch-message").css("opacity", "1");
+          $(".touch-message").text("Tap the egg!").animate({'opacity': 1}, 100);
         $(".background").removeClass('active')
       $('.background').css('opacity', '0');
       }
