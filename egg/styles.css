@@ -81,7 +81,24 @@
 	transition: all 0.4s ease;
 	z-index: 20;
 }
-
+.background {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: url(tiny_background.jpg);
+	background-size: cover !important;
+	height: 100%;
+	width: 100%;
+	z-index: -1;
+	transition: all 0.8s ease;
+	opacity: 0;
+  	transform: perspective(1px) scale(1.25);
+}
+.background.active {
+  transform: perspective(1px) scale(1);
+	opacity: 0.5;
+  transition: opacity .5s ease, transform 2s ease;
+}
 @media only screen and (min-width: 1800px){
 	.cracker:hover .cracker-left {
 		 top: 200px;
@@ -107,5 +124,8 @@
 	}
 	.touch-message {
 	    bottom: 10%;
+	}
+	.background {
+		background: url(background.jpg);
 	}
 }
