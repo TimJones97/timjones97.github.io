@@ -196,10 +196,8 @@ function navbarElementHoverAnim(){
   );
 }
 function addWhiteNav(){
-  $(".navbar-nav li a").css("color", "black");
   $(".navbar-default").css("background-color", "rgb(23, 23, 23)");
   $(".navbar-collapse").css("background-color", "rgb(23, 23, 23)");
-  $(".navbar-default").css("border-top", "none");
   $(".navbar-default").css("height", "57px");
   $(".navbar-brand img").css('height', '50px');
   $(".navbar-brand img").css('width', '50px');
@@ -240,7 +238,6 @@ function addWhiteNavDesktop(){
 function animateNavbar(){
   //If on mobile
   if($(window).width() < 767){
-    $(".navbar-default").addClass("opaque");
     addWhiteNav();
   }
   //If on desktop
@@ -514,14 +511,41 @@ Pace.restart();
 Pace.on("done", function(){
   if ( $('.pace-progress').attr('data-progress-text') == '100%' ) {
       loaded = true;
+      //Lets get this party started
       $('.preloader-wrap').fadeOut(800);
       setTimeout(function(){
         $(".background-wrapper").attr("data-anim","true");
         $('.background-wrapper').addClass("active");
       },600);
+      //Fade in the title text
+      setTimeout(function(){
+        $('.title-text').css("display", "block");
+      },1600);
+      //Highlight dem abbreviations
+      setTimeout(function(){
+        $('.highlight-red').addClass('active');
+      },2800);
+      setTimeout(function(){
+        $('.highlight-purple').addClass('active');
+      },3100);
+      //Show the navbar
       if($(window).width() < 767){
         $('.navbar-default').css("display", "block");
         $('.navbar-nav li a').css('opacity', '1');
+        $('.navbar-default').css("opacity", "0");
+        //If the page has already been scrolled and
+        //is being refreshed
+        if($(document).scrollTop() > 1) {
+          console.log('EGGyes');
+          //Display the navbar immediately
+        }
+        else {
+          //If not, run the animation
+          $('.navbar-default').css("opacity", "0");
+          setTimeout(function(){
+          $('.navbar-default').css("opacity", "1");
+          },3600);
+        }
       }
       else {
         setTimeout(function(){
@@ -534,15 +558,6 @@ Pace.on("done", function(){
           });
         },3700);
       }
-      setTimeout(function(){
-        $('.title-text').css("display", "block");
-      },1600);
-      setTimeout(function(){
-        $('.highlight-red').addClass('active');
-      },2800);
-      setTimeout(function(){
-        $('.highlight-purple').addClass('active');
-      },3100);
   } 
 });
 function fadeOutVideo(){

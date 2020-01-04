@@ -48,7 +48,7 @@ b, strong {
   top: 0;
   bottom: 0;
   background: #3b3b3b;
-  z-index: 150;
+  z-index: 1000;
 }
 .loader-centered {
   position: absolute;
@@ -208,31 +208,6 @@ b, strong {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   letter-spacing: -0.71px;;
-}
-#particles-js {
-  width: 100%;
-  height: 100vh;
-  left: 0;
-  top: 0;
-  z-index: 1;
-  position: fixed;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.ribbon {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #0b0028;
-  z-index: 100;
-  opacity: 0.9;
-  height: 100%;
-  padding: 20px;
-  transition: all 0.7s ease;
-  transform-origin: right;
-  -webkit-animation-delay: 1s;
-  animation-delay: 1s;
 }
 .background-wrapper {
   height: 100%;
@@ -767,7 +742,7 @@ footer {
 ------------------------------------------------*/
 
 .navbar-default {
-  z-index: 1000;
+  z-index: 1001;
   color: white;
   margin: 0 auto;
   width: 100%;
@@ -1183,8 +1158,6 @@ footer {
   .navbar-default {
     top: 0;
     right: 0;
-    /*background: rgba(0,0,0,0.8) !important;*/
-    transform: none !important;
   }
   .title-text h1 {
     font-size: 3em;
@@ -1248,9 +1221,6 @@ footer {
   .experience, .contact {
     z-index: 102;
   }
-  .main {
-    z-index: 101;
-  }
   .portfolio-item {
     max-width: 350px;
     margin-bottom: 40px;
@@ -1296,9 +1266,6 @@ footer {
   .navbar-default .navbar-nav li {
     -webkit-animation-name: unset;
     animation-name: unset;
-  }
-  .navbar-default {
-    display: block !important;
   }
   .underline {
     display: none;
