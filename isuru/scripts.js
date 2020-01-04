@@ -6,10 +6,12 @@ $( document ).ready(function() {
       function() {
         $(".touch-message").text("Close egg").animate({'opacity': 1}, 100);
         $(".background").addClass('active')
+        $('.background').css('opacity', '0.5');
       },
       function() {
           $(".touch-message").text("Tap the egg!").animate({'opacity': 1}, 100);
         $(".background").removeClass('active')
+      $('.background').css('opacity', '0');
       }
     );
   }
@@ -18,10 +20,12 @@ $( document ).ready(function() {
       function() {
         $(".touch-message").css("opacity", "0");
         $(".background").addClass('active')
+        $('.background').css('opacity', '0.5');
       },
       function() {
         $(".touch-message").css("opacity", "1");
         $(".background").removeClass('active')
+        $('.background').css('opacity', '0');
       }
     );
   }
