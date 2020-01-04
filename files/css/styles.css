@@ -211,11 +211,11 @@ b, strong {
 }
 .background-wrapper {
   height: 100%;
+  width: 100%;
   left: 0;
   position: fixed;
   top: 0;
   transform: scale(1.245);
-  width: 100%;
   z-index: 20;
 }
 .background-wrapper.active {
@@ -225,12 +225,12 @@ b, strong {
 .background {
   background-color: #000927;
   height: 100%;
+  width: 100%;
   left: 0;
   overflow: hidden;
   position: relative;
   top: 0;
-  transform: translateY(-101%) translateZ(0);
-  width: 100%;
+  transform: translateY(-110%) translateZ(0);
 }
 .background:before {
   /*background-image: url(../img/background.jpg);*/
@@ -249,7 +249,7 @@ b, strong {
 .background-wrapper[data-anim=true] .background video,
 .background-wrapper[data-anim=true] .background:before {
   transform: translateY(0) translateZ(0);
-  transition: transform 1s cubic-bezier(.76,.09,.215,1);
+  transition: transform 0.8s ease;
 }
 .background video {
   width: 100vw;
@@ -1077,7 +1077,7 @@ footer {
     font-size: 25px;
   }
   .background {
-    transform: translateY(-121%) translateZ(0);
+    transform: translateY(-161%) translateZ(0);
   }
   .title-text h1 {
     font-size: 5em; 
