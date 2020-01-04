@@ -512,22 +512,22 @@ Pace.on("done", function(){
   if ( $('.pace-progress').attr('data-progress-text') == '100%' ) {
       loaded = true;
       //Lets get this party started
-      $('.preloader-wrap').fadeOut(800);
+      $('.preloader-wrap').fadeOut(400);
       setTimeout(function(){
         $(".background-wrapper").attr("data-anim","true");
         $('.background-wrapper').addClass("active");
-      },600);
+      },200);
       //Fade in the title text
       setTimeout(function(){
         $('.title-text').css("display", "block");
-      },1600);
+      },1400);
       //Highlight dem abbreviations
       setTimeout(function(){
         $('.highlight-red').addClass('active');
-      },2800);
+      },2600);
       setTimeout(function(){
         $('.highlight-purple').addClass('active');
-      },3100);
+      },2900);
       //Show the navbar
       if($(window).width() < 767){
         $('.navbar-default').css("display", "block");
@@ -544,19 +544,19 @@ Pace.on("done", function(){
           $('.navbar-default').css("opacity", "0");
           setTimeout(function(){
           $('.navbar-default').css("opacity", "1");
-          },3600);
+          },3400);
         }
       }
       else {
         setTimeout(function(){
           $('.navbar-default').css("display", "block");
-        },3600);
+        },3400);
         setTimeout(function(){
           $( ".navbar-nav li a" ).each(function( index ) {
             //Set each of the underline to the width of each nav element text
             $(this).next().css('max-width', $(this).width() + 'px');
           });
-        },3700);
+        },3500);
       }
   } 
 });
