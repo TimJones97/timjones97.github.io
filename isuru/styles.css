@@ -13,8 +13,11 @@
  	width: 100vw;
  }
  .cracker {
-	 position: relative;
-	 height: 450px;
+    position: absolute;
+    height: 450px;
+    width: 300px;
+    left: 50%;
+    transform: translate(-50%);
 }
  .cracker:hover .cracker-left {
 	 left: -150px;
