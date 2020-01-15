@@ -520,14 +520,14 @@ Pace.on("done", function(){
       //Fade in the title text
       setTimeout(function(){
         $('.title-text').css("display", "block");
-      },1400);
+      },1000);
       //Highlight dem abbreviations
       setTimeout(function(){
         $('.highlight-red').addClass('active');
-      },2600);
+      },2200);
       setTimeout(function(){
         $('.highlight-purple').addClass('active');
-      },2900);
+      },2500);
       //Show the navbar
       if($(window).width() < 767){
         $('.navbar-default').css("display", "block");
@@ -544,19 +544,19 @@ Pace.on("done", function(){
           $('.navbar-default').css("opacity", "0");
           setTimeout(function(){
           $('.navbar-default').css("opacity", "1");
-          },3400);
+          },3000);
         }
       }
       else {
         setTimeout(function(){
           $('.navbar-default').css("display", "block");
-        },3400);
+        },3000);
         setTimeout(function(){
           $( ".navbar-nav li a" ).each(function( index ) {
             //Set each of the underline to the width of each nav element text
             $(this).next().css('max-width', $(this).width() + 'px');
           });
-        },3500);
+        },3100);
       }
   } 
 });
