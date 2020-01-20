@@ -190,7 +190,7 @@ b, strong {
   transition: all 0.7s ease;
 }
 .title-text h1 span {
-  transition: color 0.5s ease;
+  transition: color 0.7s ease;
 }
 .highlight-red.active {
   color: #e34c15;
@@ -642,15 +642,25 @@ b, strong {
   display: inline-block;
   border-radius: 6px;
   background: white;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  -webkit-transition: all 0.7s ease;
+  transition: all 0.7s ease;
   cursor: default;
+}
+.experience-content {
+  -webkit-transition: all 0.7s ease;
+  transition: all 0.7s ease;
 }
 .experience-item:hover {
   transform: scale(0.97);
   -webkit-box-shadow: -1px 3px 26px 0px rgba(0,0,0,0.75);
   box-shadow: -1px 3px 26px 0px rgba(0,0,0,0.75);
+/*  -webkit-transform: perspective(1px) skewY(2deg) translateZ(-0.05px) !important;
+  transform: perspective(1px) skewY(2deg) translateZ(-0.05px)  !important;*/
 }
+/*.experience-item:hover .experience-content {
+  -webkit-transform: perspective(1px) skewY(2deg) translateZ(0) !important;
+  transform: perspective(1px) skewY(2deg) translateZ(0)  !important;
+}*/
 .experience-item h6 {
   font-size: 18px;
   transition: all 0.3s ease;
@@ -686,6 +696,7 @@ b, strong {
 .contact {
   padding: 60px 60px 70px 60px; 
   background: #fff;
+  transition: background 0.7s ease;
 }
 .contact h1 {
   margin-bottom: 50px;
@@ -704,15 +715,21 @@ b, strong {
   padding-bottom: 20px;
   position: relative;
   display: inline-block;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  -webkit-transition: all 0.7s ease;
+  transition: all 0.7s ease;
 }
 .contact-item:hover {
-  background: rgba(255, 149, 1, 0.6);
+  background: rgb(23,23,23);
   transform: scale(0.95);
   -webkit-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
   -moz-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
   box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
+  -webkit-transform: perspective(1px) skewY(-3deg) translateZ(0) !important;
+  transform: perspective(1px) skewY(-3deg) translateZ(0)  !important;
+}
+.contact-item:hover picture {
+  -webkit-transform: translate(-50%, -50%) perspective(1px) skewY(3deg) translateZ(0) !important;
+  transform: translate(-50%, -50%) perspective(1px) skewY(3deg) translateZ(0)  !important;
 }
 .contact-image {
   position: absolute;

@@ -1,5 +1,3 @@
-var loaded = false;
-
 function preventScrollOnMenuOpen(){
   //If the dropdown menu on mobile is open
   if ($(".collapse.in").length){
@@ -481,7 +479,7 @@ function bindVelocity(){
 
       if(target == "#home" || target == "#home2" || target == "#about" || 
         target == "#portfolio" || target == "#portfolio2" || target == "#skills" || 
-        target == "#experience" || target == "#contact" || target == "#about2") {
+        target == "#experience" || target == "#contact" || target == "#about2" || target == "#contact-highlight") {
 
         //If arrow up or arrow down pressed, convert ID to actual ID instead of toggling menu bar active class
         if(target == "#about2"){
@@ -489,6 +487,15 @@ function bindVelocity(){
         }
         else if (target == "#portfolio2"){
           target = "#portfolio";
+        }
+        else if (target == "#contact-highlight"){
+          target = "#contact";
+          setTimeout(function(){
+            $('.contact').css('background', '#9b9b9b');
+          }, 1200);
+          setTimeout(function(){
+            $('.contact').css('background', '#fff');
+          }, 2000);
         }
         else {
           if($(window).width() < 767){
@@ -506,12 +513,16 @@ function bindVelocity(){
       }
   });
 }
-
 Pace.restart();
 Pace.on("done", function(){
+  if($(window).width() < 991) {
+    $(".main").css("height", $(window).innerHeight());
+  }
+  else {
+    $(".main").css("height", $(window).height() + "px");
+  }
   if ( $('.pace-progress').attr('data-progress-text') == '100%' ) {
-      loaded = true;
-      //Lets get this party started
+      //Lets get this party started!
       $('.preloader-wrap').fadeOut(400);
       setTimeout(function(){
         $(".background-wrapper").attr("data-anim","true");
@@ -567,10 +578,6 @@ function fadeOutVideo(){
   });
 }
 $( document ).ready(function() {
-
-  if($(window).width() < 991) {
-    $(".main").css("height", $(window).innerHeight());
-  }
   $(".bars").removeClass("active");
 
   setMainElements();
