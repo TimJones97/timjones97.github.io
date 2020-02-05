@@ -181,6 +181,50 @@ function hoverEffects() {
   //       $(this).css("opacity", "1");
   //     }, 3200);
   //   });
+  $(".neu_container").hover(
+      function() {
+        if($(".main").hasClass("dark")) {
+          $(this).css('box-shadow', 'none');
+          $(this).children().css('box-shadow', 'inset 2px 2px 5px rgba(0,0,0,0.2), inset -5px -5px 10px rgba(255,255,255,0.1)');
+        }
+        else {
+          $(this).css('box-shadow', 'none');
+          $(this).children().css('box-shadow', 'inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF');
+        }
+      },
+      function() {
+        if($(".main").hasClass("dark")) {
+          $(this).css('box-shadow', '2px 2px 6px rgba(0,0,0,0.2), -2px -2px 6px rgba(255,255,255,0.1)');
+          $(this).children().css('box-shadow', 'none');
+        }
+        else {
+          $(this).css('box-shadow', '-5px -5px 20px rgba(255,255,255,1),  5px 5px 20px rgba(186, 190, 204, 1)');
+          $(this).children().css('box-shadow', 'none');
+        }
+      }
+  );
+  $(".cube").hover(
+    function() {
+      if($(".main").hasClass("dark")) {
+        $(this).css('box-shadow', 'none');
+        $(this).children().css('box-shadow', '2px 2px 6px rgba(0,0,0,0.2), -2px -2px 6px rgba(255,255,255,0.1)');
+      }
+      else {
+        $(this).css('box-shadow', 'none');
+        $(this).children().css('box-shadow', '-5px -5px 20px rgba(255,255,255,1),  5px 5px 20px rgba(186, 190, 204, 1)');
+      }
+    },
+    function() {
+      if($(".main").hasClass("dark")) {
+        $(this).css('box-shadow', 'inset 2px 2px 5px rgba(0,0,0,0.2), inset -5px -5px 10px rgba(255,255,255,0.1)');
+        $(this).children().css('box-shadow', 'none');
+      }
+      else {
+        $(this).css('box-shadow', 'inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF');
+        $(this).children().css('box-shadow', 'none');
+      }
+    }
+  );
 }
 
 function navbarElementHoverAnim(){
@@ -613,4 +657,16 @@ $( document ).ready(function() {
   }
   var theDate = new Date(); 
   $(".year").text(theDate.getFullYear());
+
+  $(".switch").click(function () {
+    $('.shadow').removeAttr('style');
+    if ($(".main").hasClass("dark")) {
+      $(".main").removeClass("dark");
+      $(".switch").removeClass("switched");
+    }
+    else {
+      $(".main").addClass("dark");
+      $(".switch").addClass("switched");
+    }
+  });
 });
