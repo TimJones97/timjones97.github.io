@@ -191,6 +191,7 @@ function hoverEffects() {
           $(this).css('box-shadow', 'none');
           $(this).children().css('box-shadow', 'inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF');
         }
+        $('.title_text').css('transform', 'translate(-50%, -50%) scale(0.95)');
       },
       function() {
         if($(".main").hasClass("dark")) {
@@ -201,6 +202,7 @@ function hoverEffects() {
           $(this).css('box-shadow', '-5px -5px 20px rgba(255,255,255,1),  5px 5px 20px rgba(186, 190, 204, 1)');
           $(this).children().css('box-shadow', 'none');
         }
+        $('.title_text').css('transform', 'translate(-50%, -50%) scale(1.0)');
       }
   );
   $(".cube").hover(
@@ -570,16 +572,22 @@ Pace.on("done", function(){
   },500);
   setTimeout(function(){
       $('.one').addClass("shadow");
-  },1200);
+      $('.neu_container').css('transition', 'box-shadow 0.7s ease');
+      $('.title_text').css('transition', 'all 0.6s ease');
+  },1500);
   setTimeout(function(){
       $('.two').addClass("shadow");
-  },1400);
+  },1900);
   setTimeout(function(){
       $('.three').addClass("shadow");
-  },1800);
+  },2300);
   setTimeout(function(){
       $('.four').addClass("shadow");
-  },2200);
+  },2700);
+  setTimeout(function(){
+      $('.switch').css("opacity", '1');
+  },3100);
+
 
   // if ( $('.pace-progress').attr('data-progress-text') == '100%' ) {
       //Lets get this party started!
@@ -660,6 +668,7 @@ $( document ).ready(function() {
 
   $(".switch").click(function () {
     $('.shadow').removeAttr('style');
+    $('.neu_container').css('transition', 'box-shadow 0.7s ease');
     if ($(".main").hasClass("dark")) {
       $(".main").removeClass("dark");
       $(".switch").removeClass("switched");
