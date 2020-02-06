@@ -33,154 +33,6 @@ function resetEffects(element){
 }
 
 function hoverEffects() {
-  $(".brendan").parent().hover(
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Brendan Anning Wedding Celebrant").animate({'opacity': 1}, 200);
-      });
-      applyEffects($(this).find(".portfolio-image"));
-    },
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
-      });
-      resetEffects($(this).find(".portfolio-image"));
-    }
-  );
-  $(".aml").parent().hover(
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("AML Asset Management").animate({'opacity': 1}, 200);
-      });
-      applyEffects($(this).find(".portfolio-image"));
-    },
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
-      });
-      resetEffects($(this).find(".portfolio-image"));
-    }
-  );
-  $(".tla").parent().hover(
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("TLA Logistics Management").animate({'opacity': 1}, 200);
-      });
-      applyEffects($(this).find(".portfolio-image"));
-    },
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
-      });
-      resetEffects($(this).find(".portfolio-image"));
-    }
-  );
-  $(".qutrunning").parent().hover(
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("QUT Running Club").animate({'opacity': 1}, 200);
-      });
-      applyEffects($(this).find(".portfolio-image"));
-    },
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
-      });
-      resetEffects($(this).find(".portfolio-image"));
-    }
-  );
-  $(".quteb").parent().hover(
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("QUT Exchange Club").animate({'opacity': 1}, 200);
-      });
-      applyEffects($(this).find(".portfolio-image"));
-    },
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
-      });
-      resetEffects($(this).find(".portfolio-image"));
-    }
-  );
-  $(".daryl").parent().hover(
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Daryl Murphy Brisbane Entertainer").animate({'opacity': 1}, 200);
-      });
-      applyEffects($(this).find(".portfolio-image"));
-    },
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
-      });
-      resetEffects($(this).find(".portfolio-image"));
-    }
-  );
-  $(".aaron").parent().hover(
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Aaron Maybus DJ").animate({'opacity': 1}, 200);
-      });
-      applyEffects($(this).find(".portfolio-image"));
-    },
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
-      });
-      resetEffects($(this).find(".portfolio-image"));
-    }
-  );
-  $(".new").parent().hover(
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("And more to come.").animate({'opacity': 1}, 200);
-      });
-      applyEffects($(this).find(".portfolio-image"));
-    },
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
-      });
-      resetEffects($(this).find(".portfolio-image"));
-    }
-  );
-  $(".food-interact").hover(
-    function() {
-      $(".food-background").addClass("active");
-    },
-    function() {
-      $(".food-background").removeClass("active");
-    }
-  );
-  $(".skill-item").hover(function() {
-    var thisElement = $(this);
-    thisElement.find('img').css("opacity", "0");
-    thisElement.find('.hidden-text').css("opacity", "1");
-    setTimeout( function(){
-      $('skills').find("skill-item img").css('opacity', '0');
-      thisElement.find('img').css("opacity", "1");
-      thisElement.find('.hidden-text').css("opacity", "0");
-    }, 1000);
-  });
-  $(".experience-item").click(function() {
-    var thisElement = $(this);
-    thisElement.css("opacity", "0");
-    setTimeout( function(){
-      $('experience').find("experience-item").css('opacity', '0');
-      thisElement.css("opacity", "1");
-    }, 1000);
-  });
-  // //Make skill item disappear on hover for 800ms
-  // $('.skill-item')
-  //   .mouseover(function() {
-  //     $(this).css("opacity", "0");
-  //   })
-  //   .mouseout(function() {
-  //     setTimeout( function(){
-  //       $(this).css("opacity", "1");
-  //     }, 3200);
-  //   });
   $(".neu_container").hover(
       function() {
         if($(".main").hasClass("dark")) {
@@ -191,7 +43,7 @@ function hoverEffects() {
           $(this).css('box-shadow', 'none');
           $(this).children().css('box-shadow', 'inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF');
         }
-        $('.title_text').css('transform', 'translate(-50%, -50%) scale(0.95)');
+        $('.title_text').css('transform', 'scale(0.95)');
       },
       function() {
         if($(".main").hasClass("dark")) {
@@ -202,27 +54,27 @@ function hoverEffects() {
           $(this).css('box-shadow', '-5px -5px 20px rgba(255,255,255,1),  5px 5px 20px rgba(186, 190, 204, 1)');
           $(this).children().css('box-shadow', 'none');
         }
-        $('.title_text').css('transform', 'translate(-50%, -50%) scale(1.0)');
+        $('.title_text').css('transform', 'scale(1.0)');
       }
   );
   $(".cube").hover(
     function() {
       if($(".main").hasClass("dark")) {
         $(this).css('box-shadow', 'none');
-        $(this).children().css('box-shadow', '2px 2px 6px rgba(0,0,0,0.2), -2px -2px 6px rgba(255,255,255,0.1)');
+        $(this).children().css('box-shadow', 'inset 2px 2px 5px rgba(0,0,0,0.2), inset -5px -5px 10px rgba(255,255,255,0.1)');
       }
       else {
         $(this).css('box-shadow', 'none');
-        $(this).children().css('box-shadow', '-5px -5px 20px rgba(255,255,255,1),  5px 5px 20px rgba(186, 190, 204, 1)');
+        $(this).children().css('box-shadow', 'inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF');
       }
     },
     function() {
       if($(".main").hasClass("dark")) {
-        $(this).css('box-shadow', 'inset 2px 2px 5px rgba(0,0,0,0.2), inset -5px -5px 10px rgba(255,255,255,0.1)');
+        $(this).css('box-shadow', '2px 2px 6px rgba(0,0,0,0.2), -2px -2px 6px rgba(255,255,255,0.1)');
         $(this).children().css('box-shadow', 'none');
       }
       else {
-        $(this).css('box-shadow', 'inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF');
+        $(this).css('box-shadow', '-5px -5px 20px rgba(255,255,255,1),  5px 5px 20px rgba(186, 190, 204, 1)');
         $(this).children().css('box-shadow', 'none');
       }
     }
@@ -571,22 +423,33 @@ Pace.on("done", function(){
     $('.neu_container').addClass("shadow");
   },500);
   setTimeout(function(){
-      $('.one').addClass("shadow");
       $('.neu_container').css('transition', 'box-shadow 0.7s ease');
-      $('.title_text').css('transition', 'all 0.6s ease');
+      $('.title_text').css('transition', 'left 0.8s ease, opacity 1.8s ease, transform 1s ease');
   },1500);
   setTimeout(function(){
+      $('.logo').css("transform", 'translate(300%, -50%) scale(1.0) translateZ(0)');
+      $('.logo').css("opacity", '0');
+  },1700);
+  setTimeout(function(){
+      $('.title_text').css("opacity", '1');
+      $('.title_text').css("left", '0px');
+  },1800);
+  setTimeout(function(){
+      $('.one').addClass("shadow");
+  },3000);
+  setTimeout(function(){
       $('.two').addClass("shadow");
-  },1900);
+  },3400);
   setTimeout(function(){
       $('.three').addClass("shadow");
-  },2300);
+  },3800);
   setTimeout(function(){
       $('.four').addClass("shadow");
-  },2700);
+  },4200);
   setTimeout(function(){
       $('.switch').css("opacity", '1');
-  },3100);
+  },4600);
+  
 
 
   // if ( $('.pace-progress').attr('data-progress-text') == '100%' ) {

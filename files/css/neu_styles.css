@@ -319,10 +319,14 @@ b, strong {
 }
 .main .container .cube_container .cube .cube_inner,
 .main .container .neu_container .neu_inner {
+  position: relative;
   width: 100%;
   height: 100%;
   border-radius: 10px;
   transition: box-shadow 0.7s ease;
+}
+.main .container .neu_container .neu_inner {
+  overflow: hidden;
 }
 .main .container .cube_container {
   margin-top: 50px;
@@ -337,7 +341,7 @@ b, strong {
   transition: box-shadow 0.7s ease;
 }
 .main .container .cube_container .cube.shadow {
-  box-shadow:  inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+  box-shadow:  -5px -5px 20px rgba(255,255,255,1),  5px 5px 20px rgba(186, 190, 204, 1);
 }
 .main .switch {
   position: fixed;
@@ -382,51 +386,92 @@ b, strong {
   box-shadow: 2px 2px 6px rgba(0,0,0,0.2), -2px -2px 6px rgba(255,255,255,0.1);
 }
 .main.dark .container .cube_container .cube.shadow {
-  box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2), inset -5px -5px 10px rgba(255,255,255,0.1);
+  box-shadow:  rgba(0, 0, 0, 0.2) 2px 2px 6px, rgba(255, 255, 255, 0.1) -2px -2px 6px;
 }
-.main .container .neu_container .title_text {
+.main .container .neu_container .neu_inner .logo {
   position: absolute;
-  width: 100%;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.95);
+  transform: translate(-50%, -50%) scale(0.9);
+  transition: all 0.7s ease;
+  width: 80px; 
+  height: 80px; 
+}
+.main .container .neu_container .neu_inner .logo .logo_img {
+  width: 100%; 
+  height: 100%; 
+}
+.main .container .neu_container .neu_inner .title_text {
+  position: absolute;
+  width: 100%;
+  top: 55px;
+  transform: scale(0.95);
   padding: 30px; 
-  opacity: 0;
   transition: all 1s ease;
   box-shadow: none !important; 
   user-select: none;
   transform-style: preserve-3d;
   backface-visibility: hidden; 
   -webkit-font-smoothing: subpixel-antialiased;
+  left: -350px;
+  z-index: 2;  
 }
 .main .container .neu_container.shadow .title_text {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1.0);
+  transform: scale(1.0) translateZ(0);
+  backface-visibility: hidden; 
 }
-.main .container .neu_container .title_text h1,
-.main .container .neu_container .title_text h2 {
+.main .container .neu_container.shadow .logo {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.0) translateZ(0);
+  backface-visibility: hidden; 
+}
+.main .container .neu_container .neu_inner .title_text h1,
+.main .container .neu_container .neu_inner .title_text h2 {
   font-size: 40px; 
   line-height: 1.1em;
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   letter-spacing: -0.71px;;
   margin: 0;
-  color: #919191;
+  color: #737373;
   transition: color 0.7s ease;
 }
-.main .container .neu_container .title_text h2 {
+.main .container .neu_container .neu_inner .title_text h1 span {
+  display: block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: url('../img/text_bg.jpg');
+  background-position: 0% 30%;
+}
+.main .container .neu_container .neu_inner .title_text h2 {
   font-family: 'Open Sans', sans-serif;
   font-size: 18px;
   margin-top: 10px;
-  color: #9b9b9b;
+  color: #7c7c7c;
   font-weight: 300;
 }
-.main.dark .container .neu_container .title_text h1 {
- color: #b7b7b7;
+.main.dark .container .neu_container .neu_inner .title_text h2 {
+  color: #dbdbdb;
 }
-/*.main .neumorph_container:hover {
-  box-shadow: 7px 7px 17px rgba(70,70,70,0.15), -7px -7px 17px rgba(255,255,255,0.6);
-}*/
+/*Hidden text reveals when dark mode activated */
+.main .container .neu_container .neu_inner .title_text.hidden_dark {
+  z-index: 2;  
+  opacity: 0 !important;
+}
+.main .container .neu_container .neu_inner .title_text.hidden_dark,
+.main.dark .container .neu_container .neu_inner .title_text {
+  opacity: 0;
+}
+.main.dark .container .neu_container .neu_inner .title_text.hidden_dark {
+  opacity: 1 !important;
+}
+.main .container .neu_container .neu_inner .title_text.hidden_dark h1 span {
+  background-image: url('../img/text_bg_dark.jpg');
+  background-position: 0% 36%;
+}
 /*----------------------------------------------
 ------------------ABOUT SECTION-----------------
 ------------------------------------------------*/

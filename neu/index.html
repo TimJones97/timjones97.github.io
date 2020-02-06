@@ -47,6 +47,17 @@
 	<link rel="stylesheet" type="text/css" href="../files/css/pace.simple.css"/>
 </head>
 <body>
+	<style>
+		.main .container .neu_container .title_text {
+		  opacity: 0;
+		}
+		.main .container .neu_container .logo {
+		  opacity: 0;
+		}
+		.main .container .neu_container .neu_inner .title_text.hidden_dark {
+		  opacity: 0;
+		}
+	</style>
 	<!-- <div class="preloader-wrap">
 		<picture class="loader-centered">
 			<img class="loader-img" draggable="false" src="../files/img/logo_nav_ow.png" alt="Timothy Jones Logo">
@@ -143,10 +154,17 @@
 		<div class="container">
 			<div class="neu_container">
 				<div class="neu_inner">
-				</div>
-				<div class="title_text">
-					<h1>Timothy Jones</h1>
-					<h2>UI/UX Designer & Developer</h2>
+					<div class="title_text">
+						<h1><span>Timothy Jones</span></h1>
+						<h2><span class="grey">UI</span>/<span class="orange">UX</span> Designer & Developer</h2>
+					</div>
+					<div class="title_text hidden_dark">
+						<h1><span>Timothy Jones</span></h1>
+						<h2><span class="grey">UI</span>/<span class="orange">UX</span> Designer & Developer</h2>
+					</div>
+					<div class="logo">
+						<img class="logo_img" src="../files/img/logo_center.png" alt="Timothy Jones Logo">
+					</div>
 				</div>
 			</div>
 			<div class="cube_container">
