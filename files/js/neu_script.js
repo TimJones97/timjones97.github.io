@@ -57,7 +57,7 @@ function hoverEffects() {
         $('.title_text').css('transform', 'scale(1.0)');
       }
   );
-  $(".cube").hover(
+  $(".circle").hover(
     function() {
       if($(".main").hasClass("dark")) {
         $(this).css('box-shadow', 'none');
@@ -436,15 +436,19 @@ Pace.on("done", function(){
   },1800);
   setTimeout(function(){
       $('.one').addClass("shadow");
+      $('.line.top_left').css('opacity', '1');
   },3000);
   setTimeout(function(){
-      $('.two').addClass("shadow");
+      $('.three').addClass("shadow");
+      $('.line.bottom_right').css('opacity', '1');
   },3400);
   setTimeout(function(){
-      $('.three').addClass("shadow");
+      $('.two').addClass("shadow");
+      $('.line.top_right').css('opacity', '1');
   },3800);
   setTimeout(function(){
       $('.four').addClass("shadow");
+      $('.line.bottom_left').css('opacity', '1');
   },4200);
   setTimeout(function(){
       $('.switch').css("opacity", '1');
@@ -502,6 +506,18 @@ Pace.on("done", function(){
   //     }
   // } 
 });
+function createParallax(){
+  var scene = document.getElementById('scene-1');
+  var scene2 = document.getElementById('scene-2');
+  var scene3 = document.getElementById('scene-3');
+  var scene4 = document.getElementById('scene-4');
+  var scene5 = document.getElementById('scene-5');
+  var parallaxInstance = new Parallax(scene);
+  var parallaxInstance2 = new Parallax(scene2);
+  var parallaxInstance3 = new Parallax(scene3);
+  var parallaxInstance4 = new Parallax(scene4);
+  var parallaxInstance5 = new Parallax(scene5);
+}
 function fadeOutVideo(){
   var height = ($(window).height() / 1.5);
   $('video').css({
@@ -518,6 +534,9 @@ $( document ).ready(function() {
   navbarElementHoverAnim();
   createScrollRevealEffects();
   bindVelocity();
+
+
+  createParallax();
 
   $(window).scroll(function() { 
     animateNavbar();   
@@ -541,4 +560,9 @@ $( document ).ready(function() {
       $(".switch").addClass("switched");
     }
   });
+  setTimeout(function(){
+    $(".container").click(function(){
+      $(".neu_inner").toggleClass("clicked");
+    });
+  },3100);
 });
