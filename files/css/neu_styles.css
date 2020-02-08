@@ -11,8 +11,8 @@ body {
 
 *::selection { 
   /*background: rgb(255, 149, 1);*/
-  background: #e34c15;
-  color: white;
+  background: #fff;
+  color: #3b3b3b;
 }
 
 img {
@@ -224,18 +224,18 @@ b, strong {
 
 .main .container .neu_container .neu_inner .hidden_about {
   position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  top: 30px;
   width: 100%;
   /*opacity: 0;*/
   padding: 20px;
-  left: -350px;
-  transition: left 0.8s ease, opacity 1.8s ease;  
+  left: -380px;
+  transition: left 0.8s ease, opacity 1.8s ease, transform 1s ease;  
 }
 .main .container .neu_container .neu_inner .hidden_about p {
   font-size: 16px;
   font-family: 'Open Sans', sans-serif;
   color: #7c7c7c;
+  user-select: none;
 }
 .main .container .neu_container.shadow .hidden_about .logo {
   transform: translate(-50%, -50%) scale(1.0) translateZ(0);
@@ -253,7 +253,7 @@ b, strong {
 
 .main .container .neu_container .neu_inner.clicked .hidden_about {
   opacity: 1;
-  left: 50%;
+  left: 0;
 }
 .main .container .neu_container .neu_inner.clicked .title_text {
   left: 380px !important;

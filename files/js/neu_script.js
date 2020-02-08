@@ -44,6 +44,7 @@ function hoverEffects() {
           $(this).children().css('box-shadow', 'inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF');
         }
         $('.title_text').css('transform', 'scale(0.95)');
+        $('.hidden_about').css('transform', 'scale(0.95)');
       },
       function() {
         if($(".main").hasClass("dark")) {
@@ -55,6 +56,7 @@ function hoverEffects() {
           $(this).children().css('box-shadow', 'none');
         }
         $('.title_text').css('transform', 'scale(1.0)');
+        $('.hidden_about').css('transform', 'scale(1.0)');
       }
   );
   $(".circle").hover(
@@ -528,7 +530,6 @@ $( document ).ready(function() {
   $(".bars").removeClass("active");
 
   setMainElements();
-  hoverEffects();
   createGoTopArrow();
   animateNavbar();
   navbarElementHoverAnim();
@@ -547,20 +548,22 @@ $( document ).ready(function() {
   }
   var theDate = new Date(); 
   $(".year").text(theDate.getFullYear());
-
-  $(".switch").click(function () {
+  
+  // Don't allow clicking or hover effects until animations are complete
+  setTimeout(function(){
+    hoverEffects();
+    $(".switch").click(function () {
     $('.shadow').removeAttr('style');
     $('.neu_container').css('transition', 'box-shadow 0.7s ease');
-    if ($(".main").hasClass("dark")) {
-      $(".main").removeClass("dark");
-      $(".switch").removeClass("switched");
-    }
-    else {
-      $(".main").addClass("dark");
-      $(".switch").addClass("switched");
-    }
-  });
-  setTimeout(function(){
+      if ($(".main").hasClass("dark")) {
+        $(".main").removeClass("dark");
+        $(".switch").removeClass("switched");
+      }
+      else {
+        $(".main").addClass("dark");
+        $(".switch").addClass("switched");
+      }
+    });
     $(".container").click(function(){
       $(".neu_inner").toggleClass("clicked");
     });
