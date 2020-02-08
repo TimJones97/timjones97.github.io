@@ -114,7 +114,7 @@ b, strong {
 }
 .main .container .line.bottom_left {
   bottom: 0;
-  left: -110px;
+  left: -149px;
   transform: rotate(-45deg) !important;
 }
 .main .container .line.top_left {
@@ -124,7 +124,7 @@ b, strong {
 }
 .main .container .line.bottom_right {
   bottom: 0;
-  right: -105px;
+  right: -184px;
   transform: rotate(223deg) !important;
 }
 .main .container .line.top_right {
@@ -313,12 +313,12 @@ b, strong {
   margin-top: -125px;
 }
 .main .circle_container.third {
-  margin-left: 250px;
-  margin-top: 250px;
+  margin-left: 305px;
+  margin-top: 195px;
 }
 .main .circle_container.fourth {
-  margin-left: -300px;
-  margin-top: 250px;
+  margin-left: -341px;
+  margin-top: 191px;
 }
 .main .circle_container .circle {
   width: 100%;
