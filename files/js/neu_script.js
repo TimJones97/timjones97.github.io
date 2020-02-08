@@ -439,6 +439,7 @@ Pace.on("done", function(){
   setTimeout(function(){
       $('.one').addClass("shadow");
       $('.line.top_left').css('opacity', '1');
+      $('.title_text').css('transition', 'left 0.8s ease, opacity 0.7s ease, transform 1s ease');
   },3000);
   setTimeout(function(){
       $('.three').addClass("shadow");
