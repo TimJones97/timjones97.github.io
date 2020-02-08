@@ -44,7 +44,6 @@
 
 	<!-- Styles -->
 	<link rel="stylesheet" type="text/css" href="../files/css/neu_styles.css"/>
-	<link rel="stylesheet" type="text/css" href="../files/css/pace.simple.css"/>
 </head>
 <body>
 	<style>
@@ -57,19 +56,21 @@
 		.main .container .neu_container .neu_inner .title_text.hidden_dark {
 		  opacity: 0;
 		}
+		.main .circle_container .circle .circle_inner p {
+		  opacity: 0;
+		}
 	</style>
-	<!-- <div class="preloader-wrap">
-		<picture class="loader-centered">
-			<img class="loader-img" draggable="false" src="../files/img/logo_nav_ow.png" alt="Timothy Jones Logo">
-			<img class="loader-img-two" draggable="false" src="../files/img/logo_nav_wo.png" alt="Timothy Jones Logo">
-		</picture>
-	</div> -->
+	<div class="white_wrap"></div>
 	<div class="too-small-message">
 		<p>Please resize your browser.</p>
 	</div>
-	<section class="main new" id="home">
+	<div class="dash_container">
+		<div class="dash_bg"></div>
+		<div class="dash_bg_dark"></div>
+	</div>
+	<section class="main" id="home">
 		<div class="container" id="scene-1">
-			<div class="neu_container" data-depth="1.0">
+			<div class="neu_container" data-depth="0.7">
 				<div class="neu_inner">
 					<div class="title_text">
 						<h1><span>Timothy Jones</span></h1>
@@ -87,7 +88,7 @@
 							<img class="logo_img" src="../files/img/logo_center.png" alt="Timothy Jones Logo">
 						</div>
 						<p>
-							Hi! My name is Tim, and I love making websites. I strongly believe in attention to detail, and apply this to every aspect of my designs. When I'm not creating new designs at home or discovering new animations, I'm usually out with friends trying to find the freshest seafood!
+							Hi! My name is Tim, and I love making websites. I strongly believe in attention to detail, and apply this to every aspect of my designs. When I'm not creating new designs at home or trying new animations, I'm usually out with friends discovering great food!
 						</p>
 					</div>
 				</div>
@@ -97,7 +98,7 @@
 				<div class="line top_right"></div>
 			</div>
 		</div>
-		<div class="circle_container" id="scene-2">
+		<div class="circle_container first" id="scene-2">
 			<div class="circle one" data-depth="1.3">
 				<div class="circle_inner">
 					<p>
@@ -119,7 +120,7 @@
 			<div class="circle three" data-depth="1.5">
 				<div class="circle_inner">
 					<p>
-						Experience
+						Contact
 					</p>
 				</div>
 			</div>
@@ -128,16 +129,137 @@
 			<div class="circle four" data-depth="1.6">
 				<div class="circle_inner">
 					<p>
-						Contact
+						Experience
 					</p>
 				</div>
 			</div>
 		</div>
-		<button class="switch">
-			<div class="circle">
-			</div>
-		</button>
 	</section>
+	<section class="portfolio" id="portfolio">
+		<div class="container">
+			<h1 class="portfolio_title">Portfolio</h1>
+		<div class="items_container">
+			<a href="https://brendananning.wedding" target="_blank">
+				<div class="portfolio_item one">
+					<div class="content">
+						<h2>
+							Brendan Anning Wedding Celebrant
+						</h2>
+						<div class="portfolio-image brendan">
+						</div>
+						<div class="portfolio-logo brendan-logo">
+						</div>
+					</div>
+					<div class="portfolio_item_inner"></div>
+				</div>
+			</a>
+			<a href="https://amladvisory.com.au" target="_blank">
+				<div class="portfolio_item two">
+					<div class="content">
+						<h2>
+							Melbourne Asset Management
+						</h2>
+						<div class="portfolio-image aml">
+						</div>
+						<div class="portfolio-logo aml-logo">
+						</div>
+					</div>
+					<div class="portfolio_item_inner"></div>
+				</div>
+			</a>
+			<a href="https://tlaaustralia.com.au" target="_blank">
+				<div class="portfolio_item three">
+					<div class="content">
+						<h2>
+							TLA Logistics Management
+						</h2>
+						<div class="portfolio-image tla">
+						</div>
+						<div class="portfolio-logo tla-logo">
+						</div>
+					</div>
+					<div class="portfolio_item_inner"></div>
+				</div>
+			</a>
+			<a href="https://qutrunning.com.au" target="_blank">
+				<div class="portfolio_item four">
+					<div class="content">
+						<h2>
+							QUT Running Club
+						</h2>
+						<div class="portfolio-image qutrunning">
+						</div>
+						<div class="portfolio-logo qutrunning-logo">
+						</div>
+					</div>
+					<div class="portfolio_item_inner"></div>
+				</div>
+			</a>
+		</div>
+		<div class="items_container">
+			<a href="https://quteb.com" target="_blank">
+				<div class="portfolio_item five">
+					<div class="content">
+						<h2>
+							QUT Exchange Club
+						</h2>
+						<div class="portfolio-image quteb">
+						</div>
+						<div class="portfolio-logo quteb-logo">
+						</div>
+					</div>
+					<div class="portfolio_item_inner"></div>
+				</div>
+			</a>
+			<a href="http://darylmurphy.com" target="_blank">
+				<div class="portfolio_item six">
+					<div class="content">
+						<h2>
+							Daryl Murphy Brisbane Entertainer
+						</h2>
+						<div class="portfolio-image daryl">
+						</div>
+						<div class="portfolio-logo daryl-logo">
+						</div>
+					</div>
+					<div class="portfolio_item_inner"></div>
+				</div>
+			</a>
+			<a href="http://aaronmaybus.com" target="_blank">
+				<div class="portfolio_item seven">
+					<div class="content">
+						<h2>
+							Aaron Maybus DJ
+						</h2>
+						<div class="portfolio-image aaron">
+						</div>
+						<div class="portfolio-logo aaron-logo">
+						</div>
+					</div>
+					<div class="portfolio_item_inner"></div>
+				</div>
+			</a>
+			<a href="#contact-highlight">
+				<div class="portfolio_item eight">
+					<div class="content">
+						<h2>
+							And more to come.
+						</h2>
+						<div class="portfolio-image new">
+						</div>
+						<div class="portfolio-logo new-logo">
+						</div>
+					</div>
+					<div class="portfolio_item_inner"></div>
+				</div>
+			</a>
+		</div>
+		</div>
+	</section>
+	<button class="switch hide">
+		<div class="circle">
+		</div>
+	</button>
 	<!-- <a href="javascript:" class="arrow"><i class="arrow-img"></i></a> -->
 	<!-- <a class="navbar-brand" href="#home">
 		<img src="../files/img/logo_nav.png" alt="Timothy Jones Web Designer">
