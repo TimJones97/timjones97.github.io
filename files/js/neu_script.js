@@ -449,6 +449,7 @@ Pace.on("done", function(){
     $(".main").css("height", $(window).height() + "px");
   }
   showMain();
+  // showPortfolio();
 });
 
 function animateElementRemoval(){
@@ -486,11 +487,11 @@ function animateElementRemoval(){
     },2400);
     // FADE IN {TARGET ELEMENT}
     setTimeout(function(){
-      fadeInPortfolio();
+      showPortfolio();
     },3400);
   });
 }
-function fadeInPortfolio(){
+function showPortfolio(){
   $('.portfolio').css('display', 'block');
   $('.white_wrap').css('height', '0%');
   setTimeout(function(){
@@ -599,7 +600,6 @@ function showMain(){
     //Set first time var to false after first run
     firstTime = false;
   },delay);
-  
 }
 function createParallax(){
   // var bg = document.getElementById('scene-0');
@@ -644,11 +644,12 @@ $( document ).ready(function() {
   $(".year").text(theDate.getFullYear());
   
   // Don't allow clicking or hover effects until animations are complete
-  // setTimeout(function(){
+  setTimeout(function(){
     hoverEffects();
     $(".switch").click(function () {
-      // $('.shadow').removeAttr('style');
-      // $('.show').removeAttr('style');
+      $('.shadow').removeAttr('style');
+      $('.show').removeAttr('style');
+      $('.circle').removeAttr('style');
       $('.neu_container').css('transition', 'box-shadow 0.7s ease');
       if ($(".main").hasClass("dark")) {
         $(".main").removeClass("dark");
@@ -674,5 +675,5 @@ $( document ).ready(function() {
       hidePortfolio();
     });
     animateElementRemoval();
-  // },3100);
+  },3100);
 });

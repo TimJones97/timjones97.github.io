@@ -161,9 +161,13 @@ p {
   width: 80px; 
   height: 80px; 
 }
-.main .container .neu_container .neu_inner .logo .logo_img {
+.main .container .neu_container .neu_inner .logo .logo_img,
+.main .container .neu_container .neu_inner .logo .logo_img_dark {
   width: 100%; 
   height: 100%; 
+  position: absolute;
+  z-index: 1;
+  transition: all 0.7s ease;
 }
 .main .container .neu_container .neu_inner .title_text {
   position: absolute;
@@ -247,6 +251,11 @@ p {
   width: 40px;
   height: 40px;
 }
+.main .container .neu_container.shadow .hidden_about .logo .logo_img_dark {
+  opacity: 0;
+  z-index: 2;
+}
+
 /*Toggle*/
 
 .main .container .neu_container .neu_inner.clicked .hidden_about {
@@ -420,6 +429,13 @@ p {
   background-image: url('../img/text_bg_dark.jpg');
   background-position: 0% 36%;
 }
+.main.dark .container .neu_container.shadow .hidden_about .logo .logo_img {
+  opacity: 0;
+}
+.main.dark .container .neu_container.shadow .hidden_about .logo .logo_img_dark {
+  opacity: 1;
+}
+
 /*----------------------------------------------
 ------------------PORTFOLIO SECTION-----------------
 ------------------------------------------------*/
@@ -452,6 +468,7 @@ p {
   letter-spacing: -0.71px;
   margin-bottom: 30px;
   color: #7c7c7c;
+  transition: color 0.7s ease;
 }
 .portfolio .container .items_container {
   display: flex;
