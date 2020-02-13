@@ -530,8 +530,8 @@ Pace.on("done", function(){
   else {
     $(".main").css("height", $(window).height() + "px");
   }
-  // showMain();
-  showPortfolio();
+  showMain();
+  // showPortfolio();
 });
 
 function animateElementRemoval(){
