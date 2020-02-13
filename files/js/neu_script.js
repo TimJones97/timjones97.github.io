@@ -1,6 +1,88 @@
 var firstTime = true;
 var delay = 4600;
 
+Vue.config.devtools = true;
+
+Vue.component('card', {
+  template: `
+    <div class="card-wrap"
+      @mousemove="handleMouseMove"
+      @mouseenter="handleMouseEnter"
+      @mouseleave="handleMouseLeave"
+      ref="card">
+      <div class="card"
+        :style="cardStyle">
+        <div class="card-bg" :style="[cardBgTransform, cardBgImage]"></div>
+        <div class="card-info">
+          <slot name="header"></slot>
+          <slot name="content"></slot>
+        </div>
+      </div>
+    </div>`,
+  mounted() {
+    this.width = this.$refs.card.offsetWidth;
+    this.height = this.$refs.card.offsetHeight;
+  },
+  props: ['dataImage'],
+  data: () => ({
+    width: 0,
+    height: 0,
+    mouseX: 0,
+    mouseY: 0,
+    mouseLeaveDelay: 0
+  }),
+  computed: {
+    mousePX() {
+      return this.mouseX / this.width;
+    },
+    mousePY() {
+      return this.mouseY / this.height;
+    },
+    cardStyle() {
+      const rX = this.mousePX * 30;
+      const rY = this.mousePY * -30;
+      return {
+        transform: `rotateY(${rX}deg) rotateX(${rY}deg)`
+      };
+    },
+    cardBgTransform() {
+      const tX = this.mousePX * -40;
+      const tY = this.mousePY * -40;
+      return {
+        transform: `translateX(${tX}px) translateY(${tY}px)`
+      }
+    },
+    cardBgImage() {
+      return {
+        backgroundImage: `url(${this.dataImage})`
+      }
+    }
+  },
+  methods: {
+    handleMouseMove(e) {
+      this.mouseX = e.pageX - this.$refs.card.offsetLeft - this.width/2;
+      this.mouseY = e.pageY - this.$refs.card.offsetTop - this.height/2;
+    },
+    handleMouseEnter() {
+      clearTimeout(this.mouseLeaveDelay);
+    },
+    handleMouseLeave() {
+      this.mouseLeaveDelay = setTimeout(()=>{
+        this.mouseX = 0;
+        this.mouseY = 0;
+      }, 0);
+    }
+  }
+});
+
+const app = new Vue({
+  el: '#app'
+});
+
+const app_two = new Vue({
+  el: '#app_two'
+});
+
 function preventScrollOnMenuOpen(){
   //If the dropdown menu on mobile is open
   if ($(".collapse.in").length){
@@ -448,8 +530,8 @@ Pace.on("done", function(){
   else {
     $(".main").css("height", $(window).height() + "px");
   }
-  showMain();
-  // showPortfolio();
+  // showMain();
+  showPortfolio();
 });
 
 function animateElementRemoval(){
@@ -494,51 +576,52 @@ function animateElementRemoval(){
 function showPortfolio(){
   $('.portfolio').css('display', 'block');
   $('.white_wrap').css('height', '0%');
+  $('.contain a').css('opacity', '0');
   setTimeout(function(){
     $('.portfolio').addClass('show');
-  },200);
+  },400);
   setTimeout(function(){
-    $('.portfolio_item.one').addClass('show');
+    $('.contain .one').addClass('show');
   },1400);
   setTimeout(function(){
-    $('.portfolio_item.six').addClass('show');
+    $('.contain .two').addClass('show');
+  },1600);
+  setTimeout(function(){
+    $('.contain .three').addClass('show');
   },1800);
   setTimeout(function(){
-    $('.portfolio_item.three').addClass('show');
+    $('.contain .four').addClass('show');
+  },2000);
+  setTimeout(function(){
+    $('.contain .eight').addClass('show');
   },2200);
   setTimeout(function(){
-    $('.portfolio_item.eight').addClass('show');
+    $('.contain .seven').addClass('show');
+  },2400);
+  setTimeout(function(){
+    $('.contain .six').addClass('show');
   },2600);
   setTimeout(function(){
-    $('.portfolio_item.seven').addClass('show');
-  },3000);
-  setTimeout(function(){
-    $('.portfolio_item.two').addClass('show');
-  },3400);
-  setTimeout(function(){
-    $('.portfolio_item.five').addClass('show');
-  },3800);
-  setTimeout(function(){
-    $('.portfolio_item.four').addClass('show');
-  },4200);
+    $('.contain .five').addClass('show');
+  },2800);
   setTimeout(function(){
     $('.switch').removeClass('no_view');
     $('.exit_btn').removeClass('no_view');
-  },4600);
+  },3200);
 }
 function hidePortfolio(){
   setTimeout(function(){
     $('.portfolio').removeClass('show');
   },200);
   setTimeout(function(){
-    $('.portfolio_item.one').removeClass('show');
-    $('.portfolio_item.six').removeClass('show');
-    $('.portfolio_item.three').removeClass('show');
-    $('.portfolio_item.eight').removeClass('show');
-    $('.portfolio_item.seven').removeClass('show');
-    $('.portfolio_item.two').removeClass('show');
-    $('.portfolio_item.five').removeClass('show');
-    $('.portfolio_item.four').removeClass('show');
+    $('.contain .one').removeClass('show');
+    $('.contain .six').removeClass('show');
+    $('.contain .three').removeClass('show');
+    $('.contain .eight').removeClass('show');
+    $('.contain .seven').removeClass('show');
+    $('.contain .two').removeClass('show');
+    $('.contain .five').removeClass('show');
+    $('.contain .four').removeClass('show');
     $('.switch').addClass('no_view');
     $('.exit_btn').addClass('no_view');
   },600);
@@ -562,6 +645,7 @@ function showMain(){
   $('.third').removeClass('shrink');
   $('.fourth').removeClass('shrink');
   $('.main').css('display', 'block');
+  $('.portfolio').css('display', 'none');
   setTimeout(function(){
     $('.main .container').css('opacity', '1');
     $('.neu_container').addClass("shadow");

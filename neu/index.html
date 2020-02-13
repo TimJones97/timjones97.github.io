@@ -45,7 +45,7 @@
 	<!-- Styles -->
 	<link rel="stylesheet" type="text/css" href="../files/css/neu_styles.css"/>
 </head>
-<body>
+<body translate="no">
 	<style>
 		.main .container .neu_container .title_text {
 		  opacity: 0;
@@ -137,122 +137,58 @@
 		</div>
 	</section>
 	<section class="portfolio" id="portfolio">
-		<div class="container">
+		<div class="center_container">
 			<h1 class="portfolio_title">Portfolio</h1>
-			<div class="items_container">
-				<a href="https://brendananning.wedding" target="_blank">
-					<div class="portfolio_item one">
-						<div class="content">
-							<h2>
-								Brendan Anning Wedding Celebrant
-							</h2>
-							<div class="portfolio-image brendan">
-							</div>
-							<div class="portfolio-logo brendan-logo">
-							</div>
-						</div>
-						<div class="portfolio_item_inner"></div>
-					</div>
+			<div id="app" class="contain">
+				<a class="one" href="https://brendananning.wedding" target="_blank">
+					<card data-image="../files/img/brendan.jpg">
+						<h1 slot="header">Brendan Anning</h1>
+						<p slot="content">Brendan Anning Wedding Celebrant</p>
+					</card>
 				</a>
-				<a href="https://amladvisory.com.au" target="_blank">
-					<div class="portfolio_item two">
-						<div class="content">
-							<h2>
-								Melbourne Asset Management
-							</h2>
-							<div class="portfolio-image aml">
-							</div>
-							<div class="portfolio-logo aml-logo">
-							</div>
-						</div>
-						<div class="portfolio_item_inner"></div>
-					</div>
+				<a class="two" href="https://amladvisory.com.au" target="_blank">
+					<card data-image="../files/img/aml.jpg">
+						<h1 slot="header">AML Advisory</h1>
+						<p slot="content">Melbourne Asset Management Company</p>
+					</card>
 				</a>
-				<a href="https://tlaaustralia.com.au" target="_blank">
-					<div class="portfolio_item three">
-						<div class="content">
-							<h2>
-								TLA Logistics Management
-							</h2>
-							<div class="portfolio-image tla">
-							</div>
-							<div class="portfolio-logo tla-logo">
-							</div>
-						</div>
-						<div class="portfolio_item_inner"></div>
-					</div>
+				<a class="three" href="https://tlaaustralia.com.au" target="_blank">
+					<card data-image="../files/img/tla.jpg">
+						<h1 slot="header">TLA Logistics</h1>
+						<p slot="content">Melbourne-based Logistics Alliance</p>
+					</card>
 				</a>
-				<a href="https://qutrunning.com.au" target="_blank">
-					<div class="portfolio_item four">
-						<div class="content">
-							<h2>
-								QUT Running Club
-							</h2>
-							<div class="portfolio-image qutrunning">
-							</div>
-							<div class="portfolio-logo qutrunning-logo">
-							</div>
-						</div>
-						<div class="portfolio_item_inner"></div>
-					</div>
+				<a class="four" href="https://qutrunning.com.au" target="_blank">
+					<card data-image="../files/img/qutrunning.jpg">
+						<h1 slot="header">QUT Running</h1>
+					<p slot="content">Running Club of QUT</p>
+					</card>
 				</a>
 			</div>
-			<div class="items_container">
-				<a href="https://quteb.com" target="_blank">
-					<div class="portfolio_item five">
-						<div class="content">
-							<h2>
-								QUT Exchange Club
-							</h2>
-							<div class="portfolio-image quteb">
-							</div>
-							<div class="portfolio-logo quteb-logo">
-							</div>
-						</div>
-						<div class="portfolio_item_inner"></div>
-					</div>
+			<div id="app_two" class="contain">
+				<a class="five" href="https://quteb.com" target="_blank">
+					<card data-image="../files/img/quteb.jpeg">
+						<h1 slot="header">QUT Exchange</h1>
+						<p slot="content">Exchange Club of QUT</p>
+					</card>
 				</a>
-				<a href="http://darylmurphy.com" target="_blank">
-					<div class="portfolio_item six">
-						<div class="content">
-							<h2>
-								Daryl Murphy Brisbane Entertainer
-							</h2>
-							<div class="portfolio-image daryl">
-							</div>
-							<div class="portfolio-logo daryl-logo">
-							</div>
-						</div>
-						<div class="portfolio_item_inner"></div>
-					</div>
+				<a class="six" href="http://darylmurphy.com" target="_blank">
+					<card data-image="../files/img/daryl.jpg">
+						<h1 slot="header">Daryl Murphy</h1>
+						<p slot="content">Brisbane Entertainer</p>
+					</card>
 				</a>
-				<a href="http://aaronmaybus.com" target="_blank">
-					<div class="portfolio_item seven">
-						<div class="content">
-							<h2>
-								Aaron Maybus DJ
-							</h2>
-							<div class="portfolio-image aaron">
-							</div>
-							<div class="portfolio-logo aaron-logo">
-							</div>
-						</div>
-						<div class="portfolio_item_inner"></div>
-					</div>
+				<a class="seven" href="http://aaronmaybus.com" target="_blank">
+					<card data-image="../files/img/aaron.jpg">
+						<h1 slot="header">Aaron Maybus</h1>
+						<p slot="content">DJ and Entertainer</p>
+					</card>
 				</a>
-				<a href="#contact-highlight">
-					<div class="portfolio_item eight">
-						<div class="content">
-							<h2>
-								And more to come.
-							</h2>
-							<div class="portfolio-image new">
-							</div>
-							<div class="portfolio-logo new-logo">
-							</div>
-						</div>
-						<div class="portfolio_item_inner"></div>
-					</div>
+				<a class="eight" href="#contact-highlight">
+					<card data-image="../files/img/new.png">
+						<h1 slot="header">New Projects</h1>
+						<p slot="content">Exciting new projects coming soon</p>
+					</card>
 				</a>
 			</div>
 		</div>
@@ -277,6 +213,7 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js" integrity="sha256-8VU/+18Z5eyYrv12HuV6lH74T2PFmP1ggKi+JkwYDHE=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.min.js"></script>
 	<script src="../files/js/neu_script.js"></script>
 </body>
 </html>
