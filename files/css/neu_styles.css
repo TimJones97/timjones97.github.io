@@ -440,7 +440,7 @@ p {
 ------------------------------------------------*/
 
 .portfolio {
-  position: relative;
+  position: absolute;
   display: flex;
   justify-content: center;
   bottom: -100%;
@@ -451,12 +451,14 @@ p {
 }
 .portfolio.show {
   opacity: 1;
+  bottom: 0%;
   display: flex !important;
 }
 .portfolio .center_container {
   position: relative;
   padding-top: 200px;
   width: 100%;
+  transition: all 0.7s ease;
 }
 .portfolio .center_container .portfolio_title {
   position: absolute;
@@ -470,7 +472,7 @@ p {
   letter-spacing: -0.71px;
   margin-bottom: 30px;
   color: #7c7c7c;
-  transition: color 0.7s ease;
+  transition: all 0.7s ease;
 }
 .portfolio .center_container a {
   color: #7c7c7c;
@@ -547,89 +549,6 @@ p {
   transition: box-shadow 0.7s ease;
   box-shadow: none; 
 }
-/*------------BACKGROUNDS FOR PORTFOLIO ITEMS-----------*/
-.brendan {
-  background: url('../img/brendan.jpg');
-}
-.aml {
-  background: url('../img/aml_fwvuaa_c_scale,w_640.jpg');
-}
-.tla {
-  background: url('../img/tla_mzabny_c_scale,w_640.jpg');
-}
-.qutrunning {
-  background: url('../img/qutrunning_hxt50h_c_scale,w_425.jpg');
-}
-.quteb {
-  background: url('../img/quteb.jpeg');
-}
-.daryl {
-  background: url('../img/daryl_nio8qn_c_scale,w_640.jpg');
-}
-.aaron {
-  background: url('../img/aaron_vyhhmm_c_scale,w_640.jpg');
-}
-.new {
-  background: url('../img/new.png');
-}
-.brendan-logo {
-  background: url('../img/logos/brendan.png');
-  /*background-color: #151712 !important;*/
-}
-.aml-logo {
-  background: url('../img/logos/aml.png');
-  /*background-color: #ffd499 !important;*/
-}
-.tla-logo {
-  background: url('../img/logos/tla.png');
-  /*background-color: #fff !important;*/
-}
-.qutrunning-logo {
-  background: url('../img/logos/qutrunning.png');
-  /*background-color: #e6f3fc !important;*/
-}
-.quteb-logo {
-  background: url('../img/logos/quteb.png');
-  /*background-color: #0386c5 !important;*/
-}
-.daryl-logo {
-  background: url('../img/logos/dme.png');
-  /*background-color: #0e0339 !important;*/
-}
-.aaron-logo {
-  background: url('../img/logos/aaron.png');
-  /*background-color: #210339 !important;*/
-}
-.new-logo {
-  background: url('../img/logos/question_mark.png');
-  /*background-color: #fff !important;*/
-}
-.brendan, .aml, .tla, .qutrunning,
-.quteb, .daryl, .aaron, .new {
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  position: absolute;
-  left: 30px;
-  top: 20px;
-  width: 120px;
-  height: 120px;
-  border-radius: 100px;
-}
-.brendan-logo, .aml-logo, .tla-logo, .qutrunning-logo,
-.quteb-logo, .daryl-logo, .aaron-logo, .new-logo {
-  background-size: 60% !important;
-  background-repeat: no-repeat !important;
-  -webkit-transition: all 0.4s ease;
-  transition: all 0.4s ease;
-  background-position: 50% 50%;
-  position: absolute;
-  top: 90px;
-  right: 40px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50px;
-  background-color: #fff;
-}
 .exit_btn {
   position: absolute;
   top: 20px;
@@ -679,7 +598,7 @@ p {
 .portfolio.dark .container a .portfolio_item {
   background: #3b3b3b;
 }
-.portfolio.dark h1,
+.portfolio.dark .center_container .portfolio_title,
 .portfolio.dark .container a .portfolio_item .content h2 {
   color: #dbdbdb;
 }
@@ -728,7 +647,7 @@ p {
 .card-wrap:hover .card {
   -webkit-transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 1s cubic-bezier(0.23, 1, 0.32, 1);
   transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 1s cubic-bezier(0.23, 1, 0.32, 1);
-  box-shadow: rgba(255, 255, 255, 0.2) 0 0 40px 5px, rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset white 0 0 0 6px;
+  /*box-shadow: rgba(255, 255, 255, 0.2) 0 0 40px 5px, rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset white 0 0 0 6px;*/
   /*rgba(255, 255, 255, 0.2) 0 0 40px 5px, white 0 0 0 1px, rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset white 0 0 0 6px;*/
 }
 .card {
@@ -739,8 +658,7 @@ p {
   overflow: hidden;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset rgba(255, 255, 255, 0.5) 0 0 0 6px;
-  -webkit-transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-  transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: all 0.7s ease, box-shadow 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 .card-bg {
   opacity: 0.7;
@@ -1322,7 +1240,7 @@ footer {
     background-size: cover;
   }
 }
-@media only screen and (max-width: 1300px) and (max-height: 600px){
+@media only screen and (max-width: 1300px) and (max-height: 900px){
   .card {
     width: 200px;
     height: 200px;
