@@ -442,28 +442,28 @@ b, strong {
   background: url('../img/brendan.jpg');
 }
 .aml {
-  background: url('../img/aml_fwvuaa_c_scale,w_640.jpg');
+  background: url('../img/aml.jpg');
 }
 .tla {
-  background: url('../img/tla_mzabny_c_scale,w_640.jpg');
+  background: url('../img/tla.jpg');
 }
 .qutrunning {
-  background: url('../img/qutrunning_hxt50h_c_scale,w_425.jpg');
+  background: url('../img/qutrunning_wide.jpg');
 }
 .quteb {
   background: url('../img/quteb.jpeg');
 }
 .daryl {
-  background: url('../img/daryl_nio8qn_c_scale,w_640.jpg');
+  background: url('../img/daryl.jpg');
 }
 .aaron {
-  background: url('../img/aaron_vyhhmm_c_scale,w_640.jpg');
+  background: url('../img/aaron.jpg');
 }
 .new {
   background: url('../img/new.png');
 }
 .brendan-logo {
-  background: url('../img/logos/brendan.png');
+  background: url('../img/logos/brendan_white.png');
   background-color: #151712 !important;
 }
 .aml-logo {
@@ -487,7 +487,7 @@ b, strong {
   background-color: #0e0339 !important;
 }
 .aaron-logo {
-  background: url('../img/logos/aaron.png');
+  background: url('../img/logos/aaron_white.png');
   background-color: #210339 !important;
 }
 .new-logo {
