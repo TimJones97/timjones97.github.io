@@ -144,28 +144,28 @@ function hoverEffects() {
         $('.hidden_about').css('transform', 'scale(1.0)');
       }
   );
-  $(".portfolio_item").hover(
+  $(".skill_item").hover(
       function() {
-        if($(".portfolio").hasClass("dark")) {
+        if($(".main").hasClass("dark")) {
           $(this).css('box-shadow', 'none');
-          $(this).find('.portfolio_item_inner').css('box-shadow', 'inset 2px 2px 5px rgba(0,0,0,0.2), inset -5px -5px 10px rgba(255,255,255,0.1)');
+          $(this).find('.skill_item_inner').css('box-shadow', 'inset 2px 2px 5px rgba(0,0,0,0.2), inset -5px -5px 10px rgba(255,255,255,0.1)');
         }
         else {
           $(this).css('box-shadow', 'none');
-          $(this).find('.portfolio_item_inner').css('box-shadow', 'inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF');
+          $(this).find('.skill_item_inner').css('box-shadow', 'inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF');
         }
-        $(this).find('.content').css('transform', 'translateZ(0) scale(0.95)');
+        $(this).find('img').css('transform', 'translateZ(0) scale(0.95)');
       },
       function() {
-        if($(".portfolio").hasClass("dark")) {
+        if($(".main").hasClass("dark")) {
           $(this).css('box-shadow', '2px 2px 6px rgba(0,0,0,0.2), -2px -2px 6px rgba(255,255,255,0.1)');
-          $(this).find('.portfolio_item_inner').css('box-shadow', 'none');
+          $(this).find('.skill_item_inner').css('box-shadow', 'none');
         }
         else {
           $(this).css('box-shadow', '-5px -5px 20px rgba(255,255,255,1),  5px 5px 20px rgba(186, 190, 204, 1)');
-          $(this).find('.portfolio_item_inner').css('box-shadow', 'none');
+          $(this).find('.skill_item_inner').css('box-shadow', 'none');
         }
-        $(this).find('.content').css('transform', 'translateZ(0) scale(1.0)');
+        $(this).find('img').css('transform', 'translateZ(0) scale(1.0)');
       }
   );
   $(".circle").hover(
@@ -531,27 +531,11 @@ Pace.on("done", function(){
     $(".main").css("height", $(window).height() + "px");
   }
   showMain();
+  $(".skills").css("left", "100%");
   // showPortfolio();
 });
 
-function hideMain(){
-  $('.circle_container').on('click', function (e) {
-    // set target to element "id" attribute
-    var id = $(this).attr('id');
-
-    if(id == "#scene-2"){
-
-    }
-    // $('.line.top_left').css('opacity', '0');
-    // setTimeout(function(){
-    //   $('.line.bottom_right').css('opacity', '0');
-    // },400);
-    // setTimeout(function(){
-    //   $('.line.top_right').css('opacity', '0');
-    // },800);
-    // setTimeout(function(){
-    //   $('.line.bottom_left').css('opacity', '0');
-    // },1200);
+function hideMainPortfolioClicked(){
     setTimeout(function(){
       $('.container').addClass('shrink');
       $('.first').addClass('shrink');
@@ -571,10 +555,21 @@ function hideMain(){
     setTimeout(function(){
       showPortfolio();
     },2200);
-  });
+}
+function hideMainSkillsClicked(){
+  $('.main').addClass('slide');
+  $('.dash_container').addClass('slide');
+  $('.dash_container_right').addClass('show');
+  showSkills();
+}
+function showSkills(){
+  $('.skills').addClass('show');
+  setTimeout(function(){
+    $('.switch').removeClass('no_view');
+    $('.exit_btn').removeClass('no_view');
+  },800);
 }
 function showPortfolio(){
-  $('.portfolio').css('display', 'block');
   $('.white_wrap').css('height', '0%');
   $('.contain a').css('opacity', '0');
   setTimeout(function(){
@@ -609,30 +604,104 @@ function showPortfolio(){
     $('.exit_btn').removeClass('no_view');
   },3200);
 }
+function hideSkills(){
+  $('.main').removeClass('slide');
+  $('.skills').removeClass('show');
+  $('.dash_container').removeClass('slide');
+  $('.dash_container_right').removeClass('show');
+  setTimeout(function(){
+    $('.exit_btn').addClass('no_view');
+  },400);
+}
 function hidePortfolio(){
   setTimeout(function(){
-    $('.portfolio').removeClass('show');
+    $('.contain .five').removeClass('show');
   },200);
   setTimeout(function(){
-    $('.contain .one').removeClass('show');
     $('.contain .six').removeClass('show');
-    $('.contain .three').removeClass('show');
-    $('.contain .eight').removeClass('show');
+  },400);
+  setTimeout(function(){
     $('.contain .seven').removeClass('show');
-    $('.contain .two').removeClass('show');
-    $('.contain .five').removeClass('show');
-    $('.contain .four').removeClass('show');
-    $('.switch').addClass('no_view');
-    $('.exit_btn').addClass('no_view');
   },600);
   setTimeout(function(){
-    $('.portfolio').css('display', 'none');
-    $('.white_wrap').css('bottom', '0');
-    $('.white_wrap').css('height', '100%');
+    $('.contain .eight').removeClass('show');
+  },800);
+  setTimeout(function(){
+    $('.contain .four').removeClass('show');
   },1000);
   setTimeout(function(){
+    $('.contain .three').removeClass('show');
+  },1200);
+  setTimeout(function(){
+    $('.contain .two').removeClass('show');
+  },1400);
+  setTimeout(function(){
+    $('.contain .one').removeClass('show');
+  },1600);
+  setTimeout(function(){
+    $('.switch').addClass('no_view');
+    $('.exit_btn').addClass('no_view');
+  },1800);
+   setTimeout(function(){
+    $('.portfolio').removeClass('show');
+  },2600);
+  setTimeout(function(){
+    $('.white_wrap').css('bottom', '0');
+    $('.white_wrap').css('height', '100%');
+  },3600);
+  setTimeout(function(){
     showMain();
-  },2000);
+  },4600);
+}
+function showMainQuicker(){
+  if(firstTime == false){
+    delay = 1000;
+  }
+  $('.white_wrap').css('height', '0%');
+  $('.container').removeClass('shrink');
+  $('.first').removeClass('shrink');
+  $('.second').removeClass('shrink');
+  $('.third').removeClass('shrink');
+  $('.fourth').removeClass('shrink');
+  $('.main').css('display', 'block');
+  // setTimeout(function(){
+    $('.main .container').css('opacity', '1');
+    $('.neu_container').addClass("shadow");
+  // },500);
+  // setTimeout(function(){
+    $('.neu_container').css('transition', 'box-shadow 0.7s ease');
+    $('.title_text').css('transition', 'left 0.8s ease, opacity 1.8s ease, transform 1s ease');
+  // },1500);
+  // setTimeout(function(){
+    $('.logo').css("transform", 'translate(350%, -50%) scale(1.0) translateZ(0)');
+    $('.logo').css("opacity", '0');
+  // },1700);
+  // setTimeout(function(){
+    $('.title_text').css("opacity", '1');
+    $('.title_text').css("left", '0px');
+  // },1800);
+  // setTimeout(function(){
+    $('.circle.one').parent().addClass('show');
+    $('.line.top_left').css('opacity', '1');
+    $('.title_text').css('transition', 'left 0.8s ease, opacity 0.6s ease, transform 1s ease');
+  // },3000);
+  // setTimeout(function(){
+    $('.circle.three').parent().addClass('show');
+    $('.line.bottom_right').css('opacity', '1');
+  // },3400);
+  // setTimeout(function(){
+    $('.circle.two').parent().addClass('show');
+    $('.line.top_right').css('opacity', '1');
+  // },3800);
+  // setTimeout(function(){
+    $('.circle.four').parent().addClass('show');
+    $('.line.bottom_left').css('opacity', '1');
+  // },4200);
+  setTimeout(function(){
+    $('.switch').removeClass('no_view');
+    //Set first time var to false after first run
+    firstTime = false;
+  },delay);
 }
 function showMain(){
   if(firstTime == false){
@@ -645,7 +714,6 @@ function showMain(){
   $('.third').removeClass('shrink');
   $('.fourth').removeClass('shrink');
   $('.main').css('display', 'block');
-  $('.portfolio').css('display', 'none');
   setTimeout(function(){
     $('.main .container').css('opacity', '1');
     $('.neu_container').addClass("shadow");
@@ -756,8 +824,28 @@ $( document ).ready(function() {
       $(".neu_inner").toggleClass("clicked");
     });
     $(".exit_btn").click(function(){
-      hidePortfolio();
+      if($("body").hasClass("portfolioOpen")){
+        hidePortfolio();
+        $('body').removeClass('portfolioOpen');
+      }
+      if($("body").hasClass("skillsOpen")){
+        hideSkills();
+        $('body').removeClass('skillsOpen');
+      }
     });
-    hideMain();
+    $('.circle_container.first').on('click', function (e) {
+      hideMainPortfolioClicked();
+      $('body').addClass('portfolioOpen');
+    });
+    $('.circle_container.second').on('click', function (e) {
+      hideMainSkillsClicked();
+      $('body').addClass('skillsOpen');
+    });
+    // $('.circle_container').on('click', function (e) {
+    //   hideMainPortfolioClicked();
+    // });
+    // $('.circle_container').on('click', function (e) {
+    //   hideMainPortfolioClicked();
+    // });
   },3100);
 });
