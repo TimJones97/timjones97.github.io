@@ -537,6 +537,7 @@ Pace.on("done", function(){
 
 function hideMainPortfolioClicked(){
   $('.main').addClass('slideUp');
+  $('.switch').addClass('no_view');
   $('.graphic_container').addClass('slide');
   $('.top_left_contain').addClass('hide');
   $('.bottom_left_contain').addClass('hide');
@@ -598,8 +599,6 @@ function showSkills(){
   },4300);
 }
 function showPortfolio(){
-  $('.white_wrap').css('height', '0%');
-  $('.contain a').css('opacity', '0');
   $('.portfolio').addClass('show');
   setTimeout(function(){
     $('.contain .one').addClass('show');
@@ -691,6 +690,7 @@ function hidePortfolio(){
     $('.top_left_contain').removeClass('hide');
     $('.bottom_left_contain').removeClass('hide');
     $('.bottom_right_contain').removeClass('hide');
+    $('.switch').removeClass('no_view');
   },4000);
 }
 function showMainQuicker(){
@@ -862,7 +862,7 @@ $( document ).ready(function() {
   $(".year").text(theDate.getFullYear());
   
   // Don't allow clicking or hover effects until animations are complete
-  // setTimeout(function(){
+  setTimeout(function(){
     hoverEffects();
     $(".switch").click(function () {
       $('.shadow').removeAttr('style');
@@ -907,5 +907,5 @@ $( document ).ready(function() {
     // $('.circle_container').on('click', function (e) {
     //   hideMainPortfolioClicked();
     // });
-  // },3100);
+  },3100);
 });
