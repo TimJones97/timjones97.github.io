@@ -288,8 +288,8 @@ p {
   position: absolute;
   opacity: 0;
   width: 100%;
-  width: 18px;
-  height: 18px;
+  width: 19px;
+  height: 19px;
   right: 10px;
   bottom: -50px;
   transition: all 1s ease;
