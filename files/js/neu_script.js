@@ -530,8 +530,8 @@ Pace.on("done", function(){
   else {
     $(".main").css("height", $(window).height() + "px");
   }
-  // showMain();
-  showMainQuicker();
+  showMain();
+  // showMainQuicker();
   // showPortfolio();
 });
 
@@ -697,7 +697,7 @@ function showMainQuicker(){
   if(firstTime == false){
     delay = 1000;
   }
-  $('.portfolio').css('top', '100%');
+  $('.portfolio').addClass('top');
   $('.white_wrap').css('height', '0%');
   $('.container').removeClass('shrink');
   $('.first').removeClass('shrink');
@@ -754,7 +754,7 @@ function showMain(){
   if(firstTime == false){
     delay = 1000;
   }
-  $('.portfolio').css('top', '100%');
+  $('.portfolio').addClass('top');
   $('.white_wrap').css('height', '0%');
   $('.container').removeClass('shrink');
   $('.first').removeClass('shrink');

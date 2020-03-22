@@ -288,8 +288,8 @@ p {
   position: absolute;
   opacity: 0;
   width: 100%;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   right: 10px;
   bottom: -50px;
   transition: all 1s ease;
@@ -571,10 +571,12 @@ body.dark .main .container .neu_container.shadow .hidden_about .logo .logo_img_d
   justify-content: center;
   width: 100%;
   height: 100vh;
-  top: 0;
   opacity: 0;
   z-index: -1;
   transition: all 1s ease;
+}
+.portfolio.top {
+  top: 100%;
 }
 .portfolio.show {
   opacity: 1;
