@@ -15,6 +15,13 @@ body {
   background-size: cover;
   overflow-x: hidden;
   overflow-y: hidden;
+  transition: all 0.7s ease;
+}
+body.dark {
+  background: #3b3b3b;
+}
+body.dark h1 {
+  color: #9b9b9b !important;
 }
 *::selection { 
   /*background: rgb(255, 149, 1);*/
@@ -47,42 +54,98 @@ p {
 .white_wrap.dark {
   background-color: #3b3b3b;
 }
-.dash_container,
-.dash_container_right {
-  position: fixed !important;
-  height: 100%;
-  width: 100%;
+.top_left_contain,
+.bottom_left_contain,
+.bottom_right_contain {
+  display: block !important;
+  position: fixed;
+  transition: all 2s ease;
+}
+.top_left_contain {
+  top: 0;
   left: 0;
-  transition: left 1.5s ease;
 }
-.dash_container_right {
-  left: 100%;
+.bottom_left_contain {
+  bottom: 146px;
+  left: -30px;
 }
-.dash_container_right.show {
-  left: 0%;
+.bottom_right_contain {
+  bottom: 137px;
+  right: 7px;
 }
-.dash_container.slide {
-  left: -100%;
+.top_left_contain.hide {
+  top: -350px;
+  left: -350px;
 }
-.dash_container .dash_bg,
-.dash_container .dash_bg_dark,
-.dash_container_right .dash_bg,
-.dash_container_right .dash_bg_dark {
+.bottom_left_contain.hide {
+  bottom: -300px;
+  left: -300px;
+}
+.bottom_right_contain.hide {
+  bottom: -300px;
+  right: -300px;
+}
+.graphic_container,
+.graphic_container_outline {
+/*.graphic_container_right {*/
   position: absolute;
-  background: url('../img/dash_bg.png');
-  background-size: cover;
-  height: 100%;
-  width: 100%;
+  height: 240px;
+  width: 270px;
+  top: -100px;
+  left: -100px;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 1.5s ease;
 }
-.dash_container .dash_bg_dark,
-.dash_container_right .dash_bg_dark {
-  background: url('../img/dash_bg_dark.png');
-  background-size: cover;
+.top_left_contain .graphic_container,
+.top_left_contain .graphic_container_outline {
+  height: 240px;
+  width: 270px;
+}
+.bottom_right_contain .graphic_container,
+.bottom_right_contain .graphic_container_outline {
+  height: 240px;
+  width: 270px;
+}
+.graphic_container .graphic_bg img,
+.graphic_container_outline .graphic_bg_outline img {
+  height: 100%;
+  width: auto;
+}
+.top_left_contain .graphic_container.expand,
+.top_left_contain .graphic_container_outline.expand {
+  top: -70px;
+  left: -50px;
+  transform: scale(1.0);
+}
+.bottom_left_contain .graphic_container.expand,
+.bottom_left_contain .graphic_container_outline.expand {
+  top: -70px;
+  left: -50px;
+  transform: scale(1.0);
+}
+.bottom_right_contain .graphic_container.expand,
+.bottom_right_contain .graphic_container_outline.expand {
+  transform: scale(1.0);
+}
+.bottom_right_contain .graphic_container_outline.expand {
+  transform: scale(1.25);
+}
+.top_left_contain .graphic_container_outline.expand {
+  transform: scale(1.2);
+}
+.bottom_left_contain .graphic_container_outline.expand {
+  transform: scale(1.4);
+}
+.bottom_right_contain .graphic_container_outline.expand {
+  transform: scale(1.3);
+}
+.graphic_container_right .graphic_bg_outline {
   transition: opacity 1s ease;
   opacity: 0;
 }
-.dash_container.dark_bg .dash_bg_dark,
-.dash_container_right.dark_bg .dash_bg_dark {
+.graphic_container.dark_bg .graphic_bg_outline,
+.graphic_container_right.dark_bg .graphic_bg_outline {
   opacity: 1;
 }
 .too-small-message {
@@ -93,7 +156,7 @@ p {
   height: 100vh;
   background: #3b3b3b;
   z-index: 1200;
-  font-family: 'Proxima Nova Rg';
+  font-family: 'Poppins';
   color: white;
   text-align: center;
   display: none;
@@ -115,6 +178,8 @@ p {
   position: absolute;
   top: 0;
   left: 0;
+  bottom: 0;
+  right: 0;
   transition: all 0.7s ease, left 1.5s ease !important;
 }
 .main .container {
@@ -131,8 +196,12 @@ p {
   transform: translate(-50%, -50%) scale(0)!important;
   opacity: 0;
 }
-.main.slide {
+.main.slideLeft {
   left: -100% !important;
+  opacity: 0;
+}
+.main.slideUp {
+  top: -100% !important;
   opacity: 0;
 }
 .main .container .neu_container {
@@ -214,6 +283,26 @@ p {
   -webkit-font-smoothing: subpixel-antialiased;
   left: -350px;
   z-index: 2;  
+}
+.main .container .neu_container .neu_inner .info_icon {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  width: 20px;
+  height: 20px;
+  right: 10px;
+  bottom: -50px;
+  transition: all 1s ease;
+  box-shadow: none !important; 
+  user-select: none;
+  transform-style: preserve-3d;
+  backface-visibility: hidden; 
+  -webkit-font-smoothing: subpixel-antialiased;
+  z-index: 2;  
+}
+.main .container .neu_container .neu_inner .info_icon img {
+  width: 100%;
+  height: 100%;
 }
 .main .container .neu_container.shadow .title_text {
   transform: scale(1.0) translateZ(0);
@@ -362,7 +451,8 @@ p {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 18px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
   transition: opacity 1s ease, color 0.7s ease;
   color: #7c7c7c;
   opacity: 0;
@@ -424,25 +514,25 @@ p {
 }
 /*--------------DARK MODE STYLES---------------*/
 
-.main.dark .circle_container .circle .circle_inner,
-.main.dark .container .neu_container .neu_inner {
+body.dark .main .circle_container .circle .circle_inner,
+body.dark .main .container .neu_container .neu_inner {
   background-color: #3b3b3b;
   z-index: 2;
 }
-.main.dark .container .line {
+body.dark .main .container .line {
   border-top: 2px solid #606060;
 }
-.main.dark .container .neu_container {
+body.dark .main .container .neu_container {
   transition: box-shadow 0.7s ease;
 }
-.main.dark .container .neu_container.shadow {
+body.dark .main .container .neu_container.shadow {
   box-shadow: 2px 2px 6px rgba(0,0,0,0.2), -2px -2px 6px rgba(255,255,255,0.1);
 }
-.main.dark .circle_container.show .circle {
+body.dark .main .circle_container.show .circle {
   box-shadow:  rgba(0, 0, 0, 0.2) 2px 2px 6px, rgba(255, 255, 255, 0.1) -2px -2px 6px;
 }
-.main.dark .circle_container .circle .circle_inner p,
-.main.dark .container .neu_container .neu_inner .hidden_about p {
+body.dark .main .circle_container .circle .circle_inner p,
+body.dark .main .container .neu_container .neu_inner .hidden_about p {
   color: #dbdbdb;
 }
 /*Hidden text reveals when dark mode activated */
@@ -450,24 +540,24 @@ p {
   z-index: 2;  
   opacity: 0 !important;
 }
-.main.dark .container .neu_container .neu_inner .title_text h2 {
+body.dark .main .container .neu_container .neu_inner .title_text h2 {
   color: #dbdbdb;
 }
 .main .container .neu_container .neu_inner .title_text.hidden_dark,
-.main.dark .container .neu_container .neu_inner .title_text {
+body.dark .main .container .neu_container .neu_inner .title_text {
   opacity: 0;
 }
-.main.dark .container .neu_container .neu_inner .title_text.hidden_dark {
+body.dark .main .container .neu_container .neu_inner .title_text.hidden_dark {
   opacity: 1 !important;
 }
 .main .container .neu_container .neu_inner .title_text.hidden_dark h1 span {
   background-image: url('../img/text_bg_dark.jpg');
   background-position: 0% 36%;
 }
-.main.dark .container .neu_container.shadow .hidden_about .logo .logo_img {
+body.dark .main .container .neu_container.shadow .hidden_about .logo .logo_img {
   opacity: 0;
 }
-.main.dark .container .neu_container.shadow .hidden_about .logo .logo_img_dark {
+body.dark .main .container .neu_container.shadow .hidden_about .logo .logo_img_dark {
   opacity: 1;
 }
 
@@ -479,15 +569,16 @@ p {
   position: absolute;
   display: flex;
   justify-content: center;
-  bottom: -100%;
   width: 100%;
   height: 100vh;
+  top: 0;
   opacity: 0;
+  z-index: -1;
   transition: all 1s ease;
 }
 .portfolio.show {
   opacity: 1;
-  bottom: 0%;
+  top: 0% !important;
   display: flex !important;
 }
 .portfolio .center_container {
@@ -510,10 +601,28 @@ p {
   color: #7c7c7c;
   transition: all 0.7s ease;
 }
+.portfolio .center_container .portfolio_title:after {
+  opacity: 1;
+  content: "";
+  background-image: url(../img/stroke_pink.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  height: 20px;
+  top: 28px;
+  left: -7px;
+  z-index: -1;
+  display: block;
+  width: 0;
+  transition: all 1s ease;
+}
+.portfolio.anim .center_container .portfolio_title:after {
+  width: 100%;
+}
 .portfolio .center_container a {
   color: #7c7c7c;
   opacity: 0;
-  transition: opacity 1s ease;
+  transition: opacity 0.7s ease;
 }
 .portfolio .center_container a.show {
   opacity: 1 !important;
@@ -536,7 +645,7 @@ p {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   letter-spacing: -0.71px;
-  color: #e7e7e7;
+  color: #e7e7e7 !important;
   transition: color 0.7s ease;
 }
 .portfolio .center_container .contain .card-wrap .card .card-info p {
@@ -546,7 +655,7 @@ p {
 }
 .exit_btn {
   position: absolute;
-  top: 20px;
+  top: 40px;
   left: 20px;
   padding-top: 5px;
   background: #efeeee;
@@ -588,8 +697,8 @@ p {
 
 /*---------DARK MODE STYLES FOR PORTFOLIO---------*/
 
-.portfolio.dark .center_container .portfolio_title,
-.portfolio.dark .container a .portfolio_item .content h2 {
+body.dark .portfolio .center_container .portfolio_title,
+body.dark .portfolio .container a .portfolio_item .content h2 {
   color: #dbdbdb;
 }
 
@@ -746,6 +855,24 @@ p {
   color: #7c7c7c;
   transition: all 0.7s ease;
 }
+.skills .container .skills_title:after {
+  opacity: 1;
+  content: "";
+  background-image: url(../img/stroke_blue.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  height: 14px;
+  bottom: 0px;
+  left: -7px;
+  z-index: -1;
+  display: block;
+  width: 0;
+  transition: all 1s ease;
+}
+.skills.anim .container .skills_title:after {
+  width: 100%;
+}
 .skills .container .skill_row {
   display: flex;
   justify-content: space-between;
@@ -759,8 +886,14 @@ p {
   display: block;
   background: #efeeee;
   border-radius: 10px;
-  box-shadow: -5px -5px 20px rgba(255,255,255,1),  5px 5px 20px rgba(186, 190, 204, 1);
+  box-shadow: none;
   transition: box-shadow 0.7s ease;
+  pointer-events: none;
+}
+.skills .container .skill_row .skill_item.shadow {
+  box-shadow: -5px -5px 20px rgba(255,255,255,1),  5px 5px 20px rgba(186, 190, 204, 1);
+  transition: all 0.7s ease;
+  pointer-events: all;
 }
 .skills .container .skill_row .skill_item .skill_item_inner {
   width: 120px;
@@ -769,7 +902,13 @@ p {
   display: block;
   position: relative;
   padding: 20px;
-  transition: box-shadow 0.7s ease;
+  transform: scale(0.95);
+  transition: all 0.7s ease;
+  filter: grayscale(1.0);
+}
+.skills .container .skill_row .skill_item.shadow .skill_item_inner {
+  transform: scale(1.0);
+  filter: grayscale(0);
 }
 .skills .container .skill_row .skill_item .skill_item_inner img {
   width: 100%;
@@ -778,6 +917,15 @@ p {
 }
 
 
+/*--------------DARK MODE STYLES---------------*/
+
+body.dark .skills .container .skill_row .skill_item.shadow {
+  background-color: #3b3b3b;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.2), -2px -2px 6px rgba(255,255,255,0.1);
+}
+body.dark .skills .container .skill_row .skill_item.shadow .skill_item_inner {
+  box-shadow:  rgba(0, 0, 0, 0.2) 2px 2px 6px, rgba(255, 255, 255, 0.1) -2px -2px 6px;
+}
 
 /*----------------------------------------------
 ------------------EXPERIENCE SECTION-----------------
@@ -1220,15 +1368,41 @@ footer {
 ------------------MEDIA QUERIES-----------------
 ------------------------------------------------*/
 @media only screen and (min-width: 1800px){
-  .dash_container .dash_bg,
-  .dash_container_right .dash_bg {
-    background: url('../img/dash_bg_wide.png');
-    background-size: cover;
+  .top_left_contain .graphic_container,
+  .top_left_contain .graphic_container_outline {
+    height: 440px;
+    width: 470px;
+    top: -200px;
+    left: -200px;
   }
-  .dash_container .dash_bg_dark,
-  .dash_container_right .dash_bg_dark {
-    background: url('../img/dash_bg_wide_dark.png');
-    background-size: cover;
+  .bottom_right_contain .graphic_container,
+  .bottom_right_contain .graphic_container_outline {
+    height: 440px;
+    width: 470px;
+    bottom: -150px;
+    right: -80px;
+    top: unset;
+    left: unset;
+  }
+  .bottom_left_contain .graphic_container,
+  .bottom_left_contain .graphic_container_outline {
+    height: 440px;
+    width: 470px;
+    top: unset;
+    left: -150px;
+  }
+  .top_left_contain .graphic_container.expand,
+  .top_left_contain .graphic_container_outline.expand {
+    top: -100px;
+    left: -100px;
+    transform: scale(1.0);
+  }
+  .top_left_contain .graphic_container_outline.expand,
+  .bottom_left_contain .graphic_container_outline.expand {
+    transform: scale(1.2);
+  }
+  .bottom_right_contain .graphic_container_outline.expand {
+    transform: scale(1.15);
   }
 }
 @media only screen and (max-width: 1300px) and (max-height: 900px){
