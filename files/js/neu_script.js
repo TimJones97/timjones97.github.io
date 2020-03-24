@@ -208,8 +208,8 @@ Pace.on("done", function(){
   else {
     $(".main").css("height", $(window).height() + "px");
   }
-  // showMain();
-  showMainQuicker();
+  showMain();
+  // showMainQuicker();
   // showPortfolio();
 });
 
