@@ -200,6 +200,10 @@ p {
   left: -100% !important;
   opacity: 0;
 }
+.main.slideDown {
+  top: 100% !important;
+  opacity: 0;
+}
 .main.slideUp {
   top: -100% !important;
   opacity: 0;
@@ -218,6 +222,7 @@ p {
 }
 .main .container .neu_container .neu_inner {
   overflow: hidden;
+  background: #efeeee;
 }
 /*-------------CONNECTING LINES--------------*/
 
@@ -286,12 +291,13 @@ p {
 }
 .main .container .neu_container .neu_inner .info_icon {
   position: absolute;
-  opacity: 0;
+  /*opacity: 0;*/
+  opacity: 1;
   width: 100%;
   width: 19px;
   height: 19px;
-  right: 10px;
-  bottom: -50px;
+  right: 13px;
+  bottom: -47px;
   transition: all 1s ease;
   box-shadow: none !important; 
   user-select: none;
@@ -428,22 +434,68 @@ p {
   height: 100%;
   border-radius: 100px;
   transition: box-shadow 0.7s ease;
+  background: #efeeee;
 }
 .main .circle_container .circle .circle_inner,
+.main .circle_container .circle .circle_hidden_contact,
 .main .container .neu_container .neu_inner {
   position: relative;
   width: 100%;
   height: 100%;
   border-radius: 10px;
-  transition: box-shadow 0.7s ease, background-color 0.7s ease;
-  background-color: #efeeee;
-  z-index: 2;
+  transition: all 0.7s ease;
+  display: block;
 }
-.main .circle_container .circle .circle_inner {
+.main .circle_container .circle .circle_inner p {
+  transition: all 0.7s ease !important;
+  transform: translate(-50%,-50%) scale(1.0);
+  opacity: 1;
+}
+.main .circle_container .circle .circle_inner.invisible p {
+  transform: translate(-50%,-50%) scale(0.3) !important;
+  opacity: 0 !important;
+}
+.main .circle_container .circle .circle_inner.invisible {
+  visibility: visible !important;
+}
+.main .circle_container .circle .circle_inner,
+.main .circle_container .circle .circle_hidden_contact {
   border-radius: 100px;
   transform: translateZ(0);
   backface-visibility: hidden; 
   cursor: pointer;
+}
+.main .circle_container .circle .circle_hidden_contact {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: scale(1.7);
+  transition: all 0.7s ease;
+  box-shadow: none !important;
+  z-index: -1;
+}
+.main .circle_container .circle .circle_hidden_contact.visible {
+  transform: scale(1.0);
+  opacity: 1;
+  z-index: 2;
+}
+.main .circle_container .circle .circle_hidden_contact a picture {
+  display: block;
+  padding: 40px; 
+}
+.main .circle_container .circle .circle_hidden_contact a img {
+  width: 100%;
+  height: 100%;
+}
+.main .circle_container .circle .circle_hidden_contact .exit_btn {
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  box-shadow: none;
+  /*border: 1px solid #cccccc;*/
+  /*Do not allow overriding of styles from .no_view class*/
+  opacity: 1 !important;
 }
 .main .circle_container .circle .circle_inner p {
   position: absolute;
@@ -453,7 +505,6 @@ p {
   font-size: 18px;
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
-  transition: opacity 1s ease, color 0.7s ease;
   color: #7c7c7c;
   opacity: 0;
   user-select: none;
@@ -520,7 +571,7 @@ body.dark .main .container .neu_container .neu_inner {
   z-index: 2;
 }
 body.dark .main .container .line {
-  border-top: 2px solid #606060;
+  border-top: 1px solid #606060;
 }
 body.dark .main .container .neu_container {
   transition: box-shadow 0.7s ease;
@@ -576,7 +627,7 @@ body.dark .main .container .neu_container.shadow .hidden_about .logo .logo_img_d
   transition: all 1s ease;
 }
 .portfolio.top {
-  top: 100%;
+  top: -100%;
 }
 .portfolio.show {
   opacity: 1;
@@ -594,7 +645,7 @@ body.dark .main .container .neu_container.shadow .hidden_about .logo .logo_img_d
   top: 120px;
   left: 50%;
   transform: translate(-50%,0%);
-  margin-left: -430px;
+  margin-left: -300px;
   font-size: 40px;
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
@@ -917,8 +968,9 @@ body.dark .portfolio .container a .portfolio_item .content h2 {
   height: 100%;
   transition: transform 0.7s ease;
 }
-
-
+body.dark .skills .container .skill_row .skill_item {
+  background: #3b3b3b;
+}
 /*--------------DARK MODE STYLES---------------*/
 
 body.dark .skills .container .skill_row .skill_item.shadow {
@@ -934,15 +986,19 @@ body.dark .skills .container .skill_row .skill_item.shadow .skill_item_inner {
 ------------------------------------------------*/
 
 .experience {
-  overflow: hidden;
-  padding: 60px 60px 60px 60px; 
-  display: inline-block;
-  background: linear-gradient(to bottom,rgba(0, 0, 0, 0.5) 0%,rgb(0, 0, 0) 100%);
-  margin-bottom: -4px;
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100vh;
+  opacity: 1;
+  z-index: -1;
+  transition: all 1s ease;
 }
-.experience h1 {
-  color: #fff;
-  margin-bottom: 30px;
+.experience.bottom {
+  top: 100%;
+}
+.experience.show {
+  top: 0%;
 }
 .experience h3 {
   font-family: 'Proxima Nova Rg';

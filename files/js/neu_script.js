@@ -178,6 +178,8 @@ function hoverEffects() {
         $(this).css('box-shadow', 'none');
         $(this).children().css('box-shadow', 'inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF');
       }
+      $(this).find('.circle_inner p').css('transform', 'translate(-50%,-50%) translateZ(0) scale(0.95)');
+      $(this).find('.circle_hidden_contact').css('transform', 'translateZ(0) scale(0.95)');
     },
     function() {
       if($("body").hasClass("dark")) {
@@ -188,340 +190,16 @@ function hoverEffects() {
         $(this).css('box-shadow', '-5px -5px 20px rgba(255,255,255,1),  5px 5px 20px rgba(186, 190, 204, 1)');
         $(this).children().css('box-shadow', 'none');
       }
+      $(this).find('.circle_inner p').css('transform', 'translate(-50%,-50%) translateZ(0) scale(1.0)');
+      $(this).find('.circle_hidden_contact').css('transform', 'translateZ(0) scale(1.0)');
     }
   );
-}
-
-function navbarElementHoverAnim(){
-  $(".navbar-nav li").hover(
-    function() {
-      $(this).children().next().addClass('full-width');
-    },
-    function() {
-      $(this).children().next().removeClass('full-width');
-    }
-  );
-}
-function addWhiteNav(){
-  $(".navbar-default").css("background-color", "rgb(23, 23, 23)");
-  $(".navbar-collapse").css("background-color", "rgb(23, 23, 23)");
-  $(".navbar-default").css("height", "57px");
-  $(".navbar-brand img").css('height', '50px');
-  $(".navbar-brand img").css('width', '50px');
-}
-function addTransparentNav(){
-  //Make navbar transparent if scroll position is on main section
-  $(".navbar-default").css("background-color", "transparent");
-  $(".navbar-default").css("border-top", "none");
-  $(".navbar-collapse").css("background-color", "none");
-  $(".navbar-nav li a").css("margin-top", "40px");
-  $(".navbar-default").css("height", "100px");
-  $(".navbar-nav li:nth-of-type(2)").css("padding-left", "40px");
-  $(".navbar-nav li:nth-of-type(2) .underline").css("left", "55px");
-  $(".navbar-nav li a:hover").css("color", "#fff");
-  $(".navbar-nav li .navbar-brand").css("margin-top", "25px");
-  $(".navbar-brand img").css('height', '70px');
-  $(".navbar-brand img").css('width', '70px');
-  $(".navbar-brand .first").css('opacity', '1');
-  $(".navbar-brand .second").css('opacity', '0');
-}
-function addWhiteNavDesktop(){
-  $(".navbar-default").css("background-color", "rgb(23, 23, 23)");
-  $(".navbar-default").css("border-top", "none");
-  $(".navbar-default").css("display", "block");
-  $(".navbar-collapse").css("background-color", "none");
-  $(".navbar-nav li a").css("margin-top", "10px");
-  $(".navbar-nav li a").css("opacity", "1");
-  $(".navbar-default").css("height", "75px");
-  $(".navbar-nav li:nth-of-type(2)").css("padding-left", "10px");
-  $(".navbar-nav li:nth-of-type(2) .underline").css("left", "25px");
-  $(".navbar-nav li .navbar-brand").css("margin-top", "-5px");
-  $(".navbar-brand img").css('height', '50px');
-  $(".navbar-brand img").css('width', '50px');
-  $(".navbar-brand .first").css('opacity', '0');
-  $(".navbar-brand .second").css('opacity', '1');
-}
-
-function animateNavbar(){
-  //If on mobile
-  if($(window).width() < 767){
-    addWhiteNav();
-  }
-  //If on desktop
-  else {
-    //Scroll position is in About section
-    if($(document).scrollTop() > 1) {
-      addWhiteNavDesktop();     
-      $( ".navbar-nav li a" ).each(function( index ) {
-        //Set each of the underline to the width of each nav element text
-        $(this).next().css('max-width', $(this).width() + 'px');
-      });
-    }
-    //Scroll position is in Main section
-    else {
-      //Make navbar transparent if scroll position is on main section
-      addTransparentNav();
-    }
-  }
-}
-
-function createGoTopArrow(){
-  var target = "#home";
-  var offset = 0;
-
-  // Set the background arrow dependent on the page scroll location  
-  if ($(this).scrollTop() > 70) {        // If page is scrolled more than 70px
-    $('.arrow-img').css("background", "url('./files/img/icons/arrow_up.png");    // Change arrow to up
-    $('.arrow').css("background", "rgba(0, 0, 0, 0.7)");    // Add background
-    if($(window).width() > 767){
-      setTimeout(function(){ //Add delay in case of resizing
-        $('.arrow').css("bottom", "70px");
-      }, 200);
-    }
-    target = "#home";
-  } 
-  else {
-    $('.arrow-img').css("background", "url('./files/img/icons/arrow_down.png");    // Change arrow to down
-    $('.arrow').css("background", "none");    // Remove background
-    if($(window).width() > 767){
-      setTimeout(function(){
-        $('.arrow').css("bottom", "6px");   
-      }, 200);
-    }
-    target = "#about";
-  }
-  $(window).scroll(function() {
-    if ($(this).scrollTop() > 70) {        
-      $('.arrow-img').css("background", "url('./files/img/icons/arrow_up.png");   
-      $('.arrow').css("background", "rgba(0, 0, 0, 0.7)");  
-      if($(window).width() > 767){
-        setTimeout(function(){
-          $('.arrow').css("bottom", "70px");  
-        }, 200);
-      }  
-      target = "#home";
-    } 
-    else {
-      $('.arrow-img').css("background", "url('./files/img/icons/arrow_down.png");    
-      $('.arrow').css("background", "none");
-      if($(window).width() > 767){
-        setTimeout(function(){
-          $('.arrow').css("bottom", "6px");
-        }, 200);
-      }
-      target = "#about";
-    }
-  });
-
-  $('.arrow').click(function() {      // When arrow is clicked
-    //If not on desktop, make offset -51px for mobile screens to line up with top of section headers
-    if($(window).width() < 767){
-      offset = -52.5;
-    }
-    else {
-      offset = 0;
-    }
-    $(target).velocity("scroll", { duration: 1000, offset: offset });
-  });
-}
-
-//Reset the elements that require resizing
-function setMainElements(){
-  $(".main").css("height", $(window).height() + "px");
-  $(".navbar-nav li a").removeAttr("style"); 
-  
-  //If the window is a square and not rectangular
-  if($(window).width() < $(window).height() * 1.7) {
-    $("video").css("height", "100vh");
-    $("video").css("width", "auto");
-  }
-  else {
-    $("video").css("height", "auto");
-    $("video").css("width", "100vw");
-  }
-  
-  //Reset all styles on navbar if on desktop width
-  if($(window).width() > 767) {
-    $(".navbar-default").removeAttr("style");
-    // $(".navbar-nav li a").removeAttr("style");   
-    $(".navbar-collapse").removeAttr("style");
-    $(".navbar-collapse .navbar-nav").removeClass("transparent");
-  }
-  else {
-    $( ".navbar-nav li a" ).each(function( index ) {
-      $(this).css('width', '100%');
-    });
-  }
 }
 
 $(window).resize(function () { 
-  // console.log('RESIZED'); 
-  $(".bars").removeClass("active");
-  setMainElements();
-  // if($(document).scrollTop() == 0){
-  //   $(".navbar-nav li a").css("margin-top", "40px");
-  //   $(".navbar-nav li .navbar-brand").css("margin-top", "25px");
-  // }
-  // else {
-  //   $(".navbar-nav li a").css("margin-top", "10px");
-  //   $(".navbar-nav li .navbar-brand").css("margin-top", "-5px");
-  // }
-  $(".navbar-default").css('display', 'block');
-  $(".navbar-nav li").css('opacity', '1');
-  $(".navbar-nav li").css('animation-name', 'unset');
-  $(".navbar-nav li").css('-webkit-animation-name', 'unset');
-  animateNavbar();
-  $( ".navbar-nav li a" ).each(function( index ) {
-    //Set each of the underline to the width of each nav element text
-    $(this).next().css('max-width', $(this).width() + 'px');
-  });
+  
 });
 
-function createScrollRevealEffects(){
-  var slideInConfig;
-  var fadeInConfig;
-  if($(window).width() > 767) {
-    slideInConfig = {
-      origin: 'bottom',
-      duration: 800,
-      distance: '400px',
-      scale: '0.5',
-      viewOffset: {
-        bottom: 700
-      },
-      //If effect has already occured, remove styles applied by scrollReveal
-      //to allow for hover transform effects to still occur
-      afterReveal: function() {
-        setTimeout(function(){
-          $('.portfolio-image').removeAttr("style");
-          //Reset the height again after removal
-          hoverEffects();
-        }, 1000);
-      }
-    }
-  }
-  else {
-    slideInConfig = {
-      origin: 'bottom',
-      duration: 600,
-      distance: '400px',
-      scale: '0.9',
-      afterReveal: function() {
-        setTimeout(function(){
-          $('.portfolio-image').removeAttr("style");
-          //Reset the height again after removal
-          hoverEffects();
-        }, 1000);
-      }
-    }
-  }
-  if($(window).width() > 767) {
-    fadeInConfig = {
-      duration: 800,
-      origin: 'bottom',
-      distance: '400px',
-      scale: '0.5',
-      viewOffset: {
-        bottom: 700
-      },
-      afterReveal: function() {
-        setTimeout(function(){
-          $('.skill-item').removeAttr("style");
-          $('.portfolio-item').removeAttr("style");
-          // $(".no_view-text").css('opacity', '0');
-          hoverEffects();
-        }, 400);
-      }
-    }
-  }
-  else {
-    fadeInConfig = {
-      duration: 1000,
-      origin: 'bottom',
-      distance: '400px',
-      scale: '0.5',
-      afterReveal: function() {
-        setTimeout(function(){
-          $('.skill-item').removeAttr("style");
-          $('.portfolio-item').removeAttr("style");
-          hoverEffects();
-        }, 600);
-      }
-    }
-  }
-
-  window.sr = ScrollReveal();
-
-  sr.reveal('.portfolio-item', slideInConfig);
-  sr.reveal('.skill-item', fadeInConfig);
-
-  sr.reveal($('.portfolio-image.aml').parent().parent(),  { delay: 400  });
-  sr.reveal($('.portfolio-image.tla').parent().parent(),  { delay: 500  });
-  sr.reveal($('.portfolio-image.qutrunning').parent().parent(),  { delay: 600 });
-  sr.reveal($('.portfolio-image.quteb').parent().parent(),  { delay: 700 });
-  sr.reveal($('.portfolio-image.daryl').parent().parent(),  { delay: 800 });
-  sr.reveal($('.portfolio-image.aaron').parent().parent(),  { delay: 900 });
-  sr.reveal($('.portfolio-image.new').parent().parent(),  { delay: 1000 });
-
-  sr.reveal('.skill-item.one',  { delay: 400  });
-  sr.reveal('.skill-item.two',  { delay: 450  });
-  sr.reveal('.skill-item.three',  { delay: 500 });
-  sr.reveal('.skill-item.four',  { delay: 650 });
-  sr.reveal('.skill-item.five',  { delay: 700 });
-  sr.reveal('.skill-item.six',  { delay: 750 });
-  sr.reveal('.skill-item.seven',  { delay: 800 });
-  sr.reveal('.skill-item.eight',  { delay: 850 });
-  sr.reveal('.skill-item.nine',  { delay: 900 });
-  sr.reveal('.skill-item.ten',  { delay: 950 });
-  sr.reveal('.skill-item.eleven',  { delay: 1000 });
-  sr.reveal('.skill-item.twelve',  { delay: 1050 });
-}
-
-function bindVelocity(){
-  // bind click event to all internal page anchors
-  $('a[href*="#"]').on('click', function (e) {
-      // prevent default action and bubbling
-      e.preventDefault();
-      e.stopPropagation();
-      // set target to anchor's "href" attribute
-      var target = $(this).attr('href');
-
-      if(target == "#home" || target == "#home2" || target == "#about" || 
-        target == "#portfolio" || target == "#portfolio2" || target == "#skills" || 
-        target == "#experience" || target == "#contact" || target == "#about2" || target == "#contact-highlight") {
-
-        //If arrow up or arrow down pressed, convert ID to actual ID instead of toggling menu bar active class
-        if(target == "#about2"){
-          target = "#about";
-        }
-        else if (target == "#portfolio2"){
-          target = "#portfolio";
-        }
-        else if (target == "#contact-highlight"){
-          target = "#contact";
-          setTimeout(function(){
-            $('.contact').css('background', '#9b9b9b');
-          }, 1200);
-          setTimeout(function(){
-            $('.contact').css('background', '#fff');
-          }, 2000);
-        }
-        else {
-          if($(window).width() < 767){
-            $('.navbar-collapse.in').collapse('no_view');
-            document.getElementById('bars').classList.toggle('active');
-          }
-        }
-      }
-      // scroll to each target
-      if($(window).width() < 767){
-        $(target).velocity("scroll", { duration: 1000, offset: -52.5 });
-      }
-      else {
-        $(target).velocity("scroll", 1000);
-      }
-  });
-}
 Pace.restart();
 Pace.on("done", function(){
   if($(window).width() < 991) {
@@ -530,13 +208,13 @@ Pace.on("done", function(){
   else {
     $(".main").css("height", $(window).height() + "px");
   }
-  showMain();
-  // showMainQuicker();
+  // showMain();
+  showMainQuicker();
   // showPortfolio();
 });
 
 function hideMainPortfolioClicked(){
-  $('.main').addClass('slideUp');
+  $('.main').addClass('slideDown');
   $('.switch').addClass('no_view');
   $('.graphic_container').addClass('slide');
   $('.top_left_contain').addClass('hide');
@@ -596,7 +274,7 @@ function showSkills(){
   setTimeout(function(){
     $('.switch').removeClass('no_view');
     $('.exit_btn').removeClass('no_view');
-  },4300);
+  },3600);
 }
 function showPortfolio(){
   $('.portfolio').addClass('show');
@@ -613,85 +291,134 @@ function showPortfolio(){
     $('.contain .four').addClass('show');
   },1600);
   setTimeout(function(){
-    $('.contain .eight').addClass('show');
+    $('.contain .five').addClass('show');
   },1800);
   setTimeout(function(){
-    $('.contain .seven').addClass('show');
+    $('.contain .six').addClass('show');
   },2000);
   setTimeout(function(){
-    $('.contain .six').addClass('show');
-  },2200);
-  setTimeout(function(){
-    $('.contain .five').addClass('show');
-  },2400);
-  setTimeout(function(){
     $('.portfolio').addClass('anim');
-  },2600); 
+  },2200); 
   setTimeout(function(){
     $('.switch').removeClass('no_view');
     $('.exit_btn').removeClass('no_view');
-  },3600);
+  },3200);
+}
+function showContact(){
+  $('.circle_hidden_contact').addClass('visible');
+  $('.circle_inner').addClass('invisible');
+  $(".title_text h1 span").stop().animate({'opacity': 0}, 250, function(){
+    $(".title_text h1 span").text("Contact me.").animate({'opacity': 1}, 250);
+  });
+  $(".title_text h2").stop().animate({'opacity': 0}, 250, function(){
+    $(".title_text h2").text("Any questions?").animate({'opacity': 1}, 250);
+  });
 }
 function hideSkills(){
-  $('.main').removeClass('slideLeft');
-  $('.skills').removeClass('show');
-  $('.skills').removeClass('anim');
-  $('.graphic_container').removeClass('slide');
-  $('.graphic_container_right').removeClass('show');
-  $(".skills").css("left", "100%");
+  $('.skill_item').removeAttr('style');
+  $('.skill_item').css('pointer-events', 'none');
+  setTimeout(function(){
+    $('.skill_item.fourth').removeClass('shadow');
+  },400);
+  setTimeout(function(){
+    $('.skill_item.eighth').removeClass('shadow');
+  },550);
+  setTimeout(function(){
+    $('.skill_item.twelfth').removeClass('shadow');
+  },700);
+  setTimeout(function(){
+    $('.skill_item.fourth').removeClass('shadow');
+    $('.skill_item.eleventh').removeClass('shadow');
+  },850);
+  setTimeout(function(){
+    $('.skill_item.seventh').removeClass('shadow');
+  },1000);
+  setTimeout(function(){
+    $('.skill_item.third').removeClass('shadow');
+  },1150);
+  setTimeout(function(){
+    $('.skill_item.second').removeClass('shadow');
+  },1300);
+  setTimeout(function(){
+    $('.skill_item.sixth').removeClass('shadow');
+  },1450);
+  setTimeout(function(){
+    $('.skill_item.tenth').removeClass('shadow');
+  },1600);
+  setTimeout(function(){
+    $('.skill_item.ninth').removeClass('shadow');
+  },1750);
+  setTimeout(function(){
+    $('.skill_item.fifth').removeClass('shadow');
+  },1900);
+  setTimeout(function(){
+    $('.skill_item.first').removeClass('shadow');
+  },2150);
+  setTimeout(function(){
+    $('.skills').removeClass('anim');
+  },2300);
   setTimeout(function(){
     $('.exit_btn').addClass('no_view');
-  },400);
+  },3000);
+  setTimeout(function(){
+    $('.skills').removeClass('show');
+    $('.main').removeClass('slideLeft');
+    $(".skills").css("left", "100%");
+  },3400);
   setTimeout(function(){
     $('.top_left_contain').removeClass('hide');
     $('.bottom_left_contain').removeClass('hide');
     $('.bottom_right_contain').removeClass('hide');
     $('.skill_item').removeClass('shadow');
     $('.skill_item').removeAttr('style');
-  },1200);
+  },4000);
 }
 function hidePortfolio(){
   setTimeout(function(){
-    $('.contain .five').removeClass('show');
+    $('.contain .one').removeClass('show');
   },200);
   setTimeout(function(){
     $('.contain .six').removeClass('show');
   },400);
   setTimeout(function(){
-    $('.contain .seven').removeClass('show');
+    $('.contain .four').removeClass('show');
   },600);
   setTimeout(function(){
-    $('.contain .eight').removeClass('show');
+    $('.contain .three').removeClass('show');
   },800);
   setTimeout(function(){
-    $('.contain .four').removeClass('show');
+    $('.contain .two').removeClass('show');
   },1000);
   setTimeout(function(){
-    $('.contain .three').removeClass('show');
+    $('.contain .five').removeClass('show');
   },1200);
-  setTimeout(function(){
-    $('.contain .two').removeClass('show');
-  },1400);
-  setTimeout(function(){
-    $('.contain .one').removeClass('show');
-  },1600);
   setTimeout(function(){
     $('.switch').addClass('no_view');
     $('.exit_btn').addClass('no_view');
     $('.portfolio').removeClass('anim');
-  },1800);
+  },1400);
    setTimeout(function(){
     $('.portfolio').removeClass('show');
-  },2600);
+  },2200);
   setTimeout(function(){
-    $('.main').removeClass('slideUp');
-  },3000);
+    $('.main').removeClass('slideDown');
+  },2400);
   setTimeout(function(){
     $('.top_left_contain').removeClass('hide');
     $('.bottom_left_contain').removeClass('hide');
     $('.bottom_right_contain').removeClass('hide');
     $('.switch').removeClass('no_view');
-  },4000);
+  },3400);
+}
+function hideContact(){
+  $('.circle_hidden_contact').removeClass('visible');
+  $('.circle_inner').removeClass('invisible');
+  $(".title_text h1 span").stop().animate({'opacity': 0}, 250, function(){
+    $(".title_text h1 span").text("Timothy Jones").animate({'opacity': 1}, 250);
+  });
+  $(".title_text h2").stop().animate({'opacity': 0}, 250, function(){
+    $(".title_text h2").text("UI/UX Designer & Developer").animate({'opacity': 1}, 250);
+  });
 }
 function showMainQuicker(){
   if(firstTime == false){
@@ -841,19 +568,9 @@ function fadeOutVideo(){
 }
 $( document ).ready(function() {
   $(".bars").removeClass("active");
-  setMainElements();
-  createGoTopArrow();
-  animateNavbar();
-  navbarElementHoverAnim();
-  // createScrollRevealEffects();
-  bindVelocity();
-
-
   createParallax();
 
   $(window).scroll(function() { 
-    animateNavbar();   
-    preventScrollOnMenuOpen();
   });
   if($(document).scrollTop() > 0){
     $(".navbar-default").css('opacity', '1');
@@ -862,7 +579,7 @@ $( document ).ready(function() {
   $(".year").text(theDate.getFullYear());
   
   // Don't allow clicking or hover effects until animations are complete
-  setTimeout(function(){
+  // setTimeout(function(){
     hoverEffects();
     $(".switch").click(function () {
       $('.shadow').removeAttr('style');
@@ -892,14 +609,38 @@ $( document ).ready(function() {
         hideSkills();
         $('body').removeClass('skillsOpen');
       }
+      // if($("body").hasClass("contactOpen")){
+
+      //   hideContact();
+      //   $('body').removeClass('contactOpen');
+      // }
     });
     $('.circle_container.first').on('click', function (e) {
-      hideMainPortfolioClicked();
-      $('body').addClass('portfolioOpen');
+      //Check to see if the contact button has been triggered
+      //If yes, do not allow click events to be triggered on Portfolio, Skills
+      //and Experience buttons
+      if(!$(".circle_inner").hasClass("invisible")){
+        hideMainPortfolioClicked();
+        $('body').addClass('portfolioOpen');
+      }
     });
     $('.circle_container.second').on('click', function (e) {
-      hideMainSkillsClicked();
-      $('body').addClass('skillsOpen');
+      if(!$(".circle_inner").hasClass("invisible")){
+        hideMainSkillsClicked();
+        $('body').addClass('skillsOpen');
+      }
+    });
+    $('.circle_container.third').on('click', function (e) {
+      if($(".circle_inner").hasClass("invisible")){
+        console.log('yes');
+        $('body').removeClass('contactOpen');
+        hideContact();
+        $('.circle_hidden_contact').removeAttr('style');
+      }
+      else {
+        showContact();
+        $('body').addClass('contactOpen');
+      }
     });
     // $('.circle_container').on('click', function (e) {
     //   hideMainPortfolioClicked();
@@ -907,5 +648,5 @@ $( document ).ready(function() {
     // $('.circle_container').on('click', function (e) {
     //   hideMainPortfolioClicked();
     // });
-  },3100);
+  // },3100);
 });
