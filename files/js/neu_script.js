@@ -210,6 +210,7 @@ Pace.on("done", function(){
   }
   showMain();
   // showMainQuicker();
+  // $('.white_wrap').css('display', 'none');
   // showPortfolio();
 });
 
@@ -233,53 +234,56 @@ function hideMainSkillsClicked(){
 function showSkills(){
   $('.skills').addClass('show');
   setTimeout(function(){
+    $('.exit_btn').removeClass('no_view');
+  },500);
+  setTimeout(function(){
     $('.skill_item.first').addClass('shadow');
-  },1600);
+  },1200);
   setTimeout(function(){
     $('.skill_item.second').addClass('shadow');
-  },1700);
+  },1300);
   setTimeout(function(){
     $('.skill_item.third').addClass('shadow');
-  },1800);
+  },1400);
   setTimeout(function(){
     $('.skill_item.fourth').addClass('shadow');
-  },1900);
+  },1500);
   setTimeout(function(){
     $('.skill_item.eighth').addClass('shadow');
-  },2000);
+  },1600);
   setTimeout(function(){
     $('.skill_item.seventh').addClass('shadow');
-  },2100);
+  },1700);
   setTimeout(function(){
     $('.skill_item.sixth').addClass('shadow');
-  },2200);
+  },1800);
   setTimeout(function(){
     $('.skill_item.fifth').addClass('shadow');
-  },2300);
+  },1900);
   setTimeout(function(){
     $('.skill_item.ninth').addClass('shadow');
-  },2400);
+  },2000);
   setTimeout(function(){
     $('.skill_item.tenth').addClass('shadow');
-  },2500);
+  },2100);
   setTimeout(function(){
     $('.skill_item.eleventh').addClass('shadow');
-  },2600);
+  },2200);
   setTimeout(function(){
     $('.skill_item.twelfth').addClass('shadow');
-  },2700);
+  },2300);
   setTimeout(function(){
     $('.skills').addClass('anim');
-  },3000);
+  },2400);
   setTimeout(function(){
     $('.switch').removeClass('no_view');
-    $('.exit_btn').removeClass('no_view');
-  },3600);
+  },2600);
 }
 function showPortfolio(){
   $('.portfolio').addClass('show');
   setTimeout(function(){
     $('.contain .one').addClass('show');
+    $('.exit_btn').removeClass('no_view');
   },1000);
   setTimeout(function(){
     $('.contain .two').addClass('show');
@@ -301,8 +305,7 @@ function showPortfolio(){
   },2200); 
   setTimeout(function(){
     $('.switch').removeClass('no_view');
-    $('.exit_btn').removeClass('no_view');
-  },3200);
+  },2700);
 }
 function showContact(){
   $('.circle_hidden_contact').addClass('visible');
@@ -322,56 +325,54 @@ function hideSkills(){
   },400);
   setTimeout(function(){
     $('.skill_item.eighth').removeClass('shadow');
-  },550);
+  },450);
   setTimeout(function(){
     $('.skill_item.twelfth').removeClass('shadow');
-  },700);
+  },500);
   setTimeout(function(){
     $('.skill_item.fourth').removeClass('shadow');
     $('.skill_item.eleventh').removeClass('shadow');
-  },850);
+  },650);
   setTimeout(function(){
     $('.skill_item.seventh').removeClass('shadow');
-  },1000);
+  },700);
   setTimeout(function(){
     $('.skill_item.third').removeClass('shadow');
-  },1150);
+  },750);
   setTimeout(function(){
     $('.skill_item.second').removeClass('shadow');
-  },1300);
+  },800);
   setTimeout(function(){
     $('.skill_item.sixth').removeClass('shadow');
-  },1450);
+  },850);
   setTimeout(function(){
     $('.skill_item.tenth').removeClass('shadow');
-  },1600);
+  },900);
   setTimeout(function(){
     $('.skill_item.ninth').removeClass('shadow');
-  },1750);
+  },950);
   setTimeout(function(){
     $('.skill_item.fifth').removeClass('shadow');
-  },1900);
+  },1000);
   setTimeout(function(){
     $('.skill_item.first').removeClass('shadow');
-  },2150);
+  },1050);
   setTimeout(function(){
     $('.skills').removeClass('anim');
-  },2300);
+  },1100);
   setTimeout(function(){
     $('.exit_btn').addClass('no_view');
-  },3000);
-  setTimeout(function(){
     $('.skills').removeClass('show');
     $('.main').removeClass('slideLeft');
     $(".skills").css("left", "100%");
-  },3400);
+  },1700);
   setTimeout(function(){
     $('.top_left_contain').removeClass('hide');
     $('.bottom_left_contain').removeClass('hide');
     $('.bottom_right_contain').removeClass('hide');
     $('.skill_item').removeClass('shadow');
     $('.skill_item').removeAttr('style');
-  },4000);
+  },2100);
 }
 function hidePortfolio(){
   setTimeout(function(){
@@ -470,12 +471,9 @@ function showMainQuicker(){
     $('.circle.four').parent().addClass('show');
     $('.line.bottom_left').css('opacity', '1');
   // },4200);
-  setTimeout(function(){
     $('.switch').removeClass('no_view');
     $('.info_icon').css('opacity', '1');
     //Set first time var to false after first run
-    firstTime = false;
-  },delay);
 }
 function showMain(){
   if(firstTime == false){
