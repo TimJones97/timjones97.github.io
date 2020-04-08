@@ -1,0 +1,179 @@
+@font-face {
+  font-family: "TiemposHeadline-Bold";
+
+  src: url("../fonts/TiemposHeadline-Bold.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/TiemposHeadline-Bold.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*----------------------------------------------
+----------------------GENERAL--------------------
+------------------------------------------------*/
+
+body {
+  /*background: url('../img/left_bg.jpg');*/
+  /*background: #000927;*/
+  overflow-x: hidden;
+}
+
+*::selection { 
+  /*background: rgb(255, 149, 1);*/
+  background: #e34c15;
+  color: white;
+}
+
+img {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+p {
+  transition: all 0.4s ease; 
+}
+b, strong {
+  font-weight: 200 !important; 
+}
+
+/*----------------------------------------------
+-------------------MAIN SECTION-----------------
+------------------------------------------------*/
+
+/*.wrapper {
+  position: relative;
+  border: 40px solid transparent;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}*/
+.banner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  position: relative;
+  background: #fff;
+}
+.banner .headline {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: fit-content;
+  z-index: 1;
+  margin-left: 150px;
+}
+.banner .headline h1 {
+  font-family: "TiemposHeadline-Bold";
+  font-size: 100px; 
+  margin-bottom: 2px;
+  margin-top: 2px;
+  display: block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: url('../img/left_bg.jpg');
+  background-position: 0% 32%;
+  -webkit-animation: slideBackground 4s forwards;
+  animation: slideBackground 4s forwards;
+}
+.banner .headline h2 {
+  color: #acacac;
+  font-size: 14px; 
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  margin-bottom: 20px;
+  letter-spacing: 4px;
+   -webkit-animation: slideBackground 4s forwards;
+  animation: slideBackground 4s forwards;
+}
+.banner .headline .about_link {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  color: #3b3b3b;
+  text-align: right;
+  position: absolute;
+  bottom: -80px;
+  right: 0; 
+  font-size: 18px; 
+}
+.banner .headline .about_link:after {
+  content: "";
+  display: block;
+  width: 500px;
+  float: right;
+  padding-top: 10px; 
+  border-bottom: 1px solid #3b3b3b;
+  -webkit-animation: slideRightUnderline 2s forwards;
+  animation: slideRightUnderline 2s forwards;
+}
+.banner .left_image_container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.banner .right_container {
+  position: absolute;
+  width: 45%;
+  height: 100%;
+  right: 100%;
+  top: 0;
+  background: #fff;
+  -webkit-animation: slideRight 1.5s forwards;
+  animation: slideRight 1.5s forwards;
+}
+.banner .left_image_container .left_image {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  -webkit-animation: fadeIn 2s forwards;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes slideBackground {
+  0% {
+    opacity: 0;
+    background-position: 0% 100%;
+  }
+  50% {
+    background-position: 0% 32%;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    right: 100%;
+  }
+  100% {
+    right: 0%;
+  }
+}
+
+@keyframes slideRightUnderline {
+  0% {
+    margin-left: -100px;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.4);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.0);
+  }
+}
