@@ -194,8 +194,8 @@ function navbarElementHoverAnim(){
   );
 }
 function addWhiteNav(){
-  $(".navbar-default").css("background-color", "rgb(23, 23, 23)");
-  $(".navbar-collapse").css("background-color", "rgb(23, 23, 23)");
+  $(".navbar-default").css("background-color", "rgb(15, 15, 15)");
+  $(".navbar-collapse").css("background-color", "rgb(15, 15, 15)");    
   $(".navbar-default").css("height", "57px");
   $(".navbar-brand img").css('height', '50px');
   $(".navbar-brand img").css('width', '50px');
@@ -217,7 +217,7 @@ function addTransparentNav(){
   $(".navbar-brand .second").css('opacity', '0');
 }
 function addWhiteNavDesktop(){
-  $(".navbar-default").css("background-color", "rgb(23, 23, 23)");
+  $(".navbar-default").css("background-color", "rgb(15, 15, 15)");
   $(".navbar-default").css("border-top", "none");
   $(".navbar-default").css("display", "block");
   $(".navbar-collapse").css("background-color", "none");
@@ -343,6 +343,18 @@ function setMainElements(){
       $(this).css('width', '100%');
     });
   }
+  $("html").easeScroll({
+    frameRate: 60,
+    animationTime: 1000,
+    stepSize: 100,
+    pulseAlgorithm: !0,
+    pulseScale: 8,
+    pulseNormalize: 1,
+    accelerationDelta: 20,
+    accelerationMax: 1,
+    keyboardSupport: !0,
+    arrowScroll: 50
+  });
 }
 
 $(window).resize(function () { 

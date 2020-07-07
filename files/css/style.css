@@ -3,9 +3,10 @@
 ------------------------------------------------*/
 
 body {
-  background: #3b3b3b;
+  background: #151515;
   /*background: #000927;*/
-  overflow-x: hidden;
+  padding: 0;
+  overflow: hidden;
 }
 
 *::selection { 
@@ -47,7 +48,7 @@ b, strong {
   position: fixed;
   top: 0;
   bottom: 0;
-  background: #3b3b3b;
+  background: #151515;
   z-index: 1000;
 }
 .loader-centered {
