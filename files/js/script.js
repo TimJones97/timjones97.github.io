@@ -156,12 +156,16 @@ function hoverEffects() {
   $(".skill-item").hover(function() {
     var thisElement = $(this);
     thisElement.find('img').css("opacity", "0");
+    thisElement.find('img').css("transform", "scale(0.9)");
     thisElement.find('.hidden-text').css("opacity", "1");
+    thisElement.find('.hidden-text').css("transform", "translate(-50%, -50%) scale(1.0)");
     setTimeout( function(){
       $('skills').find("skill-item img").css('opacity', '0');
       thisElement.find('img').css("opacity", "1");
+      thisElement.find('img').css("transform", "scale(1.0)");
+      thisElement.find('.hidden-text').css("transform", "translate(-50%, -50%) scale(1.1)");
       thisElement.find('.hidden-text').css("opacity", "0");
-    }, 1000);
+    }, 1300);
   });
   $(".experience-item").click(function() {
     var thisElement = $(this);

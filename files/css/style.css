@@ -1,4 +1,46 @@
 /*----------------------------------------------
+----------------------FONTS--------------------
+------------------------------------------------*/
+/* poppins-200 - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 200;
+  src: url('../fonts/poppins-v12-latin-200.eot'); /* IE9 Compat Modes */
+  src: local('Poppins ExtraLight'), local('Poppins-ExtraLight'),
+       url('../fonts/poppins-v12-latin-200.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/poppins-v12-latin-200.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/poppins-v12-latin-200.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/poppins-v12-latin-200.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/poppins-v12-latin-200.svg#Poppins') format('svg'); /* Legacy iOS */
+}
+/* poppins-600 - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/poppins-v12-latin-600.eot'); /* IE9 Compat Modes */
+  src: local('Poppins SemiBold'), local('Poppins-SemiBold'),
+       url('../fonts/poppins-v12-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/poppins-v12-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/poppins-v12-latin-600.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/poppins-v12-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/poppins-v12-latin-600.svg#Poppins') format('svg'); /* Legacy iOS */
+}
+/* open-sans-300 - latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/open-sans-v17-latin-300.eot'); /* IE9 Compat Modes */
+  src: local('Open Sans Light'), local('OpenSans-Light'),
+       url('../fonts/open-sans-v17-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/open-sans-v17-latin-300.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/open-sans-v17-latin-300.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/open-sans-v17-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/open-sans-v17-latin-300.svg#OpenSans') format('svg'); /* Legacy iOS */
+}
+/*----------------------------------------------
 ----------------------GENERAL--------------------
 ------------------------------------------------*/
 
@@ -8,13 +50,11 @@ body {
   padding: 0;
   overflow-x: hidden;
 }
-
 *::selection { 
   /*background: rgb(255, 149, 1);*/
   background: #e34c15;
   color: white;
 }
-
 img {
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -591,13 +631,16 @@ b, strong {
   position: absolute;
   top: 56%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1.1);
   z-index: -1;
   opacity: 0;
   color: #6b6b6b;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 .skill-item img { 
   width: 100%;
+  transform: scale(1.0);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 
