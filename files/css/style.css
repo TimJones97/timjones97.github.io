@@ -40,6 +40,15 @@
        url('../fonts/open-sans-v17-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
        url('../fonts/open-sans-v17-latin-300.svg#OpenSans') format('svg'); /* Legacy iOS */
 }
+@font-face {
+  font-family: 'Proxima Nova Rg';
+  src: url('../fonts/ProximaNova-Regular.woff2') format('woff2'),
+      url('../fonts/ProximaNova-Regular.woff') format('woff');
+  font-weight: 400;
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
 /*----------------------------------------------
 ----------------------GENERAL--------------------
 ------------------------------------------------*/
@@ -67,15 +76,6 @@ p {
 }
 b, strong {
   font-weight: 200 !important; 
-}
-@font-face {
-  font-family: 'Proxima Nova Rg';
-  src: url('../fonts/ProximaNova-Regular.woff2') format('woff2'),
-      url('../fonts/ProximaNova-Regular.woff') format('woff');
-  font-weight: 400;
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
 }
 
 /*----------------------------------------------
@@ -199,7 +199,8 @@ b, strong {
   height: 60px;
   background: transparent;
   color: white;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins';
+  font-weight: 200;
   font-size: 16px;
   transition: all 0.7s ease;
   position: relative;
@@ -341,7 +342,7 @@ b, strong {
 .about h1, .portfolio h1, 
 .skills h1, .experience h1, .contact h1 {
   font-family: 'Poppins', sans-serif;
-  font-weight: 900;
+  font-weight: 600;
   font-size: 42px;
 }
 .about h1, .skills h1, .contact h1 {
@@ -667,27 +668,48 @@ b, strong {
   margin-bottom: 20px;
 }
 .experience-item {
-  float: left;
+  float: none;
   width: 24%;
-  min-width: 250px;
-  max-width: 350px;
+  width: 280px;
   height: auto;
   background: #fff;
   margin-bottom: 1%;
-  padding: 10px 10px 10px 20px;
+  padding: 10px 10px 20px 20px;
   border-radius: 6px;
-  min-height: 140px;
   overflow: hidden;
-  display: inline-block;
   font-family: 'Poppins', sans-serif;
-  padding-bottom: 20px;
+  font-weight: 200;
   position: relative;
   display: inline-block;
   border-radius: 6px;
   background: white;
-  -webkit-transition: all 0.7s ease;
   transition: all 0.7s ease;
   cursor: default;
+  left: 0;
+  margin-right: 5px;
+  height: 140px;
+  opacity: 1;
+}
+.experience-item.last {
+  
+}
+.experience-item.remove_desktop {
+  width: 0px !important;
+  height: 0px !important;
+  padding: 0px;
+  margin-right: 0px !important;
+  margin-bottom: 0px !important;
+  opacity: 0;
+}
+.experience-item.remove_right,
+.experience-item.remove_left {
+  left: 120%;
+  height: 0px !important;
+  padding: 0px;
+  margin-bottom: 0px !important;
+}
+.experience-item.remove_left {
+  left: -120%;
 }
 .experience-content {
   -webkit-transition: all 0.7s ease;
@@ -754,7 +776,8 @@ b, strong {
   border-radius: 6px;
   overflow: hidden;
   display: inline-block;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins';
+  font-weight: 200;
   padding-bottom: 20px;
   position: relative;
   display: inline-block;
@@ -798,7 +821,8 @@ b, strong {
 }
 footer {
   display: inline-block;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins';
+  font-weight: 200;
   font-size: 12px;
   width: 100%;
   height: 100%;
@@ -884,7 +908,7 @@ footer {
 }
 .navbar-default .navbar-nav li a {
   color: white;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins';
   font-size: 14px;
   font-weight: 200;
   color: #e7e7e7;
@@ -1147,6 +1171,9 @@ footer {
   .title-text h1 {
     font-size: 5em; 
   }
+  .experience-item {
+    width: 340px;
+  }
 }
 @media only screen and (max-width: 991px) {
   .skill-item {
@@ -1381,9 +1408,10 @@ footer {
     color: #fff;
   }
   .experience-item {
-    margin-bottom: 0px;
+    margin-bottom: 10px;
     width: 100%;
     margin-right: 0;
+    display: block;
   }
   .work-experience {
     margin-bottom: 10px;
@@ -1391,7 +1419,7 @@ footer {
   .contact-item {
     min-width: 100%;
     width: 100%;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
   }
   .contact {
     padding: 20px 30px 20px 30px;    
@@ -1404,7 +1432,6 @@ footer {
   .portfolio-item {
     width: 100%;
     max-width: 100%;
-    margin-bottom: 0;
   }
   .portfolio-container .spacer {
     height: 40px;

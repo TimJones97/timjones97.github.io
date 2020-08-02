@@ -169,22 +169,46 @@ function hoverEffects() {
   });
   $(".experience-item").click(function() {
     var thisElement = $(this);
-    thisElement.css("opacity", "0");
-    setTimeout( function(){
-      $('experience').find("experience-item").css('opacity', '0');
-      thisElement.css("opacity", "1");
-    }, 1000);
+    var nextElement = $(this).next();
+    var lastElement = $(this).parent().children().last();
+    var firstElement = $(this).parent().children().first();
+    var originalHeight = $(this).outerHeight();
+
+    lastElement.addClass('last');
+    if($(window).width() < 767){
+      //If element is last in list, swap with first
+      if($(this).hasClass('last')){
+        nextElement = firstElement.next();
+      }
+      thisElement.addClass('remove_right');
+      nextElement.addClass('remove_left');
+      setTimeout(function(){
+        nextElement.insertAfter(thisElement);
+        thisElement.insertBefore(nextElement);
+      }, 700);
+      setTimeout(function(){
+        thisElement.removeClass('remove_right');
+        nextElement.removeClass('remove_left');
+        thisElement.css('height', originalHeight + 'px');
+        nextElement.css('height', originalHeight + 'px');
+        lastElement.removeClass('last');
+      }, 800);
+    }
+    else {
+      if($(this).hasClass('last')){
+        lastElement = firstElement;
+      }
+      thisElement.addClass('remove_desktop');
+      setTimeout(function(){
+        thisElement.insertAfter(lastElement);
+      }, 700);
+      setTimeout(function(){
+        thisElement.removeClass('remove_desktop');
+        thisElement.css('height', originalHeight + 'px');
+        lastElement.removeClass('last');
+      }, 800);
+    }
   });
-  // //Make skill item disappear on hover for 800ms
-  // $('.skill-item')
-  //   .mouseover(function() {
-  //     $(this).css("opacity", "0");
-  //   })
-  //   .mouseout(function() {
-  //     setTimeout( function(){
-  //       $(this).css("opacity", "1");
-  //     }, 3200);
-  //   });
 }
 
 function navbarElementHoverAnim(){
@@ -563,7 +587,6 @@ Pace.on("done", function(){
         //If the page has already been scrolled and
         //is being refreshed
         if($(document).scrollTop() > 1) {
-          console.log('EGGyes');
           //Display the navbar immediately
         }
         else {
