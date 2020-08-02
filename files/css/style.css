@@ -430,6 +430,7 @@ b, strong {
   z-index: 1;
   transition: all 0.7s ease;
   transform: scale(1.0);
+  margin-right: 15px;
 }
 .portfolio-item h2 {
   position: absolute;
@@ -691,7 +692,7 @@ b, strong {
   opacity: 1;
 }
 .experience-item.last {
-  
+
 }
 .experience-item.remove_desktop {
   width: 0px !important;
@@ -781,8 +782,8 @@ b, strong {
   padding-bottom: 20px;
   position: relative;
   display: inline-block;
-  -webkit-transition: all 0.7s ease;
   transition: all 0.7s ease;
+  margin-right: 5px;
 }
 .contact-item:hover {
   background: rgb(23,23,23);
@@ -1182,15 +1183,15 @@ footer {
   }
   .portfolio-item {
     max-width: 300px;
-    margin-bottom: 1.5%;
-    margin-right: 0;
+    margin-bottom: 10px;
+    margin-right: 10px;
   }
  /* .aml, .tla, .quteb, .daryl {
     margin-right: 3%;
   }*/
   .experience-item {
-    width: 49%;
-    max-width: 100%;
+    width: 100%;
+    display: block;
   }
   .contact-item {
     width: 19%;

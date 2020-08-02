@@ -7,7 +7,7 @@ function preventScrollOnMenuOpen(){
     //Check if the menu has been closed after 1000msecs
     setTimeout(function(){
       preventScrollOnMenuOpen();
-    }, 1500);
+    }, 1500, true);
   } 
   //Prevent scrolling until menu is closed
   else {
@@ -36,13 +36,13 @@ function hoverEffects() {
   $(".brendan").parent().hover(
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Brendan Anning Wedding Celebrant").animate({'opacity': 1}, 200);
+        $(".portfolio-title").text("Brendan Anning Wedding Celebrant").animate({'opacity': 1}, 200, true);
       });
       applyEffects($(this).find(".portfolio-image"));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
+        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200, true);
       });
       resetEffects($(this).find(".portfolio-image"));
     }
@@ -50,13 +50,13 @@ function hoverEffects() {
   $(".aml").parent().hover(
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("AML Asset Management").animate({'opacity': 1}, 200);
+        $(".portfolio-title").text("AML Asset Management").animate({'opacity': 1}, 200, true);
       });
       applyEffects($(this).find(".portfolio-image"));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
+        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200, true);
       });
       resetEffects($(this).find(".portfolio-image"));
     }
@@ -64,13 +64,13 @@ function hoverEffects() {
   $(".tla").parent().hover(
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("TLA Logistics Management").animate({'opacity': 1}, 200);
+        $(".portfolio-title").text("TLA Logistics Management").animate({'opacity': 1}, 200, true);
       });
       applyEffects($(this).find(".portfolio-image"));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
+        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200, true);
       });
       resetEffects($(this).find(".portfolio-image"));
     }
@@ -78,13 +78,13 @@ function hoverEffects() {
   $(".qutrunning").parent().hover(
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("QUT Running Club").animate({'opacity': 1}, 200);
+        $(".portfolio-title").text("QUT Running Club").animate({'opacity': 1}, 200, true);
       });
       applyEffects($(this).find(".portfolio-image"));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
+        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200, true);
       });
       resetEffects($(this).find(".portfolio-image"));
     }
@@ -92,13 +92,13 @@ function hoverEffects() {
   $(".quteb").parent().hover(
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("QUT Exchange Club").animate({'opacity': 1}, 200);
+        $(".portfolio-title").text("QUT Exchange Club").animate({'opacity': 1}, 200, true);
       });
       applyEffects($(this).find(".portfolio-image"));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
+        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200, true);
       });
       resetEffects($(this).find(".portfolio-image"));
     }
@@ -106,13 +106,13 @@ function hoverEffects() {
   $(".daryl").parent().hover(
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Daryl Murphy Brisbane Entertainer").animate({'opacity': 1}, 200);
+        $(".portfolio-title").text("Daryl Murphy Brisbane Entertainer").animate({'opacity': 1}, 200, true);
       });
       applyEffects($(this).find(".portfolio-image"));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
+        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200, true);
       });
       resetEffects($(this).find(".portfolio-image"));
     }
@@ -120,13 +120,13 @@ function hoverEffects() {
   $(".aaron").parent().hover(
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Aaron Maybus DJ").animate({'opacity': 1}, 200);
+        $(".portfolio-title").text("Aaron Maybus DJ").animate({'opacity': 1}, 200, true);
       });
       applyEffects($(this).find(".portfolio-image"));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
+        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200, true);
       });
       resetEffects($(this).find(".portfolio-image"));
     }
@@ -134,13 +134,13 @@ function hoverEffects() {
   $(".new").parent().hover(
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("And more to come.").animate({'opacity': 1}, 200);
+        $(".portfolio-title").text("And more to come.").animate({'opacity': 1}, 200, true);
       });
       applyEffects($(this).find(".portfolio-image"));
     },
     function() {
       $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200);
+        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200, true);
       });
       resetEffects($(this).find(".portfolio-image"));
     }
@@ -165,7 +165,7 @@ function hoverEffects() {
       thisElement.find('img').css("transform", "scale(1.0)");
       thisElement.find('.hidden-text').css("transform", "translate(-50%, -50%) scale(1.1)");
       thisElement.find('.hidden-text').css("opacity", "0");
-    }, 1300);
+    }, 1300, true);
   });
   $(".experience-item").click(function() {
     var thisElement = $(this);
@@ -175,24 +175,32 @@ function hoverEffects() {
     var originalHeight = $(this).outerHeight();
 
     lastElement.addClass('last');
-    if($(window).width() < 767){
+    if($(window).width() < 991){
       //If element is last in list, swap with first
       if($(this).hasClass('last')){
         nextElement = firstElement.next();
       }
       thisElement.addClass('remove_right');
       nextElement.addClass('remove_left');
-      setTimeout(function(){
-        nextElement.insertAfter(thisElement);
-        thisElement.insertBefore(nextElement);
-      }, 700);
+      if($(this).hasClass('last')){
+        setTimeout(function(){
+            thisElement.insertBefore(nextElement);
+            nextElement.insertAfter(thisElement);
+        }, 700, true);
+      }
+      else {
+        setTimeout(function(){
+          thisElement.insertAfter(nextElement);
+          nextElement.insertBefore(thisElement);
+        }, 700, true);
+      }
       setTimeout(function(){
         thisElement.removeClass('remove_right');
         nextElement.removeClass('remove_left');
         thisElement.css('height', originalHeight + 'px');
         nextElement.css('height', originalHeight + 'px');
-        lastElement.removeClass('last');
-      }, 800);
+        $('.experience-item').removeClass('last');
+      }, 800, true);
     }
     else {
       if($(this).hasClass('last')){
@@ -201,12 +209,12 @@ function hoverEffects() {
       thisElement.addClass('remove_desktop');
       setTimeout(function(){
         thisElement.insertAfter(lastElement);
-      }, 700);
+      }, 700, true);
       setTimeout(function(){
         thisElement.removeClass('remove_desktop');
         thisElement.css('height', originalHeight + 'px');
-        lastElement.removeClass('last');
-      }, 800);
+        $('.experience-item').removeClass('last');
+      }, 800, true);
     }
   });
 }
@@ -295,7 +303,7 @@ function createGoTopArrow(){
     if($(window).width() > 767){
       setTimeout(function(){ //Add delay in case of resizing
         $('.arrow').css("bottom", "70px");
-      }, 200);
+      }, 200, true);
     }
     target = "#home";
   } 
@@ -305,7 +313,7 @@ function createGoTopArrow(){
     if($(window).width() > 767){
       setTimeout(function(){
         $('.arrow').css("bottom", "6px");   
-      }, 200);
+      }, 200, true);
     }
     target = "#about";
   }
@@ -316,7 +324,7 @@ function createGoTopArrow(){
       if($(window).width() > 767){
         setTimeout(function(){
           $('.arrow').css("bottom", "70px");  
-        }, 200);
+        }, 200, true);
       }  
       target = "#home";
     } 
@@ -326,7 +334,7 @@ function createGoTopArrow(){
       if($(window).width() > 767){
         setTimeout(function(){
           $('.arrow').css("bottom", "6px");
-        }, 200);
+        }, 200, true);
       }
       target = "#about";
     }
@@ -427,7 +435,7 @@ function createScrollRevealEffects(){
           $('.portfolio-image').removeAttr("style");
           //Reset the height again after removal
           hoverEffects();
-        }, 1000);
+        }, 1000, true);
       }
     }
   }
@@ -442,7 +450,7 @@ function createScrollRevealEffects(){
           $('.portfolio-image').removeAttr("style");
           //Reset the height again after removal
           hoverEffects();
-        }, 1000);
+        }, 1000, true);
       }
     }
   }
@@ -461,7 +469,7 @@ function createScrollRevealEffects(){
           $('.portfolio-item').removeAttr("style");
           // $(".hidden-text").css('opacity', '0');
           hoverEffects();
-        }, 400);
+        }, 400, true);
       }
     }
   }
@@ -476,7 +484,7 @@ function createScrollRevealEffects(){
           $('.skill-item').removeAttr("style");
           $('.portfolio-item').removeAttr("style");
           hoverEffects();
-        }, 600);
+        }, 600, true);
       }
     }
   }
@@ -532,10 +540,10 @@ function bindVelocity(){
           target = "#contact";
           setTimeout(function(){
             $('.contact').css('background', '#9b9b9b');
-          }, 1200);
+          }, 1200, true);
           setTimeout(function(){
             $('.contact').css('background', '#fff');
-          }, 2000);
+          }, 2000, true);
         }
         else {
           if($(window).width() < 767){
@@ -549,7 +557,7 @@ function bindVelocity(){
         $(target).velocity("scroll", { duration: 1000, offset: -52.5 });
       }
       else {
-        $(target).velocity("scroll", 1000);
+        $(target).velocity("scroll", 1000, true);
       }
   });
 }
@@ -563,22 +571,22 @@ Pace.on("done", function(){
   }
   if ( $('.pace-progress').attr('data-progress-text') == '100%' ) {
       //Lets get this party started!
-      $('.preloader-wrap').fadeOut(400);
+      $('.preloader-wrap').fadeOut(400, true);
       setTimeout(function(){
         $(".background-wrapper").attr("data-anim","true");
         $('.background-wrapper').addClass("active");
-      },200);
+      },200, true);
       //Fade in the title text
       setTimeout(function(){
         $('.title-text').css("display", "block");
-      },1000);
+      },1000, true);
       //Highlight dem abbreviations
       setTimeout(function(){
         $('.highlight-red').addClass('active');
-      },2200);
+      },2200, true);
       setTimeout(function(){
         $('.highlight-purple').addClass('active');
-      },2500);
+      },2500, true);
       //Show the navbar
       if($(window).width() < 767){
         $('.navbar-default').css("display", "block");
@@ -594,19 +602,19 @@ Pace.on("done", function(){
           $('.navbar-default').css("opacity", "0");
           setTimeout(function(){
           $('.navbar-default').css("opacity", "1");
-          },3000);
+          },3000, true);
         }
       }
       else {
         setTimeout(function(){
           $('.navbar-default').css("display", "block");
-        },3000);
+        },3000, true);
         setTimeout(function(){
           $( ".navbar-nav li a" ).each(function( index ) {
             //Set each of the underline to the width of each nav element text
             $(this).next().css('max-width', $(this).width() + 'px');
           });
-        },3100);
+        },3100, true);
       }
   } 
 });
