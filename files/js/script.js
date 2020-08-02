@@ -225,6 +225,7 @@ function hoverEffects() {
       if($(this).hasClass('last')){
         $('.experience-item').removeClass('last');
         setTimeout(function(){
+          
             thisElement.insertBefore(nextElement);
             nextElement.insertAfter(secondLastElement);
         }, 600, true);
@@ -470,7 +471,7 @@ function createScrollRevealEffects(){
       distance: '400px',
       scale: '0.5',
       viewOffset: {
-        bottom: 700
+        bottom: 600
       },
       //If effect has already occured, remove styles applied by scrollReveal
       //to allow for hover transform effects to still occur
@@ -505,7 +506,7 @@ function createScrollRevealEffects(){
       distance: '400px',
       scale: '0.5',
       viewOffset: {
-        bottom: 700
+        bottom: 600
       },
       afterReveal: function() {
         setTimeout(function(){
@@ -615,7 +616,7 @@ Pace.on("done", function(){
   }
   if ( $('.pace-progress').attr('data-progress-text') == '100%' ) {
       //Lets get this party started!
-      $('.preloader-wrap').fadeOut(400, true);
+      $('.preloader-wrap').fadeOut(400);
       setTimeout(function(){
         $(".background-wrapper").attr("data-anim","true");
         $('.background-wrapper').addClass("active");
