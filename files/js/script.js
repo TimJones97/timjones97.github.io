@@ -33,148 +33,188 @@ function resetEffects(element){
 }
 
 function hoverEffects() {
-  $(".brendan").parent().hover(
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Brendan Anning Wedding Celebrant").animate({'opacity': 1}, 200, true);
-      });
-      applyEffects($(this).find(".portfolio-image"));
-    },
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200, true);
-      });
-      resetEffects($(this).find(".portfolio-image"));
-    }
-  );
-  $(".aml").parent().hover(
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("AML Asset Management").animate({'opacity': 1}, 200, true);
-      });
-      applyEffects($(this).find(".portfolio-image"));
-    },
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200, true);
-      });
-      resetEffects($(this).find(".portfolio-image"));
-    }
-  );
-  $(".tla").parent().hover(
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("TLA Logistics Management").animate({'opacity': 1}, 200, true);
-      });
-      applyEffects($(this).find(".portfolio-image"));
-    },
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200, true);
-      });
-      resetEffects($(this).find(".portfolio-image"));
-    }
-  );
-  $(".qutrunning").parent().hover(
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("QUT Running Club").animate({'opacity': 1}, 200, true);
-      });
-      applyEffects($(this).find(".portfolio-image"));
-    },
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200, true);
-      });
-      resetEffects($(this).find(".portfolio-image"));
-    }
-  );
-  $(".quteb").parent().hover(
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("QUT Exchange Club").animate({'opacity': 1}, 200, true);
-      });
-      applyEffects($(this).find(".portfolio-image"));
-    },
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200, true);
-      });
-      resetEffects($(this).find(".portfolio-image"));
-    }
-  );
-  $(".daryl").parent().hover(
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Daryl Murphy Brisbane Entertainer").animate({'opacity': 1}, 200, true);
-      });
-      applyEffects($(this).find(".portfolio-image"));
-    },
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200, true);
-      });
-      resetEffects($(this).find(".portfolio-image"));
-    }
-  );
-  $(".aaron").parent().hover(
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Aaron Maybus DJ").animate({'opacity': 1}, 200, true);
-      });
-      applyEffects($(this).find(".portfolio-image"));
-    },
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200, true);
-      });
-      resetEffects($(this).find(".portfolio-image"));
-    }
-  );
-  $(".new").parent().hover(
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("And more to come.").animate({'opacity': 1}, 200, true);
-      });
-      applyEffects($(this).find(".portfolio-image"));
-    },
-    function() {
-      $(".portfolio-title").stop().animate({'opacity': 0}, 200, function(){
-        $(".portfolio-title").text("Portfolio").animate({'opacity': 1}, 200, true);
-      });
-      resetEffects($(this).find(".portfolio-image"));
-    }
-  );
-  $(".food-interact").hover(
-    function() {
-      $(".food-background").addClass("active");
-    },
-    function() {
-      $(".food-background").removeClass("active");
-    }
-  );
+  $(".brendan").parent().hover(function() {
+    $(".portfolio-title").stop().animate({
+        'opacity': 0
+    }, 200, function() {
+        $(".portfolio-title").text("Brendan Anning Wedding Celebrant").animate({
+            'opacity': 1
+        }, 200);
+    });
+    applyEffects($(this).find(".portfolio-image"));
+  }, function() {
+    $(".portfolio-title").stop().animate({
+        'opacity': 0
+    }, 200, function() {
+        $(".portfolio-title").text("Portfolio").animate({
+            'opacity': 1
+        }, 200);
+    });
+    resetEffects($(this).find(".portfolio-image"));
+  });
+  $(".aml").parent().hover(function() {
+    $(".portfolio-title").stop().animate({
+        'opacity': 0
+    }, 200, function() {
+        $(".portfolio-title").text("AML Asset Management").animate({
+            'opacity': 1
+        }, 200);
+    });
+    applyEffects($(this).find(".portfolio-image"));
+  }, function() {
+    $(".portfolio-title").stop().animate({
+        'opacity': 0
+    }, 200, function() {
+        $(".portfolio-title").text("Portfolio").animate({
+            'opacity': 1
+        }, 200);
+    });
+    resetEffects($(this).find(".portfolio-image"));
+  });
+  $(".tla").parent().hover(function() {
+    $(".portfolio-title").stop().animate({
+        'opacity': 0
+    }, 200, function() {
+        $(".portfolio-title").text("TLA Logistics Management").animate({
+            'opacity': 1
+        }, 200);
+    });
+    applyEffects($(this).find(".portfolio-image"));
+  }, function() {
+    $(".portfolio-title").stop().animate({
+        'opacity': 0
+    }, 200, function() {
+        $(".portfolio-title").text("Portfolio").animate({
+            'opacity': 1
+        }, 200);
+    });
+    resetEffects($(this).find(".portfolio-image"));
+  });
+  $(".qutrunning").parent().hover(function() {
+    $(".portfolio-title").stop().animate({
+        'opacity': 0
+    }, 200, function() {
+        $(".portfolio-title").text("QUT Running Club").animate({
+            'opacity': 1
+        }, 200);
+    });
+    applyEffects($(this).find(".portfolio-image"));
+  }, function() {
+    $(".portfolio-title").stop().animate({
+        'opacity': 0
+    }, 200, function() {
+        $(".portfolio-title").text("Portfolio").animate({
+            'opacity': 1
+        }, 200);
+    });
+    resetEffects($(this).find(".portfolio-image"));
+  });
+  $(".quteb").parent().hover(function() {
+    $(".portfolio-title").stop().animate({
+        'opacity': 0
+    }, 200, function() {
+        $(".portfolio-title").text("QUT Exchange Club").animate({
+            'opacity': 1
+        }, 200);
+    });
+    applyEffects($(this).find(".portfolio-image"));
+  }, function() {
+    $(".portfolio-title").stop().animate({
+        'opacity': 0
+    }, 200, function() {
+        $(".portfolio-title").text("Portfolio").animate({
+            'opacity': 1
+        }, 200);
+    });
+    resetEffects($(this).find(".portfolio-image"));
+  });
+  $(".daryl").parent().hover(function() {
+    $(".portfolio-title").stop().animate({
+        'opacity': 0
+    }, 200, function() {
+        $(".portfolio-title").text("Daryl Murphy Brisbane Entertainer").animate({
+            'opacity': 1
+        }, 200);
+    });
+    applyEffects($(this).find(".portfolio-image"));
+  }, function() {
+    $(".portfolio-title").stop().animate({
+        'opacity': 0
+    }, 200, function() {
+        $(".portfolio-title").text("Portfolio").animate({
+            'opacity': 1
+        }, 200);
+    });
+    resetEffects($(this).find(".portfolio-image"));
+  });
+  $(".aaron").parent().hover(function() {
+    $(".portfolio-title").stop().animate({
+        'opacity': 0
+    }, 200, function() {
+        $(".portfolio-title").text("Aaron Maybus DJ").animate({
+            'opacity': 1
+        }, 200);
+    });
+    applyEffects($(this).find(".portfolio-image"));
+  }, function() {
+    $(".portfolio-title").stop().animate({
+        'opacity': 0
+    }, 200, function() {
+        $(".portfolio-title").text("Portfolio").animate({
+            'opacity': 1
+        }, 200);
+    });
+    resetEffects($(this).find(".portfolio-image"));
+  });
+  $(".new").parent().hover(function() {
+    $(".portfolio-title").stop().animate({
+        'opacity': 0
+    }, 200, function() {
+        $(".portfolio-title").text("And more to come.").animate({
+            'opacity': 1
+        }, 200);
+    });
+    applyEffects($(this).find(".portfolio-image"));
+  }, function() {
+    $(".portfolio-title").stop().animate({
+        'opacity': 0
+    }, 200, function() {
+        $(".portfolio-title").text("Portfolio").animate({
+            'opacity': 1
+        }, 200);
+    });
+    resetEffects($(this).find(".portfolio-image"));
+  });
+  $(".food-interact").hover(function() {
+    $(".food-background").addClass("active");
+  }, function() {
+    $(".food-background").removeClass("active");
+  });
   $(".skill-item").hover(function() {
     var thisElement = $(this);
     thisElement.find('img').css("opacity", "0");
     thisElement.find('img').css("transform", "scale(0.9)");
     thisElement.find('.hidden-text').css("opacity", "1");
     thisElement.find('.hidden-text').css("transform", "translate(-50%, -50%) scale(1.0)");
-    setTimeout( function(){
-      $('skills').find("skill-item img").css('opacity', '0');
-      thisElement.find('img').css("opacity", "1");
-      thisElement.find('img').css("transform", "scale(1.0)");
-      thisElement.find('.hidden-text').css("transform", "translate(-50%, -50%) scale(1.1)");
-      thisElement.find('.hidden-text').css("opacity", "0");
-    }, 1300, true);
+    setTimeout(function() {
+        $('skills').find("skill-item img").css('opacity', '0');
+        thisElement.find('img').css("opacity", "1");
+        thisElement.find('img').css("transform", "scale(1.0)");
+        thisElement.find('.hidden-text').css("transform", "translate(-50%, -50%) scale(1.1)");
+        thisElement.find('.hidden-text').css("opacity", "0");
+    }, 1300);
   });
   $(".experience-item").click(function() {
     var thisElement = $(this);
     var nextElement = $(this).next();
     var lastElement = $(this).parent().children().last();
+    var secondLastElement = $(this).parent().children().last().prev();
     var firstElement = $(this).parent().children().first();
-    var originalHeight = $(this).outerHeight();
+    var originalHeight = $(this).next().outerHeight();
 
     lastElement.addClass('last');
+    $('.experience-item').css('pointer-events', 'none');
+
     if($(window).width() < 991){
       //If element is last in list, swap with first
       if($(this).hasClass('last')){
@@ -183,38 +223,42 @@ function hoverEffects() {
       thisElement.addClass('remove_right');
       nextElement.addClass('remove_left');
       if($(this).hasClass('last')){
+        $('.experience-item').removeClass('last');
         setTimeout(function(){
             thisElement.insertBefore(nextElement);
-            nextElement.insertAfter(thisElement);
-        }, 700, true);
+            nextElement.insertAfter(secondLastElement);
+        }, 600, true);
       }
       else {
         setTimeout(function(){
           thisElement.insertAfter(nextElement);
           nextElement.insertBefore(thisElement);
-        }, 700, true);
+        }, 600, true);
       }
       setTimeout(function(){
         thisElement.removeClass('remove_right');
         nextElement.removeClass('remove_left');
-        thisElement.css('height', originalHeight + 'px');
-        nextElement.css('height', originalHeight + 'px');
         $('.experience-item').removeClass('last');
-      }, 800, true);
+        $('.experience-item').css('pointer-events', 'all');
+      }, 700, true);
     }
     else {
       if($(this).hasClass('last')){
+        $('.experience-item').removeClass('last');
         lastElement = firstElement;
       }
       thisElement.addClass('remove_desktop');
       setTimeout(function(){
         thisElement.insertAfter(lastElement);
-      }, 700, true);
+      }, 500, true);
       setTimeout(function(){
+        if(originalHeight < 130){
+          originalHeight = 140;
+        }
         thisElement.removeClass('remove_desktop');
-        thisElement.css('height', originalHeight + 'px');
         $('.experience-item').removeClass('last');
-      }, 800, true);
+        $('.experience-item').css('pointer-events', 'all');
+      }, 550, true);
     }
   });
 }
