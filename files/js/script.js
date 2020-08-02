@@ -206,10 +206,11 @@ function hoverEffects() {
   });
   $(".experience-item").click(function() {
     var thisElement = $(this);
+    var thisElementCopy = $(this).clone(true).on();
     var nextElement = $(this).next();
     var lastElement = $(this).parent().children().last();
     var secondLastElement = $(this).parent().children().last().prev();
-    var firstElement = $(this).parent().children().first();
+    var firstElement = $(this).parent().children().filter(':first');
     var originalHeight = $(this).next().outerHeight();
 
     lastElement.addClass('last');
@@ -225,7 +226,6 @@ function hoverEffects() {
       if($(this).hasClass('last')){
         $('.experience-item').removeClass('last');
         setTimeout(function(){
-          
             thisElement.insertBefore(nextElement);
             nextElement.insertAfter(secondLastElement);
         }, 600, true);
@@ -244,22 +244,33 @@ function hoverEffects() {
       }, 700, true);
     }
     else {
+      thisElement.addClass('remove_desktop');
+      thisElementCopy = $(this).clone(true).on();
       if($(this).hasClass('last')){
         $('.experience-item').removeClass('last');
         lastElement = firstElement;
       }
-      thisElement.addClass('remove_desktop');
-      setTimeout(function(){
-        thisElement.insertAfter(lastElement);
-      }, 500, true);
+      if($(this).hasClass('last')){
+        setTimeout(function(){
+          thisElementCopy.insertAfter(lastElement);
+        }, 100, true);
+      }
+      else {
+        setTimeout(function(){
+          thisElementCopy.insertAfter(lastElement);
+        }, 100, true);
+      }
       setTimeout(function(){
         if(originalHeight < 130){
           originalHeight = 140;
         }
-        thisElement.removeClass('remove_desktop');
+        thisElementCopy.removeClass('remove_desktop');
         $('.experience-item').removeClass('last');
         $('.experience-item').css('pointer-events', 'all');
-      }, 550, true);
+      }, 120, true);
+      setTimeout(function(){
+        thisElement.detach();
+      }, 500, true);
     }
   });
 }

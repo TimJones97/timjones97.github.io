@@ -366,6 +366,7 @@ b, strong {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 42px;
+  user-select: none;
 }
 .about h1, .skills h1, .contact h1 {
   color: #3b3b3b;
@@ -689,8 +690,10 @@ b, strong {
   font-variant: small-caps;
   font-size: 20px;
   margin-bottom: 20px;
+  user-select: none;
 }
 .experience-item {
+  float: left;
   width: 280px;
   height: auto;
   margin-bottom: 5px;
@@ -748,7 +751,7 @@ b, strong {
   color: #fff;
 }
 .experience-item.qut:hover {
-  background: #a0cefd;
+  background: #7ebbf9;
 }
 .experience-item.qut-edu:hover {
   background: #5369ff;
@@ -778,16 +781,29 @@ b, strong {
   font-variation-settings: 'wght' 200, 'wdth' 85;
   transform: translateZ(0);
 }
+.experience-item .role {
+  margin-bottom: 5px;
+  animation: boldFontRemove 0.3s ease-in-out forwards;
+}
+.experience-item .period {
+  transition: all 0.5s ease;
+  opacity: 0;
+  transform: translateY(40px);
+}
+.experience-item:hover .period {
+  opacity: 1;
+  transform: translateY(0px);
+}
 .experience-item:hover .role {
   margin-top: 10px;
   margin-bottom: 10px;
   animation: boldFontAdd 0.3s forwards;
-  font-size: 14px;
 }
-.experience-item .role {
-  margin-bottom: 5px;
-  animation: boldFontRemove 0.3s forwards;
+.experience-item:hover .experience-logo img {
+  width: 85px;
+  transform: translateZ(0);
 }
+
 .experience-logo {
   position: absolute;
   bottom: 10px;
@@ -795,6 +811,7 @@ b, strong {
 }
 .experience-logo img {
   width: 80px;
+  transition: all 0.4s ease;
 }
 .work-experience, .education {
   width: 100%;
@@ -906,7 +923,7 @@ footer {
   position: absolute;
   bottom: 25px;
   left: 15px;
-  width: 0%;
+  width: 0px;
   height: 2px;
   border-bottom: 1px solid #e34c15;
   transition: width 0.7s ease, left 0.4s 0.3s ease; 
