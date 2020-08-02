@@ -206,24 +206,31 @@ function hoverEffects() {
   });
   $(".experience-item").click(function() {
     var thisElement = $(this);
-    var thisElementCopy = $(this).clone(true).on();
+    var thisElementCopy;
     var nextElement = $(this).next();
     var lastElement = $(this).parent().children().last();
     var secondLastElement = $(this).parent().children().last().prev();
     var firstElement = $(this).parent().children().filter(':first');
     var originalHeight = $(this).next().outerHeight();
+    var parentElement = $(this).parent();
 
+    //If the last element is the element to be removed (animation already triggered with remove class added)
+    //Then set the last element to last usable element
+    if(lastElement.hasClass('remove_desktop')){
+      lastElement = secondLastElement;
+    }
     lastElement.addClass('last');
     $('.experience-item').css('pointer-events', 'none');
 
+    //If on mobile
     if($(window).width() < 991){
       //If element is last in list, swap with first
-      if($(this).hasClass('last')){
+      if(thisElement.hasClass('last')){
         nextElement = firstElement.next();
       }
       thisElement.addClass('remove_right');
       nextElement.addClass('remove_left');
-      if($(this).hasClass('last')){
+      if(thisElement.hasClass('last')){
         $('.experience-item').removeClass('last');
         setTimeout(function(){
             thisElement.insertBefore(nextElement);
@@ -243,32 +250,26 @@ function hoverEffects() {
         $('.experience-item').css('pointer-events', 'all');
       }, 700, true);
     }
+    //If on desktop
     else {
       thisElement.addClass('remove_desktop');
-      thisElementCopy = $(this).clone(true).on();
-      if($(this).hasClass('last')){
-        $('.experience-item').removeClass('last');
+      thisElementCopy = thisElement.clone(true);
+      if(thisElement.hasClass('last')){
         lastElement = firstElement;
       }
-      if($(this).hasClass('last')){
-        setTimeout(function(){
-          thisElementCopy.insertAfter(lastElement);
-        }, 100, true);
-      }
-      else {
-        setTimeout(function(){
-          thisElementCopy.insertAfter(lastElement);
-        }, 100, true);
-      }
+      setTimeout(function(){
+        thisElementCopy.insertAfter(lastElement);
+      }, 100, true);
       setTimeout(function(){
         if(originalHeight < 130){
           originalHeight = 140;
         }
-        thisElementCopy.removeClass('remove_desktop');
         $('.experience-item').removeClass('last');
+        thisElementCopy.removeClass('remove_desktop');
         $('.experience-item').css('pointer-events', 'all');
       }, 120, true);
       setTimeout(function(){
+        //Detach the original element from the DOM
         thisElement.detach();
       }, 500, true);
     }
@@ -435,18 +436,18 @@ function setMainElements(){
       $(this).css('width', '100%');
     });
   }
-  $("html").easeScroll({
-    frameRate: 60,
-    animationTime: 1000,
-    stepSize: 100,
-    pulseAlgorithm: !0,
-    pulseScale: 8,
-    pulseNormalize: 1,
-    accelerationDelta: 20,
-    accelerationMax: 1,
-    keyboardSupport: !0,
-    arrowScroll: 50
-  });
+  // $("html").easeScroll({
+  //   frameRate: 60,
+  //   animationTime: 1000,
+  //   stepSize: 100,
+  //   pulseAlgorithm: !0,
+  //   pulseScale: 8,
+  //   pulseNormalize: 1,
+  //   accelerationDelta: 20,
+  //   accelerationMax: 1,
+  //   keyboardSupport: !0,
+  //   arrowScroll: 50
+  // });
 }
 
 $(window).resize(function () { 
