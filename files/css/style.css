@@ -14,6 +14,12 @@
        url('../fonts/poppins-v12-latin-200.ttf') format('truetype'), /* Safari, Android, iOS */
        url('../fonts/poppins-v12-latin-200.svg#Poppins') format('svg'); /* Legacy iOS */
 }
+/*Drive Variable Font*/
+@font-face {
+  font-family: 'Drive Variable';
+  font-style: normal;
+  src: url('../fonts/DriveVariable.ttf') format('truetype'); 
+}
 /* poppins-600 - latin */
 @font-face {
   font-family: 'Poppins';
@@ -89,7 +95,7 @@ b, strong {
   top: 0;
   bottom: 0;
   background: #151515;
-  z-index: 1000;
+  z-index: 10000;
 }
 .loader-centered {
   position: absolute;
@@ -111,6 +117,22 @@ b, strong {
   animation: fadeLoader 2s infinite;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
+}
+@keyframes boldFontAdd {
+  0% {
+    font-variation-settings: 'wght' 200, 'wdth' 85;
+  }
+  100% {
+    font-variation-settings: 'wght' 600, 'wdth' 100;
+  }
+}
+@keyframes boldFontRemove {
+  0% {
+    font-variation-settings: 'wght' 600, 'wdth' 100;
+  }
+  100% {
+    font-variation-settings: 'wght' 200, 'wdth' 85;
+  }
 }
 @keyframes fadeLoader {
   0% {
@@ -199,8 +221,8 @@ b, strong {
   height: 60px;
   background: transparent;
   color: white;
-  font-family: 'Poppins';
-  font-weight: 200;
+  font-family: 'Drive Variable';
+  font-variation-settings: 'wght' 200;
   font-size: 16px;
   transition: all 0.7s ease;
   position: relative;
@@ -351,9 +373,9 @@ b, strong {
 .about p {
   color: #3b3b3b;
   max-width: 1080px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 200;
-  font-size: 15px;
+  font-family: 'Drive Variable', sans-serif;
+  font-variation-settings: 'wght' 200;
+  font-size: 18px;
 }
 .about p strong {
   color: rgb(255, 149, 1);
@@ -627,7 +649,7 @@ b, strong {
   box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
 }
 .hidden-text {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Drive Variable', sans-serif;
   font-weight: 600;
   font-size: 15px;
   position: absolute;
@@ -675,7 +697,7 @@ b, strong {
   padding: 10px 10px 20px 20px;
   border-radius: 6px;
   overflow: hidden;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Drive Variable', sans-serif;
   font-weight: 200;
   position: relative;
   display: inline-block;
@@ -683,10 +705,11 @@ b, strong {
   transition: all 0.5s ease;
   cursor: pointer;
   left: 0;
-  margin-right: 5px;
-  height: 140px;
+  margin-right: 12px;
+  height: 150px;
   opacity: 1;
   user-select: none;
+  transform: translateZ(0);
 }
 .experience-item.last {
 
@@ -713,7 +736,7 @@ b, strong {
   transition: all 0.7s ease;
 }
 .experience-item:hover {
-  transform: scale(0.97);
+  transform: translateZ(0) scale(1.05);
   -webkit-box-shadow: -1px 3px 26px 0px rgba(0,0,0,0.75);
   box-shadow: -1px 3px 26px 0px rgba(0,0,0,0.75);
   background: #acacac;
@@ -746,14 +769,24 @@ b, strong {
   font-size: 18px;
   transition: all 0.3s ease;
   min-width: 250px;
+  font-variation-settings: 'wght' 200;
 }
 .experience-item p {
   font-size: 13px;
   color: #9b9b9b;
   margin-bottom: 0px;
+  font-variation-settings: 'wght' 200, 'wdth' 85;
+  transform: translateZ(0);
 }
-.experience-item:hover p:nth-of-type(2n) {
-  padding-bottom: 10px !important;
+.experience-item:hover .role {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  animation: boldFontAdd 0.3s forwards;
+  font-size: 14px;
+}
+.experience-item .role {
+  margin-bottom: 5px;
+  animation: boldFontRemove 0.3s forwards;
 }
 .experience-logo {
   position: absolute;
@@ -763,9 +796,6 @@ b, strong {
 .experience-logo img {
   width: 80px;
 }
-/*.experience-item p:nth-child(3) {
-  color: rgb(255, 149, 1);
-}*/
 .work-experience, .education {
   width: 100%;
   display: inline-block;
@@ -797,8 +827,8 @@ b, strong {
   border-radius: 6px;
   overflow: hidden;
   display: inline-block;
-  font-family: 'Poppins';
-  font-weight: 200;
+  font-family: 'Drive Variable';
+  font-variation-settings: 'wght' 200;
   padding-bottom: 20px;
   position: relative;
   display: inline-block;
@@ -842,8 +872,8 @@ b, strong {
 }
 footer {
   display: inline-block;
-  font-family: 'Poppins';
-  font-weight: 200;
+  font-family: 'Drive Variable';
+  font-variation-settings: 'wght' 200;
   font-size: 12px;
   width: 100%;
   height: 100%;
