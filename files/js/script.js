@@ -252,6 +252,7 @@ function hoverEffects() {
     }
     //If on desktop
     else {
+      console.log('triggered');
       thisElement.addClass('remove_desktop');
       thisElementCopy = thisElement.clone(true);
       if(thisElement.hasClass('last')){
