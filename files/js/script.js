@@ -270,8 +270,7 @@ function hoverEffects() {
       }, 120, true);
       setTimeout(function(){
         //Detach the original element from the DOM
-        thisElement.removeData();
-        thisElement.detach();
+        thisElement.remove();
       }, 500, true);
     }
   });
