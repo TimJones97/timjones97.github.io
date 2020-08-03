@@ -278,6 +278,7 @@ function hoverEffects() {
 
 function interactiveCursor(){
   var attachedLarge = false;
+  var pollResize;
 
   const updateProperties = (elem, state) => {
     elem.style.setProperty('width', `${state.width}px`)
@@ -289,7 +290,7 @@ function interactiveCursor(){
       elem.style.setProperty('transform', `translate(${state.transformXsubW}px,${state.transformYsubH}px)`)
       elem.style.setProperty('transition', `150ms width cubic-bezier(0.39, 0.575, 0.565, 1),
                                             150ms height cubic-bezier(0.39, 0.575, 0.565, 1),
-                                            0.3s transform cubic-bezier(0.39, 0.575, 0.565, 1),
+                                            0.2s transform cubic-bezier(0.39, 0.575, 0.565, 1),
                                             0.2s width cubic-bezier(0.39, 0.575, 0.565, 1),
                                             0.2s height cubic-bezier(0.39, 0.575, 0.565, 1)`)
       //Make cursor dark when not selecting elements
@@ -351,10 +352,12 @@ function interactiveCursor(){
       }
     }
 
-    document.addEventListener('mousemove', e => {
+    $(document).mousemove(function(e){
       const state = createState(e)
       updateProperties(cursor, state)
+      //Listen for resize of experience item elements
     })
+
     Array.from(document.getElementsByClassName('portfolio-item')).forEach(elem => {
       elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = true})
       elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false})
@@ -365,8 +368,15 @@ function interactiveCursor(){
     })
     Array.from(document.getElementsByClassName('experience-item')).forEach(elem => {
       attachedLarge = true
-      elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = true})
-      elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false})
+      elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = false;
+        event = $.Event('mousemove');
+        event.pageX = 100;
+        event.pageY = 100; 
+        pollResize = setInterval(function(){
+          $(document).trigger(event);
+        }, 300);
+      })
+      elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false; clearInterval(pollResize)})
     })
     document.getElementById('experience').addEventListener('click', e => {
       //Wait for new elements to be created
@@ -402,21 +412,28 @@ function navbarElementHoverAnim(){
     }
   );
 }
-function addWhiteNav(){
+function addDarkNav(){
   $(".navbar-default").css("background-color", "rgb(15, 15, 15)");
-  $(".navbar-collapse").css("background-color", "rgb(15, 15, 15)");    
+  $(".navbar-collapse").css("background-color", "rgb(15, 15, 15)");  
   $(".navbar-default").css("height", "57px");
   $(".navbar-brand img").css('height', '50px');
   $(".navbar-brand img").css('width', '50px');
+  $(".navbar-default").css("opacity", "1");
 }
 function addTransparentNav(){
+  $(".navbar-default").removeClass('dark');
   //Make navbar transparent if scroll position is on main section
   $(".navbar-default").css("background-color", "transparent");
   $(".navbar-default").css("border-top", "none");
   $(".navbar-collapse").css("background-color", "none");
   $(".navbar-nav li a").css("margin-top", "40px");
   $(".navbar-default").css("height", "100px");
-  $(".navbar-nav li:nth-of-type(2)").css("padding-left", "40px");
+  if($(window).width() < 991){
+    $(".navbar-nav li:nth-of-type(2)").css("padding-left", "20px");
+  }
+  else {
+    $(".navbar-nav li:nth-of-type(2)").css("padding-left", "40px");
+  }
   $(".navbar-nav li:nth-of-type(2) .underline").css("left", "55px");
   $(".navbar-nav li a:hover").css("color", "#fff");
   $(".navbar-nav li .navbar-brand").css("margin-top", "25px");
@@ -425,8 +442,15 @@ function addTransparentNav(){
   $(".navbar-brand .first").css('opacity', '1');
   $(".navbar-brand .second").css('opacity', '0');
 }
-function addWhiteNavDesktop(){
-  $(".navbar-default").css("background-color", "rgb(15, 15, 15)");
+function addDarkNavDesktop(counter){
+  //Only trigger dark class between 1 and 40px
+  if(counter > 1 && counter != 0){
+    setTimeout(function(){
+      if($(document).scrollTop() != 0){
+        $(".navbar-default").addClass('dark');
+      }
+    }, 200);
+  }
   $(".navbar-default").css("border-top", "none");
   $(".navbar-default").css("display", "block");
   $(".navbar-collapse").css("background-color", "none");
@@ -444,15 +468,16 @@ function addWhiteNavDesktop(){
 
 function animateNavbar(){
   //If on mobile
+  var scrollCounter = $(document).scrollTop();
   if($(window).width() < 767){
-    addWhiteNav();
+    addDarkNav();
   }
   //If on desktop
   else {
     //Scroll position is in About section
-    if($(document).scrollTop() > 1) {
-      addWhiteNavDesktop();     
-      $( ".navbar-nav li a" ).each(function( index ) {
+    if(scrollCounter > 1) {
+      addDarkNavDesktop(scrollCounter);     
+      $( ".navbar-nav li a" ).each(function(index) {
         //Set each of the underline to the width of each nav element text
         $(this).next().css('max-width', $(this).width() + 'px');
       });
@@ -567,17 +592,11 @@ function setMainElements(){
 }
 
 $(window).resize(function () { 
-  // console.log('RESIZED'); 
   $(".bars").removeClass("active");
   setMainElements();
-  // if($(document).scrollTop() == 0){
-  //   $(".navbar-nav li a").css("margin-top", "40px");
-  //   $(".navbar-nav li .navbar-brand").css("margin-top", "25px");
-  // }
-  // else {
-  //   $(".navbar-nav li a").css("margin-top", "10px");
-  //   $(".navbar-nav li .navbar-brand").css("margin-top", "-5px");
-  // }
+  // Remove inline width styles 
+  $('.fade-third').removeAttr('style');
+  $('.fade-fourth').removeAttr('style');
   $(".navbar-default").css('display', 'block');
   $(".navbar-nav li").css('opacity', '1');
   $(".navbar-nav li").css('animation-name', 'unset');
@@ -736,7 +755,9 @@ function bindVelocity(){
 }
 Pace.restart();
 Pace.on("done", function(){
+  var fadeThirdElem, fadeFourthElem, isMobile;
   if($(window).width() < 991) {
+    isMobile = true;
     $(".main").css("height", $(window).innerHeight());
   }
   else {
@@ -744,7 +765,7 @@ Pace.on("done", function(){
   }
   if ( $('.pace-progress').attr('data-progress-text') == '100%' ) {
       //Lets get this party started!
-      $('.preloader-wrap').fadeOut(400);
+      $('.preloader-wrap').fadeOut(300);
       setTimeout(function(){
         $(".background-wrapper").attr("data-anim","true");
         $('.background-wrapper').addClass("active");
@@ -752,14 +773,39 @@ Pace.on("done", function(){
       //Fade in the title text
       setTimeout(function(){
         $('.title-text').css("display", "block");
+        if(!isMobile){
+          $(".fade-third").css('width', $(".fade-third").outerWidth() + 'px');
+          $(".fade-fourth").css('width', $(".fade-fourth").outerWidth() + 'px');
+          fadeThirdElem = $(".fade-third").addClass('hide_desktop').detach();
+          fadeFourthElem = $(".fade-fourth").addClass('hide_desktop').detach();
+        }
       },1000, true);
-      //Highlight dem abbreviations
+      //Highlight the abbreviations
       setTimeout(function(){
-        $('.highlight-red').addClass('active');
+        $('.highlight-orange').addClass('active');
       },2200, true);
       setTimeout(function(){
-        $('.highlight-purple').addClass('active');
-      },2500, true);
+        $('.highlight-blue').addClass('active');
+      },2400, true);
+      //Do not execute nice animation if on mobile
+      if(!isMobile){
+        setTimeout(function(){
+          fadeThirdElem.insertBefore($(".fullstop"));
+          fadeFourthElem.insertAfter(fadeThirdElem);
+        },2600, true);
+        setTimeout(function(){
+          fadeThirdElem.removeClass('hide_desktop');
+          fadeFourthElem.removeClass('hide_desktop');
+        },3000, true);
+        setTimeout(function(){
+          $('.fade').addClass('no_delay');
+          $('.fade-second').addClass('no_delay');
+          fadeThirdElem.addClass('no_delay');
+          fadeFourthElem.addClass('no_delay');
+          $('.title-text h1 span').css('transition', 'none')
+        },5000, true);
+      }
+      
       //Show the navbar
       if($(window).width() < 767){
         $('.navbar-default').css("display", "block");
@@ -769,19 +815,20 @@ Pace.on("done", function(){
         //is being refreshed
         if($(document).scrollTop() > 1) {
           //Display the navbar immediately
+          addDarkNavDesktop($(document).scrollTop());
         }
         else {
           //If not, run the animation
           $('.navbar-default').css("opacity", "0");
           setTimeout(function(){
           $('.navbar-default').css("opacity", "1");
-          },3000, true);
+          },3900, true);
         }
       }
       else {
         setTimeout(function(){
           $('.navbar-default').css("display", "block");
-        },3000, true);
+        },3900, true);
         setTimeout(function(){
           $( ".navbar-nav li a" ).each(function( index ) {
             //Set each of the underline to the width of each nav element text
