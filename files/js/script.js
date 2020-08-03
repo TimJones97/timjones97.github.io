@@ -428,6 +428,8 @@ function navbarElementHoverAnim(){
   );
 }
 function addDarkNav(){
+  $(".navbar-default").removeClass('dark');
+  $(".navbar-default").addClass('dark_mobile');
   $(".navbar-default").css("background-color", "rgb(15, 15, 15)");
   $(".navbar-collapse").css("background-color", "rgb(15, 15, 15)");  
   $(".navbar-default").css("height", "57px");
@@ -436,8 +438,9 @@ function addDarkNav(){
   $(".navbar-default").css("opacity", "1");
 }
 function addTransparentNav(){
-  $(".navbar-default").removeClass('dark');
   //Make navbar transparent if scroll position is on main section
+  $(".navbar-default").removeClass('dark');
+  $(".navbar-default").removeClass('dark_mobile');
   $(".navbar-default").css("background-color", "transparent");
   $(".navbar-default").css("border-top", "none");
   $(".navbar-collapse").css("background-color", "none");
@@ -458,6 +461,7 @@ function addTransparentNav(){
   $(".navbar-brand .second").css('opacity', '0');
 }
 function addDarkNavDesktop(){
+  $(".navbar-default").removeClass('dark_mobile');
   $(".navbar-default").addClass('dark');
   $(".navbar-default").css("border-top", "none");
   $(".navbar-default").css("display", "block");
