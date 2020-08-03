@@ -252,7 +252,6 @@ function hoverEffects() {
     }
     //If on desktop
     else {
-      console.log('triggered');
       thisElement.addClass('remove_desktop');
       thisElementCopy = thisElement.clone(true);
       if(thisElement.hasClass('last')){
@@ -278,16 +277,33 @@ function hoverEffects() {
 }
 
 function interactiveCursor(){
+  var attachedLarge = false;
+
   const updateProperties = (elem, state) => {
-    elem.style.setProperty('x', `${state.x}px`)
-    elem.style.setProperty('y', `${state.y}px`)
     elem.style.setProperty('width', `${state.width}px`)
     elem.style.setProperty('height', `${state.height}px`)
-    elem.style.setProperty('radius', state.radius)
+    elem.style.setProperty('border-radius', state.radius)
     elem.style.setProperty('scale', state.scale)
-    // elem.style.setProperty('transform', 'translate(' + (state.x - state.y / 2) + ')')
-
-    // transform: translate(state.x - state.y / 2), calc(var(--y) - var(--height) / 2));
+    elem.style.setProperty('opacity', state.opacity)
+    if(!state.attached){
+      elem.style.setProperty('transform', `translate(${state.transformXsubW}px,${state.transformYsubH}px)`)
+      elem.style.setProperty('transition', `150ms width cubic-bezier(0.39, 0.575, 0.565, 1),
+                                            150ms height cubic-bezier(0.39, 0.575, 0.565, 1),
+                                            0.3s transform cubic-bezier(0.39, 0.575, 0.565, 1),
+                                            0.2s width cubic-bezier(0.39, 0.575, 0.565, 1),
+                                            0.2s height cubic-bezier(0.39, 0.575, 0.565, 1)`)
+    }
+    else {
+      elem.style.setProperty('transform', `translate(${state.x}px,${state.y}px)`)
+      if(state.attachedLarge){
+        console.log(state.attachedLarge);
+        elem.style.setProperty('transition', `150ms width cubic-bezier(0.39, 0.575, 0.565, 1),
+                                            150ms height cubic-bezier(0.39, 0.575, 0.565, 1),
+                                            0.55s transform cubic-bezier(0.39, 0.575, 0.565, 1),
+                                            0.4s width cubic-bezier(0.39, 0.575, 0.565, 1),
+                                            0.4s height cubic-bezier(0.39, 0.575, 0.565, 1)`)
+      }
+    }
   }
 
   document.querySelectorAll('.cursor').forEach(cursor => {
@@ -299,7 +315,12 @@ function interactiveCursor(){
         y: e.clientY,
         width: 40,
         height: 40,
-        radius: '50%'
+        radius: '50%',
+        opacity: 1,
+        transformXsubW: (e.clientX - 20) + 2,
+        transformYsubH: (e.clientY - 20) + 2,
+        attachedLarge: false,
+        attached: false
       }
 
       const computedState = {}
@@ -308,11 +329,17 @@ function interactiveCursor(){
         const { top, left, width, height } = onElement.getBoundingClientRect()
         const radius = window.getComputedStyle(onElement).borderTopLeftRadius
 
-        computedState.x = left + width / 2
-        computedState.y = top + height / 2
+        computedState.x = left
+        computedState.y = top
         computedState.width = width
         computedState.height = height
         computedState.radius = radius
+        computedState.transformXsubW = (left + width / 2) - 20
+        computedState.transformYsubH = (top + height / 2) - 20
+        if(attachedLarge){
+          computedState.attachedLarge = true
+        }
+        computedState.attached = true
       }
 
       return {
@@ -325,10 +352,40 @@ function interactiveCursor(){
       const state = createState(e)
       updateProperties(cursor, state)
     })
-
-    document.querySelectorAll('a, button').forEach(elem => {
-      elem.addEventListener('mouseenter', () => (onElement = elem))
-      elem.addEventListener('mouseleave', () => (onElement = undefined))
+    Array.from(document.getElementsByClassName('portfolio-item')).forEach(elem => {
+      elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = true})
+      elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false})
+    })
+    Array.from(document.getElementsByClassName('skill-item')).forEach(elem => {
+      elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = false})
+      elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false})
+    })
+    Array.from(document.getElementsByClassName('experience-item')).forEach(elem => {
+      attachedLarge = true
+      elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = false})
+      elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false})
+    })
+    document.getElementById('experience').addEventListener('click', e => {
+      //Wait for new elements to be created
+      setTimeout(function(){
+        Array.from(document.getElementsByClassName('experience-item')).forEach(elem => {
+          attachedLarge = true
+          elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = false})
+          elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false})
+        })
+      }, 500, true)
+    })
+    Array.from(document.getElementsByClassName('view-work')).forEach(elem => {
+      elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = true})
+      elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false})
+    })
+    Array.from(document.getElementById('navbar-collapse-x').getElementsByTagName('a')).forEach(elem => {
+      elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = true})
+      elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false})
+    })
+    Array.from(document.getElementsByClassName('contact-item')).forEach(elem => {
+      elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = true})
+      elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false})
     })
   })
 }
@@ -539,7 +596,7 @@ function createScrollRevealEffects(){
       distance: '400px',
       scale: '0.5',
       viewOffset: {
-        bottom: 600
+        top: 400
       },
       //If effect has already occured, remove styles applied by scrollReveal
       //to allow for hover transform effects to still occur
@@ -574,7 +631,7 @@ function createScrollRevealEffects(){
       distance: '400px',
       scale: '0.5',
       viewOffset: {
-        bottom: 600
+        top: 300
       },
       afterReveal: function() {
         setTimeout(function(){
@@ -739,7 +796,7 @@ function fadeOutVideo(){
 }
 $( document ).ready(function() {
   $(".bars").removeClass("active");
-  // interactiveCursor();
+  interactiveCursor();
   setMainElements();
   hoverEffects();
   createGoTopArrow();

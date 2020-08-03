@@ -65,6 +65,10 @@ body {
   padding: 0;
   overflow-x: hidden;
 }
+/*Have custom cursor everywhere*/
+* {
+  cursor: url("data:image/svg+xml,%3Csvg height='8' width='8' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4' cy='4' fill='orange' r='3'/%3E%3C/svg%3E") 0 0, auto;
+}
 *::selection { 
   /*background: rgb(255, 149, 1);*/
   background: #e34c15;
@@ -88,16 +92,15 @@ b, strong {
   position: fixed;
   top: 0;
   left: 0;
-  width: var(--width);
-  height: var(--height);
-  transform: translate(calc(var(--x) - var(--width) / 2), calc(var(--y) - var(--height) / 2));
   /* transition-duration: 125ms;
   transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
   transition-property: width, height, transform; */
   transition: 150ms width cubic-bezier(0.39, 0.575, 0.565, 1),
               150ms height cubic-bezier(0.39, 0.575, 0.565, 1),
-              150ms transform cubic-bezier(0.39, 0.575, 0.565, 1);
-  z-index: 1;
+              0.3s transform cubic-bezier(0.39, 0.575, 0.565, 1),
+              0.4s width cubic-bezier(0.39, 0.575, 0.565, 1),
+              0.4s height cubic-bezier(0.39, 0.575, 0.565, 1);
+  z-index: 10001;
   pointer-events: none;
   will-change: transform;
 }
@@ -113,20 +116,18 @@ b, strong {
   left: 0;
   right: 0;
   bottom: 0;
-  border-radius: 50%;
-  border: 2px solid #b55400;
-  opacity: var(--scale);
-  -webkit-transform: scale(var(--scale));
-          transform: scale(var(--scale));
+  border-radius: inherit;
+  border: 2px solid #acacac;
   transition: 300ms opacity cubic-bezier(0.39, 0.575, 0.565, 1),
               300ms transform cubic-bezier(0.39, 0.575, 0.565, 1),
+              500ms width cubic-bezier(0.39, 0.575, 0.565, 1),
+              500ms height cubic-bezier(0.39, 0.575, 0.565, 1),
               150ms border-radius cubic-bezier(0.39, 0.575, 0.565, 1);
 }
 html:not(html:hover) .cursor::after {
   opacity: 0;
   transform: scale(0);
 }
-
 /*----------------------------------------------
 -------------------MAIN SECTION-----------------
 ------------------------------------------------*/
@@ -416,7 +417,7 @@ html:not(html:hover) .cursor::after {
 }
 .about p {
   color: #3b3b3b;
-  max-width: 1080px;
+  max-width: 1150px;
   font-family: 'Drive Variable', sans-serif;
   font-variation-settings: 'wght' 200;
   font-size: 18px;
@@ -433,7 +434,6 @@ html:not(html:hover) .cursor::after {
 }*/
 .about p .food-interact {
   font-style: italic;
-  cursor: help;
   border-bottom: 1px dotted #9b9b9b;
 }
 .food-background {
@@ -483,6 +483,9 @@ html:not(html:hover) .cursor::after {
 .portfolio-container {
   max-width: 1300px;
 }
+.portfolio-container a {
+  display: block;
+}
 .portfolio-item {
   float: left;
   position: relative;
@@ -496,6 +499,7 @@ html:not(html:hover) .cursor::after {
   z-index: 1;
   transition: all 0.7s ease;
   transform: scale(1.0);
+  /*transform: none !important;*/
   margin-right: 15px;
 }
 .portfolio-item h2 {
@@ -534,6 +538,7 @@ html:not(html:hover) .cursor::after {
   transition: all 0.7s ease;
   overflow: hidden;
   -webkit-mask-image: -webkit-radial-gradient(white, white);
+  transform: translateZ(0);
 }
 .portfolio-logo {
   position: absolute;
@@ -678,19 +683,10 @@ html:not(html:hover) .cursor::after {
   overflow: hidden;
   transition: all 0.3s ease;
 	-webkit-transition: all 0.3s ease; 
-  transform: scale(1.0);
   position: relative;
   z-index: 1;
   margin-right: 1%;
   display: table-cell;
-}
-.skill-item:hover {
-  /*background: rgba(255, 149, 1, 0.6);*/
-  background: #fff;
-  transform: scale(0.95);
-  -webkit-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
-  -moz-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
-  box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
 }
 .hidden-text {
   font-family: 'Drive Variable', sans-serif;
@@ -749,7 +745,6 @@ html:not(html:hover) .cursor::after {
   display: inline-block;
   background: white;
   transition: all 0.5s ease;
-  cursor: pointer;
   left: 0;
   margin-right: 12px;
   height: 150px;
@@ -781,29 +776,17 @@ html:not(html:hover) .cursor::after {
   -webkit-transition: all 0.7s ease;
   transition: all 0.7s ease;
 }
-.experience-item:hover {
-  transform: translateZ(0) scale(1.05);
-  -webkit-box-shadow: -1px 3px 26px 0px rgba(0,0,0,0.75);
-  box-shadow: -1px 3px 26px 0px rgba(0,0,0,0.75);
-  background: #acacac;
-/*  -webkit-transform: perspective(1px) skewY(2deg) translateZ(-0.05px) !important;
-  transform: perspective(1px) skewY(2deg) translateZ(-0.05px)  !important;*/
-}
-.experience-item:hover h6,
-.experience-item:hover p {
-  transform: translateZ(0) scale(0.95);
-}
 .experience-item.qut,
 .experience-item.qut .period .cover {
   background: #7ebbf9;
 }
 .experience-item.qut-edu,
 .experience-item.qut-edu .period .cover {
-  background: #5369ff;
+  background: #030936;
 }
 .experience-item.urban,
 .experience-item.urban .period .cover {
-  background: #ffaa48;
+  background: #f3a954;
 }
 .experience-item.edu,
 .experience-item.edu .period .cover {
@@ -823,11 +806,11 @@ html:not(html:hover) .cursor::after {
 }
 .experience-item.qut-edu:hover,
 .experience-item.qut-edu:hover .period .cover {
-  background: #304af7;
+  background: #000211;
 }
 .experience-item.urban:hover,
 .experience-item.urban:hover .period .cover {
-  background: #f39325;
+  background: #de8117;
 }
 .experience-item.edu:hover,
 .experience-item.edu:hover .period .cover {
@@ -841,13 +824,9 @@ html:not(html:hover) .cursor::after {
 .experience-item.stack:hover .period .cover {
   background: #f17726;
 }
-.experience-item.edu .period .cover {
-  right: 70%;
-  transition: all 0.4s ease-in-out, background 0.4s ease;
-}
 .experience-item h6 {
   font-size: 18px;
-  transition: all 0.5s ease;
+  transition: all 0.2s ease;
   min-width: 250px;
   font-variation-settings: 'wght' 200;
   color: #fff;
@@ -860,37 +839,42 @@ html:not(html:hover) .cursor::after {
   transform: translateZ(0);
 }
 .experience-item .role {
-  margin-bottom: 5px;
+  margin-bottom: 7px;
+  font-size: 14px;
+  transition: all 0.3s;
   animation: boldFontRemove 0.3s ease-in-out forwards;
 }
 .experience-item .period {
-  position: relative;
+  position: absolute;
   transition: opacity 0.5s ease-in-out, transform 0.3s ease;
+  transition-delay: 0.3s;
+  bottom: 10px;
   opacity: 0;
 }
 .experience-item .period .cover {
   position: absolute;
-  right: 55%;
+  right: -50px;
   top: 0;
   width: 125px;
   height: 15px;
   z-index: 2;
-  transition: all 0.4s ease-in-out, background 0.5s ease;
+  transition: all 0.5s ease-in-out 0.3s, background 0.5s ease;
+}
+.experience-item.edu .period .cover {
+  transition: all 0.5s ease-in-out 0.3s, background 0.4s ease;
 }
 .experience-item:hover .period {
   opacity: 1;
-  transform: translateZ(0) scale(0.95);
 }
 .experience-item:hover .period .cover {
   width: 0px;
 }
 .experience-item:hover .role {
+  font-size: 15px;
   animation: boldFontAdd 0.3s forwards;
+  animation-delay: 0.3s;
+  transition: all 0.3s ease 0.2s;
 }
-.experience-item:hover .experience-logo img {
-  transform: translateZ(0) scale(0.95);
-}
-
 .experience-logo {
   position: absolute;
   bottom: 10px;
@@ -941,16 +925,12 @@ html:not(html:hover) .cursor::after {
 }
 .contact-item:hover {
   background: rgb(23,23,23);
-  transform: scale(0.95);
   -webkit-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
   -moz-box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
   box-shadow: -1px 0px 22px 0px rgba(140,140,140,1);
-  -webkit-transform: perspective(1px) skewY(-3deg) translateZ(0) !important;
-  transform: perspective(1px) skewY(-3deg) translateZ(0)  !important;
 }
 .contact-item:hover picture {
-  -webkit-transform: translate(-50%, -50%) perspective(1px) skewY(3deg) translateZ(0) !important;
-  transform: translate(-50%, -50%) perspective(1px) skewY(3deg) translateZ(0)  !important;
+
 }
 .contact-image {
   position: absolute;
@@ -1060,6 +1040,7 @@ footer {
   line-height: 25px;
   margin-right: 10px;
   margin-bottom: 10px;
+  border-radius: 12px;
 }
 .navbar-default .navbar-nav li a {
   color: white;
@@ -1192,7 +1173,6 @@ footer {
 }
 .bars {
   width: 60px;
-  cursor: pointer;
 }
 .bars .line {
   fill: none;
