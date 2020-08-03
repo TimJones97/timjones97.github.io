@@ -204,7 +204,7 @@ function hoverEffects() {
         thisElement.find('.hidden-text').css("opacity", "0");
     }, 1300);
   });
-  $(".experience-item").on('click', function() {
+  $(".experience-item").unbind().click(function() {
     var thisElement = $(this);
     var thisElementCopy;
     var nextElement = $(this).next();
