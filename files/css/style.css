@@ -83,6 +83,49 @@ p {
 b, strong {
   font-weight: 200 !important; 
 }
+.cursor {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--width);
+  height: var(--height);
+  transform: translate(calc(var(--x) - var(--width) / 2), calc(var(--y) - var(--height) / 2));
+  /* transition-duration: 125ms;
+  transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+  transition-property: width, height, transform; */
+  transition: 150ms width cubic-bezier(0.39, 0.575, 0.565, 1),
+              150ms height cubic-bezier(0.39, 0.575, 0.565, 1),
+              150ms transform cubic-bezier(0.39, 0.575, 0.565, 1);
+  z-index: 1;
+  pointer-events: none;
+  will-change: transform;
+}
+@media (pointer: fine) {
+  .cursor {
+    display: block;
+  }
+}
+.cursor::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  border: 2px solid #b55400;
+  opacity: var(--scale);
+  -webkit-transform: scale(var(--scale));
+          transform: scale(var(--scale));
+  transition: 300ms opacity cubic-bezier(0.39, 0.575, 0.565, 1),
+              300ms transform cubic-bezier(0.39, 0.575, 0.565, 1),
+              150ms border-radius cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+html:not(html:hover) .cursor::after {
+  opacity: 0;
+  transform: scale(0);
+}
 
 /*----------------------------------------------
 -------------------MAIN SECTION-----------------
@@ -748,35 +791,70 @@ b, strong {
 }
 .experience-item:hover h6,
 .experience-item:hover p {
-  color: #fff;
+  transform: translateZ(0) scale(0.95);
 }
-.experience-item.qut:hover {
+.experience-item.qut,
+.experience-item.qut .period .cover {
   background: #7ebbf9;
 }
-.experience-item.qut-edu:hover {
+.experience-item.qut-edu,
+.experience-item.qut-edu .period .cover {
   background: #5369ff;
 }
-.experience-item.urban:hover {
-  background: #f5b66d;
+.experience-item.urban,
+.experience-item.urban .period .cover {
+  background: #ffaa48;
 }
-.experience-item.edu:hover {
+.experience-item.edu,
+.experience-item.edu .period .cover {
   background: #ee5e7a;
 }
-.experience-item.msoft:hover {
+.experience-item.msoft,
+.experience-item.msoft .period .cover {
   background: #acd84f;
 }
-.experience-item.stack:hover {
+.experience-item.stack,
+.experience-item.stack .period .cover {
   background: #f58840;
+}
+.experience-item.qut:hover,
+.experience-item.qut:hover .period .cover {
+  background: #58a3f1;
+}
+.experience-item.qut-edu:hover,
+.experience-item.qut-edu:hover .period .cover {
+  background: #304af7;
+}
+.experience-item.urban:hover,
+.experience-item.urban:hover .period .cover {
+  background: #f39325;
+}
+.experience-item.edu:hover,
+.experience-item.edu:hover .period .cover {
+  background: #f3375b;
+}
+.experience-item.msoft:hover,
+.experience-item.msoft:hover .period .cover {
+  background: #9dd428;
+}
+.experience-item.stack:hover,
+.experience-item.stack:hover .period .cover {
+  background: #f17726;
+}
+.experience-item.edu .period .cover {
+  right: 70%;
+  transition: all 0.4s ease-in-out, background 0.4s ease;
 }
 .experience-item h6 {
   font-size: 18px;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
   min-width: 250px;
   font-variation-settings: 'wght' 200;
+  color: #fff;
 }
 .experience-item p {
   font-size: 13px;
-  color: #9b9b9b;
+  color: #fff;
   margin-bottom: 0px;
   font-variation-settings: 'wght' 200, 'wdth' 85;
   transform: translateZ(0);
@@ -786,22 +864,31 @@ b, strong {
   animation: boldFontRemove 0.3s ease-in-out forwards;
 }
 .experience-item .period {
-  transition: all 0.5s ease;
+  position: relative;
+  transition: opacity 0.5s ease-in-out, transform 0.3s ease;
   opacity: 0;
-  transform: translateY(40px);
+}
+.experience-item .period .cover {
+  position: absolute;
+  right: 55%;
+  top: 0;
+  width: 125px;
+  height: 15px;
+  z-index: 2;
+  transition: all 0.4s ease-in-out, background 0.5s ease;
 }
 .experience-item:hover .period {
   opacity: 1;
-  transform: translateY(0px);
+  transform: translateZ(0) scale(0.95);
+}
+.experience-item:hover .period .cover {
+  width: 0px;
 }
 .experience-item:hover .role {
-  margin-top: 10px;
-  margin-bottom: 10px;
   animation: boldFontAdd 0.3s forwards;
 }
 .experience-item:hover .experience-logo img {
-  width: 85px;
-  transform: translateZ(0);
+  transform: translateZ(0) scale(0.95);
 }
 
 .experience-logo {
