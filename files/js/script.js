@@ -190,6 +190,11 @@ function hoverEffects() {
   }, function() {
     $(".food-background").removeClass("active");
   });
+  $("h1").hover(function() {
+    $('.cursor').addClass("blend");
+  }, function() {
+    $('.cursor').removeClass("blend");
+  });
   $(".skill-item").hover(function() {
     var thisElement = $(this);
     thisElement.find('img').css("opacity", "0");
@@ -292,7 +297,8 @@ function interactiveCursor(){
                                             150ms height cubic-bezier(0.39, 0.575, 0.565, 1),
                                             0.2s transform cubic-bezier(0.39, 0.575, 0.565, 1),
                                             0.2s width cubic-bezier(0.39, 0.575, 0.565, 1),
-                                            0.2s height cubic-bezier(0.39, 0.575, 0.565, 1)`)
+                                            0.2s height cubic-bezier(0.39, 0.575, 0.565, 1),
+                                            0.4s background ease`)
       //Make cursor dark when not selecting elements
       $('.cursor').removeClass('light');
     }
@@ -305,11 +311,11 @@ function interactiveCursor(){
                                             150ms height cubic-bezier(0.39, 0.575, 0.565, 1),
                                             0.55s transform cubic-bezier(0.39, 0.575, 0.565, 1),
                                             0.4s width cubic-bezier(0.39, 0.575, 0.565, 1),
-                                            0.4s height cubic-bezier(0.39, 0.575, 0.565, 1)`)
+                                            0.4s height cubic-bezier(0.39, 0.575, 0.565, 1),
+                                            0.4s background ease`)
       }
     }
   }
-
   document.querySelectorAll('.cursor').forEach(cursor => {
     let onElement
 
@@ -369,6 +375,8 @@ function interactiveCursor(){
     Array.from(document.getElementsByClassName('experience-item')).forEach(elem => {
       attachedLarge = true
       elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = false;
+        //Allow for polling and updating of cursor select size while
+        //mouse inactive
         event = $.Event('mousemove');
         event.pageX = 100;
         event.pageY = 100; 
@@ -397,8 +405,15 @@ function interactiveCursor(){
       elem.addEventListener('mouseleave', e => {onElement = undefined;})
     })
     Array.from(document.getElementsByClassName('contact-item')).forEach(elem => {
-      elem.addEventListener('mouseenter', e => {onElement = elem;})
-      elem.addEventListener('mouseleave', e => {onElement = undefined;})
+      elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = false;
+        event = $.Event('mousemove');
+        event.pageX = 100;
+        event.pageY = 100; 
+        pollResize = setInterval(function(){
+          $(document).trigger(event);
+        }, 300);
+      })
+      elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false})
     })
   })
 }
@@ -442,15 +457,8 @@ function addTransparentNav(){
   $(".navbar-brand .first").css('opacity', '1');
   $(".navbar-brand .second").css('opacity', '0');
 }
-function addDarkNavDesktop(counter){
-  //Only trigger dark class between 1 and 40px
-  if(counter > 1 && counter != 0){
-    setTimeout(function(){
-      if($(document).scrollTop() != 0){
-        $(".navbar-default").addClass('dark');
-      }
-    }, 200);
-  }
+function addDarkNavDesktop(){
+  $(".navbar-default").addClass('dark');
   $(".navbar-default").css("border-top", "none");
   $(".navbar-default").css("display", "block");
   $(".navbar-collapse").css("background-color", "none");
@@ -476,7 +484,7 @@ function animateNavbar(){
   else {
     //Scroll position is in About section
     if(scrollCounter > 1) {
-      addDarkNavDesktop(scrollCounter);     
+      addDarkNavDesktop();     
       $( ".navbar-nav li a" ).each(function(index) {
         //Set each of the underline to the width of each nav element text
         $(this).next().css('max-width', $(this).width() + 'px');
@@ -728,6 +736,9 @@ function bindVelocity(){
         else if (target == "#portfolio2"){
           target = "#portfolio";
         }
+        else if (target == "#home2"){
+          target = "#home";
+        }
         else if (target == "#contact-highlight"){
           target = "#contact";
           setTimeout(function(){
@@ -792,18 +803,18 @@ Pace.on("done", function(){
         setTimeout(function(){
           fadeThirdElem.insertBefore($(".fullstop"));
           fadeFourthElem.insertAfter(fadeThirdElem);
-        },2600, true);
+        },2200, true);
         setTimeout(function(){
           fadeThirdElem.removeClass('hide_desktop');
           fadeFourthElem.removeClass('hide_desktop');
-        },3000, true);
+        },2600, true);
         setTimeout(function(){
           $('.fade').addClass('no_delay');
           $('.fade-second').addClass('no_delay');
           fadeThirdElem.addClass('no_delay');
           fadeFourthElem.addClass('no_delay');
           $('.title-text h1 span').css('transition', 'none')
-        },5000, true);
+        },4600, true);
       }
       
       //Show the navbar
@@ -815,7 +826,7 @@ Pace.on("done", function(){
         //is being refreshed
         if($(document).scrollTop() > 1) {
           //Display the navbar immediately
-          addDarkNavDesktop($(document).scrollTop());
+          addDarkNavDesktop();
         }
         else {
           //If not, run the animation
@@ -838,17 +849,19 @@ Pace.on("done", function(){
       }
   } 
 });
-function fadeOutVideo(){
-  var height = ($(window).height() / 1.5);
-  $('video').css({
-    'opacity': ((height - $(document).scrollTop()) / (height))
-  });
+
+function invertHeaders(){
+  document.body.onmousemove = function(e) {
+    document.documentElement.style.setProperty('--x', (e.clientX+window.scrollX) + 'px');
+    document.documentElement.style.setProperty('--y', (e.clientY+window.scrollY) + 'px');
+  }
 }
 $( document ).ready(function() {
   $(".bars").removeClass("active");
   interactiveCursor();
   setMainElements();
   hoverEffects();
+  invertHeaders();
   createGoTopArrow();
   animateNavbar();
   navbarElementHoverAnim();

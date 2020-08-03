@@ -73,8 +73,7 @@
 ------------------------------------------------*/
 
 body {
-  background: #151515;
-  /*background: #000927;*/
+  background: #000a18;
   padding: 0;
   overflow-x: hidden;
 }
@@ -100,6 +99,9 @@ p {
 b, strong {
   font-weight: 200 !important; 
 }
+a:focus {
+  outline: none;
+}
 .cursor {
   display: none;
   position: fixed;
@@ -112,10 +114,19 @@ b, strong {
               150ms height cubic-bezier(0.39, 0.575, 0.565, 1),
               0.2s transform cubic-bezier(0.39, 0.575, 0.565, 1),
               0.4s width cubic-bezier(0.39, 0.575, 0.565, 1),
-              0.4s height cubic-bezier(0.39, 0.575, 0.565, 1);
+              0.4s height cubic-bezier(0.39, 0.575, 0.565, 1),
+              0.4s background ease;
   z-index: 10001;
   pointer-events: none;
   will-change: transform;
+}
+.cursor.blend {
+  background: #fff;
+  mix-blend-mode: difference;
+  transition: background 0.3s ease;
+}
+.cursor.light::after {
+  border: 2px solid #fff;
 }
 @media (pointer: fine) {
   .cursor {
@@ -141,9 +152,7 @@ html:not(html:hover) .cursor::after {
   opacity: 0;
   transform: scale(0);
 }
-.cursor.light::after {
-  border: 2px solid #fff;
-}
+
 /*----------------------------------------------
 -------------------MAIN SECTION-----------------
 ------------------------------------------------*/
@@ -154,7 +163,7 @@ html:not(html:hover) .cursor::after {
   position: fixed;
   top: 0;
   bottom: 0;
-  background: #151515;
+  background: #050715;
   z-index: 10000;
 }
 .loader-centered {
@@ -171,12 +180,14 @@ html:not(html:hover) .cursor::after {
   left: 0;
   top: 0;
   width: 100%;
-}
-.loader-img-two {
-  -webkit-animation: fadeLoader 3s infinite;
-  animation: fadeLoader 3s infinite;
+  -webkit-animation: fadeLoader 3.5s infinite;
+  animation: fadeLoader 3.5s infinite;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
+}
+.loader-img {
+  -webkit-animation-delay: 1.75s;
+  animation-delay: 1.75s;
 }
 @keyframes boldFontAdd {
   0% {
@@ -244,6 +255,7 @@ html:not(html:hover) .cursor::after {
   border-top: 2px solid #555;
 }
 .main {
+  height: 100vh;
   box-sizing: border-box; 
 }
 .overflow-hide {
@@ -265,13 +277,14 @@ html:not(html:hover) .cursor::after {
 }
 .fade-second {
   padding-top: 5px; /* Extra padding for the forward slash */
-  -webkit-animation-delay: 600ms;
-  animation-delay: 600ms;
+  -webkit-animation-delay: 300ms;
+  animation-delay: 300ms;
 }
 .fade-third {
   -webkit-animation-delay: 900ms;
   animation-delay: 900ms;
   font-style: italic;
+  color: #f97d7a;
 }
 .fade-third.hide_desktop,
 .fade-fourth.hide_desktop {
@@ -334,8 +347,8 @@ html:not(html:hover) .cursor::after {
   width: 140%;
   background: #fff;
   z-index: -1;
-  -webkit-transition: all .5s ease-in-out;
-  transition: all .5s ease-in-out;
+  -webkit-transition: all 0.7s ease-in-out;
+  transition: all 0.7s ease-in-out;
   -webkit-transform: translateX(-98%) translateY(0%) rotate(45deg);
   transform: translateX(-98%) translateY(0%) rotate(45deg);
 }
@@ -473,6 +486,7 @@ html:not(html:hover) .cursor::after {
   font-weight: 600;
   font-size: 42px;
   user-select: none;
+  width: max-content;
 }
 .about h1, .skills h1, .contact h1 {
   color: #3b3b3b;
@@ -813,6 +827,7 @@ html:not(html:hover) .cursor::after {
   opacity: 1;
   user-select: none;
   transform: translateZ(0);
+  transition: all 0.5s ease, opacity 0.3s ease;
 }
 .experience-item.last {
 
@@ -824,9 +839,10 @@ html:not(html:hover) .cursor::after {
   height: 0px !important;
   margin-right: 0px !important;
   opacity: 0;
-  transition: all 0.5s ease, opacity 0.3s ease;
+  transition: all 0.5s ease, opacity 0.4s ease;
 }
 .experience-item.remove_desktop .experience-logo {
+  transition: opacity 0.4s ease;
   opacity: 0;
 }
 .experience-item.remove_right,
@@ -880,7 +896,7 @@ html:not(html:hover) .cursor::after {
 }
 .experience-item.edu:hover,
 .experience-item.edu:hover .period .cover {
-  background: #f3375b;
+  background: #ef4c6b;
 }
 .experience-item.msoft:hover,
 .experience-item.msoft:hover .period .cover {
@@ -912,8 +928,7 @@ html:not(html:hover) .cursor::after {
 }
 .experience-item .period {
   position: absolute;
-  transition: opacity 0.5s ease-in-out, transform 0.4s ease;
-  transition-delay: 0.5s;
+  transition: opacity 0.4s ease-in-out 0.48s, transform 0.4s ease 0.45s;
   bottom: 10px;
   opacity: 0;
 }
@@ -924,12 +939,12 @@ html:not(html:hover) .cursor::after {
   width: 125px;
   height: 15px;
   z-index: 2;
-  transition: all 0.6s ease-in-out 0.6s, background 0.5s ease;
+  transition: all 0.6s ease-in-out 0.3s, background 0.5s ease;
 }
 .experience-item.edu .period .cover {
   width: 70px;
   right: -30px;
-  transition: all 0.5s ease-in-out 0.6s, background 0.4s ease;
+  transition: all 0.5s ease-in-out 0.2s, background 0.4s ease;
 }
 .experience-item:hover .period {
   opacity: 1;
@@ -941,7 +956,7 @@ html:not(html:hover) .cursor::after {
   font-size: 15px;
   animation: boldFontAdd 0.3s forwards;
   animation-delay: 0.5s;
-  transition: all 0.3s ease 0.6s;
+  transition: all 0.3s ease 0.3s;
 }
 .experience-item:hover {
   transform: scale(1.04);
@@ -954,6 +969,10 @@ html:not(html:hover) .cursor::after {
 .experience-logo img {
   width: 80px;
   transition: all 0.4s ease;
+}
+.experience-item.qut .experience-logo img,
+.experience-item.qut-edu .experience-logo img {
+  width: 30px;
 }
 .work-experience, .education {
   width: 100%;
@@ -1007,11 +1026,10 @@ html:not(html:hover) .cursor::after {
   width: 50%;
   max-width: 70px;
   display: block;
-	-webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  transition: all 0.6s ease;
 }
 .contact-item:hover .contact-image {
-  transform: translateZ(0) translate(-50%, -50%) scale(0.9);
+  transform: translateZ(0) translate(-50%, -50%) scale(0.7);
 }
 .contact-image img {
   width: 100%;
@@ -1053,7 +1071,7 @@ footer {
   transition: all 0.4s ease, background-size 2s ease, opacity 1s ease, background-color 0.6s ease;
 }
 .navbar-default.dark {
-  background-color: rgb(15, 15, 15) !important;
+  background-color: rgb(15, 15, 15, 0.8) !important;
 }
 .navbar {
   border-radius: 0px 0px 0px 0px;
