@@ -292,11 +292,14 @@ function interactiveCursor(){
                                             0.3s transform cubic-bezier(0.39, 0.575, 0.565, 1),
                                             0.2s width cubic-bezier(0.39, 0.575, 0.565, 1),
                                             0.2s height cubic-bezier(0.39, 0.575, 0.565, 1)`)
+      //Make cursor dark when not selecting elements
+      $('.cursor').removeClass('light');
     }
     else {
       elem.style.setProperty('transform', `translate(${state.x}px,${state.y}px)`)
+      //And white when selecting elements
+      $('.cursor').addClass('light');
       if(state.attachedLarge){
-        console.log(state.attachedLarge);
         elem.style.setProperty('transition', `150ms width cubic-bezier(0.39, 0.575, 0.565, 1),
                                             150ms height cubic-bezier(0.39, 0.575, 0.565, 1),
                                             0.55s transform cubic-bezier(0.39, 0.575, 0.565, 1),
@@ -357,12 +360,12 @@ function interactiveCursor(){
       elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false})
     })
     Array.from(document.getElementsByClassName('skill-item')).forEach(elem => {
-      elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = false})
-      elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false})
+      elem.addEventListener('mouseenter', e => {onElement = elem})
+      elem.addEventListener('mouseleave', e => {onElement = undefined})
     })
     Array.from(document.getElementsByClassName('experience-item')).forEach(elem => {
       attachedLarge = true
-      elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = false})
+      elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = true})
       elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false})
     })
     document.getElementById('experience').addEventListener('click', e => {
@@ -376,16 +379,16 @@ function interactiveCursor(){
       }, 500, true)
     })
     Array.from(document.getElementsByClassName('view-work')).forEach(elem => {
-      elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = true})
-      elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false})
+      elem.addEventListener('mouseenter', e => {onElement = elem;})
+      elem.addEventListener('mouseleave', e => {onElement = undefined;})
     })
     Array.from(document.getElementById('navbar-collapse-x').getElementsByTagName('a')).forEach(elem => {
-      elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = true})
-      elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false})
+      elem.addEventListener('mouseenter', e => {onElement = elem;})
+      elem.addEventListener('mouseleave', e => {onElement = undefined;})
     })
     Array.from(document.getElementsByClassName('contact-item')).forEach(elem => {
-      elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = true})
-      elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false})
+      elem.addEventListener('mouseenter', e => {onElement = elem;})
+      elem.addEventListener('mouseleave', e => {onElement = undefined;})
     })
   })
 }
@@ -432,7 +435,7 @@ function addWhiteNavDesktop(){
   $(".navbar-default").css("height", "75px");
   $(".navbar-nav li:nth-of-type(2)").css("padding-left", "10px");
   $(".navbar-nav li:nth-of-type(2) .underline").css("left", "25px");
-  $(".navbar-nav li .navbar-brand").css("margin-top", "-5px");
+  $(".navbar-nav li .navbar-brand").css("margin-top", "5px");
   $(".navbar-brand img").css('height', '50px');
   $(".navbar-brand img").css('width', '50px');
   $(".navbar-brand .first").css('opacity', '0');
@@ -631,7 +634,7 @@ function createScrollRevealEffects(){
       distance: '400px',
       scale: '0.5',
       viewOffset: {
-        top: 300
+        top: 200
       },
       afterReveal: function() {
         setTimeout(function(){
