@@ -271,6 +271,7 @@ function hoverEffects() {
       setTimeout(function(){
         //Detach the original element from the DOM
         thisElement.detach();
+        thisElement.removeData();
       }, 500, true);
     }
   });
