@@ -866,15 +866,13 @@ function invertHeaders(){
 function showLoaderSplash(){
   var multiplierX = 5;
   var multiplierY = 2.5;
-  var delayX = 3;
-  var delayY = 1.4;
   if(!isMobile){
     //Change element colour on viewport bounce
     var elm = document.querySelector('.loader-centered');
     elm.addEventListener('animationiteration', function(e) { /* this is fired at end of animation */
       $('.loader-centered').css('filter', 'hue-rotate(' + Math.floor((Math.random() * 359) + 1) + 'deg)');
     });
-    $('.year').click(function(e){
+    $('.fullstop').click(function(e){
       $('.preloader-wrap').addClass('show');
       $('.helper-text').css('opacity', '1');
       setTimeout(function(){
@@ -895,24 +893,16 @@ function showLoaderSplash(){
           multiplierX = multiplierX * 1.2;
           delayX = delayX * 1.2;
           delayY = delayY * 1.2;
-          $('.loader-centered').css('animation', 'x ' + multiplierX + 's linear infinite alternate -' + delayX + 's');
-          $('.loader-img').css('animation', 'y ' + multiplierY + 's linear infinite alternate -' + delayY + 's');
+          $('.loader-centered').css('animation', 'x ' + multiplierX + 's linear infinite alternate');
+          $('.loader-img').css('animation', 'y ' + multiplierY + 's linear infinite alternate');
         } 
         //If down key pressed
         if (key.which == 38) { 
           multiplierY = multiplierY * 0.8;
           multiplierX = multiplierX * 0.8;
-          delayX = delayX * 0.8;
-          delayY = delayY * 0.8;
-          $('.loader-centered').css('animation', 'x ' + multiplierX + 's linear infinite alternate -' + delayX + 's');
-          $('.loader-img').css('animation', 'y ' + multiplierY + 's linear infinite alternate -' + delayY + 's');
+          $('.loader-centered').css('animation', 'x ' + multiplierX + 's linear infinite alternate');
+          $('.loader-img').css('animation', 'y ' + multiplierY + 's linear infinite alternate');
         } 
-        if(delayX < 0){
-          delayX = 0;
-        }
-        if(delayY < 0){
-          delayY = 0;
-        }
       }); 
     });
   }
