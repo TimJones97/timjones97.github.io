@@ -81,6 +81,9 @@ body {
 * {
   cursor: url("data:image/svg+xml,%3Csvg height='8' width='8' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4' cy='4' fill='orange' r='3'/%3E%3C/svg%3E") 0 0, auto;
 }
+.no_cursor {
+  cursor: none !important;
+}
 *::selection { 
   /*background: rgb(255, 149, 1);*/
   background: #e34c15;
@@ -116,7 +119,7 @@ a:focus {
               0.4s width cubic-bezier(0.39, 0.575, 0.565, 1),
               0.4s height cubic-bezier(0.39, 0.575, 0.565, 1),
               0.4s background ease;
-  z-index: 10001;
+  z-index: 9999;
   pointer-events: none;
   will-change: transform;
 }
@@ -166,28 +169,48 @@ html:not(html:hover) .cursor::after {
   background: #050715;
   z-index: 10000;
 }
-.loader-centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 100px;
-  width: 100px;
+.preloader-wrap.show {
+  display: block !important;
 }
-.loader-img,
-.loader-img-two {
+.preloader-wrap .helper-text,
+.preloader-wrap .helper-text-keys {
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  -webkit-animation: fadeLoader 3.5s infinite;
-  animation: fadeLoader 3.5s infinite;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  bottom: 50px;
+  background: rgba(0,0,0,0.5);
+  padding: 10px 15px 0px 15px;
+  border-radius: 6px;
+  color: #acacac;
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+.preloader-wrap .helper-text p,
+.preloader-wrap .helper-text-keys p { 
+  font-family: 'Poppins';
+  font-weight: 200;
+  text-align: center;
+  font-size: 15px; 
+}
+.loader-centered {
+  width: 273px;
+  height: 160px;
+  animation: x 5s linear infinite alternate;
 }
 .loader-img {
-  -webkit-animation-delay: 1.75s;
-  animation-delay: 1.75s;
+  width: 273px;
+  height: 160px;
+  animation: y 2.5s linear infinite alternate;
+}
+@keyframes x {
+  100% {
+    transform: translateX( calc(100vw - 285px) );
+  }
+}
+@keyframes y {
+  100% {
+    transform: translateY( calc(100vh - 160px) );
+  }
 }
 @keyframes boldFontAdd {
   0% {
@@ -292,7 +315,7 @@ html:not(html:hover) .cursor::after {
   margin-left: 0px !important;
 } 
 .fade-fourth {
-  margin-left: 30px;
+  margin-left: 20px;
 }
 .fade-third,
 .fade-fourth {
@@ -1427,6 +1450,9 @@ footer {
   }
   .contact-item {
     margin-right: 10px;
+  }
+  .fade-fourth {
+    margin-left: 30px;
   }
 }
 @media only screen and (max-width: 991px) {
