@@ -384,7 +384,7 @@ function interactiveCursor(){
         event.pageY = 100; 
         pollResize = setInterval(function(){
           $(document).trigger(event);
-        }, 300);
+        }, 200);
       })
       elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false; clearInterval(pollResize)})
     })
@@ -782,11 +782,10 @@ Pace.on("done", function(){
   }
   if ( $('.pace-progress').attr('data-progress-text') == '100%' ) {
       //Lets get this party started!
-      $('.preloader-wrap').fadeOut(300);
       setTimeout(function(){
         $(".background-wrapper").attr("data-anim","true");
         $('.background-wrapper').addClass("active");
-      },200, true);
+      },1400, true);
       //Fade in the title text
       setTimeout(function(){
         $('.title-text').css("display", "block");
@@ -796,31 +795,31 @@ Pace.on("done", function(){
           fadeThirdElem = $(".fade-third").addClass('hide_desktop').detach();
           fadeFourthElem = $(".fade-fourth").addClass('hide_desktop').detach();
         }
-      },1000, true);
+      },2400, true);
       //Highlight the abbreviations
       setTimeout(function(){
         $('.highlight-orange').addClass('active');
-      },2200, true);
+      },3000, true);
       setTimeout(function(){
         $('.highlight-blue').addClass('active');
-      },2400, true);
+      },3200, true);
       //Do not execute nice animation if on mobile
       if(!isMobile){
         setTimeout(function(){
           fadeThirdElem.insertBefore($(".fullstop"));
           fadeFourthElem.insertAfter(fadeThirdElem);
-        },2200, true);
+        },3900, true);
         setTimeout(function(){
           fadeThirdElem.removeClass('hide_desktop');
           fadeFourthElem.removeClass('hide_desktop');
-        },2600, true);
+        },4100, true);
         setTimeout(function(){
           $('.fade').addClass('no_delay');
           $('.fade-second').addClass('no_delay');
           fadeThirdElem.addClass('no_delay');
           fadeFourthElem.addClass('no_delay');
           $('.title-text h1 span').css('transition', 'none')
-        },4600, true);
+        },6300, true);
       }
       
       //Show the navbar
@@ -838,20 +837,20 @@ Pace.on("done", function(){
           //If not, run the animation
           $('.navbar-default').css("opacity", "0");
           setTimeout(function(){
-          $('.navbar-default').css("opacity", "1");
-          },3900, true);
+            $('.navbar-default').css("opacity", "1");
+          },4900, true);
         }
       }
       else {
         setTimeout(function(){
           $('.navbar-default').css("display", "block");
-        },3900, true);
+        },6000, true);
         setTimeout(function(){
           $( ".navbar-nav li a" ).each(function( index ) {
             //Set each of the underline to the width of each nav element text
             $(this).next().css('max-width', $(this).width() + 'px');
           });
-        },3100, true);
+        },4800, true);
       }
   } 
 });
@@ -863,17 +862,31 @@ function invertHeaders(){
   }
 }
 
+function fadeOutOnScroll(){
+  var fadeStart = 0; 
+  var fadeUntil = $(window).height() / 2; 
+  var offset = $(document).scrollTop();
+  var opacity = 0;
+
+  if (offset <= fadeStart){
+      opacity = 1;
+  }
+  else if(offset <= fadeUntil){
+      opacity = 1 - offset/fadeUntil;
+  }
+  $('.background').css('opacity', opacity);
+}
 function showLoaderSplash(){
-  var multiplierX = 5;
+  var multiplierX = 7;
   var multiplierY = 2.5;
   if(!isMobile){
     //Change element colour on viewport bounce
     var elm = document.querySelector('.loader-centered');
     elm.addEventListener('animationiteration', function(e) { /* this is fired at end of animation */
-      $('.loader-centered').css('filter', 'hue-rotate(' + Math.floor((Math.random() * 359) + 1) + 'deg)');
+      $('.dvd-wrap .loader-centered').css('filter', 'hue-rotate(' + Math.floor((Math.random() * 359) + 1) + 'deg)');
     });
     $('.fullstop').click(function(e){
-      $('.preloader-wrap').addClass('show');
+      $('.dvd-wrap').addClass('show');
       $('.helper-text').css('opacity', '1');
       setTimeout(function(){
         $('.helper-text-keys').css('opacity', '1');
@@ -893,25 +906,80 @@ function showLoaderSplash(){
           multiplierX = multiplierX * 1.2;
           delayX = delayX * 1.2;
           delayY = delayY * 1.2;
-          $('.loader-centered').css('animation', 'x ' + multiplierX + 's linear infinite alternate');
-          $('.loader-img').css('animation', 'y ' + multiplierY + 's linear infinite alternate');
+          $('.dvd-wrap .loader-centered').css('animation', 'x ' + multiplierX + 's linear infinite alternate');
+          $('.dvd-wrap .loader-img').css('animation', 'y ' + multiplierY + 's linear infinite alternate');
         } 
         //If down key pressed
         if (key.which == 38) { 
           multiplierY = multiplierY * 0.8;
           multiplierX = multiplierX * 0.8;
-          $('.loader-centered').css('animation', 'x ' + multiplierX + 's linear infinite alternate');
-          $('.loader-img').css('animation', 'y ' + multiplierY + 's linear infinite alternate');
+          $('.dvd-wrap .loader-centered').css('animation', 'x ' + multiplierX + 's linear infinite alternate');
+          $('.dvd-wrap .loader-img').css('animation', 'y ' + multiplierY + 's linear infinite alternate');
         } 
       }); 
     });
   }
-  if($('.preloader-wrap').hasClass('show')){
+  if($('.dvd-wrap').hasClass('show')){
     $('*').addClass('no_cursor');
   }
   else {
     $('*').removeClass('no_cursor');
   }
+}
+function loadingLine(){
+  var isFinished = false;
+  var percentageWidth;
+  var randomColourSeed = Math.floor((Math.random() * 359) + 1);
+  //Set loading line colour to random hue
+  $('.loading-line').css('filter', 'hue-rotate(' + randomColourSeed + 'deg)');
+  $('.blue-line').css('filter', 'hue-rotate(' + (randomColourSeed - 10) + 'deg)');
+  $('.darkblue-line').css('filter', 'hue-rotate(' + (randomColourSeed - 20) + 'deg)');
+  var loop = setInterval(function(){
+    percentageWidth = $('.pace-progress').attr('data-progress-text');
+    console.log(percentageWidth);
+    if(percentageWidth != '100%'){
+      $('.loading-line').css('width', percentageWidth);
+    }
+    else {
+      isFinished = true;
+      $('.loading-line').css('width', '100%');
+      setTimeout(function(){
+        $('.loading-line').css('top', '0%');
+      },500);
+      //If user is at top of webpage, run animation
+      if ($('.main').visible(true)) {
+        setTimeout(function(){
+          $('.loading-line').css('height', '200%');
+        },800);
+        setTimeout(function(){
+          $('.blue-line').css('opacity', '1');
+          $('.blue-line').css('height', '100%');
+        }, 1000);
+        setTimeout(function(){
+          $('.darkblue-line').css('opacity', '1');
+          $('.darkblue-line').css('height', '100%');
+        }, 1200);
+        setTimeout(function(){
+          $('.preloader-wrap').css('height', '0%');
+        }, 1400);
+        setTimeout(function(){
+          $('.preloader-wrap').fadeOut(400);
+        }, 2400);
+      } 
+      //If not, simply fade out
+      else {
+        $('.preloader-wrap').css('top', '0');
+        $('.preloader-wrap').css('transition', 'height 0.5s ease');
+        setTimeout(function(){
+          $('.preloader-wrap').css('height', '0%');
+        }, 500);
+      }
+    }
+    if(isFinished){
+      clearInterval(loop);
+    }
+  }, 50);
+  
 }
 $( document ).ready(function() {
   if($(window).width() < 991){
@@ -927,10 +995,18 @@ $( document ).ready(function() {
   navbarElementHoverAnim();
   createScrollRevealEffects();
   bindVelocity();
+  loadingLine();
   showLoaderSplash();
-  $(window).scroll(function() { 
+  //Add animation to the loading images
+  // setTimeout(function(){
+  //   setRandomLogoPos($('.preloader-wrap .loader-img'), false);
+  // setRandomLogoPos($('.preloader-wrap .loader-img-two'), true);
+
+  // }, 1500);
+    $(window).scroll(function() { 
     animateNavbar();   
     preventScrollOnMenuOpen();
+    // fadeOutOnScroll();
   });
   if($(document).scrollTop() > 0){
     $(".navbar-default").css('opacity', '1');

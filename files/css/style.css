@@ -160,20 +160,33 @@ html:not(html:hover) .cursor::after {
 -------------------MAIN SECTION-----------------
 ------------------------------------------------*/
 
+.dvd-wrap,
 .preloader-wrap {
   width: 100%;
   height: 100%;
   position: fixed;
   top: 0;
   bottom: 0;
-  background: #050715;
   z-index: 10000;
+  transition: height 1s ease;
+  overflow: hidden;
 }
-.preloader-wrap.show {
+.preloader-wrap {
+  background: #fff;
+  bottom: 0;
+  top: unset;
+}
+.dvd-wrap {
+  display: none;
+}
+.preloader-wrap {
+  /*display: block !important;*/
+}
+.dvd-wrap.show {
   display: block !important;
 }
-.preloader-wrap .helper-text,
-.preloader-wrap .helper-text-keys {
+.dvd-wrap .helper-text,
+.dvd-wrap .helper-text-keys {
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0%);
@@ -185,23 +198,57 @@ html:not(html:hover) .cursor::after {
   transition: all 0.5s ease;
   opacity: 0;
 }
-.preloader-wrap .helper-text p,
-.preloader-wrap .helper-text-keys p { 
+.dvd-wrap .helper-text p,
+.dvd-wrap .helper-text-keys p { 
   font-family: 'Poppins';
   font-weight: 200;
   text-align: center;
   font-size: 15px; 
 }
-.loader-centered {
+.dvd-wrap .loader-centered {
   width: 273px;
   height: 160px;
-  animation: x 5s linear infinite alternate;
+  animation: x 7s linear infinite alternate;
 }
-.loader-img {
+.dvd-wrap .loader-img {
   width: 273px;
   height: 160px;
   animation: y 2.5s linear infinite alternate;
 }
+.preloader-wrap .loader-img,
+.preloader-wrap .loader-img-two {
+  width: 120px;
+  height: 120px;
+  position: fixed;
+  /*transition: opacity 0.4s ease;*/
+}
+.preloader-wrap .loading-line {
+  width: 0px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 3px;
+  background-color: #acd84f;
+  transition: height 0.8s ease, width 0.6s ease, top 0.4s ease;
+}
+.preloader-wrap .blue-line,
+.preloader-wrap .darkblue-line {
+  top: 0;
+  width: 100%;
+  position: absolute;
+  height: 3px;
+  background-color: #ee5e7a;
+  transition: height 1s ease;
+  opacity: 0;
+}
+.preloader-wrap .blue-line {
+  background-color: #7ebbf9;
+}
+.preloader-wrap .darkblue-line {
+  background-color: #003c97;
+}
+
 @keyframes x {
   100% {
     transform: translateX( calc(100vw - 285px) );
@@ -315,15 +362,15 @@ html:not(html:hover) .cursor::after {
   margin-left: 0px !important;
 } 
 .fade-fourth {
-  margin-left: 20px;
+  margin-left: 25px;
 }
 .fade-third,
 .fade-fourth {
   margin-bottom: 0px !important;
 }
 .fade-fourth {
-  -webkit-animation-delay: 1100ms;
-  animation-delay: 1100ms;
+  -webkit-animation-delay: 1150ms;
+  animation-delay: 1150ms;
 }
 .fade-third.no_delay,
 .fade-fourth.no_delay {
@@ -341,8 +388,8 @@ html:not(html:hover) .cursor::after {
   animation-duration: 1000ms;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-  -webkit-animation-delay: 3500ms;
-  animation-delay: 3500ms;
+  -webkit-animation-delay: 3800ms;
+  animation-delay: 3800ms;
 }
 .fullstop {
   color: #16c2ab;
@@ -455,7 +502,7 @@ html:not(html:hover) .cursor::after {
 .background-wrapper[data-anim=true] .background video,
 .background-wrapper[data-anim=true] .background:before {
   transform: translateY(0) translateZ(0);
-  transition: transform 0.8s ease;
+  transition: transform 1s ease;
 }
 .background video {
   width: 100vw;
@@ -832,7 +879,7 @@ html:not(html:hover) .cursor::after {
 }
 .experience-item {
   float: left;
-  width: 280px;
+  width: 275px;
   height: auto;
   margin-bottom: 5px;
   padding: 10px 10px 20px 20px;
@@ -1223,7 +1270,7 @@ footer {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  transition: opacity 0.3s ease, width 0.6s ease, height 0.6s ease;
+  transition: opacity 0.4s ease, width 0.6s ease, height 0.6s ease;
 }
 .navbar-brand .first {
   z-index: 1000;
