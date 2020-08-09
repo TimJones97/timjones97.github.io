@@ -286,6 +286,11 @@ function hoverEffects() {
 function interactiveCursor(){
   var attachedLarge = false;
   var pollResize;
+  //Allow for polling and updating of cursor select size while
+  //mouse inactive
+  event = $.Event('mousemove');
+  event.pageX = 100;
+  event.pageY = 100;
 
   const updateProperties = (elem, state) => {
     elem.style.setProperty('width', `${state.width}px`)
@@ -377,14 +382,11 @@ function interactiveCursor(){
     Array.from(document.getElementsByClassName('experience-item')).forEach(elem => {
       attachedLarge = true
       elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = false;
-        //Allow for polling and updating of cursor select size while
-        //mouse inactive
-        event = $.Event('mousemove');
-        event.pageX = 100;
-        event.pageY = 100; 
-        pollResize = setInterval(function(){
-          $(document).trigger(event);
-        }, 200);
+        setTimeout(function(){
+          pollResize = setInterval(function(){
+            $(document).trigger(event);
+          }, 100);
+        }, 300, true)
       })
       elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false; clearInterval(pollResize)})
     })
@@ -402,18 +404,21 @@ function interactiveCursor(){
       elem.addEventListener('mouseenter', e => {onElement = elem;})
       elem.addEventListener('mouseleave', e => {onElement = undefined;})
     })
-    Array.from(document.getElementById('navbar-collapse-x').getElementsByTagName('a')).forEach(elem => {
-      elem.addEventListener('mouseenter', e => {onElement = elem;})
-      elem.addEventListener('mouseleave', e => {onElement = undefined;})
-    })
-    Array.from(document.getElementsByClassName('contact-item')).forEach(elem => {
-      elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = false;
-        event = $.Event('mousemove');
-        event.pageX = 100;
-        event.pageY = 100; 
+    Array.from(document.getElementById('navbar-collapse-x').getElementsByTagName('li')).forEach(elem => {
+      elem.addEventListener('mouseenter', e => {onElement = elem.firstElementChild;  attachedLarge = true;
         pollResize = setInterval(function(){
           $(document).trigger(event);
-        }, 300);
+        }, 200);
+      })
+      elem.addEventListener('mouseleave', e => {onElement = undefined;  attachedLarge = false})
+    })
+    Array.from(document.getElementsByClassName('contact-item')).forEach(elem => {
+      elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = false; 
+        setTimeout(function(){
+          pollResize = setInterval(function(){
+            $(document).trigger(event);
+          }, 200);
+        }, 300, true)
       })
       elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false})
     })
@@ -422,10 +427,10 @@ function interactiveCursor(){
 function navbarElementHoverAnim(){
   $(".navbar-nav li").hover(
     function() {
-      $(this).children().next().addClass('full-width');
+      $(this).children().children().addClass('full-width');
     },
     function() {
-      $(this).children().next().removeClass('full-width');
+      $(this).children().children().removeClass('full-width');
     }
   );
 }
@@ -454,7 +459,6 @@ function addTransparentNav(){
   else {
     $(".navbar-nav li:nth-of-type(2)").css("padding-left", "40px");
   }
-  $(".navbar-nav li:nth-of-type(2) .underline").css("left", "55px");
   $(".navbar-nav li a:hover").css("color", "#fff");
   $(".navbar-nav li .navbar-brand").css("margin-top", "25px");
   $(".navbar-brand img").css('height', '70px');
@@ -468,11 +472,10 @@ function addDarkNavDesktop(){
   $(".navbar-default").css("border-top", "none");
   $(".navbar-default").css("display", "block");
   $(".navbar-collapse").css("background-color", "none");
-  $(".navbar-nav li a").css("margin-top", "10px");
+  $(".navbar-nav li a").css("margin-top", "15px");
   $(".navbar-nav li a").css("opacity", "1");
   $(".navbar-default").css("height", "75px");
   $(".navbar-nav li:nth-of-type(2)").css("padding-left", "10px");
-  $(".navbar-nav li:nth-of-type(2) .underline").css("left", "25px");
   $(".navbar-nav li .navbar-brand").css("margin-top", "5px");
   $(".navbar-brand img").css('height', '50px');
   $(".navbar-brand img").css('width', '50px');
@@ -490,11 +493,7 @@ function animateNavbar(){
   else {
     //Scroll position is in About section
     if(scrollCounter > 1) {
-      addDarkNavDesktop();     
-      $( ".navbar-nav li a" ).each(function(index) {
-        //Set each of the underline to the width of each nav element text
-        $(this).next().css('max-width', $(this).width() + 'px');
-      });
+      addDarkNavDesktop();
     }
     //Scroll position is in Main section
     else {
@@ -616,10 +615,6 @@ $(window).resize(function () {
   $(".navbar-nav li").css('animation-name', 'unset');
   $(".navbar-nav li").css('-webkit-animation-name', 'unset');
   animateNavbar();
-  $( ".navbar-nav li a" ).each(function( index ) {
-    //Set each of the underline to the width of each nav element text
-    $(this).next().css('max-width', $(this).width() + 'px');
-  });
 });
 
 function createScrollRevealEffects(){
@@ -772,7 +767,6 @@ function bindVelocity(){
 }
 Pace.restart();
 Pace.on("done", function(){
-  var fadeThirdElem, fadeFourthElem;
   if($(window).width() < 991) {
     isMobile = true;
     $(".main").css("height", $(window).innerHeight());
@@ -781,80 +775,85 @@ Pace.on("done", function(){
     $(".main").css("height", $(window).height() + "px");
   }
   if ( $('.pace-progress').attr('data-progress-text') == '100%' ) {
-      //Lets get this party started!
-      setTimeout(function(){
-        $(".background-wrapper").attr("data-anim","true");
-        $('.background-wrapper').addClass("active");
-      },1400, true);
-      //Fade in the title text
-      setTimeout(function(){
-        $('.title-text').css("display", "block");
-        if(!isMobile){
-          $(".fade-third").css('width', $(".fade-third").outerWidth() + 'px');
-          $(".fade-fourth").css('width', $(".fade-fourth").outerWidth() + 'px');
-          fadeThirdElem = $(".fade-third").addClass('hide_desktop').detach();
-          fadeFourthElem = $(".fade-fourth").addClass('hide_desktop').detach();
-        }
-      },2400, true);
-      //Highlight the abbreviations
-      setTimeout(function(){
-        $('.highlight-orange').addClass('active');
-      },3000, true);
-      setTimeout(function(){
-        $('.highlight-blue').addClass('active');
-      },3200, true);
-      //Do not execute nice animation if on mobile
-      if(!isMobile){
-        setTimeout(function(){
-          fadeThirdElem.insertBefore($(".fullstop"));
-          fadeFourthElem.insertAfter(fadeThirdElem);
-        },3900, true);
-        setTimeout(function(){
-          fadeThirdElem.removeClass('hide_desktop');
-          fadeFourthElem.removeClass('hide_desktop');
-        },4100, true);
-        setTimeout(function(){
-          $('.fade').addClass('no_delay');
-          $('.fade-second').addClass('no_delay');
-          fadeThirdElem.addClass('no_delay');
-          fadeFourthElem.addClass('no_delay');
-          $('.title-text h1 span').css('transition', 'none')
-        },6300, true);
-      }
-      
-      //Show the navbar
-      if($(window).width() < 767){
-        $('.navbar-default').css("display", "block");
-        $('.navbar-nav li a').css('opacity', '1');
-        $('.navbar-default').css("opacity", "0");
-        //If the page has already been scrolled and
-        //is being refreshed
-        if($(document).scrollTop() > 1) {
-          //Display the navbar immediately
-          addDarkNavDesktop();
-        }
-        else {
-          //If not, run the animation
-          $('.navbar-default').css("opacity", "0");
-          setTimeout(function(){
-            $('.navbar-default').css("opacity", "1");
-          },4900, true);
-        }
-      }
-      else {
-        setTimeout(function(){
-          $('.navbar-default').css("display", "block");
-        },6000, true);
-        setTimeout(function(){
-          $( ".navbar-nav li a" ).each(function( index ) {
-            //Set each of the underline to the width of each nav element text
-            $(this).next().css('max-width', $(this).width() + 'px');
-          });
-        },4800, true);
-      }
+    introAnimation();
   } 
 });
 
+function introAnimation(){
+  var fadeThirdElem, fadeFourthElem;
+  //Lets get this party started!
+  setTimeout(function(){
+    $(".background-wrapper").attr("data-anim","true");
+    $('.background-wrapper').addClass("active");
+  },1250, true);
+  //Fade in the title text
+  setTimeout(function(){
+    $('.title-text').css("display", "block");
+    if(!isMobile){
+      $(".fade-third").css('width', $(".fade-third").outerWidth() + 'px');
+      $(".fade-fourth").css('width', $(".fade-fourth").outerWidth() + 'px');
+      fadeThirdElem = $(".fade-third").addClass('hide_desktop').detach();
+      fadeFourthElem = $(".fade-fourth").addClass('hide_desktop').detach();
+    }
+    else {
+      $('.fullstop').css('opacity', '0');
+    }
+  },2400, true);
+  //Highlight the abbreviations
+  setTimeout(function(){
+    $('.highlight-orange').addClass('active');
+  },3000, true);
+  setTimeout(function(){
+    $('.highlight-blue').addClass('active');
+  },3200, true);
+  //Do not execute nice animation if on mobile
+  if(!isMobile){
+    setTimeout(function(){
+      fadeThirdElem.insertBefore($(".fullstop"));
+      fadeFourthElem.insertAfter(fadeThirdElem);
+    },3900, true);
+    setTimeout(function(){
+      fadeThirdElem.removeClass('hide_desktop');
+      fadeFourthElem.removeClass('hide_desktop');
+    },4100, true);
+    setTimeout(function(){
+      $('.fade').addClass('no_delay');
+      $('.fade-second').addClass('no_delay');
+      fadeThirdElem.addClass('no_delay');
+      fadeFourthElem.addClass('no_delay');
+      $('.title-text h1 span').css('transition', 'none')
+    },6300, true);
+  }
+  else {
+    setTimeout(function(){
+      $('.fullstop').css('opacity', '1');
+    },4100, true);
+  }
+  //Show the navbar
+  if($(window).width() < 767){
+    $('.navbar-default').css("display", "block");
+    $('.navbar-nav li a').css('opacity', '1');
+    $('.navbar-default').css("opacity", "0");
+    //If the page has already been scrolled and
+    //is being refreshed
+    if($(document).scrollTop() > 1) {
+      //Display the navbar immediately
+      addDarkNavDesktop();
+    }
+    else {
+      //If not, run the animation
+      $('.navbar-default').css("opacity", "0");
+      setTimeout(function(){
+        $('.navbar-default').css("opacity", "1");
+      },6000, true);
+    }
+  }
+  else {
+    setTimeout(function(){
+      $('.navbar-default').css("display", "block");
+    },5600, true);
+  }
+}
 function invertHeaders(){
   document.body.onmousemove = function(e) {
     document.documentElement.style.setProperty('--x', (e.clientX+window.scrollX) + 'px');
@@ -876,54 +875,124 @@ function fadeOutOnScroll(){
   }
   $('.background').css('opacity', opacity);
 }
-function showLoaderSplash(){
+function showLoaderSplash(allowed){
   var multiplierX = 7;
-  var multiplierY = 2.5;
+  var multiplierY;
   if(!isMobile){
     //Change element colour on viewport bounce
-    var elm = document.querySelector('.loader-centered');
-    elm.addEventListener('animationiteration', function(e) { /* this is fired at end of animation */
-      $('.dvd-wrap .loader-centered').css('filter', 'hue-rotate(' + Math.floor((Math.random() * 359) + 1) + 'deg)');
-    });
+    Array.from(document.getElementsByClassName('main-loader')).forEach(elem => {
+      elem.addEventListener('animationiteration', function(e) { /* this is fired at end of animation */
+        elem.style.setProperty('filter', 'hue-rotate(' + Math.floor((Math.random() * 359) + 1) + 'deg)');
+      });
+    })
+    Array.from(document.getElementsByClassName('egg-centered')).forEach(elem => {
+      elem.addEventListener('animationiteration', function(e) { /* this is fired at end of animation */
+        elem.style.setProperty('filter', 'hue-rotate(' + Math.floor((Math.random() * 359) + 1) + 'deg)');
+      });
+    })
     $('.fullstop').click(function(e){
+      showLoaderSplash(true);
+    });
+    $(document).on('keydown', function(key) { 
+      //If d key pressed
+      if (key.which == 68) { 
+        showLoaderSplash(true);
+      }
+    });
+    //If function is called with keypress or click on element
+    //execute function
+    if(allowed){
       $('.dvd-wrap').addClass('show');
-      $('.helper-text').css('opacity', '1');
+      $('.helper-text-legend').css('opacity', '1');
       setTimeout(function(){
-        $('.helper-text-keys').css('opacity', '1');
-        $('.helper-text').css('opacity', '0');
-      }, 1500);
-      setTimeout(function(){
-        $('.helper-text-keys').css('opacity', '0');
-      }, 4500);
+        $('.helper-text-legend').css('opacity', '0');
+      }, 4000);
       $(document).on( 
         'keydown', function(key) { 
+        //If escape key is pressed, close window
         if (key.which == 27) { 
-          $('.preloader-wrap').removeClass('show');
+          $('.dvd-wrap').removeClass('show');
+          var minElements;
+          var totalElements = $('.dvd-wrap').children().length;
+          for (minElements = 4; minElements <= totalElements; minElements++) {
+            $('.dvd-wrap').children().last().remove();
+          }
+        } 
+        //If e key is pressed, show egg
+        if (key.which == 69) { 
+          $('.egg-centered').toggleClass('opacity');
+          $('.main-loader').toggleClass('opacity');
+        }
+        //If h key is pressed, show legend
+        if (key.which == 72) { 
+          $('.helper-text-legend').css('opacity', '1');
+          setTimeout(function(){
+            $('.helper-text-legend').css('opacity', '0');
+          }, 3000);
+        } 
+        //If m key is pressed, clone elements
+        if (key.which == 77) { 
+          var cloned = $('.dvd-wrap').children().first().clone();
+          $('.dvd-wrap').append(cloned);
+          cloned = $('.dvd-wrap').children().first().next().clone();
+          $('.dvd-wrap').append(cloned);
+          Array.from(document.getElementsByClassName('main-loader')).forEach(elem => {
+            elem.addEventListener('animationiteration', function(e) { /* this is fired at end of animation */
+              elem.style.setProperty('filter', 'hue-rotate(' + Math.floor((Math.random() * 359) + 1) + 'deg)');
+            });
+          })
+          Array.from(document.getElementsByClassName('egg-centered')).forEach(elem => {
+            elem.addEventListener('animationiteration', function(e) { /* this is fired at end of animation */
+              elem.style.setProperty('filter', 'hue-rotate(' + Math.floor((Math.random() * 359) + 1) + 'deg)');
+            });
+          })
+          console.log('Total elements: ' + $('.dvd-wrap').children().length);
+        } 
+        //If r key is pressed, remove additional elements
+        if (key.which == 82) { 
+          //Check if there are more elements that originally set
+          console.log('Total elements: ' + $('.dvd-wrap').children().length);
+          if($('.dvd-wrap').children().length >= 5){
+            $('.dvd-wrap').children().last().remove();
+            $('.dvd-wrap').children().last().remove();
+          }
         } 
         //If up key pressed
         if (key.which == 40) { 
-          multiplierY = multiplierY * 1.2;
           multiplierX = multiplierX * 1.2;
-          delayX = delayX * 1.2;
-          delayY = delayY * 1.2;
+          multiplierY = multiplierX * 0.54;
+          $('.dvd-wrap .loader-centered').css('animation', 'none');
+          $('.dvd-wrap .loader-img').css('animation', 'none');
           $('.dvd-wrap .loader-centered').css('animation', 'x ' + multiplierX + 's linear infinite alternate');
+          $('.dvd-wrap .egg-centered').css('animation', 'xEgg ' + multiplierX + 's linear infinite alternate');
           $('.dvd-wrap .loader-img').css('animation', 'y ' + multiplierY + 's linear infinite alternate');
         } 
         //If down key pressed
         if (key.which == 38) { 
-          multiplierY = multiplierY * 0.8;
           multiplierX = multiplierX * 0.8;
+          multiplierY = multiplierX * 0.54;
           $('.dvd-wrap .loader-centered').css('animation', 'x ' + multiplierX + 's linear infinite alternate');
+          $('.dvd-wrap .egg-centered').css('animation', 'xEgg ' + multiplierX + 's linear infinite alternate');
           $('.dvd-wrap .loader-img').css('animation', 'y ' + multiplierY + 's linear infinite alternate');
         } 
+        //If c key pressed
+        if (key.which == 67) {
+          $('.dvd-wrap .loader-centered').css('filter', 'hue-rotate(' + Math.floor((Math.random() * 359) + 1) + 'deg)');
+        } 
+        if(multiplierX <= 0.1){
+          multiplierX = 0.1;
+        }
+        if(multiplierY <= 0.04){
+          multiplierY = 0.04;
+        }
       }); 
-    });
+    }
   }
   if($('.dvd-wrap').hasClass('show')){
-    $('*').addClass('no_cursor');
+    $('body').addClass('no_cursor');
   }
   else {
-    $('*').removeClass('no_cursor');
+    $('body').removeClass('no_cursor');
   }
 }
 function loadingLine(){
@@ -932,8 +1001,8 @@ function loadingLine(){
   var randomColourSeed = Math.floor((Math.random() * 359) + 1);
   //Set loading line colour to random hue
   $('.loading-line').css('filter', 'hue-rotate(' + randomColourSeed + 'deg)');
-  $('.blue-line').css('filter', 'hue-rotate(' + (randomColourSeed - 10) + 'deg)');
-  $('.darkblue-line').css('filter', 'hue-rotate(' + (randomColourSeed - 20) + 'deg)');
+  $('.second-line').css('filter', 'hue-rotate(' + (randomColourSeed - 10) + 'deg)');
+  $('.third-line').css('filter', 'hue-rotate(' + (randomColourSeed - 20) + 'deg)');
   var loop = setInterval(function(){
     percentageWidth = $('.pace-progress').attr('data-progress-text');
     console.log(percentageWidth);
@@ -952,12 +1021,12 @@ function loadingLine(){
           $('.loading-line').css('height', '200%');
         },800);
         setTimeout(function(){
-          $('.blue-line').css('opacity', '1');
-          $('.blue-line').css('height', '100%');
+          $('.second-line').css('opacity', '1');
+          $('.second-line').css('height', '100%');
         }, 1000);
         setTimeout(function(){
-          $('.darkblue-line').css('opacity', '1');
-          $('.darkblue-line').css('height', '100%');
+          $('.third-line').css('opacity', '1');
+          $('.third-line').css('height', '100%');
         }, 1200);
         setTimeout(function(){
           $('.preloader-wrap').css('height', '0%');
@@ -996,17 +1065,16 @@ $( document ).ready(function() {
   createScrollRevealEffects();
   bindVelocity();
   loadingLine();
-  showLoaderSplash();
+  showLoaderSplash(false);
   //Add animation to the loading images
   // setTimeout(function(){
   //   setRandomLogoPos($('.preloader-wrap .loader-img'), false);
   // setRandomLogoPos($('.preloader-wrap .loader-img-two'), true);
 
   // }, 1500);
-    $(window).scroll(function() { 
+  $(window).scroll(function() { 
     animateNavbar();   
     preventScrollOnMenuOpen();
-    // fadeOutOnScroll();
   });
   if($(document).scrollTop() > 0){
     $(".navbar-default").css('opacity', '1');
