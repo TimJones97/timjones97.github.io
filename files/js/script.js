@@ -906,7 +906,6 @@ function showLoaderSplash(allowed){
     //If function is called with keypress or click on element
     //execute function
     if(allowed){
-      console.log('egg', egg);
       $('.dvd-wrap').addClass('show');
       $('.helper-text-legend').css('opacity', '1');
       setTimeout(function(){
@@ -914,166 +913,182 @@ function showLoaderSplash(allowed){
       }, 4000);
       $(document).on( 
         'keydown', function(key) { 
-        //If escape key is pressed, close window
-        if (key.which == 27) { 
-          var firstElement = $('.dvd-wrap').children().first();
-          $('.dvd-wrap').removeClass('show');
+        if(allowed){
+          //If escape key is pressed, close window
+          if (key.which == 27) { 
+            var firstElement = $('.dvd-wrap').children().first();
+            var secondElement = $('.dvd-wrap').children().first().next();
+            $('.dvd-wrap').removeClass('show');
 
-          firstEgg.remove();
-          originalEgg.insertAfter(firstElement);
+            secondElement.remove();
+            originalEgg.removeClass('cracked');
+            originalEgg.insertAfter(firstElement);
 
-          if(egg){
-            $('.egg-centered').removeClass('opacity');
-            $('.main-loader').addClass('opacity');
-          }
-          else{
-            $('.egg-centered').addClass('opacity');
-            $('.main-loader').removeClass('opacity');
-          }
-          var minElements;
-          var totalElements = $('.dvd-wrap').children().length;
-          for (minElements = 4; minElements <= totalElements; minElements++) {
-            $('.dvd-wrap').children().last().remove();
-          }
-        } 
-        //If e key is pressed, show egg
-        if (key.which == 69) { 
-          if(egg){
-            egg = false;
-          }
-          else {
-            egg = true;
-          }
-          $('.egg-centered').toggleClass('opacity');
-          $('.main-loader').toggleClass('opacity');
-          console.log('egg', egg);
-        }
-        //If h key is pressed, show legend
-        if (key.which == 72) { 
-          $('.helper-text-legend').css('opacity', '1');
-          setTimeout(function(){
-            $('.helper-text-legend').css('opacity', '0');
-          }, 3000);
-        } 
-        //If m key is pressed, clone elements
-        if (key.which == 77) { 
-          var bodyWidth, bodyHeight, bodyWidthHalf, randPosX, randPosY, cloned, clonedEgg, randTime;
-
-          //Keep assigning body width and height as window may be resized
-          bodyWidth = $(window).width();
-          bodyHeight = $(window).height();
-          
-          randPosX = Math.floor(Math.random() * bodyWidth) + 1;
-          randPosY = Math.floor(Math.random() * bodyHeight) + 1;
-          randTime = Math.floor(Math.random() * 40) + 1;
-
-          cloned = $('.dvd-wrap').children().first().clone();
-          clonedEgg = $('.dvd-wrap').children().first().next().clone();
-
-          cloned.css('animation', 'x ' + multiplierX + 's linear infinite alternate -' + randTime + 's');
-          clonedEgg.css('animation', 'xEgg ' + multiplierX + 's linear infinite alternate -' + randTime + 's');
-
-          cloned.children().css('animation', 'y ' + multiplierY + 's linear infinite alternate -' + randTime + 's');
-          clonedEgg.children().css('animation', 'y ' + multiplierY + 's linear infinite alternate -' + randTime + 's');
-
-          if(egg){
-            clonedEgg.css('opacity', '0');
-          }
-          else{
-            cloned.css('opacity', '0');
-          }
-          
-          var totalPrevElements = $('.dvd-wrap').children().length;
-          
-          setTimeout(function(){
-            console.log('totalPrevElements: ' + totalPrevElements);
-
-            $('.dvd-wrap').append(cloned);
-            $('.dvd-wrap').append(clonedEgg);
-
-            var totalCurrentElements = $('.dvd-wrap').children().length;
-            var minElements;
-
-            console.log('totalCurrentElements: ' + totalCurrentElements);
-
-            for (minElements = totalPrevElements + 3; minElements <= totalCurrentElements; minElements++) {
-              $('.dvd-wrap').children().last().remove();
-            }
-            
-            Array.from(document.getElementsByClassName('main-loader')).forEach(elem => {
-              elem.addEventListener('animationiteration', function(e) { /* this is fired at end of animation */
-                elem.style.setProperty('filter', 'hue-rotate(' + Math.floor((Math.random() * 359) + 1) + 'deg)');
-              });
-            })
-            Array.from(document.getElementsByClassName('egg-centered')).forEach(elem => {
-              elem.addEventListener('animationiteration', function(e) { /* this is fired at end of animation */
-                elem.style.setProperty('filter', 'hue-rotate(' + Math.floor((Math.random() * 359) + 1) + 'deg)');
-              });
-            })
-            $(".egg-centered").each(function(index) {
-              $(this).click(function(){
-                if(egg){
-                  var position = $(this).position();
-                  var positionImg = $(this).children().position();
-                  $(this).addClass('cracked');
-                  $(this).css('transform', 'translateX(' + position.left + 'px)');
-                  $(this).children().css('transform', 'translateY(' + positionImg.top + 'px)');
-                  $(this).children().attr('src','./files/img/egg_cracked.png');
-                  removeElem($(this));
-                }
-              }); 
-            }); 
-          }, 20);
-          setTimeout(function(){
             if(egg){
-              clonedEgg.css('opacity', '1');
+              $('.egg-centered').removeClass('opacity');
+              $('.main-loader').addClass('opacity');
             }
             else{
-              cloned.css('opacity', '1');
+              $('.egg-centered').addClass('opacity');
+              $('.main-loader').removeClass('opacity');
             }
-          }, 50);
-        }
-        //If r key is pressed, remove additional elements
-        if (key.which == 82) { 
-          //Check if there are more elements that originally set
-          console.log('Total elements: ' + $('.dvd-wrap').children().length);
-          if($('.dvd-wrap').children().length >= 5){
-            $('.dvd-wrap').children().last().remove();
-            $('.dvd-wrap').children().last().remove();
+            var minElements;
+            var totalElements = $('.dvd-wrap').children().length;
+            for (minElements = 4; minElements <= totalElements; minElements++) {
+              $('.dvd-wrap').children().last().remove();
+            }
+          } 
+          //If e key is pressed, show egg
+          if (key.which == 69) { 
+            if(egg){
+              egg = false;
+              $('.egg-centered').addClass('opacity');
+              $('.main-loader').removeClass('opacity');
+            }
+            else {
+              egg = true;
+              $('.main-loader').addClass('opacity');
+              $('.egg-centered').removeClass('opacity');
+            }
+            console.log('egg', egg);
           }
-        } 
-        //If up key pressed
-        if (key.which == 40) { 
-          multiplierX = multiplierX * 1.2;
-          multiplierY = multiplierX * 0.54;
-          $('.dvd-wrap .loader-centered').css('animation', 'x ' + multiplierX + 's linear infinite alternate');
-          $('.dvd-wrap .egg-centered').css('animation', 'xEgg ' + multiplierX + 's linear infinite alternate');
-          $('.dvd-wrap .loader-img').css('animation', 'y ' + multiplierY + 's linear infinite alternate');
-        } 
-        //If down key pressed
-        if (key.which == 38) { 
-          multiplierX = multiplierX * 0.8;
-          multiplierY = multiplierX * 0.54;
-          $('.dvd-wrap .loader-centered').css('animation', 'x ' + multiplierX + 's linear infinite alternate');
-          $('.dvd-wrap .egg-centered').css('animation', 'xEgg ' + multiplierX + 's linear infinite alternate');
-          $('.dvd-wrap .loader-img').css('animation', 'y ' + multiplierY + 's linear infinite alternate');
-        } 
-        //If c key pressed
-        if (key.which == 67) {
-          $('.dvd-wrap .loader-centered').css('filter', 'hue-rotate(' + Math.floor((Math.random() * 359) + 1) + 'deg)');
-          $('.dvd-wrap .egg-centered').toggleClass('hue');
-        } 
-        if(multiplierX <= 0.1){
-          multiplierX = 0.1;
+          //If h key is pressed, show legend
+          if (key.which == 72) { 
+            $('.helper-text-legend').css('opacity', '1');
+            setTimeout(function(){
+              $('.helper-text-legend').css('opacity', '0');
+            }, 3000);
+          } 
+          //If m key is pressed, clone elements
+          if (key.which == 77) { 
+            var bodyWidth, bodyHeight, bodyWidthHalf, randPosX, randPosY, cloned, clonedEgg, randTime;
+
+            //Keep assigning body width and height as window may be resized
+            bodyWidth = $(window).width();
+            bodyHeight = $(window).height();
+            
+            randPosX = Math.floor(Math.random() * bodyWidth) + 1;
+            randPosY = Math.floor(Math.random() * bodyHeight) + 1;
+            randTime = Math.floor(Math.random() * 40) + 1;
+
+            cloned = $('.dvd-wrap').children().first().clone();
+            clonedEgg = $('.dvd-wrap').children().first().next().clone();
+
+            cloned.css('animation', 'x ' + multiplierX + 's linear infinite alternate -' + randTime + 's');
+            clonedEgg.css('animation', 'xEgg ' + multiplierX + 's linear infinite alternate -' + randTime + 's');
+
+            cloned.children().css('animation', 'y ' + multiplierY + 's linear infinite alternate -' + randTime + 's');
+            clonedEgg.children().css('animation', 'y ' + multiplierY + 's linear infinite alternate -' + randTime + 's');
+
+            if(egg){
+              clonedEgg.css('opacity', '0');
+            }
+            else{
+              cloned.css('opacity', '0');
+            }
+            
+            var totalPrevElements = $('.dvd-wrap').children().length;
+            
+            setTimeout(function(){
+              console.log('totalPrevElements: ' + totalPrevElements);
+
+              $('.dvd-wrap').append(cloned);
+              $('.dvd-wrap').append(clonedEgg);
+
+              var totalCurrentElements = $('.dvd-wrap').children().length;
+              var minElements;
+
+              console.log('totalCurrentElements: ' + totalCurrentElements);
+
+              for (minElements = totalPrevElements + 3; minElements <= totalCurrentElements; minElements++) {
+                $('.dvd-wrap').children().last().remove();
+              }
+              
+              Array.from(document.getElementsByClassName('main-loader')).forEach(elem => {
+                elem.addEventListener('animationiteration', function(e) { /* this is fired at end of animation */
+                  elem.style.setProperty('filter', 'hue-rotate(' + Math.floor((Math.random() * 359) + 1) + 'deg)');
+                });
+              })
+              Array.from(document.getElementsByClassName('egg-centered')).forEach(elem => {
+                elem.addEventListener('animationiteration', function(e) { /* this is fired at end of animation */
+                  elem.style.setProperty('filter', 'hue-rotate(' + Math.floor((Math.random() * 359) + 1) + 'deg)');
+                });
+              })
+              $(".egg-centered").each(function(index) {
+                $(this).click(function(){
+                  if(egg){
+                    var position = $(this).position();
+                    var positionImg = $(this).children().position();
+                    $(this).addClass('cracked');
+                    $(this).css('transform', 'translateX(' + position.left + 'px)');
+                    $(this).children().css('transform', 'translateY(' + positionImg.top + 'px)');
+                    $(this).children().attr('src','./files/img/egg_cracked.png');
+                    removeElem($(this));
+                  }
+                }); 
+              }); 
+            }, 20);
+            setTimeout(function(){
+              if(egg){
+                clonedEgg.css('opacity', '1');
+              }
+              else{
+                cloned.css('opacity', '1');
+              }
+            }, 50);
+          }
+          //If r key is pressed, remove additional elements
+          if (key.which == 82) { 
+            //Check if there are more elements that originally set
+            console.log('Total elements: ' + $('.dvd-wrap').children().length);
+            if($('.dvd-wrap').children().length >= 5){
+              $('.dvd-wrap').children().last().remove();
+              $('.dvd-wrap').children().last().remove();
+            }
+          } 
+          //If up key pressed
+          if (key.which == 40) { 
+            multiplierX = multiplierX * 1.2;
+            multiplierY = multiplierX * 0.54;
+            $('.dvd-wrap .loader-centered').css('animation', 'x ' + multiplierX + 's linear infinite alternate');
+            $('.dvd-wrap .egg-centered').css('animation', 'xEgg ' + multiplierX + 's linear infinite alternate');
+            $('.dvd-wrap .loader-img').css('animation', 'y ' + multiplierY + 's linear infinite alternate');
+          } 
+          //If down key pressed
+          if (key.which == 38) { 
+            multiplierX = multiplierX * 0.8;
+            multiplierY = multiplierX * 0.54;
+            $('.dvd-wrap .loader-centered').css('animation', 'x ' + multiplierX + 's linear infinite alternate');
+            $('.dvd-wrap .egg-centered').css('animation', 'xEgg ' + multiplierX + 's linear infinite alternate');
+            $('.dvd-wrap .loader-img').css('animation', 'y ' + multiplierY + 's linear infinite alternate');
+          } 
+          //If c key pressed
+          if (key.which == 67) {
+            $('.dvd-wrap .loader-centered').css('filter', 'hue-rotate(' + Math.floor((Math.random() * 359) + 1) + 'deg)');
+            $('.dvd-wrap .egg-centered').toggleClass('hue');
+          } 
+          if(multiplierX <= 0.1){
+            multiplierX = 0.1;
+          }
+          if(multiplierY <= 0.04){
+            multiplierY = 0.04;
+          }
         }
-        if(multiplierY <= 0.04){
-          multiplierY = 0.04;
-        }
-        // if($('.egg-centered').hasClass('cracked')){
-        //     $('.egg-centered').remove();
-        // }
       }); 
     }
+    $(".egg-centered").each(function(index) {
+      $(this).click(function(){
+        if(egg){
+          var position = $(this).position();
+          var positionImg = $(this).children().position();
+          $(this).addClass('cracked');
+          $(this).css('transform', 'translateX(' + position.left + 'px)');
+          $(this).children().css('transform', 'translateY(' + positionImg.top + 'px)');
+          $(this).children().attr('src','./files/img/egg_cracked.png');
+          removeElem($(this));
+        }
+      }); 
+    }); 
   }
   if($('.dvd-wrap').hasClass('show')){
     $('body').addClass('no_cursor');
