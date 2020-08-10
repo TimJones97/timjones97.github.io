@@ -304,9 +304,9 @@ function interactiveCursor(){
       elem.style.setProperty('transform', `translate(${state.transformXsubW}px,${state.transformYsubH}px)`)
       elem.style.setProperty('transition', `150ms width cubic-bezier(0.39, 0.575, 0.565, 1),
                                             150ms height cubic-bezier(0.39, 0.575, 0.565, 1),
-                                            0.2s transform cubic-bezier(0.39, 0.575, 0.565, 1),
+                                            0.4s transform cubic-bezier(0.39, 0.575, 0.565, 1),
                                             0.2s width cubic-bezier(0.39, 0.575, 0.565, 1),
-                                            0.2s height cubic-bezier(0.39, 0.575, 0.565, 1),
+                                            0.4s height cubic-bezier(0.39, 0.575, 0.565, 1),
                                             0.4s background ease`)
       //Make cursor dark when not selecting elements
       $('.cursor').removeClass('light');
@@ -384,11 +384,11 @@ function interactiveCursor(){
     Array.from(document.getElementsByClassName('experience-item')).forEach(elem => {
       attachedLarge = true
       elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = false;
-        // setTimeout(function(){
+        setTimeout(function(){
           pollResize = setInterval(function(){
             $(document).trigger(event);
           }, 100);
-        // }, 300, true)
+        }, 300, true)
       })
       elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false; clearInterval(pollResize)})
     })
@@ -400,7 +400,7 @@ function interactiveCursor(){
           elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = false})
           elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false})
         })
-      }, 500, true)
+      }, 100, true)
     })
     Array.from(document.getElementsByClassName('view-work')).forEach(elem => {
       elem.addEventListener('mouseenter', e => {onElement = elem;})
@@ -856,13 +856,6 @@ function introAnimation(){
     },5600, true);
   }
 }
-function invertHeaders(){
-  document.body.onmousemove = function(e) {
-    document.documentElement.style.setProperty('--x', (e.clientX+window.scrollX) + 'px');
-    document.documentElement.style.setProperty('--y', (e.clientY+window.scrollY) + 'px');
-  }
-}
-
 function fadeOutOnScroll(){
   var fadeStart = 0; 
   var fadeUntil = $(window).height() / 2; 
@@ -908,11 +901,11 @@ function showLoaderSplash(allowed){
     if(allowed){
       $('.dvd-wrap').addClass('show');
       $('.helper-text-legend').css('opacity', '1');
-      
       $('.helper-text-legend').click(function(){
         $('.helper-text-legend').css('opacity', '0');
       });
       setTimeout(function(){
+        $('.helper-text-legend').css('opacity', '0');
       }, 4000);
       $(document).on( 
         'keydown', function(key) { 
@@ -962,7 +955,11 @@ function showLoaderSplash(allowed){
               $('.helper-text-legend').css('opacity', '0');
             }, 3000);
           } 
-          //If m key is pressed, clone elements
+          //If h key is pressed, show legend
+          if (key.which == 66) { 
+            $('.show').toggleClass('no_bg');
+          } 
+          //If m key is pressed, clone and add additional elements
           if (key.which == 77) { 
             var bodyWidth, bodyHeight, bodyWidthHalf, randPosX, randPosY, cloned, clonedEgg, randTime;
 
@@ -1168,7 +1165,6 @@ $( document ).ready(function() {
   interactiveCursor();
   setMainElements();
   hoverEffects();
-  invertHeaders();
   createGoTopArrow();
   animateNavbar();
   navbarElementHoverAnim();
