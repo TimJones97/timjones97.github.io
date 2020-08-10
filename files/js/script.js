@@ -908,8 +908,11 @@ function showLoaderSplash(allowed){
     if(allowed){
       $('.dvd-wrap').addClass('show');
       $('.helper-text-legend').css('opacity', '1');
-      setTimeout(function(){
+      
+      $('.helper-text-legend').click(function(){
         $('.helper-text-legend').css('opacity', '0');
+      });
+      setTimeout(function(){
       }, 4000);
       $(document).on( 
         'keydown', function(key) { 
