@@ -918,6 +918,10 @@ function showLoaderSplash(allowed){
             }
             console.log('egg', egg);
           }
+          //If j key is pressed, show egg
+          if (key.which == 74) { 
+            $('.main-loader .loader-img').attr('src','./files/img/jb.png');
+          }
           //If h key is pressed, show legend
           if (key.which == 72) { 
             $('.helper-text-legend').css('opacity', '1');
@@ -1150,7 +1154,7 @@ function switchWords(){
       }, 300);
       clearInterval(switching);
     }
-  }, 1000);
+  }, 2000);
 }
 $( document ).ready(function() {
   if($(window).width() < 991){
@@ -1166,7 +1170,7 @@ $( document ).ready(function() {
   createScrollRevealEffects();
   bindVelocity();
   loadingLine();
-  switchWords();
+  setTimeout(switchWords(), 2000);
   showLoaderSplash(false);
   //Add animation to the loading images
   // setTimeout(function(){
