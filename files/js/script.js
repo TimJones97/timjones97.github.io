@@ -306,7 +306,7 @@ function interactiveCursor(){
                                             0.2s width cubic-bezier(0.39, 0.575, 0.565, 1),
                                             0.4s height cubic-bezier(0.39, 0.575, 0.565, 1),
                                             0.4s background ease`)
-      //Make cursor dark when not selecting elements
+      //Make cursor light when not selecting elements
       $('.cursor').removeClass('light');
     }
     else {
@@ -434,9 +434,10 @@ function navbarElementHoverAnim(){
     }
   );
 }
-function addDarkNav(){
-  $(".navbar-default").removeClass('dark');
-  $(".navbar-default").addClass('dark_mobile');
+//Need to add these into their own classes later
+function addLightNav(){
+  $(".navbar-default").removeClass('light');
+  $(".navbar-default").addClass('light_mobile');
   $(".navbar-default").css("background-color", "rgb(15, 15, 15)");
   $(".navbar-collapse").css("background-color", "rgb(15, 15, 15)");  
   $(".navbar-default").css("height", "57px");
@@ -446,19 +447,18 @@ function addDarkNav(){
 }
 function addTransparentNav(){
   //Make navbar transparent if scroll position is on main section
-  $(".navbar-default").removeClass('dark');
-  $(".navbar-default").removeClass('dark_mobile');
+  $(".navbar-default").removeClass('light');
   $(".navbar-default").css("background-color", "transparent");
   $(".navbar-default").css("border-top", "none");
   $(".navbar-collapse").css("background-color", "none");
   $(".navbar-nav li a").css("margin-top", "40px");
   $(".navbar-default").css("height", "100px");
-  if($(window).width() < 991){
-    $(".navbar-nav li:nth-of-type(2)").css("padding-left", "20px");
-  }
-  else {
-    $(".navbar-nav li:nth-of-type(2)").css("padding-left", "40px");
-  }
+  // if($(window).width() < 991){
+  //   $(".navbar-nav li:nth-of-type(2)").css("padding-left", "20px");
+  // }
+  // else {
+  //   $(".navbar-nav li:nth-of-type(2)").css("padding-left", "40px");
+  // }
   $(".navbar-nav li a:hover").css("color", "#fff");
   $(".navbar-nav li .navbar-brand").css("margin-top", "25px");
   $(".navbar-brand img").css('height', '70px');
@@ -466,16 +466,15 @@ function addTransparentNav(){
   $(".navbar-brand .first").css('opacity', '1');
   $(".navbar-brand .second").css('opacity', '0');
 }
-function addDarkNavDesktop(){
-  $(".navbar-default").removeClass('dark_mobile');
-  $(".navbar-default").addClass('dark');
+function addLightNavDesktop(){
+  $(".navbar-default").addClass('light');
   $(".navbar-default").css("border-top", "none");
   $(".navbar-default").css("display", "block");
   $(".navbar-collapse").css("background-color", "none");
   $(".navbar-nav li a").css("margin-top", "15px");
   $(".navbar-nav li a").css("opacity", "1");
   $(".navbar-default").css("height", "75px");
-  $(".navbar-nav li:nth-of-type(2)").css("padding-left", "10px");
+  // $(".navbar-nav li:nth-of-type(2)").css("padding-left", "10px");
   $(".navbar-nav li .navbar-brand").css("margin-top", "5px");
   $(".navbar-brand img").css('height', '50px');
   $(".navbar-brand img").css('width', '50px');
@@ -487,13 +486,13 @@ function animateNavbar(){
   //If on mobile
   var scrollCounter = $(document).scrollTop();
   if($(window).width() < 767){
-    addDarkNav();
+    addLightNav();
   }
   //If on desktop
   else {
     //Scroll position is in About section
     if(scrollCounter > 1) {
-      addDarkNavDesktop();
+      addLightNavDesktop();
     }
     //Scroll position is in Main section
     else {
@@ -807,7 +806,7 @@ function introAnimation(){
     //is being refreshed
     if($(document).scrollTop() > 1) {
       //Display the navbar immediately
-      addDarkNavDesktop();
+      addLightNavDesktop();
     }
     else {
       //If not, run the animation
@@ -1126,7 +1125,32 @@ function loadingLine(){
       clearInterval(loop);
     }
   }, 50);
-  
+}
+
+function switchWords(){
+  var words = [
+      'Programmer',
+      'Runner',
+      'Developer',
+      'Designer',
+      'Software Engineer',
+      'Traveller',
+      'Security Analyst',
+      'Tim.'
+      ], i = 0, counter = 0;
+  var switching = setInterval(function(){
+    $('.switch-text').fadeOut(function(){
+      $(this).html(words[i=(i+1)%words.length]).fadeIn(300);
+      counter++;
+    });
+    console.log(counter);
+    if(counter == words.length - 2){
+      setTimeout(function(){
+        $('.hide-text').fadeOut(100);
+      }, 300);
+      clearInterval(switching);
+    }
+  }, 1000);
 }
 $( document ).ready(function() {
   if($(window).width() < 991){
@@ -1142,6 +1166,7 @@ $( document ).ready(function() {
   createScrollRevealEffects();
   bindVelocity();
   loadingLine();
+  switchWords();
   showLoaderSplash(false);
   //Add animation to the loading images
   // setTimeout(function(){
