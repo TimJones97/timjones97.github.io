@@ -556,6 +556,10 @@ html:not(html:hover) .cursor::after {
   top: 0;
   transform: translateY(101%) translateZ(0); 
 }
+canvas { 
+  width: 100%; 
+  height: 100% 
+} 
 .background-wrapper[data-anim=true] .background,
 .background-wrapper[data-anim=true] .background video,
 .background-wrapper[data-anim=true] .background:before {
@@ -570,6 +574,7 @@ html:not(html:hover) .cursor::after {
   right: 0;
   top: 0;
   transform: translateY(101%) translateZ(0); 
+  display: none;
 }
 .video-overlay {
   position:absolute;
@@ -578,21 +583,13 @@ html:not(html:hover) .cursor::after {
   width:100%; 
   height:100%;
   display:inline-block;
+  opacity: 0.5;
   background: -moz-linear-gradient(top, rgba(77, 163, 251, 0.9) 0%, rgb(41, 22, 58, 0.95)); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(82, 24, 24)), color-stop(100%,rgba(77, 163, 251, 0.9))); /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(top, rgba(77, 163, 251, 0.9) 0%,rgb(41, 22, 58, 0.95)); /* Chrome10+,Safari5.1+ */
   background: -o-linear-gradient(top, rgba(77, 163, 251, 0.9) 0%,rgb(41, 22, 58, 0.95)); /* Opera 11.10+ */
   background: -ms-linear-gradient(top, rgba(77, 163, 251, 0.9) 0%,rgb(41, 22, 58, 0.95)); /* IE10+ */
   background: linear-gradient(to bottom, rgba(77, 163, 251, 0.9) 0%,rgb(41, 22, 58, 0.95)); /* W3C */
-
-  /*Old gradient*/
-  /*background: -moz-linear-gradient(top, rgba(77, 163, 251, 0.73) 0%, rgb(41, 22, 58) 100%); /* FF3.6+ */*/
-  /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(82, 24, 24)), color-stop(100%,rgba(77, 163, 251, 0.73))); /* Chrome,Safari4+ */*/
-  /*background: -webkit-linear-gradient(top, rgba(77, 163, 251, 0.73) 0%,rgb(41, 22, 58) 100%); /* Chrome10+,Safari5.1+ */*/
-  /*background: -o-linear-gradient(top, rgba(77, 163, 251, 0.73) 0%,rgb(41, 22, 58) 100%); /* Opera 11.10+ */*/
-  /*background: -ms-linear-gradient(top, rgba(77, 163, 251, 0.73) 0%,rgb(41, 22, 58) 100%); /* IE10+ */*/
-  /*background: linear-gradient(to bottom, rgba(77, 163, 251, 0.73) 0%,rgb(41, 22, 58) 100%); /* W3C */*/
-
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f4b', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
 }
 /*----------------------------------------------
@@ -1662,6 +1659,12 @@ footer {
   .preloader-wrap .second-line,
   .preloader-wrap .third-line {
     transition: height 0.9s ease;
+  }
+  .background video {
+    display: block
+  }
+  .video-overlay {
+    opacity: unset;
   }
 }
 @media only screen and (max-width: 767px) {
