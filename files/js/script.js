@@ -22,8 +22,6 @@ function applyEffects(element){
   $(".portfolio-image").not(element).css("-webkit-filter", "blur(5px)");
   $(".portfolio-image").not(element).css("filter", "blur(5px)");
   $(".portfolio-image").not(element).css("opacity", "0.6");
-  // element.parent().css("transform", "scale(1.05)");
-  // $(".portfolio-image").parent().not(element.parent()).css("transform", "scale(0.95)");
   $(".portfolio-image").not(element).next().css("opacity", "0.3");
 }
 
@@ -304,7 +302,7 @@ function interactiveCursor(){
       elem.style.setProperty('transform', `translate(${state.transformXsubW}px,${state.transformYsubH}px)`)
       elem.style.setProperty('transition', `150ms width cubic-bezier(0.39, 0.575, 0.565, 1),
                                             150ms height cubic-bezier(0.39, 0.575, 0.565, 1),
-                                            0.4s transform cubic-bezier(0.39, 0.575, 0.565, 1),
+                                            0.3s transform cubic-bezier(0.39, 0.575, 0.565, 1),
                                             0.2s width cubic-bezier(0.39, 0.575, 0.565, 1),
                                             0.4s height cubic-bezier(0.39, 0.575, 0.565, 1),
                                             0.4s background ease`)
@@ -630,15 +628,6 @@ function createScrollRevealEffects(){
       scale: '0.5',
       viewOffset: {
         top: 400
-      },
-      //If effect has already occured, remove styles applied by scrollReveal
-      //to allow for hover transform effects to still occur
-      afterReveal: function() {
-        setTimeout(function(){
-          $('.portfolio-image').removeAttr("style");
-          //Reset the height again after removal
-          hoverEffects();
-        }, 1000, true);
       }
     }
   }
@@ -647,14 +636,7 @@ function createScrollRevealEffects(){
       origin: 'bottom',
       duration: 600,
       distance: '400px',
-      scale: '0.9',
-      afterReveal: function() {
-        setTimeout(function(){
-          $('.portfolio-image').removeAttr("style");
-          //Reset the height again after removal
-          hoverEffects();
-        }, 1000, true);
-      }
+      scale: '0.9'
     }
   }
   if($(window).width() > 767) {
@@ -665,14 +647,6 @@ function createScrollRevealEffects(){
       scale: '0.5',
       viewOffset: {
         top: 200
-      },
-      afterReveal: function() {
-        setTimeout(function(){
-          $('.skill-item').removeAttr("style");
-          $('.portfolio-item').removeAttr("style");
-          // $(".hidden-text").css('opacity', '0');
-          hoverEffects();
-        }, 400, true);
       }
     }
   }
@@ -682,13 +656,6 @@ function createScrollRevealEffects(){
       origin: 'bottom',
       distance: '400px',
       scale: '0.5',
-      afterReveal: function() {
-        setTimeout(function(){
-          $('.skill-item').removeAttr("style");
-          $('.portfolio-item').removeAttr("style");
-          hoverEffects();
-        }, 600, true);
-      }
     }
   }
 
@@ -918,6 +885,10 @@ function showLoaderSplash(allowed){
 
             secondElement.remove();
             originalEgg.removeClass('cracked');
+            originalEgg.children().attr('src','./files/img/egg.png');
+            originalEgg.css('transform', 'translateX(0px)');
+            originalEgg.css('transform', 'unset');
+            originalEgg.children().removeAttr('style');
             originalEgg.insertAfter(firstElement);
 
             if(egg){
@@ -1105,11 +1076,11 @@ function removeElem(elem){
 function loadingLine(){
   var isFinished = false;
   var percentageWidth;
-  var randomColourSeed = Math.floor((Math.random() * 359) + 1);
+  var randomColourSeed = Math.floor((Math.random() * 100) + 1);
   //Set loading line colour to random hue
   $('.loading-line').css('filter', 'hue-rotate(' + randomColourSeed + 'deg)');
-  $('.second-line').css('filter', 'hue-rotate(' + (randomColourSeed - 10) + 'deg)');
-  $('.third-line').css('filter', 'hue-rotate(' + (randomColourSeed - 20) + 'deg)');
+  $('.second-line').css('filter', 'hue-rotate(' + (randomColourSeed + 40) + 'deg)');
+  $('.third-line').css('filter', 'hue-rotate(' + (randomColourSeed + 60) + 'deg)');
   var loop = setInterval(function(){
     percentageWidth = $('.pace-progress').attr('data-progress-text');
     console.log(percentageWidth);

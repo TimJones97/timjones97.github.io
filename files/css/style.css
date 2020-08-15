@@ -115,7 +115,7 @@ a:focus {
   transition-property: width, height, transform; */
   transition: 150ms width cubic-bezier(0.39, 0.575, 0.565, 1),
               150ms height cubic-bezier(0.39, 0.575, 0.565, 1),
-              0.2s transform cubic-bezier(0.39, 0.575, 0.565, 1),
+              0.3s transform cubic-bezier(0.39, 0.575, 0.565, 1),
               0.4s width cubic-bezier(0.39, 0.575, 0.565, 1),
               0.4s height cubic-bezier(0.39, 0.575, 0.565, 1),
               0.4s background ease;
@@ -278,7 +278,7 @@ html:not(html:hover) .cursor::after {
   left: 50%;
   transform: translate(-50%, -50%);
   height: 3px;
-  background-color: #acd84f;
+  background-color: #62f3a1;
   transition: height 0.8s ease, width 0.6s ease, top 0.4s ease;
 }
 .preloader-wrap .second-line,
@@ -291,10 +291,10 @@ html:not(html:hover) .cursor::after {
   opacity: 0;
 }
 .preloader-wrap .second-line {
-  background-color: #ee5e7a;
+  background-color: #62f3a1;
 }
 .preloader-wrap .third-line {
-  background-color: #ee5e7a;
+  background-color: #62f3a1;
 }
 
 @keyframes x {
@@ -702,8 +702,7 @@ html:not(html:hover) .cursor::after {
   margin-bottom: 20px;
   z-index: 1;
   transition: all 0.7s ease;
-  transform: scale(1.0);
-  /*transform: none !important;*/
+  transform: translateZ(0);
   margin-right: 15px;
 }
 .portfolio-item h2 {
@@ -1216,9 +1215,10 @@ footer {
   left: unset;
   width: 0px;
   height: 0px;
-  transition: height 0.7s ease, width 0.6s ease, background-color 0.9s ease;
+  transition: height 0.7s ease, width 0.6s ease, background-color 0.1s ease;
   border-radius: 12px;
   z-index: -1;
+  background-color: rgba(255,255,255,0.5);
 }
 .background-fill.full-width {
   width: 100%;
