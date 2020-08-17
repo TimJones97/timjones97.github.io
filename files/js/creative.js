@@ -149,7 +149,7 @@
     var lastTime;
     var lastMouse = new ogl.Vec2();
     function updateMouse(e) {
-      e.preventDefault();
+      // e.preventDefault();
     
       if (e.changedTouches && e.changedTouches.length) {
         e.x = e.changedTouches[0].pageX;
