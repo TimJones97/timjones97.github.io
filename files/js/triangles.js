@@ -230,7 +230,6 @@ if($(window).width() > 1){
     }
 
     if($(window).width() < 991){
-        controls.enabled = false;
         //Check if device is iOS 12 or above
         if(typeof DeviceMotionEvent.requestPermission === 'function'){
             document.querySelector('.main').addEventListener('click', requestPermissionForiOSGyro, false);
