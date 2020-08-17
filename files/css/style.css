@@ -395,6 +395,27 @@ html:not(html:hover) .cursor::after {
   height: 100vh;
   box-sizing: border-box; 
 }
+.main .tilt_stats {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  right: 0;
+  bottom: 0;
+  width: 96px;
+  padding: 10px;
+  color: #fff;
+  
+  border-top-left-radius: 6px;
+}
+.main .tilt_stats p,
+.main .tilt_stats span {
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+.main .tilt_stats span {
+  font-weight: 200;
+}
 .overflow-hide {
   overflow: hidden;
   position: relative;

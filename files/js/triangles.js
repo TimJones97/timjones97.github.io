@@ -244,8 +244,8 @@ if($(window).width() > 1){
     }
 
     function requestPermissionForGyro(){
-        $('.fade h1').text('tiltX: ');
-        $('.fade-second h1').text('tiltY: ');
+        $('.tiltX').text('tiltX: ');
+        $('.tiltY').text('tiltY: ');
         if (typeof DeviceMotionEvent.requestPermission === 'function') {
             DeviceMotionEvent.requestPermission()
             .then(response => {
@@ -253,8 +253,8 @@ if($(window).width() > 1){
                 window.addEventListener('devicemotion', function (eventData) {
                     var tiltX = Math.round(eventData.gamma * 2 );
                     var tiltY =  Math.round(eventData.beta * 2);
-                    $('.fade h1').text('tiltX: ' + tiltX);
-                    $('.fade-second h1').text('tiltY: ' + tiltY);
+                    $('.tiltX').text('tiltX: ' + tiltX);
+                    $('.tiltY').text('tiltY: ' + tiltY);
                     deviceOrientationHandler(tiltX,tiltY);
                 }, false);
               }
@@ -275,8 +275,8 @@ if($(window).width() > 1){
                 window.addEventListener('deviceorientation', function (eventData) {
                     var tiltX = Math.round(eventData.gamma * 2 );
                     var tiltY =  Math.round(eventData.beta * 2);
-                    $('.fade h1').text('tiltX: ' + tiltX);
-                    $('.fade-second h1').text('tiltY: ' + tiltY);
+                    $('.tiltX').text('tiltX: ' + tiltX);
+                    $('.tiltY').text('tiltY: ' + tiltY);
                     deviceOrientationHandler(tiltX,tiltY);
                 }, false);
               }
