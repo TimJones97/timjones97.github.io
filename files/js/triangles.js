@@ -239,7 +239,9 @@ if($(window).width() > 1){
         renderer.render( scene, camera );
     }
 
-    document.querySelector('.main').addEventListener('click', requestPermissionForGyro, false);
+    if($(window).width() < 991){
+        document.querySelector('.main').addEventListener('click', requestPermissionForGyro, false);
+    }
 
     function requestPermissionForGyro(){
         if (typeof DeviceMotionEvent.requestPermission === 'function') {
@@ -249,6 +251,8 @@ if($(window).width() > 1){
                 window.addEventListener('devicemotion', function (eventData) {
                     var tiltX = Math.round(eventData.gamma * 2 );
                     var tiltY =  Math.round(eventData.beta * 2);
+                    $('.fade h1').text('tiltX: ' + tiltX);
+                    $('.fade-second h1').text('tiltY: ' + tiltY);
                     deviceOrientationHandler(tiltX,tiltY);
                 }, false);
               }
@@ -269,6 +273,8 @@ if($(window).width() > 1){
                 window.addEventListener('deviceorientation', function (eventData) {
                     var tiltX = Math.round(eventData.gamma * 2 );
                     var tiltY =  Math.round(eventData.beta * 2);
+                    $('.fade h1').text('tiltX: ' + tiltX);
+                    $('.fade-second h1').text('tiltY: ' + tiltY);
                     deviceOrientationHandler(tiltX,tiltY);
                 }, false);
               }
@@ -282,6 +288,10 @@ if($(window).width() > 1){
                 deviceOrientationHandler(tiltX,tiltY);
             }, false);
         }
+    }
+    function deviceOrientationHandler(tiltX, tiltY){
+        mouseX = tiltX;
+        mouseY = tiltY;
     }
     function getRandom(min,max) {
         return Math.floor(Math.random()*(max-min+1)+min);
