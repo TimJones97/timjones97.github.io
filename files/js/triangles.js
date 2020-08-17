@@ -206,7 +206,7 @@ if($(window).width() > 1){
 
         camera.position.x += (mouseX - camera.position.x) * 0.05;
         camera.position.y += (-mouseY - camera.position.y) * 0.05;
-        camera.position.z += (-mouseZ - camera.position.z) * 0.05;
+        camera.position.z += (mouseZ - camera.position.z) * 0.05;
         camera.lookAt(scene.position);
 
         // for ( var i = 0; i < mainTri.geometry.faces.length; i++ ) {
