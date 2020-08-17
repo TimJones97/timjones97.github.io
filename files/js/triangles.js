@@ -256,6 +256,7 @@ if($(window).width() > 1){
                     tiltZ =  Math.round(eventData.alpha * 2);
                     $('.tiltX').text(tiltX);
                     $('.tiltY').text(tiltY);
+                    $('.tiltZ').text(tiltZ);
                     deviceOrientationHandler(tiltX,tiltY,tiltZ);
                 }, false);
               }
@@ -280,6 +281,7 @@ if($(window).width() > 1){
                     tiltZ =  Math.round(eventData.alpha * 2);
                     $('.tiltX').text(tiltX);
                     $('.tiltY').text(tiltY);
+                    $('.tiltZ').text(tiltZ);
                     deviceOrientationHandler(tiltX,tiltY,tiltZ);
                 }, false);
               }
@@ -299,7 +301,7 @@ if($(window).width() > 1){
         //Speed up gyroscope camera speed
         mouseX = tiltX * 4;
         mouseY = tiltY * 4;
-        mouseZ = tiltZ * 4;
+        mouseZ = tiltZ;
     }
     function getRandom(min,max) {
         return Math.floor(Math.random()*(max-min+1)+min);
