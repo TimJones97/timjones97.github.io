@@ -1,4 +1,4 @@
-if($(window).width() > 991){
+if($(window).width() > 1){
     var camera, controls, scene, renderer;
 
     var mouseX = 0, mouseY = 0;
@@ -148,6 +148,7 @@ if($(window).width() > 991){
         mouseY = event.clientY - window.innerHeight / 2;
     }
 
+
     document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
     var tween;
@@ -175,8 +176,6 @@ if($(window).width() > 991){
 
     camera.position.set(orbitRange, 100, 500);
     // camera.lookAt(mainTri.position);
-
-
 
 
     animate();
@@ -236,15 +235,34 @@ if($(window).width() > 991){
         render();
 
     }
-}
-function render() {
-
-    renderer.render( scene, camera );
-
-}
-
-
-
-function getRandom(min,max) {
-    return Math.floor(Math.random()*(max-min+1)+min);
+    function render() {
+        renderer.render( scene, camera );
+        if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+            DeviceOrientationEvent.requestPermission()
+            .then(response => {
+              if (response == 'granted') {
+                window.addEventListener('devicorientation', function (eventData) {
+                    var tiltX = Math.round(eventData.gamma * 2 );
+                    var tiltY =  Math.round(eventData.beta * 2);
+                    deviceOrientationHandler(tiltX,tiltY);
+                }, false);
+              }
+            })
+            .catch(console.error)
+        }
+        else {
+            window.addEventListener('devicorientation', function (eventData) {
+                var tiltX = Math.round(eventData.gamma * 2 );
+                var tiltY =  Math.round(eventData.beta * 2);
+                deviceOrientationHandler(tiltX,tiltY);
+            }, false);
+        }
+    }
+    function deviceOrientationHandler(tiltX, tiltY){
+        mouseX = tiltX;
+        mouseY = tiltY;
+    }
+    function getRandom(min,max) {
+        return Math.floor(Math.random()*(max-min+1)+min);
+    }
 }

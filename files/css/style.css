@@ -68,6 +68,24 @@
   font-style: normal;
   font-display: block;
 }
+@font-face {
+  font-family: 'Monument';
+  src: url('../fonts/MonumentExtended-Regular.otf') format('woff2'),
+      url('../fonts/MonumentExtended-Regular.woff') format('woff');
+  font-weight: 400;
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Relative';
+  src: url('../fonts/relative-black.woff') format('woff'),
+      url('../fonts/relative-black.woff2') format('woff2');
+  font-weight: 900;
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
 /*----------------------------------------------
 ----------------------GENERAL--------------------
 ------------------------------------------------*/
@@ -129,12 +147,12 @@ a:focus {
   transition: background 0.3s ease;
 }
 .cursor.blend {
-  height: 60px !important;
-  width: 60px !important;
+  height: 80px !important;
+  width: 80px !important;
 }
 .cursor.blend:after {
-  height: 60px;
-  width: 60px;
+  height: 80px;
+  width: 80px;
   top: 0px;
   left: 0px;
 }
@@ -373,10 +391,6 @@ html:not(html:hover) .cursor::after {
   position: relative;
   z-index: 2;
 }
-.about, .portfolio, .skills, 
-.experience, .contact {
-  border-top: 2px solid #555;
-}
 .main {
   height: 100vh;
   box-sizing: border-box; 
@@ -419,7 +433,7 @@ html:not(html:hover) .cursor::after {
   margin-left: 0px !important;
 } 
 .fade-fourth {
-  margin-left: 25px;
+  margin-left: 22px;
 }
 .fade-third,
 .fade-fourth {
@@ -488,9 +502,6 @@ html:not(html:hover) .cursor::after {
   color: #3b3b3b;
   cursor: inherit;
 }
-.title-text h1 {
-  transition: all 0.7s ease;
-}
 .title-text h1 span {
   transition: all 0.5s ease, width 0.7s ease-in-out;
 }
@@ -515,10 +526,12 @@ html:not(html:hover) .cursor::after {
 .title-text h1 {
   font-size: 4em; 
   line-height: 1.2em;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif;  
   font-weight: 600;
   letter-spacing: -0.71px;;
   margin: 0;
+  transition: all 0.7s ease;
+  /*will-change: */
 }
 .background-wrapper {
   height: 100%;
@@ -561,20 +574,9 @@ canvas {
   height: 100% 
 } 
 .background-wrapper[data-anim=true] .background,
-.background-wrapper[data-anim=true] .background video,
 .background-wrapper[data-anim=true] .background:before {
   transform: translateY(0) translateZ(0);
   transition: transform 1s ease;
-}
-.background video {
-  width: 100vw;
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  transform: translateY(101%) translateZ(0); 
-  display: none;
 }
 .video-overlay {
   position:absolute;
@@ -601,17 +603,32 @@ canvas {
   overflow: hidden;
   padding: 80px 60px 90px 60px; 
   position: relative;
+  height: 100vh;
 }
 .about h1 {
   margin-bottom: 50px;
+  color: #fff !important;
+}
+.about .title_contain {
+  position: absolute;
+  top: 50%;
+  transform: translate(0%, -50%);
+  width: 100%;
+  height: 40%;
+  pointer-events: none;
+  z-index: 1;
+}
+.about .switch-text {
+  display: block;
 }
 .about h1, .portfolio h1, 
 .skills h1, .experience h1, .contact h1 {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Monument';
   font-weight: 600;
-  font-size: 50px;
+  text-transform: uppercase;
+  font-size: 11rem;
   user-select: none;
-  width: max-content;
+  /*width: max-content;*/
 }
 .about h1, .skills h1, .contact h1 {
   color: #3b3b3b;
@@ -636,6 +653,37 @@ canvas {
 .about p .food-interact {
   font-style: italic;
   border-bottom: 1px dotted #9b9b9b;
+}
+.geometric {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+#geometric_output {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.about video {
+  position: absolute;
+  height: 100vh;
+  width: auto;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.about canvas {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.5;
+  pointer-events: none;
 }
 .food-background {
   position: absolute;
@@ -1673,7 +1721,7 @@ footer {
     display: block
   }
   .video-overlay {
-    opacity: unset;
+    /*opacity: unset;*/
   }
 }
 @media only screen and (max-width: 767px) {

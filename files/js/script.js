@@ -195,7 +195,9 @@ function hoverEffects() {
   $("h1").hover(function() {
     $('.cursor').addClass("blend");
   }, function() {
-    $('.cursor').removeClass("blend");
+    setTimeout(function(){
+      $('.cursor').removeClass("blend");
+    }, 300);
   });
   $(".skill-item").hover(function() {
     var thisElement = $(this);
@@ -757,15 +759,17 @@ function introAnimation(){
   //Fade in the title text
   setTimeout(function(){
     $('.title-text').css("display", "block");
-    if(!isMobile){
-      $(".fade-third").css('width', $(".fade-third").outerWidth() + 'px');
-      $(".fade-fourth").css('width', $(".fade-fourth").outerWidth() + 'px');
-      fadeThirdElem = $(".fade-third").addClass('hide_desktop').detach();
-      fadeFourthElem = $(".fade-fourth").addClass('hide_desktop').detach();
-    }
-    else {
-      $('.fullstop').css('opacity', '0');
-    }
+    setTimeout(function(){
+      if(!isMobile){
+        $(".fade-third").css('width', $(".fade-third").outerWidth() + 'px');
+        $(".fade-fourth").css('width', $(".fade-fourth").outerWidth() + 'px');
+        fadeThirdElem = $(".fade-third").addClass('hide_desktop').detach();
+        fadeFourthElem = $(".fade-fourth").addClass('hide_desktop').detach();
+      }
+      else {
+        $('.fullstop').css('opacity', '0');
+      }
+    },200, true);
   },2400, true);
   //Highlight the abbreviations
   setTimeout(function(){
@@ -1139,22 +1143,22 @@ function switchWords(){
       'Designer',
       'Software Engineer',
       'Traveller',
-      'Security Analyst',
-      'Tim.'
+      'Security Analyst'
+      // 'Tim.'
       ], i = 0, counter = 0;
   var switching = setInterval(function(){
     $('.switch-text').fadeOut(function(){
       $(this).html(words[i=(i+1)%words.length]).fadeIn(300);
       counter++;
     });
-    console.log(counter);
-    if(counter == words.length - 2){
-      setTimeout(function(){
-        $('.hide-text').fadeOut(100);
-      }, 300);
-      clearInterval(switching);
-    }
-  }, 2000);
+    // console.log(counter);
+    // if(counter == words.length - 2){
+    //   setTimeout(function(){
+    //     $('.hide-text').fadeOut(50);
+    //   }, 300);
+    //   clearInterval(switching);
+    // }
+  }, 1500);
 }
 $( document ).ready(function() {
   if($(window).width() < 991){
@@ -1170,7 +1174,13 @@ $( document ).ready(function() {
   createScrollRevealEffects();
   bindVelocity();
   loadingLine();
-  setTimeout(switchWords(), 2000);
+  var checkTitle = setInterval(function(){
+    if($('.about-title').visible(true)){
+      setTimeout(switchWords(), 2000);
+      clearInterval(checkTitle);
+    }
+  }, 200);
+  
   showLoaderSplash(false);
   //Add animation to the loading images
   // setTimeout(function(){
