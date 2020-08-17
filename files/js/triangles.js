@@ -237,11 +237,16 @@ if($(window).width() > 1){
     }
     function render() {
         renderer.render( scene, camera );
-        if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-            DeviceOrientationEvent.requestPermission()
+    }
+
+    document.querySelector('.main').addEventListener('click', requestPermissionForGyro, false);
+
+    function requestPermissionForGyro(){
+        if (typeof DeviceMotionEvent.requestPermission === 'function') {
+            DeviceMotionEvent.requestPermission()
             .then(response => {
               if (response == 'granted') {
-                window.addEventListener('devicorientation', function (eventData) {
+                window.addEventListener('devicemotion', function (eventData) {
                     var tiltX = Math.round(eventData.gamma * 2 );
                     var tiltY =  Math.round(eventData.beta * 2);
                     deviceOrientationHandler(tiltX,tiltY);
@@ -251,16 +256,32 @@ if($(window).width() > 1){
             .catch(console.error)
         }
         else {
-            window.addEventListener('devicorientation', function (eventData) {
+            window.addEventListener('devicemotion', function (eventData) {
                 var tiltX = Math.round(eventData.gamma * 2 );
                 var tiltY =  Math.round(eventData.beta * 2);
                 deviceOrientationHandler(tiltX,tiltY);
             }, false);
         }
-    }
-    function deviceOrientationHandler(tiltX, tiltY){
-        mouseX = tiltX;
-        mouseY = tiltY;
+        if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+            DeviceOrientationEvent.requestPermission()
+            .then(response => {
+              if (response == 'granted') {
+                window.addEventListener('deviceorientation', function (eventData) {
+                    var tiltX = Math.round(eventData.gamma * 2 );
+                    var tiltY =  Math.round(eventData.beta * 2);
+                    deviceOrientationHandler(tiltX,tiltY);
+                }, false);
+              }
+            })
+            .catch(console.error)
+        }
+        else {
+            window.addEventListener('deviceorientation', function (eventData) {
+                var tiltX = Math.round(eventData.gamma * 2 );
+                var tiltY =  Math.round(eventData.beta * 2);
+                deviceOrientationHandler(tiltX,tiltY);
+            }, false);
+        }
     }
     function getRandom(min,max) {
         return Math.floor(Math.random()*(max-min+1)+min);
