@@ -227,6 +227,9 @@ if($(window).width() > 1){
     }
     function render() {
         renderer.render( scene, camera );
+        $('.main').click(function(e){ 
+            e.preventDefault();
+        });
     }
 
     if($(window).width() < 991){
@@ -278,19 +281,20 @@ if($(window).width() > 1){
         }
     }
     function activateAndroidGyro(){
+        var degtorad = Math.PI / 180;
         window.addEventListener('devicemotion', function (eventData) {
-            tiltX = eventData.gamma * 2;
-            tiltY = eventData.beta * 2;
-            tiltZ = eventData.alpha * 2;
+            tiltX = eventData.gamma ? eventData.gamma * degtorad : 0;
+            tiltY = eventData.beta ? eventData.beta * degtorad : 0;
+            tiltZ = eventData.alpha ? eventData.alpha * degtorad : 0;
             $('.tiltX').text(tiltX);
             $('.tiltY').text(tiltY);
             $('.tiltZ').text(tiltZ);
             deviceOrientationHandler(tiltX,tiltY,tiltZ);
         }, true);
         window.addEventListener('deviceorientation', function (eventData) {
-            tiltX = eventData.gamma;
-            tiltY =  eventData.beta;
-            tiltZ =  eventData.alpha;
+            tiltX = eventData.gamma ? eventData.gamma * degtorad : 0;
+            tiltY = eventData.beta ? eventData.beta * degtorad : 0;
+            tiltZ = eventData.alpha ? eventData.alpha * degtorad : 0;
             $('.tiltX').text(tiltX);
             $('.tiltY').text(tiltY);
             $('.tiltZ').text(tiltZ);
@@ -302,6 +306,9 @@ if($(window).width() > 1){
         mouseX = tiltX * 4;
         mouseY = tiltY * 4;
         // mouseZ = (tiltZ / 2) / 100;
+        $('.tilt_stats').click(function(){ 
+            $(this).fadeOut(300);
+        });
     }
     function getRandom(min,max) {
         return Math.floor(Math.random()*(max-min+1)+min);

@@ -408,8 +408,8 @@ function interactiveCursor(){
         setTimeout(function(){
           pollResize = setInterval(function(){
             $(document).trigger(event);
-          }, 100);
-        }, 300, true)
+          }, 200);
+        }, 600, true)
       })
       elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false; clearInterval(pollResize)})
     })
