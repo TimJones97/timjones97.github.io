@@ -295,9 +295,10 @@ if($(window).width() > 1){
                 (a.x = c.accelerationIncludingGravity.x - b.x),
                 (a.y = c.accelerationIncludingGravity.y - b.y),
                 (a.z = c.accelerationIncludingGravity.z - b.z);
-                tiltX = Math.round(a.x * 2);
-                tiltY = Math.round(a.y * 2);
-                tiltZ = Math.round(a.z * 2);
+                //Increase gyroscope speed because Android is slow
+                tiltX = Math.round(a.x * 8);
+                tiltY = Math.round(a.y * 8);
+                tiltZ = Math.round(a.z * 8);
                 $('.tiltX').text(tiltX);
                 $('.tiltY').text(tiltY);
                 $('.tiltZ').text(tiltZ);
