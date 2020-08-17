@@ -279,23 +279,23 @@ if($(window).width() > 1){
     }
     function activateAndroidGyro(){
         window.addEventListener('devicemotion', function (eventData) {
-            tiltX = Math.round(eventData.gamma * 2);
-            tiltY =  Math.round(eventData.beta * 2);
-            tiltZ =  Math.round(eventData.alpha * 2);
+            tiltX = eventData.gamma * 2;
+            tiltY = eventData.beta * 2;
+            tiltZ = eventData.alpha * 2;
             $('.tiltX').text(tiltX);
             $('.tiltY').text(tiltY);
             $('.tiltZ').text(tiltZ);
             deviceOrientationHandler(tiltX,tiltY,tiltZ);
-        }, false);
+        }, true);
         window.addEventListener('deviceorientation', function (eventData) {
-            tiltX = Math.round(eventData.gamma * 2);
-            tiltY =  Math.round(eventData.beta * 2);
-            tiltZ =  Math.round(eventData.alpha * 2);
+            tiltX = eventData.gamma;
+            tiltY =  eventData.beta;
+            tiltZ =  eventData.alpha;
             $('.tiltX').text(tiltX);
             $('.tiltY').text(tiltY);
             $('.tiltZ').text(tiltZ);
             deviceOrientationHandler(tiltX,tiltY,tiltZ);
-        }, false);
+        }, true);
     }
     function deviceOrientationHandler(tiltX, tiltY, tiltZ){
         //Speed up gyroscope camera speed
