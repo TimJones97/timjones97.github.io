@@ -244,6 +244,8 @@ if($(window).width() > 1){
     }
 
     function requestPermissionForGyro(){
+        $('.fade h1').text('tiltX: ');
+        $('.fade-second h1').text('tiltY: ');
         if (typeof DeviceMotionEvent.requestPermission === 'function') {
             DeviceMotionEvent.requestPermission()
             .then(response => {
@@ -290,8 +292,8 @@ if($(window).width() > 1){
         }
     }
     function deviceOrientationHandler(tiltX, tiltY){
-        mouseX = tiltX;
-        mouseY = tiltY;
+        mouseX = tiltX * 2;
+        mouseY = tiltY * 2;
     }
     function getRandom(min,max) {
         return Math.floor(Math.random()*(max-min+1)+min);
