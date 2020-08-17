@@ -285,6 +285,11 @@ if($(window).width() > 1){
         var a = { x: null, y: null, z: null, alpha: null, beta: null, gamma: null },
         b = { x: 0, y: 0, z: 0, alpha: 0, beta: 0, gamma: 0 },
         c = null;
+        window.gyro = {},
+        gyro.frequency = 10,
+        gyro.calibrate = function () {
+          for (var c in a) b[c] = typeof a[c] == "number" ? a[c] : 0;
+        };
         window.addEventListener("devicemotion",
             function (c) {
                 (a.x = c.accelerationIncludingGravity.x - b.x),
