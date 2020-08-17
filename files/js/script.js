@@ -484,8 +484,6 @@ function addTransparentNav(){
   // }
   $(".navbar-nav li a:hover").css("color", "#fff");
   $(".navbar-nav li .navbar-brand").css("margin-top", "25px");
-  $(".navbar-brand img").css('height', '70px');
-  $(".navbar-brand img").css('width', '70px');
   $(".navbar-brand .first").css('opacity', '1');
   $(".navbar-brand .second").css('opacity', '0');
 }
@@ -589,16 +587,6 @@ function createGoTopArrow(){
 function setMainElements(){
   $(".main").css("height", $(window).height() + "px");
   $(".navbar-nav li a").removeAttr("style"); 
-  
-  //If the window is a square and not rectangular
-  if($(window).width() < $(window).height() * 1.7) {
-    $("video").css("height", "100vh");
-    $("video").css("width", "auto");
-  }
-  else {
-    $("video").css("height", "auto");
-    $("video").css("width", "100vw");
-  }
   
   //Reset all styles on navbar if on desktop width
   if($(window).width() > 767) {
@@ -776,6 +764,10 @@ Pace.on("done", function(){
 
 function introAnimation(){
   var fadeThirdElem, fadeFourthElem;
+
+  if(isMobile){
+    $('body').addClass('no_cursor');
+  }
   //Lets get this party started!
   setTimeout(function(){
     $(".background-wrapper").attr("data-anim","true");
@@ -907,7 +899,7 @@ function showLoaderSplash(allowed){
         'keydown', function(key) { 
         if(allowed){
           //If escape key is pressed, close window
-          if (key.which == 27) { 
+          if (key.which == 27 || key.which == 221) { 
             var firstElement = $('.dvd-wrap').children().first();
             var secondElement = $('.dvd-wrap').children().first().next();
             $('.dvd-wrap').removeClass('show');
