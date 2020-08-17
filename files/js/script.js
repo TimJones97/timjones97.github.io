@@ -1,5 +1,7 @@
 var isMobile = false;
 var egg = false;
+var tl;
+var controller;
 const originalEgg = $('.dvd-wrap').children().first().next().clone();
 
 function preventScrollOnMenuOpen(){
@@ -752,6 +754,7 @@ function bindVelocity(){
       else {
         $(target).velocity("scroll", 1000, true);
       }
+      // controller.destroy(true);
   });
 }
 Pace.restart();
@@ -1181,13 +1184,22 @@ function switchWords(){
   }, 1500);
 }
 function setupScrollMagic(){
-  var controller = new ScrollMagic.Controller();
-  var tl = new TimelineLite();
-  
-  tl.to(".switch-text", 1, {text:"programmer"});
-  tl.to(".switch-text", 1, {text:"runner"});
-  tl.to(".switch-text", 1, {text:"developer"});
-  tl.to(".switch-text", 1, {text:"designer"});
+  // if(fullDuration){
+
+  // }
+  controller = new ScrollMagic.Controller()
+  tl = new TimelineLite();
+  tl.to(".about-title", 1, {text:"I am",  ease:'Power2.easeOut'});
+  tl.to(".hide-text", 1, {text:"a",  ease:'Power2.easeOut'});
+  tl.to(".switch-text", 1, {text:"runner     ",  ease:'Power2.easeOut'});
+  tl.to(".switch-text", 1, {text:"developer     ",  ease:'Power2.easeOut'});
+  tl.to(".switch-text", 1, {text:"designer     ",  ease:'Power2.easeOut'});
+  tl.to(".switch-text", 1, {text:"programmer     ",  ease:'Power2.easeOut'});
+  tl.to(".switch-text", 1, {text:"researcher",  ease:'Power2.easeOut'});
+  tl.to(".hide-text", 0, {text:""});
+  tl.to(".switch-text", 1, {text:"creative", ease:'Power2.easeOut'});
+  tl.to(".switch-text", 1, {text:"creative    ",  ease:'Power2.easeOut'});
+
 
   var scene = new ScrollMagic.Scene({
     triggerElement: ".about", 

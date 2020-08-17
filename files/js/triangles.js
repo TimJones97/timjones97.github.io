@@ -242,11 +242,18 @@ if($(window).width() > 1){
         renderer.render( scene, camera );
     }
 
-    if($(window).width() < 991 || typeof DeviceMotionEvent.requestPermission === 'function'){
-        document.querySelector('.main').addEventListener('click', requestPermissionForGyro, false);
+    if($(window).width() < 991){
+        //Check if device is iOS 12 or above
+        if(typeof DeviceMotionEvent.requestPermission === 'function'){
+            document.querySelector('.main').addEventListener('click', requestPermissionForiOSGyro, false);
+        }
+        //Or Android
+        else {
+            document.querySelector('.main').addEventListener('click', activateAndroidGyro, false);
+        }
     }
 
-    function requestPermissionForGyro(){
+    function requestPermissionForiOSGyro(){
         var tiltX, tiltY, tiltZ;
         if (typeof DeviceMotionEvent.requestPermission === 'function') {
             DeviceMotionEvent.requestPermission()
@@ -265,14 +272,6 @@ if($(window).width() > 1){
             })
             .catch(console.error)
         }
-        else {
-            window.addEventListener('devicemotion', function (eventData) {
-                tiltX = Math.round(eventData.gamma * 2);
-                tiltY =  Math.round(eventData.beta * 2);
-                tiltZ =  Math.round(eventData.alpha * 2);
-                deviceOrientationHandler(tiltX,tiltY,tiltZ);
-            }, false);
-        }
         if (typeof DeviceOrientationEvent.requestPermission === 'function') {
             DeviceOrientationEvent.requestPermission()
             .then(response => {
@@ -290,14 +289,26 @@ if($(window).width() > 1){
             })
             .catch(console.error)
         }
-        else {
-            window.addEventListener('deviceorientation', function (eventData) {
-                tiltX = Math.round(eventData.gamma * 2);
-                tiltY =  Math.round(eventData.beta * 2);
-                tiltZ =  Math.round(eventData.alpha * 2);
-                deviceOrientationHandler(tiltX,tiltY,tiltZ);
-            }, false);
-        }
+    }
+    function activateAndroidGyro(){
+        window.addEventListener('devicemotion', function (eventData) {
+            tiltX = Math.round(eventData.gamma * 2);
+            tiltY =  Math.round(eventData.beta * 2);
+            tiltZ =  Math.round(eventData.alpha * 2);
+            $('.tiltX').text(tiltX);
+            $('.tiltY').text(tiltY);
+            $('.tiltZ').text(tiltZ);
+            deviceOrientationHandler(tiltX,tiltY,tiltZ);
+        }, true);
+        window.addEventListener('deviceorientation', function (eventData) {
+            tiltX = Math.round(eventData.gamma * 2);
+            tiltY =  Math.round(eventData.beta * 2);
+            tiltZ =  Math.round(eventData.alpha * 2);
+            $('.tiltX').text(tiltX);
+            $('.tiltY').text(tiltY);
+            $('.tiltZ').text(tiltZ);
+            deviceOrientationHandler(tiltX,tiltY,tiltZ);
+        }, true);
     }
     function deviceOrientationHandler(tiltX, tiltY, tiltZ){
         //Speed up gyroscope camera speed
