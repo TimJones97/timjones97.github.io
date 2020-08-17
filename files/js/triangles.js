@@ -302,7 +302,7 @@ if($(window).width() > 1){
         //Speed up gyroscope camera speed
         mouseX = tiltX * 4;
         mouseY = tiltY * 4;
-        mouseZ = tiltZ * 4;
+        mouseZ = tiltZ / 1000;
     }
     function getRandom(min,max) {
         return Math.floor(Math.random()*(max-min+1)+min);
