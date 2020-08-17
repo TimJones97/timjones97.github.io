@@ -462,11 +462,10 @@ html:not(html:hover) .cursor::after {
   -webkit-animation-delay: 1150ms;
   animation-delay: 1150ms;
 }
-.fade-third.no_delay,
-.fade-fourth.no_delay {
+.no_delay {
   -webkit-animation-delay: unset;
   animation-delay: unset;
-  transition: none;
+  transition: none !important;
 } 
 .fade-last { 
   margin-top: 20px;

@@ -780,7 +780,7 @@ function introAnimation(){
   setTimeout(function(){
     $(".background-wrapper").attr("data-anim","true");
     $('.background-wrapper').addClass("active");
-  },0, true);
+  },1250, true);
   // },1250, true);
   //Fade in the title text
   setTimeout(function(){
