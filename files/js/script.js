@@ -222,7 +222,7 @@ function hoverEffects() {
   });
   //Admire the WebGL
   if(isMobile || typeof DeviceMotionEvent.requestPermission === 'function'){
-    $('.title-text').hover(function() {
+    $('.highlight-orange').hover(function() {
       $('.title-text').css('opacity', '0');
       $('.navbar-default').css('opacity', '0');
       $('.video-overlay').css('opacity', '0.2');
