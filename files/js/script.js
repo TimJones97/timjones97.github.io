@@ -220,6 +220,18 @@ function hoverEffects() {
     $('.cursor').css('display', 'block');
     $('body').removeClass('no_cursor');
   });
+  //Admire the WebGL
+  if(isMobile || typeof DeviceMotionEvent.requestPermission === 'function'){
+    $('.title-text').hover(function() {
+      $('.title-text').css('opacity', '0');
+      $('.navbar-default').css('opacity', '0');
+      $('.video-overlay').css('opacity', '0.2');
+    }, function() {
+      $('.title-text').css('opacity', '1');
+      $('.navbar-default').css('opacity', '1');
+      $('.video-overlay').css('opacity', '0.5');
+    });
+  }
   $(".experience-item").unbind().click(function() {
     var thisElement = $(this);
     var thisElementCopy;
