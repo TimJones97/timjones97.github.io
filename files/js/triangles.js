@@ -239,7 +239,7 @@ if($(window).width() > 1){
         renderer.render( scene, camera );
     }
 
-    if($(window).width() < 991){
+    if($(window).width() < 991 || typeof DeviceMotionEvent.requestPermission === 'function'){
         document.querySelector('.main').addEventListener('click', requestPermissionForGyro, false);
     }
 
