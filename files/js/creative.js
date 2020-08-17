@@ -105,6 +105,7 @@ if($(window).width() > 991){
     img.onload = () => (texture.image = img);
     img.crossOrigin = "Anonymous";
     img.src = "https://robindelaporte.fr/codepen/bg3.jpg";
+    // img.src = "./files/img/abstract.jpg";
 
     var a1, a2;
     var imageAspect = _size[1] / _size[0];

@@ -213,6 +213,13 @@ function hoverEffects() {
         thisElement.find('.hidden-text').css("opacity", "0");
     }, 1300);
   });
+  $('.about').hover(function() {
+    $('.cursor').css('display', 'none');
+    $('body').addClass('no_cursor');
+  }, function() {
+    $('.cursor').css('display', 'block');
+    $('body').removeClass('no_cursor');
+  });
   $(".experience-item").unbind().click(function() {
     var thisElement = $(this);
     var thisElementCopy;
@@ -1161,6 +1168,27 @@ function switchWords(){
     // }
   }, 1500);
 }
+function setupScrollMagic(){
+  var controller = new ScrollMagic.Controller();
+  var tl = new TimelineLite();
+  
+  tl.to(".switch-text", 1, {text:"programmer"});
+  tl.to(".switch-text", 1, {text:"runner"});
+  tl.to(".switch-text", 1, {text:"developer"});
+  tl.to(".switch-text", 1, {text:"designer"});
+
+  var scene = new ScrollMagic.Scene({
+    triggerElement: ".about", 
+    duration: $(window).height() * 6,
+    triggerHook: 0
+  })
+  .setTween(tl)
+  .setPin(".about")
+  .addTo(controller);
+}
+function changeMonth(newtext) {
+  $("#month").text(newtext)
+}
 $( document ).ready(function() {
   if($(window).width() < 991){
     isMobile = true;
@@ -1175,12 +1203,13 @@ $( document ).ready(function() {
   createScrollRevealEffects();
   bindVelocity();
   loadingLine();
-  var checkTitle = setInterval(function(){
-    if($('.about-title').visible(true)){
-      setTimeout(switchWords(), 2000);
-      clearInterval(checkTitle);
-    }
-  }, 200);
+  setupScrollMagic();
+  // var checkTitle = setInterval(function(){
+  //   if($('.about-title').visible(true)){
+  //     setTimeout(switchWords(), 2000);
+  //     clearInterval(checkTitle);
+  //   }
+  // }, 200);
   
   showLoaderSplash(false);
   //Add animation to the loading images
