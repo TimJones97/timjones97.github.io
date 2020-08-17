@@ -273,8 +273,8 @@ if($(window).width() > 1){
                 window.addEventListener('deviceorientation', function (eventData) {
                     var tiltX = Math.round(eventData.gamma * 2 );
                     var tiltY =  Math.round(eventData.beta * 2);
-                    $('.tiltX').text('tiltX: ' + tiltX);
-                    $('.tiltY').text('tiltY: ' + tiltY);
+                    $('.tiltX').text(tiltX);
+                    $('.tiltY').text(tiltY);
                     deviceOrientationHandler(tiltX,tiltY);
                 }, false);
               }
