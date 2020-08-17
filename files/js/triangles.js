@@ -206,7 +206,7 @@ if($(window).width() > 1){
 
         camera.position.x += (mouseX - camera.position.x) * 0.05;
         camera.position.y += (-mouseY - camera.position.y) * 0.05;
-        camera.position.z += (mouseZ - camera.position.z) * 0.05;
+        // camera.position.z += (mouseZ - camera.position.z) * 0.05;
         camera.lookAt(scene.position);
 
         // for ( var i = 0; i < mainTri.geometry.faces.length; i++ ) {
@@ -293,7 +293,7 @@ if($(window).width() > 1){
                 tiltX = Math.round(eventData.gamma * 2);
                 tiltY =  Math.round(eventData.beta * 2);
                 tiltZ =  Math.round(eventData.alpha * 2);
-                deviceOrientationHandler(tiltX,tiltY);
+                deviceOrientationHandler(tiltX,tiltY,tiltZ);
             }, false);
         }
     }
@@ -301,7 +301,7 @@ if($(window).width() > 1){
         //Speed up gyroscope camera speed
         mouseX = tiltX * 4;
         mouseY = tiltY * 4;
-        mouseZ = tiltZ * 2;
+        // mouseZ = tiltZ * 2;
     }
     function getRandom(min,max) {
         return Math.floor(Math.random()*(max-min+1)+min);
