@@ -295,9 +295,9 @@ if($(window).width() > 1){
                 (a.x = c.accelerationIncludingGravity.x - b.x),
                 (a.y = c.accelerationIncludingGravity.y - b.y),
                 (a.z = c.accelerationIncludingGravity.z - b.z);
-                tiltX = a.x;
-                tiltY = a.y;
-                tiltZ = a.z;
+                tiltX = Math.trunc(a.x * 2);
+                tiltY = Math.trunc(a.y * 2);
+                tiltZ = Math.trunc(a.z * 2);
                 $('.tiltX').text(tiltX);
                 $('.tiltY').text(tiltY);
                 $('.tiltZ').text(tiltZ);
