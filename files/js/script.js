@@ -440,8 +440,8 @@ function navbarElementHoverAnim(){
 function addLightNav(){
   $(".navbar-default").removeClass('light');
   $(".navbar-default").addClass('light_mobile');
-  $(".navbar-default").css("background-color", "rgb(15, 15, 15)");
-  $(".navbar-collapse").css("background-color", "rgb(15, 15, 15)");  
+  $(".navbar-default").css("background-color", "#fff");
+  $(".navbar-collapse").css("background-color", "#fff");  
   $(".navbar-default").css("height", "57px");
   $(".navbar-brand img").css('height', '50px');
   $(".navbar-brand img").css('width', '50px');

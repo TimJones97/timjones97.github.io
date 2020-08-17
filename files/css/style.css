@@ -1497,7 +1497,8 @@ footer {
 }
 .bars .line {
   fill: none;
-  stroke: #fff;
+  stroke: #000;
+  stroke-linecap: round;
   stroke-width: 4;
   stroke-linecap: square;
   transition: stroke-dasharray 400ms,  stroke-dashoffset 400ms;
@@ -1753,12 +1754,22 @@ footer {
     -webkit-animation-delay: 2800ms;
     animation-delay: 2800ms;
   }
+  .title-text .overflow-hide .fade-fourth {
+    margin-left: 10px;
+  }
+  .fade, .fade-second, .fade-third, .fade-fourth, .fade-last {
+    margin-bottom: 10px;
+  }
+  .view-work {
+    width: 150px;
+    height: 50px;
+  }
   .navbar-default {
     top: 0;
     right: 0;
   }
   .title-text h1 {
-    font-size: 2.5em;
+    font-size: 2.3em;
   }
   .navbar-default .navbar-collapse, .navbar-default .navbar-form {
     margin-top: 3px;
@@ -1782,17 +1793,6 @@ footer {
   .experience-item {
     width: 100%;
   }
-  .arrow {
-    z-index: 110;
-    right: 6px;
-    bottom: 16px !important;
-  }
-  .spacer {
-    width: 1%;
-    min-width: 3px;
-    max-width: 3px;
-    max-height: 1px;
-  }
   .food-background {
     background-position: 53% 30% !important;
   }
@@ -1814,6 +1814,7 @@ footer {
   }
   .title-text {
     left: 40px;
+    top: 60%;
   }
   .about, .portfolio, .skills, 
   .experience, .contact {
@@ -1870,10 +1871,17 @@ footer {
   .background-fill {
     display: none;
   }
+  .navbar-brand .first, .navbar-brand .second {
+    opacity: 1 !important;
+  }
 }
 @media only screen and (max-width: 479px) {
   .title-text {
+    top: 50%;
     left: 27px;
+  }
+  .title-text .overflow-hide .fade-fourth {
+    margin-left: 0px;
   }
   .title-text h1 {
     font-size: 2.25em;

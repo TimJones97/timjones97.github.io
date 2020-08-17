@@ -1,7 +1,7 @@
 if($(window).width() > 1){
     var camera, controls, scene, renderer;
 
-    var mouseX = 0, mouseY = 0;
+    var mouseX = 0, mouseY = 0, mouseZ = 0;
 
 
     scene = new THREE.Scene();
@@ -206,6 +206,7 @@ if($(window).width() > 1){
 
         camera.position.x += (mouseX - camera.position.x) * 0.05;
         camera.position.y += (-mouseY - camera.position.y) * 0.05;
+        camera.position.z += (-mouseZ - camera.position.z) * 0.05;
         camera.lookAt(scene.position);
 
         // for ( var i = 0; i < mainTri.geometry.faces.length; i++ ) {
@@ -244,16 +245,18 @@ if($(window).width() > 1){
     }
 
     function requestPermissionForGyro(){
+        var tiltX, tiltY, tiltZ;
         if (typeof DeviceMotionEvent.requestPermission === 'function') {
             DeviceMotionEvent.requestPermission()
             .then(response => {
               if (response == 'granted') {
                 window.addEventListener('devicemotion', function (eventData) {
-                    var tiltX = Math.round(eventData.gamma * 2 );
-                    var tiltY =  Math.round(eventData.beta * 2);
+                    tiltX = Math.round(eventData.gamma * 2);
+                    tiltY =  Math.round(eventData.beta * 2);
+                    tiltZ =  Math.round(eventData.alpha * 2);
                     $('.tiltX').text(tiltX);
                     $('.tiltY').text(tiltY);
-                    deviceOrientationHandler(tiltX,tiltY);
+                    deviceOrientationHandler(tiltX,tiltY,tiltZ);
                 }, false);
               }
             })
@@ -261,9 +264,10 @@ if($(window).width() > 1){
         }
         else {
             window.addEventListener('devicemotion', function (eventData) {
-                var tiltX = Math.round(eventData.gamma * 2 );
-                var tiltY =  Math.round(eventData.beta * 2);
-                deviceOrientationHandler(tiltX,tiltY);
+                tiltX = Math.round(eventData.gamma * 2);
+                tiltY =  Math.round(eventData.beta * 2);
+                tiltZ =  Math.round(eventData.alpha * 2);
+                deviceOrientationHandler(tiltX,tiltY,tiltZ);
             }, false);
         }
         if (typeof DeviceOrientationEvent.requestPermission === 'function') {
@@ -271,11 +275,12 @@ if($(window).width() > 1){
             .then(response => {
               if (response == 'granted') {
                 window.addEventListener('deviceorientation', function (eventData) {
-                    var tiltX = Math.round(eventData.gamma * 2 );
-                    var tiltY =  Math.round(eventData.beta * 2);
+                    tiltX = Math.round(eventData.gamma * 2);
+                    tiltY =  Math.round(eventData.beta * 2);
+                    tiltZ =  Math.round(eventData.alpha * 2);
                     $('.tiltX').text(tiltX);
                     $('.tiltY').text(tiltY);
-                    deviceOrientationHandler(tiltX,tiltY);
+                    deviceOrientationHandler(tiltX,tiltY,tiltZ);
                 }, false);
               }
             })
@@ -283,16 +288,18 @@ if($(window).width() > 1){
         }
         else {
             window.addEventListener('deviceorientation', function (eventData) {
-                var tiltX = Math.round(eventData.gamma * 2 );
-                var tiltY =  Math.round(eventData.beta * 2);
+                tiltX = Math.round(eventData.gamma * 2);
+                tiltY =  Math.round(eventData.beta * 2);
+                tiltZ =  Math.round(eventData.alpha * 2);
                 deviceOrientationHandler(tiltX,tiltY);
             }, false);
         }
     }
-    function deviceOrientationHandler(tiltX, tiltY){
+    function deviceOrientationHandler(tiltX, tiltY, tiltZ){
         //Speed up gyroscope camera speed
         mouseX = tiltX * 4;
         mouseY = tiltY * 4;
+        mouseZ = tiltZ * 4;
     }
     function getRandom(min,max) {
         return Math.floor(Math.random()*(max-min+1)+min);
