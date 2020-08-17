@@ -628,6 +628,9 @@ function setMainElements(){
 
 $(window).resize(function () { 
   $(".bars").removeClass("active");
+  if(isMobile){
+    $('body').addClass('no_cursor');
+  }
   setMainElements();
   // Remove inline width styles 
   $('.fade-third').removeAttr('style');

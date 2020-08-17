@@ -153,19 +153,6 @@ if($(window).width() > 1){
 
     var tween;
 
-    function onClick( event ) {
-        TWEEN.removeAll();
-        tween = new TWEEN.Tween( { x:camera.position.x, y:camera.position.y, z:camera.position.z } )
-        .to( { x: camera.position.x + 10, y: camera.position.y + 10, z: camera.position.z + 10 }, 2000 )
-        .onUpdate( function () {
-            camera.position.set(this.x);
-            camera.lookAt(scene.position);
-        } )
-        .start();   
-    }
-
-    // document.addEventListener( 'click', onClick, false );
-
     var cameraAngle = 0;
     var orbitRange = 800;
     var orbitSpeed = 0.02;
@@ -243,6 +230,7 @@ if($(window).width() > 1){
     }
 
     if($(window).width() < 991){
+        controls.enabled = false;
         //Check if device is iOS 12 or above
         if(typeof DeviceMotionEvent.requestPermission === 'function'){
             document.querySelector('.main').addEventListener('click', requestPermissionForiOSGyro, false);
@@ -299,7 +287,7 @@ if($(window).width() > 1){
             $('.tiltY').text(tiltY);
             $('.tiltZ').text(tiltZ);
             deviceOrientationHandler(tiltX,tiltY,tiltZ);
-        }, true);
+        }, false);
         window.addEventListener('deviceorientation', function (eventData) {
             tiltX = Math.round(eventData.gamma * 2);
             tiltY =  Math.round(eventData.beta * 2);
@@ -308,7 +296,7 @@ if($(window).width() > 1){
             $('.tiltY').text(tiltY);
             $('.tiltZ').text(tiltZ);
             deviceOrientationHandler(tiltX,tiltY,tiltZ);
-        }, true);
+        }, false);
     }
     function deviceOrientationHandler(tiltX, tiltY, tiltZ){
         //Speed up gyroscope camera speed
