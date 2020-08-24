@@ -71,7 +71,7 @@ if($(window).width() > 1){
     var image = 'https://timothyjones.com.au/files/img/tim.png';
     var loader = new THREE.TextureLoader();
     loader.load( image, function ( texture ) {
-        var geometry = new THREE.PlaneGeometry(330, 400);
+        var geometry = new THREE.PlaneGeometry(280, 400);
         var material = new THREE.MeshBasicMaterial( { map: texture } );
         var mesh = new THREE.Mesh( geometry, material );
         group.add( mesh );
