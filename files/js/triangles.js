@@ -43,10 +43,22 @@ if($(window).width() > 1){
     var group = new THREE.Object3D();
     var mesh, material;
     scene.add(group);
-    var image = 'https://timothyjones.com.au/files/img/egg.png';
+    // points - (x, y) pairs are rotated around the y-axis
+    var points = [];
+    for ( var deg = 0; deg <= 180; deg += 6 ) {
+
+        var rad = Math.PI * deg / 180;
+        var point = new THREE.Vector2( ( 0.72 + .08 * Math.cos( rad ) ) * Math.sin( rad ), - Math.cos( rad ) ); // the "egg equation"
+        //console.log( point ); // x-coord should be greater than zero to avoid degenerate triangles; it is not in this formula.
+        points.push( point );
+
+    }
+
+    
+    var image = 'https://timothyjones.com.au/files/img/texture.png';
     var loader = new THREE.TextureLoader();
     loader.load( image, function ( texture ) {
-        var geometry = new THREE.PlaneGeometry(50, 70);
+        var geometry = new THREE.LatheBufferGeometry( points, 32 );
         material = new THREE.MeshBasicMaterial( { map: texture } );
         mesh = new THREE.Mesh( geometry, material );
         for ( var i = 0; i < 500; i ++ ) {
