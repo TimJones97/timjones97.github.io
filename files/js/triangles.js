@@ -68,7 +68,7 @@ if($(window).width() > 1){
     // instantiate a loader
     var group = new THREE.Object3D();
     scene.add(group);
-    var image = 'https://timothyjones.com.au/files/img/tim.png';
+    var image = 'https://timothyjones.com.au/files/img/tim.jpg';
     var loader = new THREE.TextureLoader();
     loader.load( image, function ( texture ) {
         var geometry = new THREE.PlaneGeometry(280, 400);
