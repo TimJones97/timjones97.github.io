@@ -39,21 +39,71 @@ if($(window).width() > 1){
 
     pivot.position = scene.position;
 
-    for ( var i = 0; i < 500; i ++ ) {
+    // instantiate a loader
+    var group = new THREE.Object3D();
+    var mesh, material;
+    scene.add(group);
+    var image = 'https://timothyjones.com.au/files/img/egg.png';
+    var loader = new THREE.TextureLoader();
+    loader.load( image, function ( texture ) {
+        var geometry = new THREE.PlaneGeometry(50, 70);
+        material = new THREE.MeshBasicMaterial( { map: texture } );
+        mesh = new THREE.Mesh( geometry, material );
+        for ( var i = 0; i < 500; i ++ ) {
+            tris[i] = new THREE.Mesh( geometry, material );
+            tris[i].position.x = ( Math.random() - 0.5 ) * 1000;
+            tris[i].position.y = ( Math.random() - 0.5 ) * 1000;
+            tris[i].position.z = ( Math.random() - 0.5 ) * 1000;
+            tris[i].rotation.x = ( Math.random() - 0.5 ) * 1000;
+            tris[i].rotation.y = ( Math.random() - 0.5 ) * 1000;
 
-        tris[i] = new THREE.Mesh( geometry, materials[getRandom(0, 2)] );
-        tris[i].position.x = ( Math.random() - 0.5 ) * 1000;
-        tris[i].position.y = ( Math.random() - 0.5 ) * 1000;
-        tris[i].position.z = ( Math.random() - 0.5 ) * 1000;
-        tris[i].rotation.x = ( Math.random() - 0.5 ) * 1000;
-        tris[i].rotation.y = ( Math.random() - 0.5 ) * 1000;
+            tris[i].o_pos_x = tris[i].position.x;
+            tris[i].o_pos_y = tris[i].position.y;
 
-        tris[i].o_pos_x = tris[i].position.x;
-        tris[i].o_pos_y = tris[i].position.y;
+            pivot.add( tris[i] );
 
-        pivot.add( tris[i] );
+        }
+    });
 
-    }
+    //Perfect egg
+    // var image = 'https://timothyjones.com.au/files/img/texture.png';
+    // var loader = new THREE.TextureLoader();
+    // loader.load( image, function ( texture ) {
+    //     for ( var deg = 0; deg <= 180; deg += 6 ) {
+    //         var rad = Math.PI * deg / 180;
+    //         var point = new THREE.Vector2( (( 0.72 + .08 * Math.cos( rad ) ) * Math.sin( rad ), - Math.cos( rad )) * 20); // the "egg equation"
+    //         points.push( point );
+    //     }
+    //     var geometry = new THREE.LatheBufferGeometry( points, 32 );
+    //     material = new THREE.MeshBasicMaterial( { map: texture } );
+
+    //     for ( var i = 0; i < 500; i ++ ) {
+    //         tris[i] = new THREE.Mesh( geometry, material );
+    //         tris[i].position.x = ( Math.random() - 0.5 ) * 1000;
+    //         tris[i].position.y = ( Math.random() - 0.5 ) * 1000;
+    //         tris[i].position.z = ( Math.random() - 0.5 ) * 1000;
+    //         tris[i].rotation.x = ( Math.random() - 0.5 ) * 1000;
+    //         tris[i].rotation.y = ( Math.random() - 0.5 ) * 1000;
+
+    //         tris[i].o_pos_x = tris[i].position.x;
+    //         tris[i].o_pos_y = tris[i].position.y;
+
+    //         pivot.add( tris[i] );
+    //     }
+    // });
+
+    // instantiate a loader
+    var group = new THREE.Object3D();
+    scene.add(group);
+    var image = 'https://timothyjones.com.au/files/img/tim.jpg';
+    var loader = new THREE.TextureLoader();
+    loader.load( image, function ( texture ) {
+        var geometry = new THREE.PlaneGeometry(300, 300);
+        var material = new THREE.MeshBasicMaterial( { map: texture } );
+        var mesh = new THREE.Mesh( geometry, material );
+        group.add( mesh );
+    });
+    
 
     scene.add(pivot);
 
@@ -99,6 +149,10 @@ if($(window).width() > 1){
     // mainTri.rotateX((Math.PI * 3) / 2);
     // mainTri.position.set( 0, 0, 0 );
     // scene.add(mainTri);
+
+
+
+
 
     // var subTri = new THREE.Mesh( mainGeo, mainMat );
     // subTri.rotateX(Math.PI  / 2).scale.set(0.49, 0.49, 0.49);
