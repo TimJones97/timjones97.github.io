@@ -126,6 +126,7 @@ a:focus {
 }
 .cursor {
   display: none;
+  opacity: 1;
   position: fixed;
   top: 2px;
   left: 2px;
@@ -140,7 +141,7 @@ a:focus {
               0.4s background ease;
   z-index: 9999;
   pointer-events: none;
-  will-change: transform;
+  will-change: transform, opacity;
 }
 .cursor.blend {
   background: #fff;
@@ -159,6 +160,14 @@ a:focus {
 }
 .cursor.light::after {
   border: 2px solid #fff;
+}
+.cursor.none {
+  transition: all 0.4s ease;
+  opacity: 0;
+}
+.cursor.none::after {
+  opacity: 0;
+  border: none;
 }
 @media (pointer: fine) {
   .cursor {
@@ -1039,7 +1048,7 @@ canvas {
   opacity: 1;
   user-select: none;
   transform: translateZ(0);
-  transition: all 0.5s ease, opacity 0.3s ease, background 0.7s ease 0.5s;
+  transition: all 0.5s ease, opacity 0.3s ease, background 0.4s;
 }
 .experience-item.last {
 
@@ -1140,7 +1149,8 @@ canvas {
 }
 .experience-item .period {
   position: absolute;
-  transition: opacity 0.4s ease-in-out 0.48s, transform 0.4s ease 0.45s;
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease;
+  /*transition: opacity 0.4s ease-in-out 0.48s, transform 0.4s ease 0.45s;*/
   bottom: 10px;
   opacity: 0;
 }
@@ -1151,12 +1161,13 @@ canvas {
   width: 125px;
   height: 15px;
   z-index: 2;
-  transition: all 0.6s ease-in-out 0.3s, background 0.5s ease 0.55s;
+  transition: all 0.6s ease-in-out, background 0.5s ease;
+  transition: all 0.6s ease-in-out, background 0.5s ease;
 }
 .experience-item.edu .period .cover {
   width: 70px;
   right: -30px;
-  transition: all 0.5s ease-in-out 0.2s, background 0.4s ease;
+  transition: all 0.5s ease-in-out, background 0.4s ease;
 }
 .experience-item:hover .period {
   opacity: 1;
@@ -1167,11 +1178,11 @@ canvas {
 .experience-item:hover .role {
   font-size: 15px;
   animation: boldFontAdd 0.7s forwards;
-  animation-delay: 0.5s;
-  transition: all 0.3s ease 0.5s;
+  transition: all 0.3s;
+  /*transition: all 0.3s ease 0.5s;*/
 }
 .experience-item:hover {
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 .experience-logo {
   position: absolute;

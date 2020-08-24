@@ -197,9 +197,7 @@ function hoverEffects() {
   $("h1").hover(function() {
     $('.cursor').addClass("blend");
   }, function() {
-    setTimeout(function(){
-      $('.cursor').removeClass("blend");
-    }, 300);
+    $('.cursor').removeClass("blend");
   });
   $(".skill-item").hover(function() {
     var thisElement = $(this);
@@ -234,6 +232,22 @@ function hoverEffects() {
       $('.video-overlay').css('opacity', '0.5');
     });
   }
+  $(document).on('keydown', function(key) {
+    //If plus key pressed
+    if (key.which == 187) { 
+      $('.title-text').css('opacity', '0');
+      $('.navbar-default').css('opacity', '0');
+      $('.video-overlay').css('opacity', '0.2');
+      $('body').addClass('no_cursor');
+    }
+    //If minus key pressed
+    if (key.which == 189) { 
+      $('.title-text').css('opacity', '1');
+      $('.navbar-default').css('opacity', '1');
+      $('.video-overlay').css('opacity', '0.5');
+      $('body').removeClass('no_cursor');
+    }
+  });
   $(".experience-item").unbind().click(function() {
     var thisElement = $(this);
     var thisElementCopy;
@@ -303,6 +317,11 @@ function hoverEffects() {
         thisElement.remove();
       }, 500, true);
     }
+  });
+  $(".experience-item").hover(function() {
+    $('.cursor').addClass('none');
+  }, function() {
+    $('.cursor').removeClass('none');
   });
 }
 
@@ -405,11 +424,11 @@ function interactiveCursor(){
     Array.from(document.getElementsByClassName('experience-item')).forEach(elem => {
       attachedLarge = true
       elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = false;
-        setTimeout(function(){
-          pollResize = setInterval(function(){
-            $(document).trigger(event);
-          }, 200);
-        }, 600, true)
+        // setTimeout(function(){
+        //   pollResize = setInterval(function(){
+        //     $(document).trigger(event);
+        //   }, 200);
+        // }, 600, true)
       })
       elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false; clearInterval(pollResize)})
     })
