@@ -5,7 +5,7 @@ if($(window).width() > 1){
 
 
     scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2( 0x000000, 0.002 );
+    scene.fog = new THREE.FogExp2( 0x00020d, 0.002 );
 
     renderer = new THREE.WebGLRenderer();
     renderer.setClearColor( scene.fog.color );

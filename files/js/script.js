@@ -37,158 +37,158 @@ function resetEffects(element){
 }
 
 function hoverEffects() {
-  $(".brendan").parent().hover(function() {
-    $(".portfolio-title").stop().animate({
-        'opacity': 0
-    }, 200, function() {
-        $(".portfolio-title").text("Brendan Anning Wedding Celebrant").animate({
-            'opacity': 1
-        }, 200);
-    });
-    applyEffects($(this).find(".portfolio-image"));
-  }, function() {
-    $(".portfolio-title").stop().animate({
-        'opacity': 0
-    }, 200, function() {
-        $(".portfolio-title").text("Portfolio").animate({
-            'opacity': 1
-        }, 200);
-    });
-    resetEffects($(this).find(".portfolio-image"));
-  });
-  $(".aml").parent().hover(function() {
-    $(".portfolio-title").stop().animate({
-        'opacity': 0
-    }, 200, function() {
-        $(".portfolio-title").text("AML Asset Management").animate({
-            'opacity': 1
-        }, 200);
-    });
-    applyEffects($(this).find(".portfolio-image"));
-  }, function() {
-    $(".portfolio-title").stop().animate({
-        'opacity': 0
-    }, 200, function() {
-        $(".portfolio-title").text("Portfolio").animate({
-            'opacity': 1
-        }, 200);
-    });
-    resetEffects($(this).find(".portfolio-image"));
-  });
-  $(".tla").parent().hover(function() {
-    $(".portfolio-title").stop().animate({
-        'opacity': 0
-    }, 200, function() {
-        $(".portfolio-title").text("TLA Logistics Management").animate({
-            'opacity': 1
-        }, 200);
-    });
-    applyEffects($(this).find(".portfolio-image"));
-  }, function() {
-    $(".portfolio-title").stop().animate({
-        'opacity': 0
-    }, 200, function() {
-        $(".portfolio-title").text("Portfolio").animate({
-            'opacity': 1
-        }, 200);
-    });
-    resetEffects($(this).find(".portfolio-image"));
-  });
-  $(".qutrunning").parent().hover(function() {
-    $(".portfolio-title").stop().animate({
-        'opacity': 0
-    }, 200, function() {
-        $(".portfolio-title").text("QUT Running Club").animate({
-            'opacity': 1
-        }, 200);
-    });
-    applyEffects($(this).find(".portfolio-image"));
-  }, function() {
-    $(".portfolio-title").stop().animate({
-        'opacity': 0
-    }, 200, function() {
-        $(".portfolio-title").text("Portfolio").animate({
-            'opacity': 1
-        }, 200);
-    });
-    resetEffects($(this).find(".portfolio-image"));
-  });
-  $(".quteb").parent().hover(function() {
-    $(".portfolio-title").stop().animate({
-        'opacity': 0
-    }, 200, function() {
-        $(".portfolio-title").text("QUT Exchange Club").animate({
-            'opacity': 1
-        }, 200);
-    });
-    applyEffects($(this).find(".portfolio-image"));
-  }, function() {
-    $(".portfolio-title").stop().animate({
-        'opacity': 0
-    }, 200, function() {
-        $(".portfolio-title").text("Portfolio").animate({
-            'opacity': 1
-        }, 200);
-    });
-    resetEffects($(this).find(".portfolio-image"));
-  });
-  $(".daryl").parent().hover(function() {
-    $(".portfolio-title").stop().animate({
-        'opacity': 0
-    }, 200, function() {
-        $(".portfolio-title").text("Daryl Murphy Brisbane Entertainer").animate({
-            'opacity': 1
-        }, 200);
-    });
-    applyEffects($(this).find(".portfolio-image"));
-  }, function() {
-    $(".portfolio-title").stop().animate({
-        'opacity': 0
-    }, 200, function() {
-        $(".portfolio-title").text("Portfolio").animate({
-            'opacity': 1
-        }, 200);
-    });
-    resetEffects($(this).find(".portfolio-image"));
-  });
-  $(".aaron").parent().hover(function() {
-    $(".portfolio-title").stop().animate({
-        'opacity': 0
-    }, 200, function() {
-        $(".portfolio-title").text("Aaron Maybus DJ").animate({
-            'opacity': 1
-        }, 200);
-    });
-    applyEffects($(this).find(".portfolio-image"));
-  }, function() {
-    $(".portfolio-title").stop().animate({
-        'opacity': 0
-    }, 200, function() {
-        $(".portfolio-title").text("Portfolio").animate({
-            'opacity': 1
-        }, 200);
-    });
-    resetEffects($(this).find(".portfolio-image"));
-  });
-  $(".new").parent().hover(function() {
-    $(".portfolio-title").stop().animate({
-        'opacity': 0
-    }, 200, function() {
-        $(".portfolio-title").text("And more to come.").animate({
-            'opacity': 1
-        }, 200);
-    });
-    applyEffects($(this).find(".portfolio-image"));
-  }, function() {
-    $(".portfolio-title").stop().animate({
-        'opacity': 0
-    }, 200, function() {
-        $(".portfolio-title").text("Portfolio").animate({
-            'opacity': 1
-        }, 200);
-    });
-    resetEffects($(this).find(".portfolio-image"));
-  });
+  // $(".brendan").parent().hover(function() {
+  //   $(".portfolio-title").stop().animate({
+  //       'opacity': 0
+  //   }, 200, function() {
+  //       $(".portfolio-title").text("Brendan Anning Wedding Celebrant").animate({
+  //           'opacity': 1
+  //       }, 200);
+  //   });
+  //   applyEffects($(this).find(".portfolio-image"));
+  // }, function() {
+  //   $(".portfolio-title").stop().animate({
+  //       'opacity': 0
+  //   }, 200, function() {
+  //       $(".portfolio-title").text("Portfolio").animate({
+  //           'opacity': 1
+  //       }, 200);
+  //   });
+  //   resetEffects($(this).find(".portfolio-image"));
+  // });
+  // $(".aml").parent().hover(function() {
+  //   $(".portfolio-title").stop().animate({
+  //       'opacity': 0
+  //   }, 200, function() {
+  //       $(".portfolio-title").text("AML Asset Management").animate({
+  //           'opacity': 1
+  //       }, 200);
+  //   });
+  //   applyEffects($(this).find(".portfolio-image"));
+  // }, function() {
+  //   $(".portfolio-title").stop().animate({
+  //       'opacity': 0
+  //   }, 200, function() {
+  //       $(".portfolio-title").text("Portfolio").animate({
+  //           'opacity': 1
+  //       }, 200);
+  //   });
+  //   resetEffects($(this).find(".portfolio-image"));
+  // });
+  // $(".tla").parent().hover(function() {
+  //   $(".portfolio-title").stop().animate({
+  //       'opacity': 0
+  //   }, 200, function() {
+  //       $(".portfolio-title").text("TLA Logistics Management").animate({
+  //           'opacity': 1
+  //       }, 200);
+  //   });
+  //   applyEffects($(this).find(".portfolio-image"));
+  // }, function() {
+  //   $(".portfolio-title").stop().animate({
+  //       'opacity': 0
+  //   }, 200, function() {
+  //       $(".portfolio-title").text("Portfolio").animate({
+  //           'opacity': 1
+  //       }, 200);
+  //   });
+  //   resetEffects($(this).find(".portfolio-image"));
+  // });
+  // $(".qutrunning").parent().hover(function() {
+  //   $(".portfolio-title").stop().animate({
+  //       'opacity': 0
+  //   }, 200, function() {
+  //       $(".portfolio-title").text("QUT Running Club").animate({
+  //           'opacity': 1
+  //       }, 200);
+  //   });
+  //   applyEffects($(this).find(".portfolio-image"));
+  // }, function() {
+  //   $(".portfolio-title").stop().animate({
+  //       'opacity': 0
+  //   }, 200, function() {
+  //       $(".portfolio-title").text("Portfolio").animate({
+  //           'opacity': 1
+  //       }, 200);
+  //   });
+  //   resetEffects($(this).find(".portfolio-image"));
+  // });
+  // $(".quteb").parent().hover(function() {
+  //   $(".portfolio-title").stop().animate({
+  //       'opacity': 0
+  //   }, 200, function() {
+  //       $(".portfolio-title").text("QUT Exchange Club").animate({
+  //           'opacity': 1
+  //       }, 200);
+  //   });
+  //   applyEffects($(this).find(".portfolio-image"));
+  // }, function() {
+  //   $(".portfolio-title").stop().animate({
+  //       'opacity': 0
+  //   }, 200, function() {
+  //       $(".portfolio-title").text("Portfolio").animate({
+  //           'opacity': 1
+  //       }, 200);
+  //   });
+  //   resetEffects($(this).find(".portfolio-image"));
+  // });
+  // $(".daryl").parent().hover(function() {
+  //   $(".portfolio-title").stop().animate({
+  //       'opacity': 0
+  //   }, 200, function() {
+  //       $(".portfolio-title").text("Daryl Murphy Brisbane Entertainer").animate({
+  //           'opacity': 1
+  //       }, 200);
+  //   });
+  //   applyEffects($(this).find(".portfolio-image"));
+  // }, function() {
+  //   $(".portfolio-title").stop().animate({
+  //       'opacity': 0
+  //   }, 200, function() {
+  //       $(".portfolio-title").text("Portfolio").animate({
+  //           'opacity': 1
+  //       }, 200);
+  //   });
+  //   resetEffects($(this).find(".portfolio-image"));
+  // });
+  // $(".aaron").parent().hover(function() {
+  //   $(".portfolio-title").stop().animate({
+  //       'opacity': 0
+  //   }, 200, function() {
+  //       $(".portfolio-title").text("Aaron Maybus DJ").animate({
+  //           'opacity': 1
+  //       }, 200);
+  //   });
+  //   applyEffects($(this).find(".portfolio-image"));
+  // }, function() {
+  //   $(".portfolio-title").stop().animate({
+  //       'opacity': 0
+  //   }, 200, function() {
+  //       $(".portfolio-title").text("Portfolio").animate({
+  //           'opacity': 1
+  //       }, 200);
+  //   });
+  //   resetEffects($(this).find(".portfolio-image"));
+  // });
+  // $(".new").parent().hover(function() {
+  //   $(".portfolio-title").stop().animate({
+  //       'opacity': 0
+  //   }, 200, function() {
+  //       $(".portfolio-title").text("And more to come.").animate({
+  //           'opacity': 1
+  //       }, 200);
+  //   });
+  //   applyEffects($(this).find(".portfolio-image"));
+  // }, function() {
+  //   $(".portfolio-title").stop().animate({
+  //       'opacity': 0
+  //   }, 200, function() {
+  //       $(".portfolio-title").text("Portfolio").animate({
+  //           'opacity': 1
+  //       }, 200);
+  //   });
+  //   resetEffects($(this).find(".portfolio-image"));
+  // });
   $(".food-interact").hover(function() {
     $(".food-background").addClass("active");
   }, function() {
@@ -236,6 +236,8 @@ function hoverEffects() {
     //If plus key pressed
     if (key.which == 187) { 
       $('.title-text').css('opacity', '0');
+      $('.split_upper').css('opacity', '0');
+      $('.split_lower').css('opacity', '0');
       $('.navbar-default').css('opacity', '0');
       $('.video-overlay').css('opacity', '0.2');
       $('body').addClass('no_cursor');
@@ -243,6 +245,8 @@ function hoverEffects() {
     //If minus key pressed
     if (key.which == 189) { 
       $('.title-text').css('opacity', '1');
+      $('.split_upper').css('opacity', '0.9');
+      $('.split_lower').css('opacity', '0.9');
       $('.navbar-default').css('opacity', '1');
       $('.video-overlay').css('opacity', '0.5');
       $('body').removeClass('no_cursor');
@@ -442,10 +446,10 @@ function interactiveCursor(){
         })
       }, 100, true)
     })
-    Array.from(document.getElementsByClassName('view-work')).forEach(elem => {
-      elem.addEventListener('mouseenter', e => {onElement = elem;})
-      elem.addEventListener('mouseleave', e => {onElement = undefined;})
-    })
+    // Array.from(document.getElementsByClassName('view-work')).forEach(elem => {
+    //   elem.addEventListener('mouseenter', e => {onElement = elem;})
+    //   elem.addEventListener('mouseleave', e => {onElement = undefined;})
+    // })
     Array.from(document.getElementById('navbar-collapse-x').getElementsByTagName('li')).forEach(elem => {
       elem.addEventListener('mouseenter', e => {onElement = elem.firstElementChild;  attachedLarge = true;
         pollResize = setInterval(function(){
@@ -503,8 +507,14 @@ function addTransparentNav(){
   // }
   $(".navbar-nav li a:hover").css("color", "#fff");
   $(".navbar-nav li .navbar-brand").css("margin-top", "25px");
-  $(".navbar-brand .first").css('opacity', '1');
-  $(".navbar-brand .second").css('opacity', '0');
+  if ($("body").hasClass("light")) {
+    $(".navbar-brand .second").css('opacity', '1');
+    $(".navbar-brand .first").css('opacity', '0');
+  }
+  else {
+    $(".navbar-brand .first").css('opacity', '1');
+    $(".navbar-brand .second").css('opacity', '0');
+  }
 }
 function addLightNavDesktop(){
   $(".navbar-default").addClass('light');
@@ -518,8 +528,14 @@ function addLightNavDesktop(){
   $(".navbar-nav li .navbar-brand").css("margin-top", "5px");
   $(".navbar-brand img").css('height', '50px');
   $(".navbar-brand img").css('width', '50px');
-  $(".navbar-brand .first").css('opacity', '0');
-  $(".navbar-brand .second").css('opacity', '1');
+  if ($("body").hasClass("light")) {
+    $(".navbar-brand .second").css('opacity', '1');
+    $(".navbar-brand .first").css('opacity', '0');
+  }
+  else {
+    $(".navbar-brand .first").css('opacity', '1');
+    $(".navbar-brand .second").css('opacity', '0');
+  }
 }
 
 function animateNavbar(){
@@ -542,65 +558,6 @@ function animateNavbar(){
   }
 }
 
-function createGoTopArrow(){
-  var target = "#home";
-  var offset = 0;
-
-  // Set the background arrow dependent on the page scroll location  
-  if ($(this).scrollTop() > 70) {        // If page is scrolled more than 70px
-    $('.arrow-img').css("background", "url('./files/img/icons/arrow_up.png");    // Change arrow to up
-    $('.arrow').css("background", "rgba(0, 0, 0, 0.7)");    // Add background
-    if($(window).width() > 767){
-      setTimeout(function(){ //Add delay in case of resizing
-        $('.arrow').css("bottom", "70px");
-      }, 200, true);
-    }
-    target = "#home";
-  } 
-  else {
-    $('.arrow-img').css("background", "url('./files/img/icons/arrow_down.png");    // Change arrow to down
-    $('.arrow').css("background", "none");    // Remove background
-    if($(window).width() > 767){
-      setTimeout(function(){
-        $('.arrow').css("bottom", "6px");   
-      }, 200, true);
-    }
-    target = "#about";
-  }
-  $(window).scroll(function() {
-    if ($(this).scrollTop() > 70) {        
-      $('.arrow-img').css("background", "url('./files/img/icons/arrow_up.png");   
-      $('.arrow').css("background", "rgba(0, 0, 0, 0.7)");  
-      if($(window).width() > 767){
-        setTimeout(function(){
-          $('.arrow').css("bottom", "70px");  
-        }, 200, true);
-      }  
-      target = "#home";
-    } 
-    else {
-      $('.arrow-img').css("background", "url('./files/img/icons/arrow_down.png");    
-      $('.arrow').css("background", "none");
-      if($(window).width() > 767){
-        setTimeout(function(){
-          $('.arrow').css("bottom", "6px");
-        }, 200, true);
-      }
-      target = "#about";
-    }
-  });
-
-  $('.arrow').click(function() {      // When arrow is clicked
-    //If not on desktop, make offset -51px for mobile screens to line up with top of section headers
-    if($(window).width() < 767){
-      offset = -52.5;
-    }
-    else {
-      offset = 0;
-    }
-    $(target).velocity("scroll", { duration: 1000, offset: offset });
-  });
-}
 
 //Reset the elements that require resizing
 function setMainElements(){
@@ -619,18 +576,6 @@ function setMainElements(){
       $(this).css('width', '100%');
     });
   }
-  // $("html").easeScroll({
-  //   frameRate: 60,
-  //   animationTime: 1000,
-  //   stepSize: 100,
-  //   pulseAlgorithm: !0,
-  //   pulseScale: 8,
-  //   pulseNormalize: 1,
-  //   accelerationDelta: 20,
-  //   accelerationMax: 1,
-  //   keyboardSupport: !0,
-  //   arrowScroll: 50
-  // });
 }
 
 $(window).resize(function () { 
@@ -763,6 +708,7 @@ function bindVelocity(){
       }
       else {
         $(target).velocity("scroll", 1000, true);
+        // tl.progress(1).pause();
       }
       // controller.destroy(true);
   });
@@ -791,8 +737,10 @@ function introAnimation(){
   setTimeout(function(){
     $(".background-wrapper").attr("data-anim","true");
     $('.background-wrapper').addClass("active");
+    $('.split_upper').addClass("fill");
+    $('.split_lower').addClass("fill");
   },1250, true);
-  // },1250, true);
+  // }, 0, true);
   //Fade in the title text
   setTimeout(function(){
     $('.title-text').css("display", "block");
@@ -807,6 +755,7 @@ function introAnimation(){
         $('.fullstop').css('opacity', '0');
       }
     },200, true);
+  // },0, true);
   },2400, true);
   //Highlight the abbreviations
   setTimeout(function(){
@@ -824,6 +773,7 @@ function introAnimation(){
     setTimeout(function(){
       fadeThirdElem.removeClass('hide_desktop');
       fadeFourthElem.removeClass('hide_desktop');
+      $('.switch').removeClass('no_view');
     },4100, true);
     setTimeout(function(){
       $('.fade').addClass('no_delay');
@@ -863,20 +813,20 @@ function introAnimation(){
     },5600, true);
   }
 }
-function fadeOutOnScroll(){
-  var fadeStart = 0; 
-  var fadeUntil = $(window).height() / 2; 
-  var offset = $(document).scrollTop();
-  var opacity = 0;
+// function fadeOutOnScroll(){
+//   var fadeStart = 0; 
+//   var fadeUntil = $(window).height() / 2; 
+//   var offset = $(document).scrollTop();
+//   var opacity = 0;
 
-  if (offset <= fadeStart){
-      opacity = 1;
-  }
-  else if(offset <= fadeUntil){
-      opacity = 1 - offset/fadeUntil;
-  }
-  $('.background').css('opacity', opacity);
-}
+//   if (offset <= fadeStart){
+//       opacity = 1;
+//   }
+//   else if(offset <= fadeUntil){
+//       opacity = 1 - offset/fadeUntil;
+//   }
+//   $('.background').css('opacity', opacity);
+// }
 function showLoaderSplash(allowed){
   var multiplierX = 7;
   var multiplierY = 2.5;
@@ -1122,9 +1072,9 @@ function loadingLine(){
   var percentageWidth;
   var randomColourSeed = Math.floor((Math.random() * 100) + 1);
   //Set loading line colour to random hue
-  $('.loading-line').css('filter', 'hue-rotate(' + randomColourSeed + 'deg)');
-  $('.second-line').css('filter', 'hue-rotate(' + (randomColourSeed + 40) + 'deg)');
-  $('.third-line').css('filter', 'hue-rotate(' + (randomColourSeed + 60) + 'deg)');
+  // $('.loading-line').css('filter', 'hue-rotate(' + randomColourSeed + 'deg)');
+  // $('.second-line').css('filter', 'hue-rotate(' + (randomColourSeed + 40) + 'deg)');
+  // $('.third-line').css('filter', 'hue-rotate(' + (randomColourSeed + 60) + 'deg)');
   var loop = setInterval(function(){
     percentageWidth = $('.pace-progress').attr('data-progress-text');
     console.log(percentageWidth);
@@ -1143,19 +1093,11 @@ function loadingLine(){
           $('.loading-line').css('height', '200%');
         },800);
         setTimeout(function(){
-          $('.second-line').css('opacity', '1');
-          $('.second-line').css('height', '100%');
+          $('.preloader-wrap').css('height', '0%');
         }, 1000);
         setTimeout(function(){
-          $('.third-line').css('opacity', '1');
-          $('.third-line').css('height', '100%');
-        }, 1200);
-        setTimeout(function(){
-          $('.preloader-wrap').css('height', '0%');
-        }, 1400);
-        setTimeout(function(){
           $('.preloader-wrap').fadeOut(400);
-        }, 2400);
+        }, 1200);
       } 
       //If not, simply fade out
       else {
@@ -1224,8 +1166,23 @@ function setupScrollMagic(){
   .setPin(".about")
   .addTo(controller);
 }
-function changeMonth(newtext) {
-  $("#month").text(newtext)
+function switchBtn(){
+  $(".switch").click(function () {
+    if ($("body").hasClass("light")) {
+      $(".switch").removeClass("switched");
+      $(".exit_btn").removeClass("light");
+      $('body').removeClass('light');
+      $(".navbar-brand .first").css('opacity', '1');
+      $(".navbar-brand .second").css('opacity', '0');
+    }
+    else {
+      $(".switch").addClass("switched");
+      $(".exit_btn").addClass("light");
+      $('body').addClass('light');
+      $(".navbar-brand .second").css('opacity', '1');
+      $(".navbar-brand .first").css('opacity', '0');
+    }
+  });
 }
 $( document ).ready(function() {
   if($(window).width() < 991){
@@ -1235,30 +1192,22 @@ $( document ).ready(function() {
   interactiveCursor();
   setMainElements();
   hoverEffects();
-  createGoTopArrow();
   animateNavbar();
   navbarElementHoverAnim();
   createScrollRevealEffects();
   bindVelocity();
   loadingLine();
-  setupScrollMagic();
-  // var checkTitle = setInterval(function(){
-  //   if($('.about-title').visible(true)){
-  //     setTimeout(switchWords(), 2000);
-  //     clearInterval(checkTitle);
-  //   }
-  // }, 200);
-  
+  switchBtn();
+  // setupScrollMagic();
   showLoaderSplash(false);
-  //Add animation to the loading images
-  // setTimeout(function(){
-  //   setRandomLogoPos($('.preloader-wrap .loader-img'), false);
-  // setRandomLogoPos($('.preloader-wrap .loader-img-two'), true);
-
-  // }, 1500);
   $(window).scroll(function() { 
     animateNavbar();   
     preventScrollOnMenuOpen();
+    $('.overflow-hide').first().css('transform' , 'translateX(-' + $(document).scrollTop() /8 + 'px)');
+    $('.overflow-hide').first().next().css('transform' , 'translateX(' + $(document).scrollTop() /8 + 'px)');
+    $('.overflow-hide').last().css('transform' , 'translateX(-' + $(document).scrollTop() /16 + 'px)');
+    $('.overflow-hide').last().css('animation-name' , 'none');
+    $('.overflow-hide').last().css('opacity' , '1');
   });
   if($(document).scrollTop() > 0){
     $(".navbar-default").css('opacity', '1');

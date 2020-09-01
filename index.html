@@ -71,11 +71,9 @@
 			<p>Remove</p>
 		</div>
 	</div>
-	<div class="preloader-wrap">
+<!-- 	<div class="preloader-wrap">
 		<div class="loading-line"></div>
-		<div class="second-line"></div>
-		<div class="third-line"></div>
-	</div>
+	</div> -->
 	<div class="too-small-message">
 		<p>Please resize your browser.</p>
 	</div>
@@ -91,17 +89,13 @@
 				  </div>
 			</button>
 		</div>
-		<a class="navbar-brand navbar-brand-mobile" href="#home2">
-			<img class="first" src="./files/img/logo_white.png" alt="Timothy Jones Logo">
-			<img class="second" src="./files/img/logo_black.png" alt="Timothy Jones Logo">
-		</a>
 		<div class="collapse navbar-collapse" id="navbar-collapse-x">
 			<ul class="nav navbar-nav navbar-left">
-  				<li data-toggle="collapse" data-target="#navbar-collapse.in">
-					<a class="navbar-brand" href="#home2">
-						<img class="first" src="./files/img/logo_white.png" alt="Timothy Jones Logo">
-						<img class="second" src="./files/img/logo_black.png" alt="Timothy Jones Logo">
-  					</a>
+				<li data-toggle="collapse" data-target="#navbar-collapse.in">
+					<a href="#home">
+						Home
+						<div class="background-fill"></div>
+					</a>
 				</li>
 				<li data-toggle="collapse" data-target="#navbar-collapse.in">
 					<a href="#about">
@@ -114,6 +108,12 @@
 						Portfolio
 						<div class="background-fill"></div>
 					</a>
+				</li>
+				<li data-toggle="collapse" data-target="#navbar-collapse.in">
+					<a class="navbar-brand" href="#home2">
+						<img class="first" src="./files/img/logo_white.png" alt="Timothy Jones Logo">
+						<img class="second" src="./files/img/logo_black.png" alt="Timothy Jones Logo">
+  					</a>
 				</li>
 				<li data-toggle="collapse" data-target="#navbar-collapse.in">
 					<a href="#skills">
@@ -139,371 +139,418 @@
 		</div>
 	</nav>
 	<div class="cursor"></div>
-	<section class="main" id="home">
-		<div class="background-wrapper" data-anim="false">
-			<div class="background">
-				<div id="container"></div>
-				<div class="video-overlay">
-				</div>
-			</div>
-			<div class="tilt_stats">
-				<p>TiltX: <span class="tiltX"></span></p>
-				<p>TiltY: <span class="tiltY"></span></p>
-				<p>TiltZ: <span class="tiltZ"></span></p>
-				<!-- <p>CameraZ: <span class="cameraZ"></span></p> -->
-			</div>
+	<button class="switch">
+	<!-- <button class="switch no_view"> -->
+		<div class="circle">
 		</div>
-		<div class="title-text" id="intro-text">
-			<div class="overflow-hide">
-				<div class="fade">
-					<h1>Timothy Jones</h1>
+	</button>
+	<div class="body_container">
+		<div class="body_container__body">
+			<section class="main" id="home">
+				<div class="background-wrapper" data-anim="false">
+					<div class="background">
+						<div id="container"></div>
+						<!-- <div class="video-overlay">
+						</div> -->
+					</div>
+					<div class="tilt_stats">
+						<p>TiltX: <span class="tiltX"></span></p>
+						<p>TiltY: <span class="tiltY"></span></p>
+						<p>TiltZ: <span class="tiltZ"></span></p>
+					</div>
 				</div>
-			</div>
-			<div class="overflow-hide">
-				<div class="fade-second">
-					<h1><span class="highlight-orange">UX</span> / <span class="highlight-blue">UI</span> Web Designer <span class="fade-third">and</span><span class="fade-fourth">Developer</span><span class="fullstop">.</span></h1>
+				<div class="title-text" id="intro-text">
+					<div class="overflow-hide">
+						<div class="fade">
+							<h1>Timothy Jones</h1>
+						</div>
+					</div>
+					<div class="overflow-hide">
+						<div class="fade-second">
+							<h1><span class="highlight-orange">UX</span> / <span class="highlight-blue">UI</span> Web Designer <span class="fade-third">and</span><span class="fade-fourth">Developer</span><span class="fullstop">.</span></h1>
+						</div>
+					</div>
+					<div class="fade-last overflow-hide">
+						<a href="#portfolio2">
+							<button class="view-work">View my work
+							</button>
+							<div class="bottom_border">
+							</div>
+							<div class="bottom_border_anim">
+							</div>
+						</a>
+					</div>
 				</div>
-			</div>
-			<div class="fade-last">
-				<a href="#portfolio2">
-					<button class="view-work">View my work
-					</button>
+				<div class="split_upper">
+				</div>
+				<div class="split_lower">
+				</div>
+			</section>
+			<!-- <section class="about" id="about">
+				<div class="food-background">
+				</div>
+				<video autoplay loop autobuffer muted playsinline type='video/mp4'>
+				  <source src="https://timothyjones.com.au/files/img/hero.mp4" type="video/mp4">
+				</video>
+				<div class="title_contain">
+					<p class="about-title"></p>
+					<span class="hide-text"> </span>
+					<span class="switch-text"></span>
+				</div>
+			</section> -->
+			<section class="portfolio" id="portfolio">
+				<h1 class="portfolio-title">My Work</h1>
+				<div class="portfolio-container">
+					<a href="https://brendananning.wedding" target="_blank">
+						<div class="portfolio-item">
+							<h2>
+								Brendan Anning Wedding Celebrant
+							</h2>
+							<div class="portfolio-image brendan">
+							</div>
+							<div class="portfolio-logo brendan-logo">
+							</div>
+							<div class="description_text">
+								<p class="number">.01</p>
+								<p class="year">2020</p>
+							</div>
+							<div class="white_underlay">
+							</div>
+						</div>
+					</a>
+					<a href="https://amladvisory.com.au" target="_blank">
+						<div class="portfolio-item">
+							<h2>
+								Melbourne Asset Management
+							</h2>
+							<div class="portfolio-image aml">
+							</div>
+							<div class="portfolio-logo aml-logo">
+							</div>
+							<div class="description_text">
+								<p class="number">.02</p>
+								<p class="year">2017</p>
+							</div>
+							<div class="white_underlay">
+							</div>
+						</div>
+					</a>
+					<a href="https://tlaaustralia.com.au" target="_blank">
+						<div class="portfolio-item">
+							<h2>
+								TLA Logistics Management
+							</h2>
+							<div class="portfolio-image tla">
+							</div>
+							<div class="portfolio-logo tla-logo">
+							</div>
+							<div class="description_text">
+								<p class="number">.03</p>
+								<p class="year">2018</p>
+							</div>
+							<div class="white_underlay">
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="portfolio-container">
+					<a href="https://qutrunning.com.au" target="_blank">
+						<div class="portfolio-item">
+							<h2>
+								QUT Running Club
+							</h2>
+							<div class="portfolio-image qutrunning">
+							</div>
+							<div class="portfolio-logo qutrunning-logo">
+							</div>
+							<div class="description_text">
+								<p class="number">.04</p>
+								<p class="year">2020</p>
+							</div>
+							<div class="white_underlay">
+							</div>
+						</div>
+					</a>
+					<a href="http://darylmurphy.com" target="_blank">
+						<div class="portfolio-item">
+							<h2>
+								Daryl Murphy Brisbane Entertainer
+							</h2>
+							<div class="portfolio-image daryl">
+							</div>
+							<div class="portfolio-logo daryl-logo">
+							</div>
+							<div class="description_text">
+								<p class="number">.05</p>
+								<p class="year">2019</p>
+							</div>
+							<div class="white_underlay">
+							</div>
+						</div>
+					</a>
+					<a href="http://aaronmaybus.com" target="_blank">
+						<div class="portfolio-item">
+							<h2>
+								Aaron Maybus DJ
+							</h2>
+							<div class="portfolio-image aaron">
+							</div>
+							<div class="portfolio-logo aaron-logo">
+							</div>
+							<div class="description_text">
+								<p class="number">.06</p>
+								<p class="year">2019</p>
+							</div>
+							<div class="white_underlay">
+							</div>
+						</div>
+					</a>
+				</div>
+			</section>
+			<section class="skills" id="skills">
+				<h1>Skills</h1>
+				<div class="skill-row one">
+					<picture class="skill-item one">
+						<source srcset="./files/img/languages/css3.png">
+						<img draggable="false" src="./files/img/languages/css3.png" alt="CSS3">
+						<div class="hidden-text">
+							<p>
+								I
+							</p>
+						</div>	
+					</picture>
+					<picture class="skill-item two">
+						<source srcset="./files/img/languages/html5.png">
+						<img draggable="false" src="./files/img/languages/html5.png" alt="HTML5">
+						<div class="hidden-text">
+							<p>
+								also
+							</p>
+						</div>			
+					</picture>
+					<picture class="skill-item three">
+						<source srcset="./files/img/languages/jquery.png">
+						<img draggable="false" src="./files/img/languages/jquery.png" alt="JQuery">
+						<div class="hidden-text">
+							<p>
+								know
+							</p>
+						</div>
+					</picture>
+					<picture class="skill-item four">
+						<source srcset="./files/img/languages/js.png">
+						<img draggable="false" src="./files/img/languages/js.png" alt="JavaScript">
+						<div class="hidden-text">
+							<p>
+								how
+							</p>
+						</div>				
+					</picture>
+				</div>
+				<div class="skill-row two">
+					<picture class="skill-item five">
+						<source srcset="./files/img/languages/php.png">
+						<img draggable="false"src="./files/img/languages/php.png" alt="PHP">
+						<div class="hidden-text">
+							<p>
+								to
+							</p>
+						</div>
+					</picture>
+					<picture class="skill-item six">
+						<source srcset="./files/img/languages/webflow.png">
+						<img draggable="false" src="./files/img/languages/webflow.png" alt="Webflow">
+						<div class="hidden-text">
+							<p>
+								make
+							</p>
+						</div>
+					</picture>
+					<picture class="skill-item seven">
+						<source srcset="./files/img/languages/wordpress.png">
+						<img draggable="false" src="./files/img/languages/wordpress.png" alt="Wordpress">
+						<div class="hidden-text">
+							<p>
+								a 
+							</p>
+						</div>	
+					</picture>
+					<picture class="skill-item eight">
+						<source srcset="./files/img/languages/MySQL.png">
+						<img draggable="false" src="./files/img/languages/MySQL.png" alt="MySQL">
+						<div class="hidden-text">
+							<p>
+								really
+							</p>
+						</div>
+					</picture>
+				</div>
+				<div class="skill-row three">
+					<picture class="skill-item nine">
+						<source srcset="./files/img/languages/python.png">
+						<img draggable="false" src="./files/img/languages/python.png" alt="Python">
+						<div class="hidden-text">
+							<p>
+								good
+							</p>
+						</div>
+					</picture>
+					<picture class="skill-item ten">
+						<source srcset="./files/img/languages/c_sharp.png">
+						<img draggable="false" src="./files/img/languages/c_sharp.png" alt="C Sharp">
+						<div class="hidden-text">
+							<p>
+								apple
+							</p>
+						</div>
+					</picture>
+					<picture class="skill-item eleven">
+						<source srcset="./files/img/languages/c.png">
+						<img draggable="false" src="./files/img/languages/c.png" alt="C">
+						<div class="hidden-text">
+							<p>
+								crumble
+							</p>
+						</div>
+					</picture>
+					<picture class="skill-item twelve">
+						<source srcset="./files/img/languages/c++.png">
+						<img draggable="false" src="./files/img/languages/c++.png" alt="C++">
+						<div class="hidden-text">
+							<p>
+								:)
+							</p>
+						</div>
+					</picture>
+				</div>
+			</section>
+			<section class="experience" id="experience">
+				<h1>Experience</h1>
+				<div class="work-experience">
+					<h3>Work</h3>
+					<div class="experience-item qut">
+						<div class="experience-content">
+							<h6>Queensland University of Technology</h6>
+							<p class="role">Web Designer</p>
+							<p class="period">2016 - 2020<span class="cover"></span></p>
+						</div>
+						<picture class="experience-logo">
+							<source srcset="./files/img/logos/qut.png">
+							<img src="./files/img/logos/qut.png" alt="QUT Logo">
+						</picture>
+					</div>
+					<div class="experience-item urban">
+						<div class="experience-content">
+							<h6>Urban Circus Digital Planning</h6>
+							<p class="role">Sysadmin</p>
+							<p class="period">2016 - 2017<span class="cover"></span></p>
+						</div>
+						<picture class="experience-logo">
+							<source srcset="./files/img/logos/uc.png">
+							<img src="./files/img/logos/uc.png" alt="Urban Circus Logo">
+						</picture>
+					</div>
+					<div class="experience-item edu">
+						<div class="experience-content">
+							<h6>Education Queensland</h6>
+							<p class="role">IT Admin - Moorooka</p>
+							<p class="period">2017<span class="cover"></span></p>
+						</div>
+						<picture class="experience-logo">
+							<source srcset="./files/img/logos/qedu.png">
+							<img src="./files/img/logos/qedu.png" alt="Queensland Education Logo">
+						</picture>
+					</div>
+					<div class="experience-item msoft">
+						<div class="experience-content">
+							<h6>Microsoft</h6>
+							<p class="role">Brand Ambassador</p>
+							<p class="period">2015 - 2017<span class="cover"></span></p>
+						</div>
+						<picture class="experience-logo">
+							<source srcset="./files/img/logos/microsoft.png">
+							<img src="./files/img/logos/microsoft.png" alt="Microsoft Logo">
+						</picture>
+					</div>
+				</div>
+				<div class="work-experience">
+					<h3>Education</h3>
+					<div class="experience-item qut-edu">
+						<div class="experience-content">
+							<h6>Master of Information Technology</h6>
+							<p class="role">QUT - Cyber Security & Network<br>Engineering</p>
+							<p class="period">2019 - 2020<span class="cover"></span></p>
+						</div>
+						<picture class="experience-logo">
+							<source srcset="./files/img/logos/qut.png">
+							<img src="./files/img/logos/qut.png" alt="QUT Logo">
+						</picture>
+					</div>
+					<div class="experience-item qut-edu">
+						<div class="experience-content">
+							<h6>Bachelor of Information Technology</h6>
+							<p class="role">QUT - Computer Science</p>
+							<p class="period">2015 - 2018<span class="cover"></span></p>
+						</div>
+						<picture class="experience-logo">
+							<source srcset="./files/img/logos/qut.png">
+							<img src="./files/img/logos/qut.png" alt="QUT Logo">
+						</picture>
+					</div>	
+					<div class="experience-item stack">
+						<div class="experience-content">
+							<h6>UX/UI Design</h6>
+							<p class="role">Self-educated, Online Resources,<br>Countless Hours on StackOverflow</p>
+							<p class="period">2015 - now<span class="cover"></span></p>
+						</div>
+						<picture class="experience-logo">
+							<source srcset="./files/img/logos/ui_ux.png">
+							<img src="./files/img/logos/ui_ux.png" alt="UI/UX Logo">
+						</picture>
+					</div>
+				</div>
+			</section>
+			<section class="contact" id="contact">
+				<h1>Contact</h1>
+				<a href="mailto:timothyjones.1@outlook.com">
+					<div class="contact-item">
+						<picture class="contact-image">
+							<source srcset="./files/img/icons/email.png">
+							<img src="./files/img/icons/email.png" alt="Email Logo">
+						</picture>
+					</div>
 				</a>
-			</div>
+				<a href="https://www.facebook.com/tim.jones.3348" target="_blank">
+					<div class="contact-item">
+						<picture class="contact-image">
+							<source srcset="./files/img/icons/facebook.png">
+							<img src="./files/img/icons/facebook.png" alt="Facebook Logo">
+						</picture>
+					</div>
+				</a>
+				<a href="https://github.com/TimJones97" target="_blank">
+					<div class="contact-item">
+						<picture class="contact-image">
+							<source srcset="./files/img/icons/github.png">
+							<img src="./files/img/icons/github.png" alt="Github Logo">
+						</picture>
+					</div>
+				</a>
+				<a href="https://www.linkedin.com/in/tim-jones-1447b5112/" target="_blank">
+					<div class="contact-item">
+						<picture class="contact-image">
+							<source srcset="./files/img/icons/linkedin.png">
+							<img src="./files/img/icons/linkedin.png" alt="LinkedIn Logo">
+						</picture>
+					</div>
+				</a>
+				<footer>
+					<p>&copy; Copyright Timothy Jones <span class="year"></span>.</p>
+				</footer>
+			</section>
 		</div>
-	</section>
-	<section class="about" id="about">
-		<div class="food-background">
-		</div>
-		<!-- <div id="geometric" class="geometric">
-		  <div id="geometric_output">
-		  </div>
-		</div> -->
-		<video autoplay loop autobuffer muted playsinline type='video/mp4'>
-		  <source src="https://timothyjones.com.au/files/img/hero.mp4" type="video/mp4">
-		</video>
-		<div class="title_contain">
-			<p class="about-title"></p>
-			<span class="hide-text"> </span>
-			<span class="switch-text"></span>
-		</div>
-	</section>
-	<section class="portfolio" id="portfolio">
-		<h1 class="portfolio-title">My Work</h1>
-		<div class="portfolio-container">
-			<a href="https://brendananning.wedding" target="_blank">
-				<div class="portfolio-item">
-					<h2>
-						Brendan Anning Wedding Celebrant
-					</h2>
-					<div class="portfolio-image brendan">
-					</div>
-					<div class="portfolio-logo brendan-logo">
-					</div>
-				</div>
-			</a>
-			<a href="https://amladvisory.com.au" target="_blank">
-				<div class="portfolio-item">
-					<h2>
-						Melbourne Asset Management
-					</h2>
-					<div class="portfolio-image aml">
-					</div>
-					<div class="portfolio-logo aml-logo">
-					</div>
-				</div>
-			</a>
-			<a href="https://tlaaustralia.com.au" target="_blank">
-				<div class="portfolio-item">
-					<h2>
-						TLA Logistics Management
-					</h2>
-					<div class="portfolio-image tla">
-					</div>
-					<div class="portfolio-logo tla-logo">
-					</div>
-				</div>
-			</a>
-			<a href="https://qutrunning.com.au" target="_blank">
-				<div class="portfolio-item">
-					<h2>
-						QUT Running Club
-					</h2>
-					<div class="portfolio-image qutrunning">
-					</div>
-					<div class="portfolio-logo qutrunning-logo">
-					</div>
-				</div>
-			</a>
-			<a href="http://darylmurphy.com" target="_blank">
-				<div class="portfolio-item">
-					<h2>
-						Daryl Murphy Brisbane Entertainer
-					</h2>
-					<div class="portfolio-image daryl">
-					</div>
-					<div class="portfolio-logo daryl-logo">
-					</div>
-				</div>
-			</a>
-			<a href="http://aaronmaybus.com" target="_blank">
-				<div class="portfolio-item">
-					<h2>
-						Aaron Maybus DJ
-					</h2>
-					<div class="portfolio-image aaron">
-					</div>
-					<div class="portfolio-logo aaron-logo">
-					</div>
-				</div>
-			</a>
-		</div>
-	</section>
-	<section class="skills" id="skills">
-		<h1>Skills</h1>
-		<div class="skill-row one">
-			<picture class="skill-item one">
-				<source srcset="./files/img/languages/css3.png">
-				<img draggable="false" src="./files/img/languages/css3.png" alt="CSS3">
-				<div class="hidden-text">
-					<p>
-						I
-					</p>
-				</div>	
-			</picture>
-			<picture class="skill-item two">
-				<source srcset="./files/img/languages/html5.png">
-				<img draggable="false" src="./files/img/languages/html5.png" alt="HTML5">
-				<div class="hidden-text">
-					<p>
-						also
-					</p>
-				</div>			
-			</picture>
-			<picture class="skill-item three">
-				<source srcset="./files/img/languages/jquery.png">
-				<img draggable="false" src="./files/img/languages/jquery.png" alt="JQuery">
-				<div class="hidden-text">
-					<p>
-						know
-					</p>
-				</div>
-			</picture>
-			<picture class="skill-item four">
-				<source srcset="./files/img/languages/js.png">
-				<img draggable="false" src="./files/img/languages/js.png" alt="JavaScript">
-				<div class="hidden-text">
-					<p>
-						how
-					</p>
-				</div>				
-			</picture>
-		</div>
-		<div class="skill-row two">
-			<picture class="skill-item five">
-				<source srcset="./files/img/languages/php.png">
-				<img draggable="false"src="./files/img/languages/php.png" alt="PHP">
-				<div class="hidden-text">
-					<p>
-						to
-					</p>
-				</div>
-			</picture>
-			<picture class="skill-item six">
-				<source srcset="./files/img/languages/webflow.png">
-				<img draggable="false" src="./files/img/languages/webflow.png" alt="Webflow">
-				<div class="hidden-text">
-					<p>
-						make
-					</p>
-				</div>
-			</picture>
-			<picture class="skill-item seven">
-				<source srcset="./files/img/languages/wordpress.png">
-				<img draggable="false" src="./files/img/languages/wordpress.png" alt="Wordpress">
-				<div class="hidden-text">
-					<p>
-						a 
-					</p>
-				</div>	
-			</picture>
-			<picture class="skill-item eight">
-				<source srcset="./files/img/languages/MySQL.png">
-				<img draggable="false" src="./files/img/languages/MySQL.png" alt="MySQL">
-				<div class="hidden-text">
-					<p>
-						really
-					</p>
-				</div>
-			</picture>
-		</div>
-		<div class="skill-row three">
-			<picture class="skill-item nine">
-				<source srcset="./files/img/languages/python.png">
-				<img draggable="false" src="./files/img/languages/python.png" alt="Python">
-				<div class="hidden-text">
-					<p>
-						good
-					</p>
-				</div>
-			</picture>
-			<picture class="skill-item ten">
-				<source srcset="./files/img/languages/c_sharp.png">
-				<img draggable="false" src="./files/img/languages/c_sharp.png" alt="C Sharp">
-				<div class="hidden-text">
-					<p>
-						apple
-					</p>
-				</div>
-			</picture>
-			<picture class="skill-item eleven">
-				<source srcset="./files/img/languages/c.png">
-				<img draggable="false" src="./files/img/languages/c.png" alt="C">
-				<div class="hidden-text">
-					<p>
-						crumble
-					</p>
-				</div>
-			</picture>
-			<picture class="skill-item twelve">
-				<source srcset="./files/img/languages/c++.png">
-				<img draggable="false" src="./files/img/languages/c++.png" alt="C++">
-				<div class="hidden-text">
-					<p>
-						:)
-					</p>
-				</div>
-			</picture>
-		</div>
-	</section>
-	<section class="experience" id="experience">
-		<h1>Experience</h1>
-		<div class="work-experience">
-			<h3>Work</h3>
-			<div class="experience-item qut">
-				<div class="experience-content">
-					<h6>Queensland University of Technology</h6>
-					<p class="role">Web Designer</p>
-					<p class="period">2016 - 2020<span class="cover"></span></p>
-				</div>
-				<picture class="experience-logo">
-					<source srcset="./files/img/logos/qut.png">
-					<img src="./files/img/logos/qut.png" alt="QUT Logo">
-				</picture>
-			</div>
-			<div class="experience-item urban">
-				<div class="experience-content">
-					<h6>Urban Circus Digital Planning</h6>
-					<p class="role">Sysadmin</p>
-					<p class="period">2016 - 2017<span class="cover"></span></p>
-				</div>
-				<picture class="experience-logo">
-					<source srcset="./files/img/logos/uc.png">
-					<img src="./files/img/logos/uc.png" alt="Urban Circus Logo">
-				</picture>
-			</div>
-			<div class="experience-item edu">
-				<div class="experience-content">
-					<h6>Education Queensland</h6>
-					<p class="role">IT Admin - Moorooka</p>
-					<p class="period">2017<span class="cover"></span></p>
-				</div>
-				<picture class="experience-logo">
-					<source srcset="./files/img/logos/qedu.png">
-					<img src="./files/img/logos/qedu.png" alt="Queensland Education Logo">
-				</picture>
-			</div>
-			<div class="experience-item msoft">
-				<div class="experience-content">
-					<h6>Microsoft</h6>
-					<p class="role">Brand Ambassador</p>
-					<p class="period">2015 - 2017<span class="cover"></span></p>
-				</div>
-				<picture class="experience-logo">
-					<source srcset="./files/img/logos/microsoft.png">
-					<img src="./files/img/logos/microsoft.png" alt="Microsoft Logo">
-				</picture>
-			</div>
-		</div>
-		<div class="work-experience">
-			<h3>Education</h3>
-			<div class="experience-item qut-edu">
-				<div class="experience-content">
-					<h6>Master of Information Technology</h6>
-					<p class="role">QUT - Cyber Security & Network<br>Engineering</p>
-					<p class="period">2019 - 2020<span class="cover"></span></p>
-				</div>
-				<picture class="experience-logo">
-					<source srcset="./files/img/logos/qut.png">
-					<img src="./files/img/logos/qut.png" alt="QUT Logo">
-				</picture>
-			</div>
-			<div class="experience-item qut-edu">
-				<div class="experience-content">
-					<h6>Bachelor of Information Technology</h6>
-					<p class="role">QUT - Computer Science</p>
-					<p class="period">2015 - 2018<span class="cover"></span></p>
-				</div>
-				<picture class="experience-logo">
-					<source srcset="./files/img/logos/qut.png">
-					<img src="./files/img/logos/qut.png" alt="QUT Logo">
-				</picture>
-			</div>	
-			<div class="experience-item stack">
-				<div class="experience-content">
-					<h6>UX/UI Design</h6>
-					<p class="role">Self-educated, Online Resources,<br>Countless Hours on StackOverflow</p>
-					<p class="period">2015 - now<span class="cover"></span></p>
-				</div>
-				<picture class="experience-logo">
-					<source srcset="./files/img/logos/ui_ux.png">
-					<img src="./files/img/logos/ui_ux.png" alt="UI/UX Logo">
-				</picture>
-			</div>
-		</div>
-	</section>
-	<section class="contact" id="contact">
-		<h1>Contact</h1>
-		<a href="mailto:timothyjones.1@outlook.com">
-			<div class="contact-item">
-				<picture class="contact-image">
-					<source srcset="./files/img/icons/email.png">
-					<img src="./files/img/icons/email.png" alt="Email Logo">
-				</picture>
-			</div>
-		</a>
-		<a href="https://www.facebook.com/tim.jones.3348" target="_blank">
-			<div class="contact-item">
-				<picture class="contact-image">
-					<source srcset="./files/img/icons/facebook.png">
-					<img src="./files/img/icons/facebook.png" alt="Facebook Logo">
-				</picture>
-			</div>
-		</a>
-		<a href="https://github.com/TimJones97" target="_blank">
-			<div class="contact-item">
-				<picture class="contact-image">
-					<source srcset="./files/img/icons/github.png">
-					<img src="./files/img/icons/github.png" alt="Github Logo">
-				</picture>
-			</div>
-		</a>
-		<a href="https://www.linkedin.com/in/tim-jones-1447b5112/" target="_blank">
-			<div class="contact-item">
-				<picture class="contact-image">
-					<source srcset="./files/img/icons/linkedin.png">
-					<img src="./files/img/icons/linkedin.png" alt="LinkedIn Logo">
-				</picture>
-			</div>
-		</a>
-		<footer>
-			<p>&copy; Copyright Timothy Jones <span class="year"></span>.</p>
-		</footer>
-	</section>
-	<a href="javascript:" class="arrow"><i class="arrow-img"></i></a>
-	<!-- <a class="navbar-brand" href="#home">
-		<img src="./files/img/logo_nav.png" alt="Timothy Jones Web Designer">
-  	</a> -->
+	</div>
+	<div class="body_container--hitbox"></div>
 	<!-- Scripts -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -522,11 +569,11 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/plugins/TextPlugin.min.js"></script>
 	<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrambleTextPlugin.min.js"></script>
 	<script src="./files/js/triangles.js"></script>
-	<!-- <script src="./files/js/geometric_bg.js"></script> -->
-	<script src="./files/js/creative.js"></script>
+	<script src="./files/js/smoothscroll.js"></script>
+	<!-- <script src="./files/js/creative.js"></script> -->
 	<script src="./files/js/script.js"></script>
-	<!-- <script>
-		$('.background video').get(0).play();
-	</script> -->
+	<script>
+		// $('.background video').get(0).play();
+	</script>
 </body>
 </html>
