@@ -3,6 +3,7 @@ var egg = false;
 var tl;
 var controller;
 const originalEgg = $('.dvd-wrap').children().first().next().clone();
+var coinCounter = 0;
 
 function preventScrollOnMenuOpen(){
   //If the dropdown menu on mobile is open
@@ -201,17 +202,66 @@ function hoverEffects() {
   });
   $(".skill-item").hover(function() {
     var thisElement = $(this);
-    thisElement.find('img').css("opacity", "0");
-    thisElement.find('img').css("transform", "scale(0.9)");
+    $(this).addClass('triggered');
+    thisElement.find('.skill').css("opacity", "0");
+    thisElement.find('.skill').css("transform", "scale(0.9)");
     thisElement.find('.hidden-text').css("opacity", "1");
     thisElement.find('.hidden-text').css("transform", "translate(-50%, -50%) scale(1.0)");
+    
+    setTimeout(function(){
+      if(thisElement.hasClass('triggered')){
+        coinCounter ++;
+        if(coinCounter >= 12){
+          $(".skill-item .coin").css('opacity', '1');
+          $(".skill-item").css('padding', '0px');
+          $(".skills h1").css('content', 'url(./files/img/1up.gif)');
+          setTimeout(function(){
+            $(".skill-item .skill").css('content', 'url(./files/img/brick.gif)');
+          }, 400);
+          setTimeout(function(){
+            $('.mario').css('display', 'block');
+          }, 1000);
+          setTimeout(function(){
+            $('.skills').find('.coin').each( function(k, v) {
+              var el = this;
+                  setTimeout(function () {
+                  $(el).css('opacity', '0');
+              }, k*160);
+            });
+          }, 1600);
+          setTimeout(function(){
+            $('.mario').css('display', 'none');
+            $(".skills h1").removeAttr('style');
+            $('.skills').find('.skill-item .skill').each( function(k, v) {
+              var el = this;
+                  setTimeout(function () {
+                  $(el).removeAttr('style');
+              }, k*100);
+            });
+            $('.skills').find('.skill-item').each( function(k, v) {
+              var el = this;
+                  setTimeout(function () {
+                  $(el).removeAttr('style');
+              }, k*100);
+            });
+          }, 4000);
+        }
+      }
+    }, 10);
     setTimeout(function() {
-        $('skills').find("skill-item img").css('opacity', '0');
-        thisElement.find('img').css("opacity", "1");
-        thisElement.find('img').css("transform", "scale(1.0)");
+        thisElement.find('.skill').css("opacity", "1");
+        thisElement.find('.skill').css("transform", "scale(1.0)");
         thisElement.find('.hidden-text').css("transform", "translate(-50%, -50%) scale(1.1)");
         thisElement.find('.hidden-text').css("opacity", "0");
+        thisElement.removeClass('triggered');
     }, 1300);
+    }, function() {
+      //Wait 1.3 seconds until reducing coin count amount
+      setTimeout(function() {
+        if(coinCounter != 0){
+          coinCounter--;
+        }
+      }, 1300);
   });
   $('.about').hover(function() {
     $('.cursor').css('display', 'none');
@@ -322,13 +372,12 @@ function hoverEffects() {
       }, 500, true);
     }
   });
-  $(".experience-item").hover(function() {
-    $('.cursor').addClass('none');
-  }, function() {
-    $('.cursor').removeClass('none');
-  });
+  // $(".experience-item").hover(function() {
+  //   $('.cursor').addClass('none');
+  // }, function() {
+  //   $('.cursor').removeClass('none');
+  // });
 }
-
 function interactiveCursor(){
   var attachedLarge = false;
   var pollResize;
@@ -418,23 +467,24 @@ function interactiveCursor(){
     })
 
     Array.from(document.getElementsByClassName('portfolio-item')).forEach(elem => {
-      elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = true})
-      elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false})
+      elem.addEventListener('mouseenter', e => {
+        $('.cursor').addClass("blend_small");
+      })
+      elem.addEventListener('mouseleave', e => {
+        $('.cursor').removeClass("blend_small");
+      })
     })
     Array.from(document.getElementsByClassName('skill-item')).forEach(elem => {
       elem.addEventListener('mouseenter', e => {onElement = elem})
       elem.addEventListener('mouseleave', e => {onElement = undefined})
     })
     Array.from(document.getElementsByClassName('experience-item')).forEach(elem => {
-      attachedLarge = true
-      elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = false;
-        // setTimeout(function(){
-        //   pollResize = setInterval(function(){
-        //     $(document).trigger(event);
-        //   }, 200);
-        // }, 600, true)
+      elem.addEventListener('mouseenter', e => {
+        $('.cursor').addClass("blend_small");
       })
-      elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false; clearInterval(pollResize)})
+      elem.addEventListener('mouseleave', e => {
+        $('.cursor').removeClass("blend_small");
+      })
     })
     document.getElementById('experience').addEventListener('click', e => {
       //Wait for new elements to be created
@@ -459,14 +509,12 @@ function interactiveCursor(){
       elem.addEventListener('mouseleave', e => {onElement = undefined;  attachedLarge = false})
     })
     Array.from(document.getElementsByClassName('contact-item')).forEach(elem => {
-      elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = false; 
-        setTimeout(function(){
-          pollResize = setInterval(function(){
-            $(document).trigger(event);
-          }, 200);
-        }, 300, true)
+      elem.addEventListener('mouseenter', e => {
+        $('.cursor').addClass("blend_small");
       })
-      elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false})
+      elem.addEventListener('mouseleave', e => {
+        $('.cursor').removeClass("blend_small");
+      })
     })
   })
 }
@@ -563,6 +611,8 @@ function animateNavbar(){
 function setMainElements(){
   $(".main").css("height", $(window).height() + "px");
   $(".navbar-nav li a").removeAttr("style"); 
+  //Set height for skills div so that it doesnt jump when changed to mushroom img
+  $(".skills").css('height', $(".skills").outerHeight() + 'px');
   
   //Reset all styles on navbar if on desktop width
   if($(window).width() > 767) {

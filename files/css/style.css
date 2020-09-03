@@ -109,7 +109,7 @@ body {
   /*overflow-y: auto;*/
   /*overflow-x: hidden;*/
   /*Have custom cursor everywhere*/
-  cursor: url("data:image/svg+xml,%3Csvg height='8' width='8' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4' cy='4' fill='%239d68f5' r='3'/%3E%3C/svg%3E") 0 0, auto;
+  cursor: url("data:image/svg+xml,%3Csvg height='8' width='8' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4' cy='4' fill='%23ffffff' r='3'/%3E%3C/svg%3E") 0 0, auto;
 }
 .no_cursor {
   cursor: none !important;
@@ -161,14 +161,29 @@ a:focus {
   background: #fff;
   mix-blend-mode: difference;
   transition: background 0.3s ease;
-}
-.cursor.blend {
   height: 80px !important;
   width: 80px !important;
+  top: -20px;
+  left: -20px;
 }
 .cursor.blend:after {
   height: 80px;
   width: 80px;
+  top: 0px;
+  left: 0px;
+}
+.cursor.blend_small {
+  background: #fff;
+  mix-blend-mode: difference;
+  transition: background 0.3s ease;
+  height: 50px !important;
+  width: 50px !important;
+  top: -8px;
+  left: -8px;
+}
+.cursor.blend_small:after {
+  height: 50px;
+  width: 50px;
   top: 0px;
   left: 0px;
 }
@@ -177,11 +192,11 @@ a:focus {
 }
 .cursor.none {
   transition: all 0.4s ease;
-  opacity: 0;
+  opacity: 1;
 }
 .cursor.none::after {
-  opacity: 0;
-  border: none;
+  opacity: 1;
+  border: orange;
 }
 @media (pointer: fine) {
   .cursor {
@@ -480,7 +495,7 @@ html:not(html:hover) .cursor::after {
   transition: none !important;
 } 
 .fade-last { 
-  width: 140px; 
+  width: 160px; 
   height: 40px;
   -webkit-animation-name: fadeTitle;
   animation-name: fadeTitle;
@@ -503,8 +518,8 @@ html:not(html:hover) .cursor::after {
   height: 100%;
   background: transparent;
   color: white;
-  font-family: 'Drive Variable';
-  font-variation-settings: 'wght' 200;
+  font-family: 'Proxima Nova Rg';
+  font-variant: small-caps;
   font-size: 21px;
   transition: all 0.7s ease;
   overflow: hidden;
@@ -710,6 +725,9 @@ body.light .navbar-default .nav_bg {
 body.light .main .fade-last a .bottom_border {
   background: #fff;
 }
+body.light .main .fade-last a .bottom_border_anim {
+  background: #121212;
+}
 
 /*----------------------------------------------
 ------------------ABOUT SECTION-----------------
@@ -760,6 +778,9 @@ body.light .main .fade-last a .bottom_border {
   font-size: 3.8em;
   user-select: none;
   text-align: center;
+  width: min-content;
+  margin: 0 auto;
+  white-space: nowrap;
 }
 .about h1, .skills h1, .contact h1 {
   color: #3b3b3b;
@@ -884,6 +905,7 @@ body.light .main .fade-last a .bottom_border {
   transition: all 0.7s ease;
   transform: translateZ(0);
   margin-right: 15px;
+  cursor: crosshair;
 }
 .portfolio-item .white_underlay {
   position: absolute;
@@ -891,7 +913,7 @@ body.light .main .fade-last a .bottom_border {
   left: 0;
   width: 100%;
   height: 100%;
-  background: white;
+  background: #1b1b1b;
   z-index: -1;
   transition: all 0.7s ease;
   border-radius: 12px;
@@ -903,9 +925,9 @@ body.light .main .fade-last a .bottom_border {
   border-radius: 12px;
   transform: scale(0.9);
 }
-.portfolio-item:hover .description_text .year {
+.portfolio-item:hover .description_text .year_made {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
 }
 .portfolio-item:hover .description_text .number {
   opacity: 0;
@@ -920,7 +942,7 @@ body.light .main .fade-last a .bottom_border {
   bottom: 0;
   left: 0;
   padding-left: 15px;
-  background: white;
+  background: #1b1b1b;
   width: 100%;
   height: 30%;
   border-bottom-right-radius: 12px;
@@ -929,19 +951,19 @@ body.light .main .fade-last a .bottom_border {
 .portfolio-item .description_text p {
   position: absolute;
   bottom: 0;
-  color: #555;
+  color: #fff;
   font-family: 'Poppins';
   font-size: 14px;
-  font-weight: 200;
-  transition: all 0.7s ease;
+  font-weight: 600;
+  transition: all 0.4s ease-in-out;
 }
 .portfolio-item .description_text .number {
   opacity: 1;
   transform: translateX(0);
 }
-.portfolio-item .description_text .year {
+.portfolio-item .description_text .year_made {
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateX(40px);
 }
 .portfolio-item h2 {
   position: absolute;
@@ -1075,9 +1097,9 @@ body.light .main .fade-last a .bottom_border {
   color: #3b3b3b;
   margin-bottom: 60px;
 }
-.skills .spacer {
-  float: none;
-  display: inline-block;
+.skills .skill_container {
+  display: flex;
+  justify-content: center;
 }
 .skill-row {
   width: 25%;
@@ -1098,13 +1120,24 @@ body.light .main .fade-last a .bottom_border {
   background: #e5e5e5;
   padding: 10px;
   border-radius: 6px;
-  overflow: hidden;
   transition: all 0.3s ease;
 	-webkit-transition: all 0.3s ease; 
   position: relative;
   z-index: 1;
   margin-right: 1%;
   display: table-cell;
+}
+.skill-item .coin {
+  position: absolute;
+  height: 80%;
+  width: 80%;
+  bottom: -120px;
+  left: 10%;
+  opacity: 0;
+  transition: none;
+}
+.skill-item .coin.visible {
+  opacity: 1;
 }
 .hidden-text {
   font-family: 'Drive Variable', sans-serif;
@@ -1124,7 +1157,35 @@ body.light .main .fade-last a .bottom_border {
   transform: scale(1.0);
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
-
+.mario{
+  display: none;
+  position: absolute;
+  width: 71px;
+  height: 72px;
+  background: url('https://raw.githubusercontent.com/LantareCode/random-this-and-thats/master/CSS/SuperMario-Animation/images/mariowalking/result.png') left center;    
+  bottom: 0px;
+  left:0px;
+  
+  -webkit-animation: play 0.3s steps(4) infinite,
+              run 3s both infinite linear;
+  
+          animation: play 0.3s steps(4) infinite,
+              run 3s both infinite linear;
+}
+@-webkit-keyframes play{
+    100%{background-position: -284px;}
+}
+@keyframes play{
+    100%{background-position: -284px;}
+}
+@-webkit-keyframes run{
+    from{left: -200px;}
+    to{left: 100%;}
+}
+@keyframes run{
+    from{left: -200px;}
+    to{left: 100%;}
+}
 
 /*----------------------------------------------
 ------------------EXPERIENCE SECTION-----------------
@@ -1148,6 +1209,8 @@ body.light .main .fade-last a .bottom_border {
   font-size: 20px;
   margin-bottom: 20px;
   user-select: none;
+  text-align: center;
+  width: 100%;
 }
 .experience-item {
   float: left;
@@ -1170,6 +1233,7 @@ body.light .main .fade-last a .bottom_border {
   user-select: none;
   transform: translateZ(0);
   transition: all 0.5s ease, opacity 0.3s ease, background 0.4s;
+  cursor: crosshair;
 }
 .experience-item.last {
 
@@ -1325,6 +1389,8 @@ body.light .main .fade-last a .bottom_border {
 }
 .work-experience {
   margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
 }
 
 /*----------------------------------------------
@@ -1338,6 +1404,11 @@ body.light .main .fade-last a .bottom_border {
 }
 .contact h1 {
   margin-bottom: 50px;
+}
+.contact .contact_container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 .contact-item {
   float: left;
@@ -1357,6 +1428,7 @@ body.light .main .fade-last a .bottom_border {
   transition: all 0.5s ease;
   margin-right: 5px;
   transform: translateZ(0);
+  cursor: crosshair;
 }
 .contact-item:hover {
   background: rgb(23,23,23);
@@ -1393,8 +1465,8 @@ footer {
   font-size: 12px;
   width: 100%;
   height: 100%;
-  text-align: left;
-  margin-top: 90px;
+  text-align: center;
+  margin-top: 50px;
 }
 
 /*----------------------------------------------
@@ -1482,6 +1554,7 @@ footer {
   width: 100%;
   text-align: center;
   margin: 0 auto;
+  padding-top: 15px;
 }
 .navbar-nav li {
   display: inline-block !important;
@@ -1512,6 +1585,7 @@ footer {
   display: inherit;
   line-height: 25px;
   border-radius: 12px;
+  vertical-align: bottom;
 }
 .navbar-default .navbar-nav li a {
   color: white;
@@ -1559,8 +1633,9 @@ footer {
   display: inline-block;
   position: relative;
   float: unset;
-  width: 70px;
-  padding: 15px 15px 10px 15px; !important;
+  width: 50px;
+  height: 50px;
+  padding: 0px !important;
   font-size: unset;
   line-height: unset;
 }
@@ -1775,13 +1850,9 @@ footer {
 ------------------MEDIA QUERIES-----------------
 ------------------------------------------------*/
 @media only screen and (min-width: 1800px){
-  .portfolio-logo {
-    width: 90px;
-    height: 90px;
-  }
   .skill-row {
-    min-width: 570px;
-    max-width: 570px;
+    min-width: 400px;
+    max-width: 400px;
   }
   .hidden-text {
     font-size: 25px;
@@ -1801,6 +1872,13 @@ footer {
   }
   .fade-fourth {
     margin-left: 20px;
+  }
+  .mario{
+    -webkit-animation: play 0.3s steps(4) infinite,
+                run 3.1s both infinite linear;
+    
+            animation: play 0.3s steps(4) infinite,
+                run 3.1s both infinite linear;
   }
 }
 /* Portrait */
