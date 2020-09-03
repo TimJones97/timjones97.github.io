@@ -104,7 +104,7 @@
 ------------------------------------------------*/
 
 body {
-  background: #000a18;
+  background: #3b3b3b;
   padding: 0;
   /*overflow-y: auto;*/
   /*overflow-x: hidden;*/
@@ -239,7 +239,7 @@ html:not(html:hover) .cursor::after {
   overflow: hidden;
 }
 .preloader-wrap {
-  background: #fff;
+  background: #9b9b9b;
   bottom: 0;
   top: unset;
 }
@@ -623,7 +623,7 @@ canvas {
 .background-wrapper[data-anim=true] .background,
 .background-wrapper[data-anim=true] .background:before {
   transform: translateY(0) translateZ(0);
-  transition: transform 1s ease;
+  transition: transform 1.5s ease;
 }
 .video-overlay {
   position:absolute;

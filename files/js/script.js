@@ -785,11 +785,14 @@ function introAnimation(){
   }
   //Lets get this party started!
   setTimeout(function(){
-    $(".background-wrapper").attr("data-anim","true");
-    $('.background-wrapper').addClass("active");
+    
     $('.split_upper').addClass("fill");
     $('.split_lower').addClass("fill");
   },1250, true);
+  setTimeout(function(){
+    $(".background-wrapper").attr("data-anim","true");
+    $('.background-wrapper').addClass("active");
+  },1600, true);
   // }, 0, true);
   //Fade in the title text
   setTimeout(function(){
