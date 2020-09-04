@@ -1162,7 +1162,7 @@ body.light .main .fade-last a .bottom_border_anim {
   position: absolute;
   width: 71px;
   height: 72px;
-  background: url('https://raw.githubusercontent.com/LantareCode/random-this-and-thats/master/CSS/SuperMario-Animation/images/mariowalking/result.png') left center;    
+  background: url('../img/mario.png') left center;    
   bottom: 0px;
   left:0px;
   

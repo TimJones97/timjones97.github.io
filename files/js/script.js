@@ -308,7 +308,7 @@ function hoverEffects() {
     var nextElement = $(this).next();
     var lastElement = $(this).parent().children().last();
     var secondLastElement = $(this).parent().children().last().prev();
-    var firstElement = $(this).parent().children().filter(':first');
+    var firstElement = $(this).parent().children().first();
     var originalHeight = $(this).next().outerHeight();
     var parentElement = $(this).parent();
 
@@ -324,7 +324,7 @@ function hoverEffects() {
     if($(window).width() < 991){
       //If element is last in list, swap with first
       if(thisElement.hasClass('last')){
-        nextElement = firstElement.next();
+        nextElement = firstElement;
       }
       thisElement.addClass('remove_right');
       nextElement.addClass('remove_left');
@@ -353,11 +353,16 @@ function hoverEffects() {
       thisElement.addClass('remove_desktop');
       thisElementCopy = thisElement.clone(true);
       if(thisElement.hasClass('last')){
-        lastElement = firstElement;
+        setTimeout(function(){
+          thisElementCopy.insertBefore(firstElement);
+        }, 100, true);
       }
-      setTimeout(function(){
-        thisElementCopy.insertAfter(lastElement);
-      }, 100, true);
+      else {
+        setTimeout(function(){
+          thisElementCopy.insertAfter(lastElement);
+        }, 100, true);
+      }
+      
       setTimeout(function(){
         if(originalHeight < 130){
           originalHeight = 140;
@@ -372,11 +377,6 @@ function hoverEffects() {
       }, 500, true);
     }
   });
-  // $(".experience-item").hover(function() {
-  //   $('.cursor').addClass('none');
-  // }, function() {
-  //   $('.cursor').removeClass('none');
-  // });
 }
 function interactiveCursor(){
   var attachedLarge = false;
@@ -490,9 +490,12 @@ function interactiveCursor(){
       //Wait for new elements to be created
       setTimeout(function(){
         Array.from(document.getElementsByClassName('experience-item')).forEach(elem => {
-          attachedLarge = true
-          elem.addEventListener('mouseenter', e => {onElement = elem; attachedLarge = false})
-          elem.addEventListener('mouseleave', e => {onElement = undefined; attachedLarge = false})
+          elem.addEventListener('mouseenter', e => {
+            $('.cursor').addClass("blend_small");
+          })
+          elem.addEventListener('mouseleave', e => {
+            $('.cursor').removeClass("blend_small");
+          })
         })
       }, 100, true)
     })
