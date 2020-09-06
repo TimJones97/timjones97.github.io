@@ -214,7 +214,7 @@ function hoverEffects() {
         if(coinCounter >= 12){
           $(".skill-item .coin").css('opacity', '1');
           $(".skill-item").css('padding', '0px');
-          $(".skills h1").css('content', 'url(./files/img/1up.gif)');
+          $(".skills h1").addClass('mushroom');
           setTimeout(function(){
             $(".skill-item .skill").css('content', 'url(./files/img/brick.gif)');
           }, 400);
@@ -231,7 +231,6 @@ function hoverEffects() {
           }, 1600);
           setTimeout(function(){
             $('.mario').css('display', 'none');
-            $(".skills h1").removeAttr('style');
             $('.skills').find('.skill-item .skill').each( function(k, v) {
               var el = this;
                   setTimeout(function () {
@@ -244,6 +243,7 @@ function hoverEffects() {
                   $(el).removeAttr('style');
               }, k*100);
             });
+            $(".skills h1").removeClass('mushroom');
           }, 4000);
         }
       }
@@ -616,7 +616,8 @@ function setMainElements(){
   $(".navbar-nav li a").removeAttr("style"); 
   //Set height for skills div so that it doesnt jump when changed to mushroom img
   $(".skills").css('height', $(".skills").outerHeight() + 'px');
-  
+  $(".skills h1").css('min-height', $(".skills h1").height() + 'px');
+  $(".skill-item").css('min-height', $(".skill-item").outerHeight() + 'px');
   //Reset all styles on navbar if on desktop width
   if($(window).width() > 767) {
     $(".navbar-default").removeAttr("style");
