@@ -46,6 +46,7 @@
 	<link rel="stylesheet" type="text/css" href="./files/css/style.css?v=6.3"/>
 	<link rel="stylesheet" type="text/css" href="./files/css/pace.simple.css"/>
 </head>
+<!-- <body class="light"> -->
 <body>
 	<div class="dvd-wrap">
 		<div class="loader-centered main-loader">
@@ -79,6 +80,10 @@
 	</div>
 	<nav class="navbar navbar-default">		
 		<div class="navbar-header">
+			<a class="navbar-brand mobile" href="#home2">
+				<img class="first" src="./files/img/logo_white.png" alt="Timothy Jones Logo">
+				<img class="second" src="./files/img/logo_black.png" alt="Timothy Jones Logo">
+			</a>
 			<button type="button" class="navbar-toggle x collapsed" data-toggle="collapse" data-target="#navbar-collapse-x">
 				<div class="trigger">
 				    <svg class="bars" id="bars" viewBox="0 0 100 100" onclick="this.classList.toggle('active')">
@@ -144,21 +149,21 @@
 		<div class="circle">
 		</div>
 	</button>
+	<div class="background-wrapper" data-anim="false">
+		<div class="background">
+			<div id="container"></div>
+			<!-- <div class="video-overlay">
+			</div> -->
+		</div>
+		<div class="tilt_stats">
+			<p>TiltX: <span class="tiltX"></span></p>
+			<p>TiltY: <span class="tiltY"></span></p>
+			<p>TiltZ: <span class="tiltZ"></span></p>
+		</div>
+	</div>
 	<div class="body_container">
 		<div class="body_container__body">
 			<section class="main" id="home">
-				<div class="background-wrapper" data-anim="false">
-					<div class="background">
-						<div id="container"></div>
-						<!-- <div class="video-overlay">
-						</div> -->
-					</div>
-					<div class="tilt_stats">
-						<p>TiltX: <span class="tiltX"></span></p>
-						<p>TiltY: <span class="tiltY"></span></p>
-						<p>TiltZ: <span class="tiltZ"></span></p>
-					</div>
-				</div>
 				<div class="title-text" id="intro-text">
 					<div class="overflow-hide">
 						<div class="fade">
@@ -203,9 +208,6 @@
 				<div class="portfolio-container">
 					<a href="https://brendananning.wedding" target="_blank">
 						<div class="portfolio-item">
-							<h2>
-								Brendan Anning Wedding Celebrant
-							</h2>
 							<div class="portfolio-image brendan">
 							</div>
 							<div class="portfolio-logo brendan-logo">
@@ -213,16 +215,16 @@
 							<div class="description_text">
 								<p class="number">.01</p>
 								<p class="year_made">2020</p>
+								<p class="name">
+									Brendan Anning
+								</p>
 							</div>
-							<div class="white_underlay">
+							<div class="underlay">
 							</div>
 						</div>
 					</a>
 					<a href="https://amladvisory.com.au" target="_blank">
 						<div class="portfolio-item">
-							<h2>
-								Melbourne Asset Management
-							</h2>
 							<div class="portfolio-image aml">
 							</div>
 							<div class="portfolio-logo aml-logo">
@@ -230,16 +232,16 @@
 							<div class="description_text">
 								<p class="number">.02</p>
 								<p class="year_made">2017</p>
+								<p class="name">
+									AML Advisory
+								</p>
 							</div>
-							<div class="white_underlay">
+							<div class="underlay">
 							</div>
 						</div>
 					</a>
 					<a href="https://tlaaustralia.com.au" target="_blank">
 						<div class="portfolio-item">
-							<h2>
-								TLA Logistics Management
-							</h2>
 							<div class="portfolio-image tla">
 							</div>
 							<div class="portfolio-logo tla-logo">
@@ -247,8 +249,11 @@
 							<div class="description_text">
 								<p class="number">.03</p>
 								<p class="year_made">2018</p>
+								<p class="name">
+									TLA Logistics
+								</p>
 							</div>
-							<div class="white_underlay">
+							<div class="underlay">
 							</div>
 						</div>
 					</a>
@@ -256,9 +261,6 @@
 				<div class="portfolio-container">
 					<a href="https://qutrunning.com.au" target="_blank">
 						<div class="portfolio-item">
-							<h2>
-								QUT Running Club
-							</h2>
 							<div class="portfolio-image qutrunning">
 							</div>
 							<div class="portfolio-logo qutrunning-logo">
@@ -266,16 +268,16 @@
 							<div class="description_text">
 								<p class="number">.04</p>
 								<p class="year_made">2020</p>
+								<p class="name">
+									QUT Running
+								</p>
 							</div>
-							<div class="white_underlay">
+							<div class="underlay">
 							</div>
 						</div>
 					</a>
 					<a href="http://darylmurphy.com" target="_blank">
 						<div class="portfolio-item">
-							<h2>
-								Daryl Murphy Brisbane Entertainer
-							</h2>
 							<div class="portfolio-image daryl">
 							</div>
 							<div class="portfolio-logo daryl-logo">
@@ -283,16 +285,16 @@
 							<div class="description_text">
 								<p class="number">.05</p>
 								<p class="year_made">2019</p>
+								<p class="name">
+									Daryl Murphy
+								</p>
 							</div>
-							<div class="white_underlay">
+							<div class="underlay">
 							</div>
 						</div>
 					</a>
 					<a href="http://aaronmaybus.com" target="_blank">
 						<div class="portfolio-item">
-							<h2>
-								Aaron Maybus DJ
-							</h2>
 							<div class="portfolio-image aaron">
 							</div>
 							<div class="portfolio-logo aaron-logo">
@@ -300,8 +302,11 @@
 							<div class="description_text">
 								<p class="number">.06</p>
 								<p class="year_made">2019</p>
+								<p class="name">
+									Aaron Maybus
+								</p>
 							</div>
-							<div class="white_underlay">
+							<div class="underlay">
 							</div>
 						</div>
 					</a>
@@ -513,52 +518,53 @@
 					</div>
 				</div>
 			</section>
-			<section class="contact" id="contact">
-				<h1>Contact</h1>
-				<div class="contact_container">
-					<a href="mailto:timothyjones.1@outlook.com">
-						<div class="contact-item">
-							<picture class="contact-image">
-								<source srcset="./files/img/icons/email.png">
-								<img src="./files/img/icons/email.png" alt="Email Logo">
-							</picture>
-						</div>
-					</a>
-					<a href="https://www.facebook.com/tim.jones.3348" target="_blank">
-						<div class="contact-item">
-							<picture class="contact-image">
-								<source srcset="./files/img/icons/facebook.png">
-								<img src="./files/img/icons/facebook.png" alt="Facebook Logo">
-							</picture>
-						</div>
-					</a>
-					<a href="https://github.com/TimJones97" target="_blank">
-						<div class="contact-item">
-							<picture class="contact-image">
-								<source srcset="./files/img/icons/github.png">
-								<img src="./files/img/icons/github.png" alt="Github Logo">
-							</picture>
-						</div>
-					</a>
-					<a href="https://www.linkedin.com/in/tim-jones-1447b5112/" target="_blank">
-						<div class="contact-item">
-							<picture class="contact-image">
-								<source srcset="./files/img/icons/linkedin.png">
-								<img src="./files/img/icons/linkedin.png" alt="LinkedIn Logo">
-							</picture>
-						</div>
-					</a>
-				</div>
-				<footer>
-					<p>&copy; Copyright Timothy Jones <span class="year"></span>.</p>
-				</footer>
-			</section>
+			<div class="contact_spacer">				
+			</div>
 		</div>
+		<section class="contact" id="contact">
+					<h1>Contact</h1>
+					<div class="contact_container">
+						<a href="mailto:timothyjones.1@outlook.com">
+							<div class="contact-item">
+								<picture class="contact-image">
+									<source srcset="./files/img/icons/email.png">
+									<img src="./files/img/icons/email.png" alt="Email Logo">
+								</picture>
+							</div>
+						</a>
+						<a href="https://www.facebook.com/tim.jones.3348" target="_blank">
+							<div class="contact-item">
+								<picture class="contact-image">
+									<source srcset="./files/img/icons/facebook.png">
+									<img src="./files/img/icons/facebook.png" alt="Facebook Logo">
+								</picture>
+							</div>
+						</a>
+						<a href="https://github.com/TimJones97" target="_blank">
+							<div class="contact-item">
+								<picture class="contact-image">
+									<source srcset="./files/img/icons/github.png">
+									<img src="./files/img/icons/github.png" alt="Github Logo">
+								</picture>
+							</div>
+						</a>
+						<a href="https://www.linkedin.com/in/tim-jones-1447b5112/" target="_blank">
+							<div class="contact-item">
+								<picture class="contact-image">
+									<source srcset="./files/img/icons/linkedin.png">
+									<img src="./files/img/icons/linkedin.png" alt="LinkedIn Logo">
+								</picture>
+							</div>
+						</a>
+					</div>
+					<footer>
+						<p>&copy; Copyright Timothy Jones <span class="year"></span>.</p>
+					</footer>
+				</section>
 	</div>
 	<div class="body_container--hitbox"></div>
 	<!-- Scripts -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js" integrity="sha512-HzAEuXwhLxwm/Jj+5ecdjzrRVrjuh2ZeIxyT1Ln37TO5pWNMnKBuU7cfd1wvRQ/k86w1oC174Yk1T7aRlBpIcA==" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.min.js" integrity="sha512-A98SmLRZISk4eIxQBeCm8k0jAcwN3A3lBx4hr7baoMpV1VpxcxlZIhi5fJIZN50sQ5RlCzx8yV+Voy2cR6x0aA==" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
@@ -576,6 +582,7 @@
 	<script src="./files/js/triangles.js"></script>
 	<script src="./files/js/smoothscroll.js"></script>
 	<!-- <script src="./files/js/creative.js"></script> -->
+	<script src="./files/js/bootstrap.js"></script>
 	<script src="./files/js/script.js"></script>
 	<script>
 		// $('.background video').get(0).play();

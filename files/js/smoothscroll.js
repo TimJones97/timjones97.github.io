@@ -14,7 +14,7 @@ class SmoothScroll {
 
     // Init params
     this.params = {
-      containerHeight: this.$.containerBody.offsetHeight,
+      containerHeight: this.$.containerBody.offsetHeight + $('.contact').outerHeight() - 6,
       duration: _params.duration,
       timingFunction: _params.timingFunction,
     }
@@ -66,7 +66,7 @@ class SmoothScroll {
 
   _handleResize() {
     // Update usefull params
-    this.params.containerHeight = this.$.containerBody.offsetHeight
+    this.params.containerHeight = this.$.containerBody.offsetHeight + $('.contact').outerHeight() - 15
     
     // Update useful style
     this.$.hitbox.style.height = `${this.params.containerHeight}px`
@@ -88,10 +88,17 @@ class SmoothScroll {
     this.$.containerBody.style.transition = `transform ${this.params.duration}ms ${this.params.timingFunction}`
   }
 }
-
 const params = {
   duration: 1200,
   timingFunction: 'cubic-bezier(0.165, 0.84, 0.44, 1)'
 }
+//Do not run smoothscroll if on Safari
+var ua = navigator.userAgent.toLowerCase(); 
+if (ua.indexOf('safari') != -1) { 
+  if (ua.indexOf('chrome') > -1) {
+    new SmoothScroll('.body_container', params);
+  } else {
+    //Is Safari
+  }
+}
 
-new SmoothScroll('.body_container', params)

@@ -190,11 +190,6 @@ function hoverEffects() {
   //   });
   //   resetEffects($(this).find(".portfolio-image"));
   // });
-  $(".food-interact").hover(function() {
-    $(".food-background").addClass("active");
-  }, function() {
-    $(".food-background").removeClass("active");
-  });
   $("h1").hover(function() {
     $('.cursor').addClass("blend");
   }, function() {
@@ -273,10 +268,12 @@ function hoverEffects() {
   //Admire the WebGL
   if(isMobile || typeof DeviceMotionEvent.requestPermission === 'function'){
     $('.highlight-orange').hover(function() {
+      $('.switch').css('opacity', '0');
       $('.title-text').css('opacity', '0');
       $('.navbar-default').css('opacity', '0');
       $('.video-overlay').css('opacity', '0.2');
     }, function() {
+      $('.switch').css('opacity', '1');
       $('.title-text').css('opacity', '1');
       $('.navbar-default').css('opacity', '1');
       $('.video-overlay').css('opacity', '0.5');
@@ -285,6 +282,7 @@ function hoverEffects() {
   $(document).on('keydown', function(key) {
     //If plus key pressed
     if (key.which == 187) { 
+      $('.switch').css('opacity', '0');
       $('.title-text').css('opacity', '0');
       $('.split_upper').css('opacity', '0');
       $('.split_lower').css('opacity', '0');
@@ -294,6 +292,7 @@ function hoverEffects() {
     }
     //If minus key pressed
     if (key.which == 189) { 
+      $('.switch').css('opacity', '1');
       $('.title-text').css('opacity', '1');
       $('.split_upper').css('opacity', '0.9');
       $('.split_lower').css('opacity', '0.9');
@@ -535,12 +534,13 @@ function navbarElementHoverAnim(){
 function addLightNav(){
   $(".navbar-default").removeClass('light');
   $(".navbar-default").addClass('light_mobile');
-  $(".navbar-default").css("background-color", "#fff");
-  $(".navbar-collapse").css("background-color", "#fff");  
+  $(".navbar-default").css("background-color", "rgba(0,0,0,0.99)");
+  $(".navbar-collapse").css("background-color", "rgba(0, 0, 0, 0.99)");  
   $(".navbar-default").css("height", "57px");
   $(".navbar-brand img").css('height', '50px');
   $(".navbar-brand img").css('width', '50px');
   $(".navbar-default").css("opacity", "1");
+  $(".navbar-nav li a").css("color", "#fff");
 }
 function addTransparentNav(){
   //Make navbar transparent if scroll position is on main section
@@ -618,6 +618,11 @@ function setMainElements(){
   $(".skills").css('height', $(".skills").outerHeight() + 'px');
   $(".skills h1").css('min-height', $(".skills h1").height() + 'px');
   $(".skill-item").css('min-height', $(".skill-item").outerHeight() + 'px');
+  //Calculate height of contact div to create spacer for fixed element scroll
+  $(".contact_spacer").css('height', $(".contact").outerHeight() + 'px');
+  $(".contact").css('height', $(".contact_spacer").outerHeight() + 'px');
+  $(".contact").css('position', 'fixed');
+
   //Reset all styles on navbar if on desktop width
   if($(window).width() > 767) {
     $(".navbar-default").removeAttr("style");
@@ -636,6 +641,9 @@ $(window).resize(function () {
   $(".bars").removeClass("active");
   if(isMobile){
     $('body').addClass('no_cursor');
+  }
+  else {
+    $('body').removeClass('no_cursor');
   }
   setMainElements();
   // Remove inline width styles 
@@ -870,20 +878,28 @@ function introAnimation(){
     },5600, true);
   }
 }
-// function fadeOutOnScroll(){
-//   var fadeStart = 0; 
-//   var fadeUntil = $(window).height() / 2; 
-//   var offset = $(document).scrollTop();
-//   var opacity = 0;
-
-//   if (offset <= fadeStart){
-//       opacity = 1;
-//   }
-//   else if(offset <= fadeUntil){
-//       opacity = 1 - offset/fadeUntil;
-//   }
-//   $('.background').css('opacity', opacity);
-// }
+function makeContactVisible(){
+  var offset = $(document).scrollTop();
+  if (offset <= 1000){
+    $('.contact').css('z-index', '-2');
+    $('.contact').css('opacity', '0');
+  }
+  else if(offset >= 1000){
+    $('.contact').css('z-index', '-1');
+    $('.contact').css('opacity', '1');
+  }
+  // if($(document).scrollTop() > $('.experience').offset().top){
+  //   //Fade in contact div
+  //   $('.contact .contact_container').css('opacity', '1');
+  //   $('.contact h1').css('opacity', '1');
+  //   $('.contact footer').css('opacity', '1');
+  // }
+  // else {
+  //   $('.contact .contact_container').css('opacity', '0');
+  //   $('.contact h1').css('opacity', '0');
+  //   $('.contact footer').css('opacity', '0');
+  // }
+}
 function showLoaderSplash(allowed){
   var multiplierX = 7;
   var multiplierY = 2.5;
@@ -1142,19 +1158,14 @@ function loadingLine(){
       isFinished = true;
       $('.loading-line').css('width', '100%');
       setTimeout(function(){
-        $('.loading-line').css('top', '0%');
+        $('.loading-line').css('height', '1px');
+        $('.loading-line').css('background-color', '#2b2b2b');
       },500);
       //If user is at top of webpage, run animation
       if ($('.main').visible(true)) {
         setTimeout(function(){
-          $('.loading-line').css('height', '200%');
-        },800);
-        setTimeout(function(){
-          $('.preloader-wrap').css('height', '0%');
-        }, 1000);
-        setTimeout(function(){
           $('.preloader-wrap').fadeOut(400);
-        }, 1200);
+        }, 1300);
       } 
       //If not, simply fade out
       else {
@@ -1241,6 +1252,13 @@ function switchBtn(){
     }
   });
 }
+function animateMainText(){
+    $('.overflow-hide').first().css('transform' , 'translateX(-' + $(document).scrollTop() /8 + 'px)');
+    $('.overflow-hide').first().next().css('transform' , 'translateX(' + $(document).scrollTop() /8 + 'px)');
+    $('.overflow-hide').last().css('transform' , 'translateX(-' + $(document).scrollTop() /16 + 'px)');
+    $('.overflow-hide').last().css('animation-name' , 'none');
+    $('.overflow-hide').last().css('opacity' , '1');
+}
 $( document ).ready(function() {
   if($(window).width() < 991){
     isMobile = true;
@@ -1259,12 +1277,9 @@ $( document ).ready(function() {
   showLoaderSplash(false);
   $(window).scroll(function() { 
     animateNavbar();   
+    makeContactVisible();
     preventScrollOnMenuOpen();
-    $('.overflow-hide').first().css('transform' , 'translateX(-' + $(document).scrollTop() /8 + 'px)');
-    $('.overflow-hide').first().next().css('transform' , 'translateX(' + $(document).scrollTop() /8 + 'px)');
-    $('.overflow-hide').last().css('transform' , 'translateX(-' + $(document).scrollTop() /16 + 'px)');
-    $('.overflow-hide').last().css('animation-name' , 'none');
-    $('.overflow-hide').last().css('opacity' , '1');
+    animateMainText();
   });
   if($(document).scrollTop() > 0){
     $(".navbar-default").css('opacity', '1');
