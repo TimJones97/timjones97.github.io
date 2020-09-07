@@ -102,7 +102,7 @@ if (ua.indexOf('safari') != -1) {
     //Is Safari
     $('.body_container__body').css('margin-bottom', ($('.contact').outerHeight() - 8) + 'px'); 
     $(window).resize(function(){
-      $('.body_container__body').css('margin-bottom', ($('.contact').outerHeight() - 8) + 'px'); 
+        $('.body_container__body').css('margin-bottom', ($('.contact').outerHeight() - 8) + 'px'); 
     });
   }
 }

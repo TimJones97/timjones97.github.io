@@ -232,15 +232,13 @@ if($(window).width() > 1){
         });
     }
 
-    if($(window).width() < 991){
-        //Check if device is iOS 12 or above
-        if(typeof DeviceMotionEvent.requestPermission === 'function'){
-            document.querySelector('.main').addEventListener('click', requestPermissionForiOSGyro, false);
-        }
-        //Or Android
-        else {
-            document.querySelector('.main').addEventListener('click', activateAndroidGyro, false);
-        }
+    //Check if device is iOS 12 or above
+    if(typeof DeviceMotionEvent.requestPermission === 'function'){
+        document.querySelector('.main').addEventListener('click', requestPermissionForiOSGyro, false);
+    }
+    //Or Android
+    else {
+        document.querySelector('.main').addEventListener('click', activateAndroidGyro, false);
     }
 
     function requestPermissionForiOSGyro(){
