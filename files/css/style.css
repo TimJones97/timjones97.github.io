@@ -678,7 +678,7 @@ canvas {
   position: fixed;
   top: 37px;
   right: 30px;
-  background: #9b9b9b;
+  background: #efeeee;
   border-radius: 50px;
   width: 46px;
   height: 23px;
@@ -696,21 +696,23 @@ canvas {
 }
 .switch .circle {
   margin-left: 0px;
-  background: #3b3b3b;
+  background: #DA8508;
   width: 15px;
   height: 15px;
   border-radius: 50px;
   transition: all 0.5s ease;
 }
 .switch.switched {
-  background: #efeeee;
+  background: #9b9b9b;
 }
 .switch.switched .circle {
-  background-color: #DA8508;
+  background-color: #3b3b3b;
   margin-left: 20px;
 }
 /*--------------LIGHT MODE STYLES---------------*/
-
+body.light {
+  background: #e7e7e7;
+}
 body.light .main .split_upper {
   background: #dddfd4;
 }
@@ -718,7 +720,7 @@ body.light .main .split_lower {
   background: #fae596;
 }
 body.light .navbar-default .navbar-nav li a {
-  color: #000;
+  color: #fff;
 }
 body.light .navbar-default.light .navbar-nav li a {
   color: #555 !important;
@@ -732,11 +734,23 @@ body.light .main .fade-last a .bottom_border {
 body.light .main .fade-last a .bottom_border_anim {
   background: #3b3b3b;
 }
+body.light .navbar-default.light .navbar-brand .first {
+  opacity: 1 !important;
+}
+body.light .navbar-default.light  .navbar-brand .second {
+  opacity: 0 !important;
+}
+body.light .navbar-default.light .navbar-brand .first {
+  opacity: 0 !important;
+}
+body.light .navbar-default.light  .navbar-brand .second {
+  opacity: 1 !important;
+}
 body.light .navbar-brand.mobile .first {
-  opacity: 0;
+  opacity: 0 !important;
 }
 body.light .navbar-brand.mobile .second {
-  opacity: 1;
+  opacity: 1 !important;
 }
 /*-------------------PORTFOLIO--------------------*/
 body.light .portfolio {
@@ -915,6 +929,7 @@ body.light .contact footer {
 }
 .portfolio-item .description_text .year_made {
   opacity: 0;
+  font-weight: 200;
   transform: translateX(40px);
 }
 .portfolio-item .description_text .name {
@@ -1131,7 +1146,7 @@ body.light .contact footer {
   overflow: hidden;
   padding: 60px 60px 60px 60px; 
   display: inline-block;
-  background: #2b2b2b;
+  background: #1e1e1e;
   transition: all 0.7s ease;
 }
 .experience h1 {
@@ -1170,11 +1185,12 @@ body.light .contact footer {
   opacity: 1;
   user-select: none;
   transform: translateZ(0);
+  backface-visibility: hidden;
   transition: all 0.5s ease, opacity 0.3s ease, background 0.4s;
   cursor: crosshair;
 }
 .experience-item:hover {
-  transform: scale(1.05);
+  transform: translateZ(0) scale(1.05);
 }
 .experience-item.last {
 
@@ -1207,62 +1223,70 @@ body.light .contact footer {
 }
 .experience-item.qut,
 .experience-item.qut .period .cover {
-  background: #7ebbf9;
+  background: #bae1ff;
 }
 .experience-item.qut-edu,
 .experience-item.qut-edu .period .cover {
-  background: #171a6c;
+  background: #C7CEEA;
+}
+.experience-item.qut-edu-two,
+.experience-item.qut-edu-two .period .cover {
+  background: #b5b9ff;
 }
 .experience-item.urban,
 .experience-item.urban .period .cover {
-  background: #f3a954;
+  background: #ffdfba;
 }
 .experience-item.edu,
 .experience-item.edu .period .cover {
-  background: #ee5e7a;
+  background: #ffffba;
 }
 .experience-item.msoft,
 .experience-item.msoft .period .cover {
-  background: #acd84f;
+  background: #baffc9;
 }
 .experience-item.stack,
 .experience-item.stack .period .cover {
-  background: #f58840;
+  background: #ffabab;
 }
 .experience-item.qut:hover,
 .experience-item.qut:hover .period .cover {
-  background: #3493f7;
+  background: #6eb5ff;
 }
 .experience-item.qut-edu:hover,
 .experience-item.qut-edu:hover .period .cover {
-  background: #070c38;
+  background: #a1aee2;
+}
+.experience-item.qut-edu-two:hover,
+.experience-item.qut-edu-two:hover .period .cover {
+  background: #a79aff;
 }
 .experience-item.urban:hover,
 .experience-item.urban:hover .period .cover {
-  background: #f49222;
+  background: #f9c58a;
 }
 .experience-item.edu:hover,
 .experience-item.edu:hover .period .cover {
-  background: #e0284b;
+  background: #f7f790;
 }
 .experience-item.msoft:hover,
 .experience-item.msoft:hover .period .cover {
-  background: #93d20f;
+  background: #94f3a9;
 }
 .experience-item.stack:hover,
 .experience-item.stack:hover .period .cover {
-  background: #e46a18;
+  background: #FF9AA2;
 }
 .experience-item h6 {
   font-size: 18px;
   transition: all 0.2s ease;
   min-width: 250px;
   font-variation-settings: 'wght' 200;
-  color: #fff;
+  color: #000;
 }
 .experience-item p {
   font-size: 13px;
-  color: #fff;
+  color: #3b3b3b;
   margin-bottom: 0px;
   font-variation-settings: 'wght' 200, 'wdth' 85;
   transform: translateZ(0);
@@ -1317,7 +1341,8 @@ body.light .contact footer {
   transition: all 0.4s ease;
 }
 .experience-item.qut .experience-logo img,
-.experience-item.qut-edu .experience-logo img {
+.experience-item.qut-edu .experience-logo img,
+.experience-item.qut-edu-two .experience-logo img {
   width: 30px;
 }
 .work-experience, .education {
@@ -1352,6 +1377,7 @@ body.light .contact footer {
 .contact_spacer {
   position: relative;
   width: 100%;
+  pointer-events: none;
 }
 .contact .contact_container {
   display: flex;
@@ -1433,7 +1459,6 @@ footer {
   position: fixed;
   display: none;
   transition: all 0.4s ease, opacity 1s ease;
-  opacity: 1 !important;
 }
 .navbar-default .nav_bg {
   position: absolute;
@@ -1444,6 +1469,12 @@ footer {
   background: rgba(0,0,0,0.8);
   transition: height 0.6s ease, background-color 0.6s ease;
   z-index: -2;
+}
+.navbar-brand.light .first {
+  opacity: 0 !important;
+}
+.navbar-brand.light .second {
+  opacity: 1 !important;
 }
 .navbar-default.light .nav_bg {
   height: 100px;
@@ -1492,7 +1523,7 @@ footer {
   background-color: rgba(157, 104, 245, 0.8)
 }
 .navbar-nav li:nth-of-type(7) .background-fill.full-width {
-  background-color: rgba(16, 208, 121, 0.68);
+  background-color: rgba(247, 247, 144, 0.8);
 }
 .container {
   width: auto;
@@ -1515,14 +1546,6 @@ footer {
   transition: all 0.3s ease;
 	-webkit-transition: all 0.3s ease;
 }
-.navbar-collapse {
-  padding-left: 45px;
-}
-.navbar-default .container .navbar-header .logo-img {
-  top: 90px;
-  left: 20px;
-  height: 100px !important;
-}
 .navbar-default .navbar-nav .active a, 
 .navbar-default .navbar-nav .active a:focus, 
 .navbar-default .navbar-nav .active a:hover {
@@ -1540,7 +1563,7 @@ footer {
   color: white;
   font-family: 'Poppins';
   font-size: 14px;
-  font-weight: 200;
+  font-weight: 600;
   color: #e7e7e7;
   transition: all 0.4s ease;
   padding: 10px 15px 10px 15px;
@@ -1860,9 +1883,6 @@ footer {
     margin-bottom: 10px;
     margin-right: 10px;
   }
- /* .aml, .tla, .quteb, .daryl {
-    margin-right: 3%;
-  }*/
   .experience-item {
     width: 100%;
     display: block;

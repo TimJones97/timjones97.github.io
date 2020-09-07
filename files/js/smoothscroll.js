@@ -54,7 +54,6 @@ class SmoothScroll {
   }
 
   _initListeners() {
-
     window.addEventListener('scroll', (event) => { this._handleScroll(event) })
     window.addEventListener('resize', () => { this._handleResize() })
   }
@@ -66,7 +65,8 @@ class SmoothScroll {
 
   _handleResize() {
     // Update usefull params
-    this.params.containerHeight = this.$.containerBody.offsetHeight + $('.contact').outerHeight() - 15
+
+    this.params.containerHeight = this.$.containerBody.offsetHeight + $('.contact').outerHeight() - 6
     
     // Update useful style
     this.$.hitbox.style.height = `${this.params.containerHeight}px`

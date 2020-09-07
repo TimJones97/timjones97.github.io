@@ -197,6 +197,12 @@ function hoverEffects() {
   });
   $(".skill-item").hover(function() {
     var thisElement = $(this);
+    var delay = 100;
+    var removalTime = 1600;
+    if($(window).width() / $(window).height() > 2.2 && $(window).width() > 2000){
+      delay = 110;
+      removalTime = 1900;
+    }
     $(this).addClass('triggered');
     thisElement.find('.skill').css("opacity", "0");
     thisElement.find('.skill').css("transform", "scale(0.9)");
@@ -221,9 +227,9 @@ function hoverEffects() {
               var el = this;
                   setTimeout(function () {
                   $(el).css('opacity', '0');
-              }, k*160);
+              }, k*delay);
             });
-          }, 1600);
+          }, removalTime);
           setTimeout(function(){
             $('.mario').css('display', 'none');
             $('.skills').find('.skill-item .skill').each( function(k, v) {
@@ -396,7 +402,7 @@ function interactiveCursor(){
       elem.style.setProperty('transform', `translate(${state.transformXsubW}px,${state.transformYsubH}px)`)
       elem.style.setProperty('transition', `150ms width cubic-bezier(0.39, 0.575, 0.565, 1),
                                             150ms height cubic-bezier(0.39, 0.575, 0.565, 1),
-                                            0.3s transform cubic-bezier(0.39, 0.575, 0.565, 1),
+                                            0.2s transform cubic-bezier(0.39, 0.575, 0.565, 1),
                                             0.2s width cubic-bezier(0.39, 0.575, 0.565, 1),
                                             0.4s height cubic-bezier(0.39, 0.575, 0.565, 1),
                                             0.4s background ease`)
@@ -462,7 +468,6 @@ function interactiveCursor(){
     $(document).mousemove(function(e){
       const state = createState(e)
       updateProperties(cursor, state)
-      //Listen for resize of experience item elements
     })
 
     Array.from(document.getElementsByClassName('portfolio-item')).forEach(elem => {
@@ -472,6 +477,10 @@ function interactiveCursor(){
       elem.addEventListener('mouseleave', e => {
         $('.cursor').removeClass("blend_small");
       })
+    })
+    Array.from(document.getElementsByClassName('switch')).forEach(elem => {
+      elem.addEventListener('mouseenter', e => {onElement = elem})
+      elem.addEventListener('mouseleave', e => {onElement = undefined})
     })
     Array.from(document.getElementsByClassName('skill-item')).forEach(elem => {
       elem.addEventListener('mouseenter', e => {onElement = elem})
@@ -559,8 +568,8 @@ function addTransparentNav(){
   $(".navbar-nav li a:hover").css("color", "#fff");
   $(".navbar-nav li .navbar-brand").css("margin-top", "25px");
   if ($("body").hasClass("light")) {
-    $(".navbar-brand .second").css('opacity', '1');
-    $(".navbar-brand .first").css('opacity', '0');
+    $(".navbar-brand .second").css('opacity', '0');
+    $(".navbar-brand .first").css('opacity', '1');
   }
   else {
     $(".navbar-brand .first").css('opacity', '1');
@@ -1237,18 +1246,18 @@ function setupScrollMagic(){
 function switchBtn(){
   $(".switch").click(function () {
     if ($("body").hasClass("light")) {
-      $(".switch").removeClass("switched");
+      $(".switch").addClass("switched");
       $(".exit_btn").removeClass("light");
       $('body').removeClass('light');
       $(".navbar-brand .first").css('opacity', '1');
       $(".navbar-brand .second").css('opacity', '0');
     }
     else {
-      $(".switch").addClass("switched");
+      $(".switch").removeClass("switched");
       $(".exit_btn").addClass("light");
       $('body').addClass('light');
-      $(".navbar-brand .second").css('opacity', '1');
-      $(".navbar-brand .first").css('opacity', '0');
+      $(".navbar-brand .second").css('opacity', '0');
+      $(".navbar-brand .first").css('opacity', '1');
     }
   });
 }
