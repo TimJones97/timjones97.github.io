@@ -444,7 +444,7 @@ html:not(html:hover) .cursor::after {
   overflow: hidden;
   position: relative;
   width: 100%;
-  height: 100%;
+  height: auto;
   transition: transform 0.7s ease;
 }
 .fade, .fade-second, .fade-third, .fade-fourth, .fade-last {
@@ -678,7 +678,7 @@ canvas {
   position: fixed;
   top: 37px;
   right: 30px;
-  background: #efeeee;
+  background: #e3e3e3;
   border-radius: 50px;
   width: 46px;
   height: 23px;
@@ -719,20 +719,37 @@ body.light .main .split_upper {
 body.light .main .split_lower {
   background: #fae596;
 }
-body.light .navbar-default .navbar-nav li a {
-  color: #fff;
-}
-body.light .navbar-default.light .navbar-nav li a {
-  color: #555 !important;
-}
-body.light .navbar-default .nav_bg {
-  background: rgba(255,255,255,0.8);
-}
 body.light .main .fade-last a .bottom_border {
   background: #fff;
 }
 body.light .main .fade-last a .bottom_border_anim {
   background: #3b3b3b;
+}
+/*-------------------NAVBAR--------------------*/
+
+body.light .navbar-default {
+  background-color: none;
+}
+body.light .navbar-default.light .navbar-nav li a {
+  color: #555 !important;
+}
+body.light .navbar-default .navbar-nav li a {
+  color: #fff;
+}
+body.light .navbar-default.light_mobile {
+  background-color: rgba(255,255,255, 0.99);
+}
+body.light .navbar-default.light_mobile .navbar-collapse {
+  background-color: rgba(255,255,255, 0.99);
+}
+body.light .navbar-default.light_mobile .bars .line {
+  stroke: #555;
+}
+body.light .navbar-default.light_mobile .navbar-nav li a {
+ color: #555 !important;
+}
+body.light .navbar-default .nav_bg {
+  background: rgba(255,255,255,0.8);
 }
 body.light .navbar-default.light .navbar-brand .first {
   opacity: 1 !important;
@@ -1458,7 +1475,7 @@ footer {
   left: 0;
   position: fixed;
   display: none;
-  transition: all 0.4s ease, opacity 1s ease;
+  transition: all 0.4s ease;
 }
 .navbar-default .nav_bg {
   position: absolute;
@@ -1481,6 +1498,10 @@ footer {
 }
 .navbar-default.light .navbar-nav li a {
   color: #fff !important;
+}
+.navbar-default.light_mobile,
+.navbar-default.light_mobile .navbar-collapse {
+  background: rgba(0,0,0,0.9);
 }
 .navbar {
   border-radius: 0px 0px 0px 0px;
@@ -1673,9 +1694,8 @@ footer {
 .navbar-collapse.in {
   overflow: hidden;
 }
-.navbar-collapse.in  .navbar-nav {
-  transition: all 0.4s ease-in-out;
-  opacity: 1 !important;
+.navbar-collapse {
+  transition: all 0.4s ease;
 }
 /*----------------------------------------------
 ------------------MENU ANIMATION-----------------
@@ -1928,7 +1948,11 @@ footer {
     opacity: 1;
   }
   .switch {
-    display: none;
+    top: 17px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    right: unset;
+    opacity: 0;
   }
   .skills .skill_container {
     display: block;
@@ -2128,6 +2152,9 @@ footer {
     display: inline-block;
     margin-left: 30px;
   }
+  .brendan, .aml, .tla, .qutrunning, .quteb, .daryl, .aaron, .new {
+    background-position: 50% 15%;
+  }
 }
 @media only screen and (max-width: 479px) {
   .title-text {
@@ -2136,8 +2163,8 @@ footer {
   .title-text h1 {
     font-size: 2.25em;
   }
-  .about, .portfolio, .skills, .experience {
-    padding: 20px 30px 40px 30px;    
+  .about, .portfolio, .skills, .experience, .contact {
+    padding: 30px 30px;
   }
   .about h1, .portfolio h1, .skills h1, .experience h1, .contact h1 {
     font-size: 2.25em;
@@ -2151,9 +2178,6 @@ footer {
   }
   .portfolio h1 {
     margin-bottom: 30px;
-  }
-  .skills {
-    padding: 20px 30px 60px 30px;    
   }
   .navbar-collapse {
     margin-top: 7.5px;
@@ -2183,28 +2207,11 @@ footer {
     width: 100%;
     margin-bottom: 0px;
   }
-  .contact {
-    padding: 20px 30px 20px 30px;    
-  }
-  .spacer {
-    width: 2%;
-    min-width: 0;
-    max-width: 20px;
-  }
   .portfolio-item {
     min-width: 100%;
     float: none;
     display: inline-block;
     margin-bottom: 10px;
-  }
-  .portfolio-container .spacer {
-    height: 40px;
-    max-height: 40px;
-  }
-  .work-experience .spacer,
-  .contact .spacer {
-    height: 7px;
-    max-height: 7px;
   }
   .portfolio-description {
     right: 24px;
@@ -2223,7 +2230,7 @@ footer {
     font-size: 14px;
   }
   .fade-last {
-    width: 108px;
+    width: 112px;
   }
   .hidden-text {
     font-size: 12px; 

@@ -97,8 +97,13 @@ var ua = navigator.userAgent.toLowerCase();
 if (ua.indexOf('safari') != -1) { 
   if (ua.indexOf('chrome') > -1) {
     new SmoothScroll('.body_container', params);
+    console.log('chrome');
   } else {
     //Is Safari
+    $('.body_container__body').css('margin-bottom', ($('.contact').outerHeight() - 8) + 'px'); 
+    $(window).resize(function(){
+      $('.body_container__body').css('margin-bottom', ($('.contact').outerHeight() - 8) + 'px'); 
+    });
   }
 }
 
