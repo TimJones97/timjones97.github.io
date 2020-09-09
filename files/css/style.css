@@ -482,6 +482,9 @@ html:not(html:hover) .cursor::after {
 .fade-fourth {
   margin-bottom: 0px !important;
 }
+.title-text span.no_transition {
+  transition: unset !important;
+}
 .fade-fourth {
   -webkit-animation-delay: 1150ms;
   animation-delay: 1150ms;
@@ -825,6 +828,9 @@ body.light .contact h1 {
 }
 body.light .contact .contact-item {
   background: #fff;
+}
+body.light .contact .contact-item:hover {
+  background: rgb(231 231 231);
 }
 body.light .contact footer {
   color: #fff;
@@ -1851,6 +1857,9 @@ footer {
     min-width: 400px;
     max-width: 400px;
   }
+  .skill-item .coin {
+    bottom: -120px;
+  }
   .hidden-text {
     font-size: 20px;
   }
@@ -1892,7 +1901,6 @@ footer {
 @media only screen and (max-width: 991px) {
   .title-text h1 span {
     width: auto !important;
-    margin-left: 0;
   }
   .skill-item {
     width: 15%;
@@ -1967,14 +1975,20 @@ footer {
   .contact .contact_container {
     display: block;
   }
-  .contact-item {
-    width: 24.4%;
+  .contact .contact-item {
+    width: 24.5%;
     float: none;
     min-width: unset;
     margin-right: 0px;
   }
   .experience h3 {
     font-size: 16px;
+  }
+  .title-text {
+    top: 51%;
+  }
+  .switch {
+
   }
 }
 @media only screen and (max-width: 767px) {
@@ -2155,6 +2169,15 @@ footer {
   .brendan, .aml, .tla, .qutrunning, .quteb, .daryl, .aaron, .new {
     background-position: 50% 15%;
   }
+  .portfolio-item:hover {
+
+  }
+  body.light .portfolio-item:hover {
+
+  }
+  .contact .contact-item {
+    width: 24%;
+  }
 }
 @media only screen and (max-width: 479px) {
   .title-text {
@@ -2253,6 +2276,7 @@ footer {
     opacity: 1;
     transform: none;
     right: 13px;
+    bottom: 0;
   }
   .portfolio-item:hover .description_text .name {
 

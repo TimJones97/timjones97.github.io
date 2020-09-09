@@ -197,11 +197,12 @@ function hoverEffects() {
   });
   $(".skill-item").hover(function() {
     var thisElement = $(this);
-    var delay = 100;
+    var delay = 160;
     var removalTime = 1600;
     if($(window).width() / $(window).height() > 2.2 && $(window).width() > 2000){
       delay = 110;
       removalTime = 1900;
+      console.log('egg');
     }
     $(this).addClass('triggered');
     thisElement.find('.skill').css("opacity", "0");
@@ -648,13 +649,9 @@ $(window).resize(function () {
   }, 200);
   setMainElements();
   // Remove inline width styles 
-  $('.fade-third').removeAttr('style');
-  $('.fade-fourth').removeAttr('style');
   $(".navbar-default").css('display', 'block');
-  $(".navbar-nav li").css('opacity', '1');
-  $(".navbar-nav li").css('animation-name', 'unset');
-  $(".navbar-nav li").css('-webkit-animation-name', 'unset');
   animateNavbar();
+  showSwitchMobile();
 });
 
 function createScrollRevealEffects(){
@@ -849,12 +846,13 @@ function introAnimation(){
       $('.fade-second').addClass('no_delay');
       fadeThirdElem.addClass('no_delay');
       fadeFourthElem.addClass('no_delay');
-      $('.title-text h1 span').css('transition', 'none')
+      $('.title-text h1 span').addClass('no_transition');
     },6300, true);
   }
   else {
     setTimeout(function(){
       $('.fullstop').css('opacity', '1');
+      $('.title-text h1 span').addClass('no_transition');
     },4100, true);
   }
   //Show the navbar
