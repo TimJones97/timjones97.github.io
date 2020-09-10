@@ -1998,9 +1998,6 @@ footer {
   .title-text {
     top: 51%;
   }
-  .switch {
-
-  }
 }
 @media only screen and (max-width: 767px) {
   .fade-last { 
@@ -2126,6 +2123,7 @@ footer {
     text-align: center;
   }
   .navbar-default .navbar-nav li:nth-of-type(1) {
+    display: inline-block !important;
     transition-delay: 0.1s;
   }
   .navbar-default .navbar-nav li:nth-of-type(2) {

@@ -718,34 +718,13 @@ function bindVelocity(){
       // set target to anchor's "href" attribute
       var target = $(this).attr('href');
 
-      if(target == "#home" || target == "#home2" || target == "#about" || 
-        target == "#portfolio" || target == "#portfolio2" || target == "#skills" || 
-        target == "#experience" || target == "#contact" || target == "#about2" || target == "#contact-highlight") {
-
-        //If arrow up or arrow down pressed, convert ID to actual ID instead of toggling menu bar active class
-        if(target == "#about2"){
-          target = "#about";
-        }
-        else if (target == "#portfolio2"){
-          target = "#portfolio";
-        }
-        else if (target == "#home2"){
-          target = "#home";
-        }
-        else if (target == "#contact-highlight"){
-          target = "#contact";
-          setTimeout(function(){
-            $('.contact').css('background', '#9b9b9b');
-          }, 1200, true);
-          setTimeout(function(){
-            $('.contact').css('background', '#fff');
-          }, 2000, true);
-        }
-        else {
-          if($(window).width() < 767){
-            $('.navbar-collapse.in').collapse('hide');
-            document.getElementById('bars').classList.toggle('active');
-          }
+      if (target == "#home2"){
+        target = "#home";
+      }
+      else {
+        if($(window).width() < 767){
+          $('.navbar-collapse.in').collapse('hide');
+          document.getElementById('bars').classList.toggle('active');
         }
       }
       // scroll to each target
