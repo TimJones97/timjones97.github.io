@@ -701,19 +701,21 @@ canvas {
   opacity: 0;
 }
 .switch .circle {
-  margin-left: 0px;
+  position: absolute;
   background: #DA8508;
   width: 15px;
   height: 15px;
-  border-radius: 50px;
+  top: 4px;
+  left: 6px;
   transition: all 0.5s ease;
+  border-radius: 50px;
 }
 .switch.switched {
   background: #9b9b9b;
 }
 .switch.switched .circle {
   background-color: #3b3b3b;
-  margin-left: 20px;
+  left: 26px;
 }
 /*--------------LIGHT MODE STYLES---------------*/
 body.light {
