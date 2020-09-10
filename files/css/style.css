@@ -510,6 +510,7 @@ html:not(html:hover) .cursor::after {
 }
 .fullstop {
   color: #16c2ab;
+  transition: all 0.7s ease;
 }
 .fade-last a { 
   cursor: crosshair;
@@ -1969,10 +1970,10 @@ footer {
   }
   .switch {
     top: 17px;
-    left: 52%;
+    left: 50%;
     transform: translate(-50%, 0%);
     right: unset;
-    opacity: 0 !important;
+    opacity: 0;
   }
   .skills .skill_container {
     display: block;
@@ -2204,7 +2205,7 @@ footer {
 }
 @media only screen and (max-width: 479px) {
   .title-text {
-    top: 54.2%;
+    top: 53.9%;
   }
   .title-text h1 {
     font-size: 2.25em;
@@ -2240,6 +2241,7 @@ footer {
     display: inherit;
     margin-top: 0px !important;
     margin-right: 10px;
+    margin-left: 0;
   }
   .experience-item {
     margin-bottom: 10px;
@@ -2272,11 +2274,10 @@ footer {
     max-width: 350px;
   }
   .view-work {
-    height: 50px;
     font-size: 14px;
   }
   .fade-last {
-    width: 112px;
+    width: 118px;
   }
   .hidden-text {
     font-size: 12px; 
@@ -2313,6 +2314,9 @@ footer {
   }
   .navbar-collapse.in .navbar-nav li {
     transform: translateY(60px);
+  }
+  .navbar-nav {
+    padding-top: 45px;
   }
 }
 @media only screen and (max-width: 300px) {

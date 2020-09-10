@@ -631,6 +631,7 @@ function setMainElements(){
 
 $(window).resize(function () { 
   $(".bars").removeClass("active");
+  $('.switch').removeAttr('style');
   checkIfMobile();
   setTimeout(function(){
     if(isMobile){
