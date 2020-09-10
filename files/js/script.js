@@ -214,14 +214,11 @@ function hoverEffects() {
       if(thisElement.hasClass('triggered')){
         coinCounter ++;
         if(coinCounter >= 12){
-          $(".skill-item .coin").css('opacity', '1');
-          $(".skill-item").css('padding', '0px');
+          $(".skill-item").css('height', $(".skill-item").outerHeight() + 'px');
+          $(".skill-item").addClass('mario');
           $(".skills h1").addClass('mushroom');
           setTimeout(function(){
-            $(".skill-item .skill").css('content', 'url(./files/img/brick.gif)');
-          }, 400);
-          setTimeout(function(){
-            $('.mario').css('display', 'block');
+            $('.mario_anim').css('display', 'block');
           }, 1000);
           setTimeout(function(){
             $('.skills').find('.coin').each( function(k, v) {
@@ -232,17 +229,11 @@ function hoverEffects() {
             });
           }, removalTime);
           setTimeout(function(){
-            $('.mario').css('display', 'none');
-            $('.skills').find('.skill-item .skill').each( function(k, v) {
-              var el = this;
-                  setTimeout(function () {
-                  $(el).removeAttr('style');
-              }, k*100);
-            });
+            $('.mario_anim').css('display', 'none');
             $('.skills').find('.skill-item').each( function(k, v) {
               var el = this;
                   setTimeout(function () {
-                  $(el).removeAttr('style');
+                  $(el).removeClass('mario');
               }, k*100);
             });
             $(".skills h1").removeClass('mushroom');
@@ -616,11 +607,6 @@ function setMainElements(){
     $(".skills").css('height', 'auto');
   }
   $(".skills h1").css('min-height', $(".skills h1").height() + 'px');
-  $(".skill-item").css('min-height', $(".skill-item").outerHeight() + 'px');
-  //Calculate height of contact div to create spacer for fixed element scroll
-  $(".contact_spacer").css('height', $(".contact").outerHeight() + 'px');
-  $(".contact").css('height', $(".contact_spacer").outerHeight() + 'px');
-  $(".contact").css('position', 'fixed');
 
   //Reset all styles on navbar if on desktop width
   if($(window).width() > 767) {
@@ -767,10 +753,8 @@ function bindVelocity(){
         $(target).velocity("scroll", { duration: 1000, offset: -52.5 });
       }
       else {
-        $(target).velocity("scroll", 1000, true);
-        // tl.progress(1).pause();
+        $(target).velocity("scroll", { duration: 1000, offset: -100 });
       }
-      // controller.destroy(true);
   });
 }
 Pace.restart();
@@ -889,14 +873,26 @@ function makeContactVisible(){
   // else {
   //   opacityOffset = ($(document).scrollTop() - $('.experience').offset().top) / 300;
   // }
-  if (offset <= 1000){
-    $('.contact').css('z-index', '-2');
-    $('.contact').css('opacity', '0');
+  if(!isMobile){
+    //Calculate height of contact div to create spacer for fixed element scroll
+    $('.contact').css('margin-top', '-8px');
+    $(".contact").css('position', 'fixed');
+    if (offset <= 1000){
+      $('.contact').css('z-index', '-2');
+      $('.contact').css('opacity', '0');
+    }
+    else if(offset >= 1000){
+      $('.contact').css('z-index', '-1');
+      $('.contact').css('opacity', '1');
+    }
   }
-  else if(offset >= 1000){
-    $('.contact').css('z-index', '-1');
+  else {
+    $(".contact").css('position', 'relative');
+    $('.contact').css('z-index', '2');
     $('.contact').css('opacity', '1');
+    $('.contact').css('margin-top', '-4px');
   }
+  
   // if($(document).scrollTop() > $('.experience').offset().top){
   //   $('.opacity_container').css('opacity', opacityOffset);
   // }
@@ -1286,6 +1282,7 @@ $( document ).ready(function() {
   loadingLine();
   switchBtn();
   showSwitchMobile();
+  makeContactVisible();
   // setupScrollMagic();
   showLoaderSplash(false);
   $(window).scroll(function() { 

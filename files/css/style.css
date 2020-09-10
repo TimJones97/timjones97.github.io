@@ -484,6 +484,7 @@ html:not(html:hover) .cursor::after {
 }
 .title-text span.no_transition {
   transition: unset !important;
+  width: auto !important;
 }
 .fade-fourth {
   -webkit-animation-delay: 1150ms;
@@ -1132,7 +1133,19 @@ body.light .contact footer {
   transform: scale(1.0);
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
-.mario{
+
+/*----------------MARIO STYLES--------------*/
+
+.skills .skill-item.mario {
+  padding: 0px;
+}
+.skills .skill-item.mario .coin {
+  opacity: 1;
+}
+.skills .skill-item.mario .skill {
+  content: url(../img/brick.gif);
+}
+.mario_anim {
   display: none;
   position: absolute;
   width: 71px;
@@ -1534,24 +1547,25 @@ footer {
   bottom: 0;
   left: 0;
 }
-.navbar-nav li:nth-of-type(1) .background-fill.full-width {
-  background-color: rgba(247, 124, 121, 0.8);
+.navbar-nav li:nth-of-type(1) {
+  display: none !important;
 }
 .navbar-nav li:nth-of-type(2) .background-fill.full-width {
-  background-color: rgba(242, 168, 85, 0.8);
+  background-color: rgba(247, 124, 121, 0.8);
 }
 .navbar-nav li:nth-of-type(3) .background-fill.full-width {
-  background-color: rgba(125, 186, 249, 0.8);
+  background-color: rgba(242, 168, 85, 0.8);
 }
 .navbar-nav li:nth-of-type(5) .background-fill.full-width {
-  background-color: rgba(22, 193, 171, 0.8);
+  background-color: rgba(125, 186, 249, 0.8);
 }
 .navbar-nav li:nth-of-type(6) .background-fill.full-width {
-  background-color: rgba(157, 104, 245, 0.8)
-}
-.navbar-nav li:nth-of-type(7) .background-fill.full-width {
   background-color: rgba(247, 247, 144, 0.8);
 }
+/*
+.navbar-nav li:nth-of-type(7) .background-fill.full-width {
+  background-color: rgba(247, 247, 144, 0.8);
+}*/
 .container {
   width: auto;
   margin-left: 35px;
@@ -1562,6 +1576,7 @@ footer {
   text-align: center;
   margin: 0 auto;
   padding-top: 15px;
+  padding-left: 15px;
 }
 .navbar-nav li {
   display: inline-block !important;
@@ -1595,6 +1610,7 @@ footer {
   transition: all 0.4s ease;
   padding: 10px 15px 10px 15px;
   margin-right: 15px;
+  margin-left: 15px;
 }
 .navbar-default .navbar-nav li {
   -webkit-animation-name: fadeNavElements;
@@ -1619,11 +1635,6 @@ footer {
 .navbar-default .navbar-nav li:nth-of-type(6) {
   -webkit-animation-delay: 600ms;
   animation-delay: 600ms;
-}
-.navbar-default .navbar-nav li:nth-of-type(1),
-.navbar-default .navbar-nav li:nth-of-type(7) {
-  -webkit-animation-delay: 800ms;
-  animation-delay: 800ms;
 }
 .navbar-default .navbar-nav .active a:focus {
   color: inherit;
@@ -1879,7 +1890,7 @@ footer {
   .fade-fourth {
     margin-left: 20px;
   }
-  .mario{
+  .mario_anim {
     -webkit-animation: play 0.3s steps(4) infinite,
                 run 3.1s both infinite linear;
     
@@ -1957,7 +1968,7 @@ footer {
   }
   .switch {
     top: 17px;
-    left: 50%;
+    left: 52%;
     transform: translate(-50%, 0%);
     right: unset;
     opacity: 0;
@@ -2085,26 +2096,27 @@ footer {
   }
   .navbar-default .navbar-nav > li, .navbar-default .navbar-nav > li > a {
     margin-top: 0px !important;
-    /*color: #fff !important;*/
+    font-size: 17px;
   }
   .navbar-collapse.in .navbar-nav li {
     transition: all 0.3s ease-in-out;
     opacity: 1 !important;
   }
-
   .navbar-default .navbar-nav li {
     -webkit-animation-name: unset;
     animation-name: unset;
   }
   .navbar-collapse .navbar-nav li {
-    transform: translateY(80px);
+    transform: translateY(25px);
     opacity: 0;
     transition: all 0.3s ease-in-out;
     width: 100%;
+    margin-bottom: 10px;
   }
   .navbar-collapse.in .navbar-nav li {
-    transform: translateY(60px);
+    transform: translateY(15px);
     opacity: 1;
+    margin-bottom: 10px;
   }
   .background-fill {
     display: none;
@@ -2113,27 +2125,24 @@ footer {
     color: #000;
     text-align: center;
   }
-  .navbar-default .navbar-nav li:nth-of-type(2) {
+  .navbar-default .navbar-nav li:nth-of-type(1) {
     transition-delay: 0.1s;
   }
-  .navbar-default .navbar-nav li:nth-of-type(3) {
+  .navbar-default .navbar-nav li:nth-of-type(2) {
     transition-delay: 0.2s;
+  }
+  .navbar-default .navbar-nav li:nth-of-type(3) {
+    transition-delay: 0.3s;
   }
   /*Do not display navbar brand in nav elements on mobile*/
   .navbar-default .navbar-nav li:nth-of-type(4) {
     display: none !important;
   }
   .navbar-default .navbar-nav li:nth-of-type(5) {
-    transition-delay: 0.3s;
-  }
-  .navbar-default .navbar-nav li:nth-of-type(5) {
     transition-delay: 0.4s;
   }
   .navbar-default .navbar-nav li:nth-of-type(6) {
     transition-delay: 0.5s;
-  }
-  .navbar-default .navbar-nav li:nth-of-type(7) {
-    transition-delay: 0.6s;
   }
   .navbar-nav {
     width: 100%;
@@ -2177,6 +2186,16 @@ footer {
   }
   .contact .contact-item {
     width: 24%;
+  }
+  footer {
+    margin-top: 20px;
+  }
+  .portfolio-item:hover .portfolio-logo {
+    top: 120px;
+    right: 25px;
+  }
+  .navbar-nav {
+    padding-left: unset;
   }
 }
 @media only screen and (max-width: 479px) {
@@ -2279,11 +2298,17 @@ footer {
     bottom: 0;
   }
   .portfolio-item:hover .description_text .name {
-
+    transform: translateY(0px);
   }
   .contact .contact-item {
     width: 100%;
     margin-bottom: 5px;
+  }
+  .navbar-collapse .navbar-nav li {
+    transform: translateY(80px);
+  }
+  .navbar-collapse.in .navbar-nav li {
+    transform: translateY(60px);
   }
 }
 @media only screen and (max-width: 300px) {

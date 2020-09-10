@@ -41,7 +41,6 @@ class SmoothScroll {
     
     // Add transtion after scroll to
     const addTransition = () => {
-
         this.$.containerBody.style.transition = `transform ${this.params.duration}ms cubic-bezier(0.165, 0.84, 0.44, 1)`
     }
 
@@ -64,10 +63,35 @@ class SmoothScroll {
   }
 
   _handleResize() {
-    // Update usefull params
 
+    var isMobile, isChrome, isSafari = false;
+
+    // Check if on mobile now
+    const checkMobile = () => {
+      if($(window).width() < 991){
+        isMobile = true;
+      }
+      else {
+        isMobile = true;
+      }
+    }
+    checkMobile()
+
+    const resizeMargin = () => {
+      console.log('resized');
+      if(!isMobile){
+        //Is on Desktop
+        $('.body_container__body').css('margin-bottom', $('.contact').outerHeight() + 'px'); 
+        $(window).resize(function(){
+            $('.body_container__body').css('margin-bottom', $('.contact').outerHeight() + 'px'); 
+        });
+      }
+    }
+    resizeMargin()
+
+    // Update useful params
     this.params.containerHeight = this.$.containerBody.offsetHeight + $('.contact').outerHeight() - 6
-    
+
     // Update useful style
     this.$.hitbox.style.height = `${this.params.containerHeight}px`
   }
@@ -92,18 +116,28 @@ const params = {
   duration: 1200,
   timingFunction: 'cubic-bezier(0.165, 0.84, 0.44, 1)'
 }
-//Do not run smoothscroll if on Safari
-var ua = navigator.userAgent.toLowerCase(); 
-if (ua.indexOf('safari') != -1) { 
-  if (ua.indexOf('chrome') > -1) {
-    new SmoothScroll('.body_container', params);
-    console.log('chrome');
-  } else {
-    //Is Safari
-    $('.body_container__body').css('margin-bottom', ($('.contact').outerHeight() - 8) + 'px'); 
-    $(window).resize(function(){
-        $('.body_container__body').css('margin-bottom', ($('.contact').outerHeight() - 8) + 'px'); 
-    });
+
+
+function checkBrowser(){
+  //Do not run smoothscroll if on Safari
+  var ua = navigator.userAgent.toLowerCase(); 
+  if (ua.indexOf('safari') != -1) { 
+    if (ua.indexOf('chrome') > -1) {
+      new SmoothScroll('.body_container', params);
+    } else {
+      //Is Safari
+    }
   }
 }
+
+checkBrowser();
+$(window).resize(function(){
+  if($(window).width() > 991){
+    //Is on Desktop
+    $('.body_container__body').css('margin-bottom', $('.contact').outerHeight() + 'px'); 
+  }
+  else {
+    $('.body_container__body').css('margin-bottom', '0px'); 
+  }
+});
 
