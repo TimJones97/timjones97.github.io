@@ -216,6 +216,7 @@ function hoverEffects() {
         if(coinCounter >= 12){
           $(".skill-item").css('height', $(".skill-item").outerHeight() + 'px');
           $(".skill-item").addClass('mario');
+          $(".skill-item .coin").addClass('show');
           $(".skills h1").addClass('mushroom');
           setTimeout(function(){
             $('.mario_anim').css('display', 'block');
@@ -224,7 +225,7 @@ function hoverEffects() {
             $('.skills').find('.coin').each( function(k, v) {
               var el = this;
                   setTimeout(function () {
-                  $(el).css('opacity', '0');
+                  $(el).removeClass('show');
               }, k*delay);
             });
           }, removalTime);
@@ -237,6 +238,7 @@ function hoverEffects() {
               }, k*100);
             });
             $(".skills h1").removeClass('mushroom');
+            $(".skill-item .coin").removeClass('hide');
           }, 4000);
         }
       }
@@ -984,9 +986,10 @@ function showLoaderSplash(allowed){
               $('.helper-text-legend').css('opacity', '0');
             }, 3000);
           } 
-          //If h key is pressed, show legend
+          //If b key is pressed, remove black background
           if (key.which == 66) { 
             $('.show').toggleClass('no_bg');
+            $('body').toggleClass('no_cursor');
           } 
           //If m key is pressed, clone and add additional elements
           if (key.which == 77) { 
