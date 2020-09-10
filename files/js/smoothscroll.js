@@ -123,7 +123,9 @@ function checkBrowser(){
   var ua = navigator.userAgent.toLowerCase(); 
   if (ua.indexOf('safari') != -1) { 
     if (ua.indexOf('chrome') > -1) {
-      new SmoothScroll('.body_container', params);
+      if($(window).width() > 991){
+        new SmoothScroll('.body_container', params);
+      }
     } else {
       //Is Safari
     }

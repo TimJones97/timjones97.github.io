@@ -594,17 +594,22 @@ function showSwitchMobile(){
       }
     });
   }
+  else {
+    $('.switch').css('opacity', '1');
+  }
 }
 //Reset the elements that require resizing
 function setMainElements(){
   $(".main").css("height", $(window).height() + "px");
   $(".navbar-nav li a").removeAttr("style"); 
+  $(".skills").removeAttr('style');
   //Set height for skills div so that it doesnt jump when changed to mushroom img
   if(!isMobile){
     $(".skills").css('height', $(".skills").outerHeight() + 'px');
   }
   else{
     $(".skills").css('height', 'auto');
+    $(".skill-item").css('height', 'auto');
   }
   $(".skills h1").css('min-height', $(".skills h1").height() + 'px');
 

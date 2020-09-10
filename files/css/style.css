@@ -1971,7 +1971,7 @@ footer {
     left: 52%;
     transform: translate(-50%, 0%);
     right: unset;
-    opacity: 0;
+    opacity: 0 !important;
   }
   .skills .skill_container {
     display: block;
@@ -2028,7 +2028,7 @@ footer {
     margin-top: 0px;
   }
   .about, .portfolio, .skills, .experience, .contact {
-    padding: 40px 80px;
+    padding: 40px 60px;
   }
   .navbar-default .navbar-nav > li, .navbar-default .navbar-nav > li > a {
     font-size: 14px;
@@ -2069,10 +2069,15 @@ footer {
   .experience, .contact {
     z-index: 102;
   }
+  .portfolio-container {
+    display: block;
+  }
   .portfolio-item {
-    margin-bottom: 40px;
-    width: 165px;
+    margin-bottom: 4%;
+    margin-right: 4%;
     height: 250px;
+    width: 46%;
+    max-width: unset;
   }
   .portfolio-logo {
     top: 135px;
