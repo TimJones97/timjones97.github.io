@@ -729,6 +729,9 @@ function bindVelocity(){
       if (target == "#home2"){
         target = "#home";
       }
+      if (target == "#portfolio2"){
+        target = "#portfolio";
+      }
       else {
         if($(window).width() < 767){
           $('.navbar-collapse.in').collapse('hide');
