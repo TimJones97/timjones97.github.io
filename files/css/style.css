@@ -109,7 +109,7 @@ body {
   /*overflow-y: auto;*/
   /*overflow-x: hidden;*/
   /*Have custom cursor everywhere*/
-  cursor: url("data:image/svg+xml,%3Csvg height='8' width='8' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4' cy='4' fill='%23ffffff' r='3'/%3E%3C/svg%3E") 0 0, auto;
+  cursor: url("data:image/svg+xml,%3Csvg height='8' width='8' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4' cy='4' fill='%2316c2ab' r='3'/%3E%3C/svg%3E") 0 0, auto;
 }
 .no_cursor {
   cursor: none !important;
@@ -223,7 +223,10 @@ html:not(html:hover) .cursor::after {
 /*----------------------------------------------
 -------------------MAIN SECTION-----------------
 ------------------------------------------------*/
-
+:root {
+  --egg-width: 120px;
+  --egg-height: 160px;
+}
 .dvd-wrap,
 .preloader-wrap {
   width: 100%;
@@ -308,20 +311,26 @@ html:not(html:hover) .cursor::after {
 }
 .dvd-wrap .egg-centered {
   opacity: 1;
-  width: 120px;
-  height: 160px;
+  width: var(--egg-width);
+  height: var(--egg-height);
+  animation: none;
+}
+.dvd-wrap .egg-centered.animate {
   animation: xEgg 7s linear infinite alternate;
 }
 .dvd-wrap .egg-img {
-  width: 120px;
-  height: 160px;
-  animation: y 3.78s linear infinite alternate;
+  width: var(--egg-width);
+  height: var(--egg-height);
   cursor: crosshair;
+  animation: none;
+}
+.dvd-wrap .egg-img.animate {
+  animation: y 3.78s linear infinite alternate;
 }
 .preloader-wrap .loader-img,
 .preloader-wrap .loader-img-two {
-  width: 120px;
-  height: 120px;
+  width: var(--egg-width);
+  height: var(--egg-height);
   position: fixed;
   /*transition: opacity 0.4s ease;*/
 }
@@ -335,7 +344,6 @@ html:not(html:hover) .cursor::after {
   background-color: #e7e7e7;
   transition: all 0.6s ease-in-out;
 }
-
 @keyframes x {
   100% {
     transform: translateX( calc(100vw - 285px) );
@@ -343,12 +351,12 @@ html:not(html:hover) .cursor::after {
 }
 @keyframes xEgg {
   100% {
-    transform: translateX( calc(100vw - 120px) );
+    transform: translateX( calc(100vw - var(--egg-width)) );
   }
 }
 @keyframes y {
   100% {
-    transform: translateY( calc(100vh - 160px) );
+    transform: translateY( calc(100vh - var(--egg-height)) );
   }
 }
 @keyframes boldFontAdd {

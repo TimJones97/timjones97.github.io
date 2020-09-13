@@ -948,8 +948,9 @@ function showLoaderSplash(allowed){
       $(document).on( 
         'keydown', function(key) { 
         if(allowed){
+          var bodyWidth, bodyHeight, bodyWidthHalf, randPosX, randPosY, cloned, clonedEgg, randTime;
           //If escape key is pressed, close window
-          if (key.which == 27 || key.which == 221) { 
+          if (key.which == 27 || key.which == 191) { 
             var firstElement = $('.dvd-wrap').children().first();
             var secondElement = $('.dvd-wrap').children().first().next();
             $('.dvd-wrap').removeClass('show');
@@ -1004,11 +1005,55 @@ function showLoaderSplash(allowed){
           //If b key is pressed, remove black background
           if (key.which == 66) { 
             $('.show').toggleClass('no_bg');
-            $('body').toggleClass('no_cursor');
+            if($('body').hasClass('no_cursor') && $('.show').hasClass('no_bg')){
+              $('body').removeClass('no_cursor');
+            }
+            else {
+              $('body').addClass('no_cursor');
+            }
           } 
+          //If ] key is pressed, increase size
+          if (key.which == 221) { 
+            let root = document.documentElement;
+            var width = parseInt($(':root').css('--egg-width').substring(0,4));
+            var height = parseInt($(':root').css('--egg-height').substring(0,4));
+            var eggContainerAnim = $('.egg-centered.animate').css('animation');
+            var eggImgAnim = $('.egg-img.animate').css('animation');
+            //Set animation to none to restart animation
+            
+            console.log('Egg width: ' + width + 'px');
+            console.log('Egg height: ' + height + 'px');
+            root.style.setProperty('--egg-width', (width += 4) + 'px');
+            root.style.setProperty('--egg-height', (height += 5) + 'px');
+
+            $('.egg-centered').css('animation', 'unset');
+            $('.egg-img').css('animation', 'unset');
+            $('.egg-centered').width();
+            $('.egg-centered').css('animation', eggContainerAnim);
+            $('.egg-img').css('animation', eggImgAnim);
+          }
+          //If [ key is pressed, increase size
+          if (key.which == 219) { 
+            let root = document.documentElement;
+            var width = parseInt($(':root').css('--egg-width').substring(0,4));
+            var height = parseInt($(':root').css('--egg-height').substring(0,4));
+            var eggContainerAnim = $('.egg-centered.animate').css('animation');
+            var eggImgAnim = $('.egg-img.animate').css('animation');
+            //Set animation to none to restart animation
+            
+            console.log('Egg width: ' + width + 'px');
+            console.log('Egg height: ' + height + 'px');
+            root.style.setProperty('--egg-width', (width -= 4) + 'px');
+            root.style.setProperty('--egg-height', (height -= 5) + 'px');
+
+            $('.egg-centered').css('animation', 'unset');
+            $('.egg-img').css('animation', 'unset');
+            $('.egg-centered').width();
+            $('.egg-centered').css('animation', eggContainerAnim);
+            $('.egg-img').css('animation', eggImgAnim);
+          }
           //If m key is pressed, clone and add additional elements
           if (key.which == 77) { 
-            var bodyWidth, bodyHeight, bodyWidthHalf, randPosX, randPosY, cloned, clonedEgg, randTime;
 
             //Keep assigning body width and height as window may be resized
             bodyWidth = $(window).width();
@@ -1272,18 +1317,23 @@ function animateMainText(){
 function showYearOnMobile(){
   if(isMobile){
     $('.portfolio-image').each(function(){
-      if($(this).visible(true)){
-        $(this).parent().children().find('.year_made').addClass('active');
-        $(this).parent().children().find('.number').addClass('inactive');
-      }
-      else {
-        $(this).parent().children().find('.year_made').removeClass('active');
-        $(this).parent().children().find('.number').removeClass('inactive');
-      }
+      var thisElem = $(this);
+      setTimeout(function(){
+        if(thisElem.visible()){
+          thisElem.parent().children().find('.year_made').addClass('active');
+          thisElem.parent().children().find('.number').addClass('inactive');
+        }
+        else {
+          thisElem.parent().children().find('.year_made').removeClass('active');
+          thisElem.parent().children().find('.number').removeClass('inactive');
+        }
+      }, 500);
     });
   }
-  $('.year_made').removeClass('active');
-  $('.number').removeClass('inactive');
+  else {
+    $('.year_made').removeClass('active');
+    $('.number').removeClass('inactive');
+  }
 }
 $( document ).ready(function() {
   if($(window).width() < 991){
