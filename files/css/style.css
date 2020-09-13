@@ -894,6 +894,12 @@ body.light .contact footer {
   margin-right: 15px;
   cursor: crosshair;
 }
+.portfolio-item .info_container {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
 .portfolio-image {
   top: 0;
   left: 0px;
@@ -972,10 +978,12 @@ body.light .contact footer {
   border-radius: 12px;
   transform: scale(0.9);
 }
+.portfolio-item .description_text .year_made.active,
 .portfolio-item:hover .description_text .year_made {
   opacity: 1;
   transform: translateX(0);
 }
+.portfolio-item .description_text .number.inactive,
 .portfolio-item:hover .description_text .number {
   opacity: 0;
   transform: translateX(-40px);
@@ -1066,6 +1074,7 @@ body.light .contact footer {
   overflow: hidden;
   background: #cecece;
   padding: 100px 60px 120px 60px; 
+  transition: all 0.7s ease;
 }
 .skills h1 {
   color: #3b3b3b;
@@ -2002,6 +2011,9 @@ footer {
   .title-text {
     top: 51%;
   }
+  .main .split_upper, .main .split_lower {
+    opacity: 0.8;
+  }
 }
 @media only screen and (max-width: 767px) {
   .fade-last { 
@@ -2203,6 +2215,16 @@ footer {
   }
   .navbar-nav {
     padding-left: unset;
+  }
+  .body_container {
+    position: unset !important;
+    height: unset !important;
+  }
+  .body_container .body_container__body {
+    transform: unset !important;
+  }
+  .body_container--hitbox {
+    display: none;
   }
 }
 @media only screen and (max-width: 479px) {

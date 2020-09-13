@@ -605,14 +605,17 @@ function setMainElements(){
   $(".main").css("height", $(window).height() + "px");
   $(".navbar-nav li a").removeAttr("style"); 
   $(".skills").removeAttr('style');
-  //Set height for skills div so that it doesnt jump when changed to mushroom img
-  if(!isMobile){
-    $(".skills").css('height', $(".skills").outerHeight() + 'px');
-  }
-  else{
-    $(".skills").css('height', 'auto');
-    $(".skill-item").css('height', 'auto');
-  }
+  setTimeout(function(){
+    //Set height for skills div so that it doesnt jump when changed to mushroom img
+      if(!isMobile){
+        $(".skills").css('height', $(".skills").outerHeight() + 'px');
+      }
+      else{
+        $(".skills").css('height', 'auto');
+        $(".skill-item").css('height', 'auto');
+      }
+  }, 200);
+  
   $(".skills h1").css('min-height', $(".skills h1").height() + 'px');
 
   //Reset all styles on navbar if on desktop width
@@ -735,8 +738,16 @@ function bindVelocity(){
       else {
         if($(window).width() < 767){
           $('.navbar-collapse.in').collapse('hide');
-          document.getElementById('bars').classList.toggle('active');
+          $('.bars').removeClass('active');
+          // document.getElementById('bars').classList.toggle('active');
         }
+      }
+      //Check if navbar is open
+      if($('.navbar-collapse').hasClass('in')){
+        $('.switch').css('opacity', '1');
+      }
+      else {
+        $('.switch').css('opacity', '0');
       }
       // scroll to each target
       if($(window).width() < 767){
@@ -1258,6 +1269,22 @@ function animateMainText(){
     $('.overflow-hide').css('transform', 'none');
   }
 }
+function showYearOnMobile(){
+  if(isMobile){
+    $('.portfolio-image').each(function(){
+      if($(this).visible(true)){
+        $(this).parent().children().find('.year_made').addClass('active');
+        $(this).parent().children().find('.number').addClass('inactive');
+      }
+      else {
+        $(this).parent().children().find('.year_made').removeClass('active');
+        $(this).parent().children().find('.number').removeClass('inactive');
+      }
+    });
+  }
+  $('.year_made').removeClass('active');
+  $('.number').removeClass('inactive');
+}
 $( document ).ready(function() {
   if($(window).width() < 991){
     isMobile = true;
@@ -1281,6 +1308,7 @@ $( document ).ready(function() {
     makeContactVisible();
     preventScrollOnMenuOpen();
     animateMainText();
+    showYearOnMobile();
   });
   if($(document).scrollTop() > 0){
     $(".navbar-default").css('opacity', '1');
