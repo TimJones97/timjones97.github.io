@@ -10,8 +10,6 @@ class SmoothScroll {
       duration: 1000,
     }
 
-    console.log(this.$.controlsEasing)
-
     // Init params
     this.params = {
       containerHeight: this.$.containerBody.offsetHeight + $('.contact').outerHeight() - 6,
