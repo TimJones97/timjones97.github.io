@@ -4,7 +4,7 @@
 Vars
 --------------------*/
 var time = 0;
-var mouseX = window.innerWidth * 0.75;
+var mouse_X = window.innerWidth * 0.75;
 var x = 0;
 /*--------------------
 Options
@@ -29,8 +29,9 @@ var scale = function scale(a, b, c, d, e) {
 var lerp = function lerp(v0, v1, t) {
   return v0 * (1 - t) + v1 * t;
 };
+
 /*--------------------
-Create Invaders
+Create Text
 --------------------*/
 
 
@@ -55,7 +56,7 @@ Animate
 
 var animate = function animate() {
   if (!letter) return;
-  x = lerp(x, mouseX / window.innerWidth, 0.1);
+  x = lerp(x, mouse_X / window.innerWidth, 0.1);
   var rotation = -opt.maxRotation + x * opt.maxRotation * 2;
   var speed = -opt.maxSpeed + x * opt.maxSpeed * 2;
   var modY = 1 + x * -2;
@@ -81,7 +82,7 @@ Events
 --------------------*/
 
 var handleMouse = function handleMouse(e) {
-  mouseX = e.clientX
+  mouse_X = e.clientX
   if($(window).width() < 991){
     e.touches[0].clientX;
   }
