@@ -81,10 +81,12 @@ animate();
 Events
 --------------------*/
 
-var handleMouse = function handleMouse(e) {
-  mouse_X = e.clientX
+function handleMouse(e) {
+  mouse_X = e.clientX;
   if($(window).width() < 991){
-    e.touches[0].clientX;
+    var clientX = e.touches[0].clientX;
+    mouse_X = clientX;
+    console.log(typeof clientX);
   }
 };
 

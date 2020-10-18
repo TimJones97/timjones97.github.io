@@ -607,7 +607,7 @@ html:not(html:hover) .cursor::after {
 }
 .background-wrapper.active {
   transform: scale(1.001);
-  transition: transform 2.5s cubic-bezier(.34,.615,.4,.985);
+  transition: all 2.5s cubic-bezier(.34,.615,.4,.985);
 }
 .background {
   background-color: #3b3b3b;
@@ -617,7 +617,8 @@ html:not(html:hover) .cursor::after {
   overflow: hidden;
   position: relative;
   top: 0;
-  transform: translateY(-110%) translateZ(0);
+  opacity: 0;
+  transform: scale(2.0) translateZ(0);
 }
 .background:before {
   /*background-image: url(../img/background.jpg);*/
@@ -630,7 +631,8 @@ html:not(html:hover) .cursor::after {
   position: absolute;
   right: 0;
   top: 0;
-  transform: translateY(101%) translateZ(0); 
+  opacity: 1;
+  transform: scale(1.0) translateZ(0); 
 }
 canvas { 
   width: 100%; 
@@ -638,8 +640,9 @@ canvas {
 } 
 .background-wrapper[data-anim=true] .background,
 .background-wrapper[data-anim=true] .background:before {
-  transform: translateY(0) translateZ(0);
-  transition: transform 1.2s ease-in-out;
+  opacity: 1;
+  transform: scale(1.0) translateZ(0);
+  transition: all 1.2s ease-in-out;
 }
 .video-overlay {
   position:absolute;
@@ -1633,6 +1636,17 @@ footer {
   bottom: 0;
   left: 0;
 }
+.navbar-nav {
+  width: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: flex-end;
+}
+.navbar-nav li {
+  float: none;
+  display: inline-block !important;
+}
 .navbar-nav li:nth-of-type(1) {
   display: none !important;
 }
@@ -2119,11 +2133,15 @@ footer {
   .navbar-default .navbar-nav > li, .navbar-default .navbar-nav > li > a {
     font-size: 14px;
     line-height: 20px;
-    margin-right: 29px;
   }
   .navbar-nav {
     height: 100vh;
-    transform: none !important; 
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: -40px;
   }
   .experience-item {
     width: 100%;
@@ -2184,7 +2202,10 @@ footer {
   }
   .navbar-default .navbar-nav > li, .navbar-default .navbar-nav > li > a {
     margin-top: 0px !important;
-    font-size: 17px;
+    font-size: 22px;
+    padding: 10px 15px 5px 15px;
+    margin-left: unset;
+    margin-right: unset;
   }
   .navbar-collapse.in .navbar-nav li {
     transition: all 0.3s ease-in-out;
@@ -2202,7 +2223,7 @@ footer {
     margin-bottom: 10px;
   }
   .navbar-collapse.in .navbar-nav li {
-    transform: translateY(15px);
+    transform: translateY(0px);
     opacity: 1;
     margin-bottom: 10px;
   }
@@ -2331,10 +2352,9 @@ footer {
   }
   .navbar-default .navbar-nav > li, .navbar-default .navbar-nav > li > a {
     line-height: 47px;
-    font-size: 20px;
+    font-size: 25px;
     display: inherit;
     margin-top: 0px !important;
-    margin-right: 10px;
     margin-left: 0;
   }
   .experience-item {
@@ -2376,9 +2396,6 @@ footer {
   .hidden-text {
     font-size: 12px; 
   }
-  .navbar-default .navbar-nav li {
-    top: 10%;
-  }
   .navbar-brand.mobile {
     margin-left: 21px;
   }
@@ -2404,13 +2421,10 @@ footer {
     margin-bottom: 5px;
   }
   .navbar-collapse .navbar-nav li {
-    transform: translateY(80px);
+    transform: translateY(25px);
   }
   .navbar-collapse.in .navbar-nav li {
-    transform: translateY(60px);
-  }
-  .navbar-nav {
-    padding-top: 45px;
+    transform: translateY(0px);
   }
 }
 @media only screen and (max-width: 300px) {
