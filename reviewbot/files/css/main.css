@@ -219,7 +219,7 @@ p {
     z-index: 9999;
     background: #fff;
     transition: opacity 0.6s ease;
-    display: none !important;
+    /*display: none !important;*/
 }
 .siebui-mask-overlay .siebui-mask-outer {
     -webkit-border-radius: 24px;
