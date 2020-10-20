@@ -97,8 +97,6 @@ function generateHtmlTable(data, number) {
 		});
 
 		var csvDisplay = '#csv-display-' + number;
-		// console.log(ratingTotal + " total ratings");
-		// console.log(reviewCount + " total reviewCount");
 
 		// Show average ratings 
   		var average = ratingTotal / reviewCount;
