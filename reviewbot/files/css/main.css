@@ -392,15 +392,24 @@ p {
 }
 @media only screen and (max-width: 479px) {
 	.slider {
-		width: 360px;
+		width: 300px;
 	}
 	.reviews_container .row {
     	max-height: 60vh;
 	}
 	.reviews_container .caption {
-   		font-size: 16px;
-	}
-	.reviews_container .time {
    		font-size: 15px;
 	}
+	.reviews_container .time {
+   		font-size: 14px;
+	}
+    .reviews_container .box h2 {
+        font-size: 26px;
+    }
+    body {
+        overflow: hidden;
+    }
+    .slick-dots {
+        bottom: 40px !important;
+    }
 }
