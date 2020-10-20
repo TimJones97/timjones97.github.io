@@ -317,7 +317,7 @@ p {
 		outline: none;
 	}
 	.slick-dots {
-		bottom: 7px !important;
+		bottom: 30px !important;
 		transition: all 0.3s ease;
 	}
 	.slick-dots li button:before {
@@ -387,10 +387,10 @@ p {
 		padding-bottom: 30px;
 	}
 	.slick-dots {
-		bottom: -10px !important;
+		bottom: 60px !important;
 	}
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 479px) {
 	.slider {
 		width: 360px;
 	}

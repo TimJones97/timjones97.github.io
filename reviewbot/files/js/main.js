@@ -178,6 +178,12 @@ function changeSortStatus(thisElem){
 			thisElem.next().removeClass('show');
 		}, 1200);
 	}
+	if($(window).width() < 991){
+  		$('h4').addClass('show');
+	}
+	else {
+  		$('h4').removeClass('show');
+	}
 }
 function sortRatingsOnClick(){
 	$('#sort_btn_1').click(function(){
