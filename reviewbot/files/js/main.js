@@ -164,19 +164,19 @@ function changeSortStatus(thisElem){
 		thisElem.next().addClass('show');
 		thisElem.next().find('.first_identifier').html('worst');
 		thisElem.next().find('.second_identifier').html('best');
+		sorted = true;
 		setTimeout(function(){
 			thisElem.next().removeClass('show');
 		}, 1200);
-		sorted = true;
 	}
 	else {
 		thisElem.next().addClass('show');
 		thisElem.next().find('.first_identifier').html('best');
 		thisElem.next().find('.second_identifier').html('worst');
+		sorted = false;
 		setTimeout(function(){
 			thisElem.next().removeClass('show');
 		}, 1200);
-		sorted = false;
 	}
 }
 function sortRatingsOnClick(){
