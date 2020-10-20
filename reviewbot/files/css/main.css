@@ -232,11 +232,12 @@ p {
     -ms-box-sizing: border-box;
     -o-box-sizing: border-box;
     box-sizing: border-box;
+    position: absolute;
     left: 50%;
     top: 50%;
+    transform: translate(-50%, -50%);
     border: 6px solid #1474bf;
     overflow: hidden;
-    position: relative;
     text-indent: -9999px;
     height: 48px;
     width: 48px
