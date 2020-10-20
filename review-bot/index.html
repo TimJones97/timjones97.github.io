@@ -1,10 +1,18 @@
 <html>
 <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no"/>
+
+	<meta property="og:image" content="http://www.timothyjones.com.au/review-bot/img/logo_og.jpg" />
+	<meta property="og:image:width" content="960" />
+	<meta property="og:image:height" content="652" />
+	<meta property="og:url" content="http://timothyjones.com.au/review-bot" />
 	<title>REVIEW BOT</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="./files/css/main.css"/>
 	<link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
-
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.5.0/slick-theme.css"/>
 <body>
 	<div id="maskoverlay" class="siebui-mask-overlay"> 
 		<div id="mask-img" class="siebui-mask-outer" style="">   
@@ -14,31 +22,42 @@
 	<div class="container" style="padding:10px 10px;">
 		<h1>REVIEW BOT</h1>
 		<p class="updated_time">Last updated: <span></span></p>
-		<div id="header"></div>
-		<div class="reviews_container">
-			<div class="box">
-				<h2>Queen Street</h2>
+		<div class="reviews_container slider">
+			<div class="box slide">
+				<a href="https://www.google.com/maps/place/JB+Hi-Fi+Brisbane+-+Queen+St,+MacArthur+Central/@-27.4682544,153.0253098,17z/data=!3m1!5s0x6b915a1cbed0833f:0x658d129f320c0aad!4m7!3m6!1s0x0:0xdb823cf1ed935ed1!8m2!3d-27.4682544!4d153.0274985!9m1!1b1" target="_blank">
+					<h2>Queen Street</h2>
+				</a>
 				<div class="row" id="csv-display-1">
 				</div>
 				<h4>Average Rating: <span></span></h4>
+				<button class="sort_btn" id="sort_btn_1">Sort</button>
+				<p class="sort_type">Reviews sorted by <span class="first_identifier"></span> to <span class="second_identifier"></span></p>
 			</div>
-			<div class="box">
-				<h2>Albert Street</h2>
+			<div class="box slide">
+				<a href="https://www.google.com/maps/place/JB+Hi-Fi+Brisbane+-+Albert+St/@-27.4698709,153.0234703,17z/data=!4m7!3m6!1s0x6b915a04b69287f5:0x3d9e2cbc4be85e1c!8m2!3d-27.4698709!4d153.025659!9m1!1b1" target="_blank">
+					<h2>Albert Street</h2>
+				</a>
 				<div class="row" id="csv-display-2">
 				</div>
 				<h4>Average Rating: <span></span></h4>
+				<button class="sort_btn" id="sort_btn_2">Sort</button>
+				<p class="sort_type">Reviews sorted by <span class="first_identifier"></span> to <span class="second_identifier"></span></p>
 			</div>
-			<div class="box">
-				<h2>Queen Adelaide</h2>
+			<div class="box slide">
+				<a href="https://www.google.com/maps/place/JB+Hi-Fi+Brisbane+-+Queen+Adelaide+Building/@-27.4699584,153.0223767,17z/data=!4m7!3m6!1s0x6b915a048bf711af:0x384db4dbf602edd3!8m2!3d-27.4699584!4d153.0245654!9m1!1b1" target="_blank">
+					<h2>Queen Adelaide</h2>
+				</a>
 				<div class="row last" id="csv-display-3">
 				</div>
 				<h4>Average Rating: <span></span></h4>
+				<button class="sort_btn" id="sort_btn_3">Sort</button>
+				<p class="sort_type">Reviews sorted by <span class="first_identifier"></span> to <span class="second_identifier"></span></p>
 			</div>
 		</div>
-		<div id="footer"></div>
   </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="./files/js/main.js"></script>
 </html>

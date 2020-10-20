@@ -1,4 +1,5 @@
 var data;
+var sorted = false;
 $.ajax({
   type: "GET",  
   url: "https://jb-review-bot.s3-ap-southeast-2.amazonaws.com/reviews1.csv",
@@ -35,6 +36,8 @@ function generateHtmlTable(data, number) {
     var ratingTotal = 0;
     var reviewCount = 0;
     var retrievalDate = "";
+    // Store the rating in a variable
+    var rating = 0;
   	if(typeof(data[0]) === 'undefined') {
         return null;
   	} else {
@@ -62,12 +65,18 @@ function generateHtmlTable(data, number) {
 									html += '</p>';
 								}
 								if(index == 4){
-									html += '<div class="rating">';
+									html += '<div class="rating" data-rating="' + Math.round(colData) + '">';
 									// Add up ratings for average later
 									ratingTotal += Math.round(colData);
+									rating = Math.round(colData);
 									reviewCount++;
 									for (i = 0; i < colData; i++) {
 									  html += '<img class="star" src="./files/img/star.png">';
+									}
+									if(rating < 5){
+										for (j = rating; rating < 5; rating++) {
+										  html += '<img class="star" src="./files/img/star_empty.png">';
+										}
 									}
 									html += '</div>';
 								}
@@ -104,6 +113,28 @@ function generateHtmlTable(data, number) {
 		$(csvDisplay).append(html);
   	}
 }	
+function createSlickSlider(){
+	$('.slider').slick({
+	    slidesToShow: 3,
+	    slidesToScroll: 1,
+	    autoplay: false,
+	    responsive: [
+	        {
+	            breakpoint: 9999,
+	            settings: "unslick"
+	        },
+	        {
+	            breakpoint: 992,
+	            settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true
+	            }
+	        }
+	    ]
+	});
+}
 $(document).ready(function(){
 	setTimeout(function(){
 		$('#maskoverlay').css('opacity', '0');
@@ -118,19 +149,89 @@ $(document).ready(function(){
 	  		}
   		});
 		$('#csv-display-3').css('height', $('#csv-display-1').outerHeight() + 'px');
+		setRatings();
+		sortRatingsOnClick();
 	}, 1000);
+	createSlickSlider();
 });
 
+function setRatings(){
+	$('.rating').each(function(){
+		$(this).parent().attr('data-rating', $(this).attr('data-rating'));
+		$(this).removeAttr('data-rating')
+	});
+}
+function changeSortStatus(thisElem){
+	if(!sorted){
+		thisElem.next().addClass('show');
+		thisElem.next().find('.first_identifier').html('worst');
+		thisElem.next().find('.second_identifier').html('best');
+		setTimeout(function(){
+			thisElem.next().removeClass('show');
+		}, 1200);
+		sorted = true;
+	}
+	else {
+		thisElem.next().addClass('show');
+		thisElem.next().find('.first_identifier').html('best');
+		thisElem.next().find('.second_identifier').html('worst');
+		setTimeout(function(){
+			thisElem.next().removeClass('show');
+		}, 1200);
+		sorted = false;
+	}
+}
+function sortRatingsOnClick(){
+	$('#sort_btn_1').click(function(){
+		$('#csv-display-1 .store_review').append($('#csv-display-1 .store_review .review').sort(function(a,b){
+			if(!sorted){
+			   return a.getAttribute('data-rating')-b.getAttribute('data-rating');
+			}
+			else {
+			   return b.getAttribute('data-rating')-a.getAttribute('data-rating');
+			}
+		}));
+		changeSortStatus($(this));
+	});
+	$('#sort_btn_2').click(function(){
+		$('#csv-display-2 .store_review').append($('#csv-display-2 .store_review .review').sort(function(a,b){
+		   	if(!sorted){
+			   return a.getAttribute('data-rating')-b.getAttribute('data-rating');
+			}
+			else {
+			   return b.getAttribute('data-rating')-a.getAttribute('data-rating');
+			}
+		}));
+		changeSortStatus($(this));
+	});
+	$('#sort_btn_3').click(function(){
+		$('#csv-display-3 .store_review').append($('#csv-display-3 .store_review .review').sort(function(a,b){
+		   	if(!sorted){
+				return a.getAttribute('data-rating')-b.getAttribute('data-rating');
+			}
+			else {
+				return b.getAttribute('data-rating')-a.getAttribute('data-rating');
+			}
+		}));
+		changeSortStatus($(this));
+	});
+}
+//Listen for keypress events
 $(document).on('keydown', function(key) { 
   //If space key pressed
   if (key.which == 32) { 
   	$('h4').toggleClass('show');
+  	$('.sort_btn').toggleClass('show');
   }
 });
-
+//Listen for resize events
 $(window).resize(function(){
 	$('#csv-display-3').removeAttr('style');
+	//Wait 100ms for resize event to finish
 	setTimeout(function(){
 		$('#csv-display-3').css('height', $('#csv-display-1').outerHeight() + 'px');
+		if($(window).width() < 991){
+			$('.slider')[0].slick.refresh();
+		}
 	}, 100);
 });
