@@ -224,8 +224,16 @@ function sortRatingsOnClick(){
 $(document).on('keydown', function(key) { 
   //If space key pressed
   if (key.which == 32) { 
-  	$('h4').toggleClass('show');
-  	$('.sort_btn').toggleClass('show');
+  	key.preventDefault();
+  	key.stopPropagation();
+  	if($('h4').hasClass('show')){
+  		$('h4').removeClass('show');
+  		$('.sort_btn').removeClass('show');
+  	}
+  	else {
+  		$('h4').addClass('show');
+  		$('.sort_btn').addClass('show');
+  	}
   }
 });
 //Listen for resize events
