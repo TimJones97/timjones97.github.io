@@ -354,7 +354,7 @@ p {
 		max-height: 68vh;
 	}
 	.reviews_container .box h4 {
-	    display: none;
+	    display: none !important;
 	}
 	.slick-slider {
 		margin-bottom: 0px !important;
@@ -363,6 +363,9 @@ p {
 	.reviews_container .box .sort_type {
 		display: none;
 	}
+    .reviews_container .box .sort_btn {
+        opacity: 0 !important;
+    }
 }
 @media only screen and (max-width: 767px) {
 	.slide {

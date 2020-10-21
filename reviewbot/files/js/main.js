@@ -223,7 +223,7 @@ function sortRatingsOnClick(){
 //Listen for keypress events
 $(document).on('keydown', function(key) { 
   //If space key pressed
-  if (key.which == 32) { 
+  if (key.which == 32 && $(window).width() > 991) { 
   	key.preventDefault();
   	key.stopPropagation();
   	if($('h4').hasClass('show')){
@@ -239,6 +239,9 @@ $(document).on('keydown', function(key) {
 //Listen for resize events
 $(window).resize(function(){
 	$('#csv-display-3').removeAttr('style');
+	//Do not show average and sort buttons on resize
+	$('h4').removeClass('show');
+	$('.sort_btn').removeClass('show');
 	//Wait 100ms for resize event to finish
 	setTimeout(function(){
 		$('#csv-display-3').css('height', $('#csv-display-1').outerHeight() + 'px');
