@@ -99,8 +99,9 @@ function generateHtmlTable(data, number) {
 		var csvDisplay = '#csv-display-' + number;
 
 		// Show average ratings 
-  		var average = ratingTotal / reviewCount;
-		$(csvDisplay).next().find('span').html(average);
+		var average = ratingTotal / reviewCount;
+  		var averageRounded = Math.round((average + Number.EPSILON) * 100) / 100;
+		$(csvDisplay).next().find('span').html(averageRounded);
 
 		//Show retrieval time
 		var date = new Date(retrievalDate + ' GMT');
@@ -154,6 +155,7 @@ $(document).ready(function(){
 });
 
 function setRatings(){
+	//Attaches a data attribute to the parent elements for sorting
 	$('.rating').each(function(){
 		$(this).parent().attr('data-rating', $(this).attr('data-rating'));
 		$(this).removeAttr('data-rating')
@@ -178,12 +180,12 @@ function changeSortStatus(thisElem){
 			thisElem.next().removeClass('show');
 		}, 1200);
 	}
-	if($(window).width() < 991){
-  		$('h4').addClass('show');
-	}
-	else {
-  		$('h4').removeClass('show');
-	}
+	// if($(window).width() < 991){
+ //  		$('h4').addClass('show');
+	// }
+	// else {
+ //  		$('h4').removeClass('show');
+	// }
 }
 function sortRatingsOnClick(){
 	$('#sort_btn_1').click(function(){
