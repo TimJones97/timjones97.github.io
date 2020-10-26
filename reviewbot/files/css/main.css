@@ -22,6 +22,9 @@ p {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
 }
+.container {
+    padding: 0;
+}
 .container h1 {
     text-align: center;
     color: #fff;
@@ -41,7 +44,7 @@ p {
 	width: 100%;
 	overflow: scroll;
 	margin: 0 auto;
-	height: auto;
+    height: auto;
 	max-height: 50vh;
 	transition: all 0.5s ease;
 	user-select: none;
@@ -52,45 +55,70 @@ p {
 }
 .reviews_container .box a {
 	outline: none;
+    position: relative;
+    text-decoration: none;
+    display: block;
+}
+.reviews_container .box a::before {
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 1px;
+    bottom: 0;
+    left: 50%;
+    background-color: #fff;
+    opacity: 0;
+    transform: translate(-50%, 0%) translateZ(0);
+    transition: all 0.3s ease-in-out 0s;
+    backface-visibility: hidden;
+}
+.reviews_container .box a:hover::before {
+    opacity: 1;
+    transform: translate(-50%, 0%) translateZ(0);
 }
 .reviews_container .box h2 {
 	color: #fff;
 	text-align: center;
 	margin-bottom: 30px;
 	font-size: 28px;
+    width: auto;
 }
 .reviews_container .box h4 {
 	margin-top: 20px;
-	opacity: 0;
 	transition: opacity 0.6s ease;
+    user-select: none;
 }
-.reviews_container .box h4.show {
-	opacity: 1;
+.reviews_container .box .hidden_sort {
+    opacity: 0;
+    user-select: none;
+    transition: all 0.5s ease;
 }
-.reviews_container .box .sort_btn {
-    border: 1px solid #fff;
+.reviews_container .box .hidden_sort:hover {
+    opacity: 1;
+    user-select: all;
+    transition: all 0.8s ease;
+}
+.reviews_container .box .hidden_sort .sort_btn {
+    border: 2px solid #fff;
     border-radius: 15px;
     display: block;
     margin: 0 auto;
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
     width: 70px;
-    height: 35px;
-    background: #3b3b3b;
+    height: 32px;
+    background: #230a3a;
     color: #fff;
     font-size: 15px;
     margin-top: 20px;
     outline: none;
-	opacity: 0;
 	transition: all 0.5s ease;
+    user-select: none;
 }	
-.reviews_container .box .sort_btn:hover {
-    background: #1b1b1b;
+.reviews_container .box .hidden_sort .sort_btn:hover {
+    background: #0d0027;
 }
-.reviews_container .box .sort_btn.show {
-	opacity: 1;
-}
-.reviews_container .box .sort_type {
+.reviews_container .box .hidden_sort .sort_type {
 	margin-top: 20px;
 	font-family: 'Open Sans', sans-serif;
     font-weight: 300;
@@ -99,8 +127,11 @@ p {
     color: #fff;
 	opacity: 0;
 	transition: all 0.5s ease;
+    transform: scale(0.8);
+    user-select: none;
 }
-.reviews_container .box .sort_type.show {
+.reviews_container .box .hidden_sort .sort_type.show {
+    transform: scale(1.0);
 	opacity: 1;
 }
 .reviews_container table {
@@ -131,7 +162,85 @@ p {
 	width: 25px;
 	height: 25px;
 }
-
+.information {
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -25px) scale(0.8);
+    width: 25px;
+    height: 25px;
+    padding: 3px;
+    z-index: 4;
+    opacity: 0;
+    transition: all 0.2s ease-in-out, opacity 0.4s ease;
+    z-index: 100;
+}
+.information.show {
+    opacity: 1;
+    transform: translate(-50%, -25px) scale(1.0);
+}
+.information.show:hover {
+    transform: translate(-50%, -28px) scale(1.0);
+}
+.information img.info_btn,
+.information img.close_btn {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 0.6s ease;
+}
+.information img.info_btn.show,
+.information img.close_btn.show {
+    opacity: 1;
+}
+.information_description {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    background: rgba(0,0,0,0.9);
+    transition: opacity 1s ease;
+    pointer-events: none;
+    z-index: 99;
+}
+.information_description.show {
+    opacity: 1;
+    pointer-events: all;
+    transition: opacity 0.6s ease;
+}
+.information_description .hide_text {
+    position: absolute;
+    max-width: 960px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+    transition: all 0.6s ease;
+}
+.information_description.show .hide_text {
+    transform: translate(-50%, -50%) scale(1.0);
+    opacity: 1;
+}
+.information_description .hide_text p {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 19px;
+    text-align: center;
+    color: #fff;
+}
+.information_description .hide_text p b {
+    font-weight: 600;
+}
+.information_description .hide_text p:nth-child(2) {
+    margin-top: 30px;
+}
+.information_description .hide_text a {
+    text-decoration: underline;
+    color: #fff;
+}
 
 /*---------------SIEBEL TIMER-----------*/
 
@@ -293,13 +402,17 @@ p {
     border-radius: 3px;
     background: #0079c0
 }
-
+@media only screen and (max-height: 600px) {
+    .reviews_container .row {
+        max-height: 36vh;
+    }
+}
 
 @media only screen and (max-width: 991px) {
 	/*SLIDER*/
 	.slider {
 		z-index: 20;
-		width: 750px;
+		width: 738px;
 		position: relative;
 		display: block;
 		margin: 0 auto;
@@ -391,12 +504,32 @@ p {
 		padding-bottom: 30px;
 	}
 	.slick-dots {
-		bottom: 60px !important;
+		bottom: -5px !important;
 	}
+    .reviews_container .box .hidden_sort {
+        display: none;
+    }
+    .information {
+        transform: translate(-50%, -170px) scale(1.0);
+    }
+    .information:hover {
+        transform: translate(-50%, -170px) scale(1.0);
+    }
+    .container {
+        padding-bottom: 40px;
+    }
+    .information_description .hide_text p {
+        font-size: 16px;
+    }
+    .information_description .hide_text {
+        max-width: 100%;
+        width: 100%;
+        padding: 0 20px 0px 20px;
+    }
 }
 @media only screen and (max-width: 479px) {
 	.slider {
-		width: 300px;
+		width: 345px;
 	}
 	.reviews_container .row {
     	max-height: 60vh;
@@ -414,6 +547,20 @@ p {
         overflow: hidden;
     }
     .slick-dots {
-        bottom: 40px !important;
+        bottom: 0px !important;
+    }
+    .information {
+        transform: translate(-50%, -30px) scale(1.0);
+    }
+    .information:hover {
+        transform: translate(-50%, -30px) scale(1.0);
+    }
+}
+@media only screen and (max-width: 360px) {
+    .slider {
+        width: 290px;
+    }
+    .information_description .hide_text p {
+        font-size: 15px;
     }
 }

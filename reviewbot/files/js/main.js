@@ -134,25 +134,6 @@ function createSlickSlider(){
 	    ]
 	});
 }
-$(document).ready(function(){
-	setTimeout(function(){
-		$('#maskoverlay').css('opacity', '0');
-	}, 1500);
-	setTimeout(function(){
-		$('#maskoverlay').css('display', 'none');
-	}, 2200);
-	setTimeout(function(){
-		$('.review').each(function(){
-	  		if($(this).has('.caption').length == 0){
-	  			$(this).remove();
-	  		}
-  		});
-		$('#csv-display-3').css('height', $('#csv-display-1').outerHeight() + 'px');
-		setRatings();
-		sortRatingsOnClick();
-	}, 1000);
-	createSlickSlider();
-});
 
 function setRatings(){
 	//Attaches a data attribute to the parent elements for sorting
@@ -161,7 +142,24 @@ function setRatings(){
 		$(this).removeAttr('data-rating')
 	});
 }
-function changeSortStatus(thisElem){
+function changeSortStatus(thisElem, isSecondBtn){
+	var interval;
+	//If the second sort button is pressed
+	//Hide the info button temporarily
+	//to prevent overlap
+	if(isSecondBtn){
+		interval = setInterval(function(){
+			if(thisElem.next().hasClass('show')){
+				$('.information').removeClass('show');
+			}
+			else {
+				$('.information').addClass('show');
+			}
+		}, 100);
+	}
+	else {
+		clearInterval(interval);
+	}
 	if(!sorted){
 		thisElem.next().addClass('show');
 		thisElem.next().find('.first_identifier').html('worst');
@@ -180,12 +178,6 @@ function changeSortStatus(thisElem){
 			thisElem.next().removeClass('show');
 		}, 1200);
 	}
-	// if($(window).width() < 991){
- //  		$('h4').addClass('show');
-	// }
-	// else {
- //  		$('h4').removeClass('show');
-	// }
 }
 function sortRatingsOnClick(){
 	$('#sort_btn_1').click(function(){
@@ -197,7 +189,7 @@ function sortRatingsOnClick(){
 			   return b.getAttribute('data-rating')-a.getAttribute('data-rating');
 			}
 		}));
-		changeSortStatus($(this));
+		changeSortStatus($(this), false);
 	});
 	$('#sort_btn_2').click(function(){
 		$('#csv-display-2 .store_review').append($('#csv-display-2 .store_review .review').sort(function(a,b){
@@ -208,7 +200,7 @@ function sortRatingsOnClick(){
 			   return b.getAttribute('data-rating')-a.getAttribute('data-rating');
 			}
 		}));
-		changeSortStatus($(this));
+		changeSortStatus($(this), true);
 	});
 	$('#sort_btn_3').click(function(){
 		$('#csv-display-3 .store_review').append($('#csv-display-3 .store_review .review').sort(function(a,b){
@@ -219,25 +211,9 @@ function sortRatingsOnClick(){
 				return b.getAttribute('data-rating')-a.getAttribute('data-rating');
 			}
 		}));
-		changeSortStatus($(this));
+		changeSortStatus($(this), false);
 	});
 }
-//Listen for keypress events
-$(document).on('keydown', function(key) { 
-  //If space key pressed
-  if (key.which == 32 && $(window).width() > 991) { 
-  	key.preventDefault();
-  	key.stopPropagation();
-  	if($('h4').hasClass('show')){
-  		$('h4').removeClass('show');
-  		$('.sort_btn').removeClass('show');
-  	}
-  	else {
-  		$('h4').addClass('show');
-  		$('.sort_btn').addClass('show');
-  	}
-  }
-});
 //Listen for resize events
 $(window).resize(function(){
 	$('#csv-display-3').removeAttr('style');
@@ -246,9 +222,49 @@ $(window).resize(function(){
 	$('.sort_btn').removeClass('show');
 	//Wait 100ms for resize event to finish
 	setTimeout(function(){
-		$('#csv-display-3').css('height', $('#csv-display-1').outerHeight() + 'px');
 		if($(window).width() < 991){
 			$('.slider')[0].slick.refresh();
 		}
 	}, 100);
+	var interval = setInterval(function(){
+		$('#csv-display-3').css('height', $('#csv-display-1').outerHeight() + 'px');
+	}, 50);
+	setTimeout(function(){
+		clearInterval(interval);
+	}, 500);
+});
+
+function toggleInformation(){
+	$('.information').click(function(){
+		if($('.information_description').hasClass('show')){
+			$('.close_btn').removeClass('show');
+			$('.info_btn').addClass('show');
+			$('.information_description').removeClass('show');
+		}
+		else {
+			$('.info_btn').removeClass('show');
+			$('.close_btn').addClass('show');
+			$('.information_description').addClass('show');
+		}
+	});
+}
+$(document).ready(function(){
+	setTimeout(function(){
+		$('#maskoverlay').css('opacity', '0');
+	}, 1500);
+	setTimeout(function(){
+		$('#maskoverlay').css('display', 'none');
+	}, 2200);
+	setTimeout(function(){
+		$('.review').each(function(){
+	  		if($(this).has('.caption').length == 0){
+	  			$(this).remove();
+	  		}
+  		});
+		$('#csv-display-3').css('height', $('#csv-display-1').outerHeight() + 'px');
+		setRatings();
+		sortRatingsOnClick();
+	}, 1000);
+	toggleInformation()
+	createSlickSlider();
 });

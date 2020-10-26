@@ -14,12 +14,12 @@
 	<link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.5.0/slick-theme.css"/>
 <body>
-	<div id="maskoverlay" class="siebui-mask-overlay"> 
+<!-- 	<div id="maskoverlay" class="siebui-mask-overlay"> 
 		<div id="mask-img" class="siebui-mask-outer" style="">   
 			<div class="siebui-mask-inner"></div> 
 		</div>
-	</div>
-	<div class="container" style="padding:10px 10px;">
+	</div> -->
+	<div class="container">
 		<h1>REVIEW BOT</h1>
 		<p class="updated_time">Last updated: <span></span></p>
 		<div class="reviews_container slider">
@@ -29,9 +29,11 @@
 				</a>
 				<div class="row" id="csv-display-1">
 				</div>
-				<h4>Average Rating: <span></span></h4>
-				<button class="sort_btn" id="sort_btn_1">Sort</button>
-				<p class="sort_type">Reviews sorted by <span class="first_identifier"></span> to <span class="second_identifier"></span></p>
+				<div class="hidden_sort">
+					<h4>Average Rating: <span></span></h4>
+					<button class="sort_btn" id="sort_btn_1">Sort</button>
+					<p class="sort_type">Reviews sorted by <span class="first_identifier"></span> to <span class="second_identifier"></span></p>
+				</div>
 			</div>
 			<div class="box slide">
 				<a href="https://www.google.com/maps/place/JB+Hi-Fi+Brisbane+-+Albert+St/@-27.4698709,153.0234703,17z/data=!4m7!3m6!1s0x6b915a04b69287f5:0x3d9e2cbc4be85e1c!8m2!3d-27.4698709!4d153.025659!9m1!1b1" target="_blank">
@@ -39,9 +41,11 @@
 				</a>
 				<div class="row" id="csv-display-2">
 				</div>
-				<h4>Average Rating: <span></span></h4>
-				<button class="sort_btn" id="sort_btn_2">Sort</button>
-				<p class="sort_type">Reviews sorted by <span class="first_identifier"></span> to <span class="second_identifier"></span></p>
+				<div class="hidden_sort">
+					<h4>Average Rating: <span></span></h4>
+					<button class="sort_btn" id="sort_btn_2">Sort</button>
+					<p class="sort_type">Reviews sorted by <span class="first_identifier"></span> to <span class="second_identifier"></span></p>
+				</div>
 			</div>
 			<div class="box slide">
 				<a href="https://www.google.com/maps/place/JB+Hi-Fi+Brisbane+-+Queen+Adelaide+Building/@-27.4699584,153.0223767,17z/data=!4m7!3m6!1s0x6b915a048bf711af:0x384db4dbf602edd3!8m2!3d-27.4699584!4d153.0245654!9m1!1b1" target="_blank">
@@ -49,12 +53,28 @@
 				</a>
 				<div class="row last" id="csv-display-3">
 				</div>
-				<h4>Average Rating: <span></span></h4>
-				<button class="sort_btn" id="sort_btn_3">Sort</button>
-				<p class="sort_type">Reviews sorted by <span class="first_identifier"></span> to <span class="second_identifier"></span></p>
+				<div class="hidden_sort">
+					<h4>Average Rating: <span></span></h4>
+					<button class="sort_btn" id="sort_btn_3">Sort</button>
+					<p class="sort_type">Reviews sorted by <span class="first_identifier"></span> to <span class="second_identifier"></span></p>
+				</div>
 			</div>
 		</div>
-  </div>
+  	</div>
+  	<div class="information show">
+		<img class="info_btn show" src="./files/img/info.png" alt="What is this?">			
+		<img class="close_btn" src="./files/img/close.png">
+	</div>
+	<div class="information_description">
+		<div class="hide_text">
+			<p>
+				Review Bot is a web scraper built through Python scripts that use the Selenium ChromeDriver library to automate web scraping through a headless (run in memory) instance of Google Chrome. The data from the latest 20 reviews from each specified URL is then compiled into a CSV file and uploaded to an Amazon S3 Storage Bucket. The bot runs every 10 minutes on a Heroku web server, and this front-end display of data from the S3 instance is hosted by Github Pages. All of this is run at <b>zero</b> cost.
+			</p>
+			<p>
+				View source <a href="https://github.com/TimJones97/reviewbot" target="_blank">here.</a>
+			</p>
+		</div>
+	</div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
