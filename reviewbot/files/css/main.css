@@ -184,11 +184,12 @@ p {
     color: #fff;
     transition: all 0.3s ease-in-out;
     text-align: center;
-    transform: translate(-50%, 60px);
+    transform: translate(-50%, 40px);
+    pointer-events: none;
 }
 .information.show:hover p.show {
     opacity: 1;
-    transform: translate(-50%, 50px);
+    transform: translate(-50%, 30px);
 }
 .information.show {
     opacity: 1;
