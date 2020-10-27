@@ -174,6 +174,22 @@ p {
     transition: all 0.2s ease-in-out, opacity 0.4s ease;
     z-index: 100;
 }
+.information p {
+    position: absolute;
+    left: 50%;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    opacity: 0;
+    width: 150px;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    transform: translate(-50%, 60px);
+}
+.information.show:hover p.show {
+    opacity: 1;
+    transform: translate(-50%, 50px);
+}
 .information.show {
     opacity: 1;
     transform: translate(-50%, -25px) scale(1.0);

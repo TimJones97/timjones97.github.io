@@ -240,11 +240,13 @@ function toggleInformation(){
 			$('.close_btn').removeClass('show');
 			$('.info_btn').addClass('show');
 			$('.information_description').removeClass('show');
+			$('.what_text').addClass('show');
 		}
 		else {
 			$('.info_btn').removeClass('show');
 			$('.close_btn').addClass('show');
 			$('.information_description').addClass('show');
+			$('.what_text').removeClass('show');
 		}
 	});
 }
