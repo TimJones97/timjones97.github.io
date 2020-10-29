@@ -3,7 +3,7 @@
   display: none;
 }
 body {
-	background: #250125;
+	background: #000;
 	overflow: hidden;
 }
 h1, h2, h4 {
@@ -27,7 +27,7 @@ p {
 }
 .container h1 {
     text-align: center;
-    color: #fff;
+    color: #fff012;
 }
 .reviews_container {
 	margin-top: 30px;
@@ -77,7 +77,7 @@ p {
     transform: translate(-50%, 0%) translateZ(0);
 }
 .reviews_container .box h2 {
-	color: #fff;
+	color: #fff012;
 	text-align: center;
 	margin-bottom: 30px;
 	font-size: 28px;
@@ -362,7 +362,7 @@ p {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    border: 6px solid #1474bf;
+    border: 6px solid #fff012;
     overflow: hidden;
     text-indent: -9999px;
     height: 48px;
@@ -391,7 +391,7 @@ p {
     -ms-border-radius: 3px;
     -o-border-radius: 3px;
     border-radius: 3px;
-    background: #0079c0
+    background: #000;
 }
 
 .siebui-mask-overlay .siebui-mask-outer::after {
@@ -417,7 +417,8 @@ p {
     -ms-border-radius: 3px;
     -o-border-radius: 3px;
     border-radius: 3px;
-    background: #0079c0
+    /*background: #0079c0*/
+    background: #000;
 }
 @media only screen and (max-height: 600px) {
     .reviews_container .row {
