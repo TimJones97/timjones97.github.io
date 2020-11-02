@@ -157,6 +157,7 @@ p {
     border-bottom: 1px solid #dadada;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
+    transition: all 0.5s ease;
 }
 .review.hidden_review {
     visibility: hidden;
@@ -193,10 +194,10 @@ p {
     border-radius: 50%;
     display: block;
     margin: 0 auto;
-    height: 40px;
+    height: 36px;
 }
 .review .person_container {
-    height: 40px;
+    height: auto;
     vertical-align: bottom;
     display: inline-block;
     margin-top: 10px;
@@ -530,8 +531,8 @@ p {
 	.reviews_container .caption {
 		font-size: 19px;
 	}
-	.reviews_container .time {
-		font-size: 17px;
+	.review .person_container .time {
+		font-size: 12px;
 	}
 	.reviews_container .row {
 		max-height: 68vh;
@@ -551,6 +552,11 @@ p {
     }
     .reviews_container .box .hidden_sort {
         opacity: 0;
+    }
+    .information_description .hide_text {
+        width: 100%;
+        padding-left: 40px;
+        padding-right: 40px;
     }
 }
 @media only screen and (max-width: 767px) {
