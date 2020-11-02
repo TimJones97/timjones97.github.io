@@ -33,10 +33,12 @@ p {
 }
 .container {
     padding: 0;
+    position: relative;
 }
 .container h1 {
     text-align: center;
     color: #fff012;
+    cursor: pointer;
 }
 .reviews_container {
 	margin-top: 30px;
@@ -98,7 +100,7 @@ p {
     user-select: none;
 }
 .reviews_container .box .hidden_sort {
-    opacity: 0;
+    opacity: 1;
     user-select: none;
     transition: all 0.5s ease;
 }
@@ -155,6 +157,24 @@ p {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
 }
+.review.hidden_review {
+    visibility: hidden;
+    position: absolute;
+}
+.review.hidden_review p,
+.review.hidden_review div {
+    opacity: 0;
+    transition: all 0s ease;
+}
+.review.hidden_review.show {
+    position: relative;
+    visibility: visible;
+}
+.review.hidden_review.show p,
+.review.hidden_review.show div {
+    opacity: 1;
+    transition: all 1.2s ease;
+}
 .review .caption {
 	font-size: 15px;
 	font-family: 'Open Sans', sans-serif;
@@ -202,10 +222,10 @@ p {
 }
 .information.show {
     opacity: 1;
-    transform: translate(-50%, -25px) scale(1.0);
+    transform: translate(-50%, -30px) scale(1.0);
 }
 .information.show:hover {
-    transform: translate(-50%, -28px) scale(1.0);
+    transform: translate(-50%, -33px) scale(1.0);
 }
 .information img.info_btn,
 .information img.close_btn {
@@ -505,6 +525,9 @@ p {
 	}
     .reviews_container .box .sort_btn {
         opacity: 0 !important;
+    }
+    .reviews_container .box .hidden_sort {
+        opacity: 0;
     }
 }
 @media only screen and (max-width: 767px) {

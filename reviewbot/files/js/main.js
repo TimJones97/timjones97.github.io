@@ -1,5 +1,6 @@
 var data;
 var sorted = false;
+var emptyReviewsVisible = false;
 $.ajax({
   type: "GET",  
   url: "https://jb-review-bot.s3-ap-southeast-2.amazonaws.com/reviews1.csv",
@@ -52,40 +53,44 @@ function generateHtmlTable(data, number) {
 						else if (index == 1 && colData != ''){
 							isEmpty = false;
 						}
-						if(!isEmpty) {
-							if(index == 1 || index == 2 || index == 4 || index == 5){
-								if(index == 1){
-									html += '<p class="caption">';
-									html += colData;
-									html += '</p>';
-								}
-								if(index == 2){
-									html += '<p class="time">';
-									html += colData;
-									html += '</p>';
-								}
-								if(index == 4){
-									html += '<div class="rating" data-rating="' + Math.round(colData) + '">';
-									// Add up ratings for average later
-									ratingTotal += Math.round(colData);
-									rating = Math.round(colData);
-									reviewCount++;
-									for (i = 0; i < colData; i++) {
-									  html += '<img class="star" src="./files/img/star.png">';
-									}
-									if(rating < 5){
-										for (j = rating; rating < 5; rating++) {
-										  html += '<img class="star" src="./files/img/star_empty.png">';
-										}
-									}
-									html += '</div>';
-								}
-								if(index == 5){
-									html += '<p class="person">';
-									html += colData;
-									html += '</p>';
+						if(index == 1){
+							if(isEmpty) {
+								html += '<p class="empty_caption">';
+								html += colData;
+								html += '</p>';
+							}
+							if(!isEmpty) {
+								html += '<p class="caption">';
+								html += colData;
+								html += '</p>';
+							}
+							
+						}
+						if(index == 2){
+							html += '<p class="time">';
+							html += colData;
+							html += '</p>';
+						}
+						if(index == 4){
+							html += '<div class="rating" data-rating="' + Math.round(colData) + '">';
+							// Add up ratings for average later
+							ratingTotal += Math.round(colData);
+							rating = Math.round(colData);
+							reviewCount++;
+							for (i = 0; i < colData; i++) {
+							  html += '<img class="star" src="./files/img/star.png">';
+							}
+							if(rating < 5){
+								for (j = rating; rating < 5; rating++) {
+								  html += '<img class="star" src="./files/img/star_empty.png">';
 								}
 							}
+							html += '</div>';
+						}
+						if(index == 5){
+							html += '<p class="person">';
+							html += colData;
+							html += '</p>';
 						}
 					}
 					if(index == 3){
@@ -220,6 +225,7 @@ $(window).resize(function(){
 	//Do not show average and sort buttons on resize
 	$('h4').removeClass('show');
 	$('.sort_btn').removeClass('show');
+	hideEmptyReviews();
 	//Wait 100ms for resize event to finish
 	setTimeout(function(){
 		if($(window).width() < 991){
@@ -250,6 +256,64 @@ function toggleInformation(){
 		}
 	});
 }
+function hideEmptyReviews(){
+	$('.review').each(function(){
+  		if($(this).has('.caption').length == 0){
+  			$(this).addClass('hidden_review');
+  			$(this).attr('data-caption', false);
+  		}
+	});
+}
+function showEmptyReviews(){
+	$('.container h1').click(function(){
+		var headerText = '';
+		$('.review').each(function(){
+	  		if($(this).attr('data-caption') == 'false'){
+	  			$(this).toggleClass('show');
+	  			if($(this).hasClass('show')){
+	  				emptyReviewsVisible = true;
+					headerText = 'Hide Empty Reviews';
+	  			}
+	  			else {
+	  				emptyReviewsVisible = false;
+					headerText = 'Show Empty Reviews';
+	  			}
+			}
+		});
+		$(this).stop().animate({
+	        'opacity': 0
+	    }, 200, function() {
+        	$(this).text(headerText).animate({
+            'opacity': 1
+       		}, 200);
+		});
+	});
+	$('.container h1').hover(function(){
+		$(this).stop().animate({
+	        'opacity': 0
+	    }, 200, function() {
+	    	var headerText = '';
+	    	if(!emptyReviewsVisible){
+				headerText = 'Show Empty Reviews';
+	    	}
+	    	else {
+				headerText = 'Hide Empty Reviews';
+	    	}
+        	$(this).text(headerText).animate({
+            'opacity': 1
+       	}, 200);
+	});
+	},function() {
+		$(this).stop().animate({
+	        'opacity': 0
+	    }, 200, function() {
+        	$(this).text('Review Bot').animate({
+            'opacity': 1
+       	}, 200);
+        });
+    });
+}
+
 $(document).ready(function(){
 	setTimeout(function(){
 		$('#maskoverlay').css('opacity', '0');
@@ -258,11 +322,8 @@ $(document).ready(function(){
 		$('#maskoverlay').css('display', 'none');
 	}, 2200);
 	setTimeout(function(){
-		$('.review').each(function(){
-	  		if($(this).has('.caption').length == 0){
-	  			$(this).remove();
-	  		}
-  		});
+		hideEmptyReviews();
+		showEmptyReviews();
 		$('#csv-display-3').css('height', $('#csv-display-1').outerHeight() + 'px');
 		setRatings();
 		sortRatingsOnClick();
