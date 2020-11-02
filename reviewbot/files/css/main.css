@@ -7,12 +7,21 @@ body {
 	overflow: hidden;
 }
 h1, h2, h4 {
-	font-family: 'Krona One', sans-serif;
+    font-family: 'Comics';
 	color: #fff;
 	text-align: center;
+    text-transform: uppercase;
 }
 p {
 	transition: all 0.5s ease;
+}
+@font-face {
+    font-family: 'Comics';
+    src: url('../fonts/Comics.woff2') format('woff2'),
+        url('../fonts/Comics.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 /*-----------MAIN CONTAINER-----------*/
 
@@ -103,12 +112,12 @@ p {
     border-radius: 15px;
     display: block;
     margin: 0 auto;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
+    font-family: 'Comics', sans-serif;
+    text-transform: lowercase;
     width: 70px;
     height: 32px;
-    background: #230a3a;
-    color: #fff;
+    background: #fff012;
+    color: #000;
     font-size: 15px;
     margin-top: 20px;
     outline: none;
@@ -116,7 +125,7 @@ p {
     user-select: none;
 }	
 .reviews_container .box .hidden_sort .sort_btn:hover {
-    background: #0d0027;
+    background: #c0b40b;
 }
 .reviews_container .box .hidden_sort .sort_type {
 	margin-top: 20px;
