@@ -1,9 +1,11 @@
 var data;
 var sorted = false;
 var emptyReviewsVisible = false;
+var retrievalTimeSet = false;
 $.ajax({
   type: "GET",  
   url: "https://jb-review-bot.s3-ap-southeast-2.amazonaws.com/reviews1.csv",
+  // url: "./reviews1.csv",
   dataType: "text",       
   success: function(response)  
   {
@@ -14,6 +16,7 @@ $.ajax({
 $.ajax({
   type: "GET",  
   url: "https://jb-review-bot.s3-ap-southeast-2.amazonaws.com/reviews2.csv",
+  // url: "./reviews2.csv",
   dataType: "text",       
   success: function(response)  
   {
@@ -24,6 +27,7 @@ $.ajax({
 $.ajax({
   type: "GET",  
   url: "https://jb-review-bot.s3-ap-southeast-2.amazonaws.com/reviews3.csv",
+  // url: "./reviews3.csv",
   dataType: "text",       
   success: function(response)  
   {
@@ -39,6 +43,9 @@ function generateHtmlTable(data, number) {
     var retrievalDate = "";
     // Store the rating in a variable
     var rating = 0;
+    var captionHtml = '';
+    var timeHtml = '';
+    var personHtml = '';
   	if(typeof(data[0]) === 'undefined') {
         return null;
   	} else {
@@ -46,7 +53,7 @@ function generateHtmlTable(data, number) {
 			if(index != 0){
 				html += '<div class="review">';
 				$.each(row, function( index, colData ) {
-					if(index == 1 || index == 2 || index == 4 || index == 5){
+					if(index == 1 || index == 2 || index == 4 || index == 5 || index == 7){
 						if(index == 1 && colData == ''){
 							isEmpty = true;
 						}
@@ -54,22 +61,25 @@ function generateHtmlTable(data, number) {
 							isEmpty = false;
 						}
 						if(index == 1){
+							captionHtml = '';
 							if(isEmpty) {
-								html += '<p class="empty_caption">';
-								html += colData;
-								html += '</p>';
+								// Save caption html for after reviews are parsed
+								captionHtml += '<p class="empty_caption">';
+								captionHtml += colData;
+								captionHtml += '</p>';
 							}
 							if(!isEmpty) {
-								html += '<p class="caption">';
-								html += colData;
-								html += '</p>';
+								captionHtml += '<p class="caption">';
+								captionHtml += colData;
+								captionHtml += '</p>';
 							}
 							
 						}
 						if(index == 2){
-							html += '<p class="time">';
-							html += colData;
-							html += '</p>';
+							timeHtml = '';
+							timeHtml += '<p class="time">';
+							timeHtml += colData;
+							timeHtml += '</p>';
 						}
 						if(index == 4){
 							html += '<div class="rating" data-rating="' + Math.round(colData) + '">';
@@ -86,15 +96,28 @@ function generateHtmlTable(data, number) {
 								}
 							}
 							html += '</div>';
+							// Add in the caption after the rating
+							html += captionHtml;
 						}
 						if(index == 5){
-							html += '<p class="person">';
-							html += colData;
-							html += '</p>';
+							personHtml = '';
+							// Save the person data for display after their image
+							personHtml += '<p class="person">';
+							personHtml += colData;
+							personHtml += '</p>';
+						}
+						if(index == 7){
+							html += '<img class="user_image" src="' + colData +'">';
+							html += '<div class="person_container">'
+							// Add in the person info time after image
+							html += personHtml;
+							// Add in the review time after the person info
+							html += timeHtml;
+							html += '</div>'
 						}
 					}
 					if(index == 3){
-						retrievalDate = colData;
+						setRetrievalDateTime(colData)
 					}
 				});
 				html += '</div>';
@@ -107,11 +130,6 @@ function generateHtmlTable(data, number) {
 		var average = ratingTotal / reviewCount;
   		var averageRounded = Math.round((average + Number.EPSILON) * 100) / 100;
 		$(csvDisplay).next().find('span').html(averageRounded);
-
-		//Show retrieval time
-		var date = new Date(retrievalDate + ' GMT');
-		var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-		$('.updated_time span').html(days[date.getDay()] + " " + date.toLocaleTimeString());
 
 		//Add it all to the DOM
 		$(csvDisplay).append(html);
@@ -219,27 +237,15 @@ function sortRatingsOnClick(){
 		changeSortStatus($(this), false);
 	});
 }
-//Listen for resize events
-$(window).resize(function(){
-	$('#csv-display-3').removeAttr('style');
-	//Do not show average and sort buttons on resize
-	$('h4').removeClass('show');
-	$('.sort_btn').removeClass('show');
-	hideEmptyReviews();
-	//Wait 100ms for resize event to finish
-	setTimeout(function(){
-		if($(window).width() < 991){
-			$('.slider')[0].slick.refresh();
-		}
-	}, 100);
-	var interval = setInterval(function(){
-		$('#csv-display-3').css('height', $('#csv-display-1').outerHeight() + 'px');
-	}, 50);
-	setTimeout(function(){
-		clearInterval(interval);
-	}, 500);
-});
-
+function setRetrievalDateTime(retrievalDate){
+	//Show retrieval time
+	if(!retrievalTimeSet){
+		var date = new Date(retrievalDate + ' GMT');
+		var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+		$('.updated_time span').html(days[date.getDay()] + " " + date.toLocaleTimeString());
+		retrievalTimeSet = true;
+	}
+}
 function toggleInformation(){
 	$('.information').click(function(){
 		if($('.information_description').hasClass('show')){
@@ -327,7 +333,29 @@ $(document).ready(function(){
 		$('#csv-display-3').css('height', $('#csv-display-1').outerHeight() + 'px');
 		setRatings();
 		sortRatingsOnClick();
+		setRetrievalDateTime();
 	}, 1000);
 	toggleInformation()
 	createSlickSlider();
+});
+
+//Listen for resize events
+$(window).resize(function(){
+	$('#csv-display-3').removeAttr('style');
+	//Do not show average and sort buttons on resize
+	$('h4').removeClass('show');
+	$('.sort_btn').removeClass('show');
+	hideEmptyReviews();
+	//Wait 100ms for resize event to finish
+	setTimeout(function(){
+		if($(window).width() < 991){
+			$('.slider')[0].slick.refresh();
+		}
+	}, 100);
+	var interval = setInterval(function(){
+		$('#csv-display-3').css('height', $('#csv-display-1').outerHeight() + 'px');
+	}, 50);
+	setTimeout(function(){
+		clearInterval(interval);
+	}, 500);
 });

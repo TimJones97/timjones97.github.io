@@ -150,10 +150,11 @@ p {
 	margin-bottom: 0;
 }
 .review {
+    text-align: center;
 	background: #fff;
     height: auto;
-    padding: 15px;
-    border-bottom: 1px solid #acacac;
+    padding: 25px;
+    border-bottom: 1px solid #dadada;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
 }
@@ -180,9 +181,6 @@ p {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 600;
 }
-.review .time {
-	font-size: 12px;
-}
 .review .rating {
 	color: transparent;
 	margin-bottom: 10px;
@@ -190,6 +188,31 @@ p {
 .review .rating .star {
 	width: 25px;
 	height: 25px;
+}
+.review .user_image {
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+    height: 40px;
+}
+.review .person_container {
+    height: 40px;
+    vertical-align: bottom;
+    display: inline-block;
+    margin-top: 10px;
+    text-align: center;
+}
+.review .person_container .person {
+    font-size: 15px;
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+}
+.review .person_container .time {
+    font-size: 10px;
+    display: block;
+    width: 100%;
+    margin-bottom: 0px;
 }
 .information {
     position: fixed;
