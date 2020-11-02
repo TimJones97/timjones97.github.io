@@ -570,9 +570,6 @@ p {
 	    margin-bottom: 0px;
 	}
 	.reviews_container .caption {
-   		font-size: 18px;
-	}
-	.reviews_container .time {
    		font-size: 17px;
 	}
 	body {
@@ -605,6 +602,9 @@ p {
         width: 100%;
         padding: 0 20px 0px 20px;
     }
+    .reviews_container .row {
+        max-height: 58vh;
+    }
 }
 @media only screen and (max-width: 479px) {
 	.slider {
@@ -620,7 +620,7 @@ p {
    		font-size: 14px;
 	}
     .reviews_container .box h2 {
-        font-size: 26px;
+        font-size: 25px;
     }
     body {
         overflow: hidden;
