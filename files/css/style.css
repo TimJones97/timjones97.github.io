@@ -510,8 +510,8 @@ html:not(html:hover) .cursor::after {
   animation-duration: 1000ms;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-  /*-webkit-animation-delay: 3400ms;*/
-  /*animation-delay: 3400ms;*/
+  -webkit-animation-delay: 1450ms;
+  animation-delay: 1450ms;
   transition: transform 0.7s ease;
 }
 .fullstop {
@@ -643,6 +643,7 @@ html:not(html:hover) .cursor::after {
   top: 0;
   left: 0;
   pointer-events: none;
+  transition: all 0.5s ease;
 }
 canvas { 
   width: 100%; 
@@ -781,6 +782,12 @@ body.light .main .fade-last a .bottom_border_anim {
 }
 body.light .grey_overlay {
   background: rgba(255, 255, 255, 0.1);
+}
+body.light .preloader-wrap {
+  background: #000;
+}
+body.light .preloader-wrap .loading-line {
+  background-color: #000;
 }
 /*-------------------NAVBAR--------------------*/
 
@@ -1688,6 +1695,7 @@ footer {
   text-align: center;
   margin: 0 auto;
   padding-left: 15px;
+  padding-top: 15px;
 }
 .navbar-nav li {
   display: inline-block !important;

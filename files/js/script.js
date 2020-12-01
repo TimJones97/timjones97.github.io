@@ -908,13 +908,6 @@ function introAnimation(){
 }
 function makeContactVisible(){
   var offset = $(document).scrollTop();
-  // var opacityOffset;
-  // if(isMobile){
-  //   opacityOffset = ($(document).scrollTop() - $('.experience').offset().top) / 1300;
-  // }
-  // else {
-  //   opacityOffset = ($(document).scrollTop() - $('.experience').offset().top) / 300;
-  // }
   if(!isMobile){
     //Calculate height of contact div to create spacer for fixed element scroll
     $('.contact').css('margin-top', '-8px');
@@ -934,20 +927,6 @@ function makeContactVisible(){
     $('.contact').css('opacity', '1');
     $('.contact').css('margin-top', '-4px');
   }
-  
-  // if($(document).scrollTop() > $('.experience').offset().top){
-  //   $('.opacity_container').css('opacity', opacityOffset);
-  // }
-  //   //Fade in contact div
-  //   $('.contact .contact_container').css('opacity', '1');
-  //   $('.contact h1').css('opacity', '1');
-  //   $('.contact footer').css('opacity', '1');
-  // }
-  // else {
-  //   $('.contact .contact_container').css('opacity', '0');
-  //   $('.contact h1').css('opacity', '0');
-  //   $('.contact footer').css('opacity', '0');
-  // }
 }
 function showLoaderSplash(allowed){
   var multiplierX = 7;
@@ -1238,12 +1217,19 @@ function removeElem(elem){
 function loadingLine(){
   var isFinished = false;
   var percentageWidth;
+  var colourPercentage;
   var randomColourSeed = Math.floor((Math.random() * 100) + 1);
   var loop = setInterval(function(){
     percentageWidth = $('.pace-progress').attr('data-progress-text');
     if(percentageWidth.slice(0,-1) > 60){
+        //Go from black to grey with the progress percentage multiplied by 185 RGB grey 
+      if($('body').hasClass('light')){
+        colourPercentage = (percentageWidth.slice(0,-1) / 100) * 185;
+      }
+      else {
       //Go from white to black with the progress percentage multiplied by 255 RGB white 
-      var colourPercentage = 255 - ((percentageWidth.slice(0,-1) / 100) * 255);
+        colourPercentage = 255 - ((percentageWidth.slice(0,-1) / 100) * 255);
+      }
       console.log(colourPercentage);
       $('.preloader-wrap').css('background', 'rgba(' + colourPercentage + ',' + colourPercentage + ',' + colourPercentage + ', 1.0)');
     }

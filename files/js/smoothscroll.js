@@ -85,7 +85,9 @@ class SmoothScroll {
         });
       }
     }
-    resizeMargin()
+    setTimeout(function(){
+      resizeMargin()
+    }, 300);
 
     // Update useful params
     this.params.containerHeight = this.$.containerBody.offsetHeight + $('.contact').outerHeight() - 6
