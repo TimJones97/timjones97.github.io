@@ -1688,7 +1688,6 @@ footer {
   text-align: center;
   margin: 0 auto;
   padding-left: 15px;
-  margin-top: -80px;
 }
 .navbar-nav li {
   display: inline-block !important;
@@ -2150,7 +2149,7 @@ footer {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-top: -40px;
+    margin-top: -80px;
   }
   .experience-item {
     width: 100%;
