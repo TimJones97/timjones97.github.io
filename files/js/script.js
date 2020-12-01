@@ -1242,8 +1242,10 @@ function loadingLine(){
   var loop = setInterval(function(){
     percentageWidth = $('.pace-progress').attr('data-progress-text');
     if(percentageWidth.slice(0,-1) > 60){
-      console.log(percentageWidth.slice(0,-1));
-      $('.preloader-wrap').css('background', 'rgba(0, 0, 0, ' + (percentageWidth.slice(0,-1) / 100) + ')');
+      //Go from white to black with the progress percentage multiplied by 255 RGB white 
+      var colourPercentage = 255 - ((percentageWidth.slice(0,-1) / 100) * 255);
+      console.log(colourPercentage);
+      $('.preloader-wrap').css('background', 'rgba(' + colourPercentage + ',' + colourPercentage + ',' + colourPercentage + ', 1.0)');
     }
     if(percentageWidth != '100%'){
       $('.loading-line').css('width', percentageWidth);
