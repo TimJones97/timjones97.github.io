@@ -284,6 +284,7 @@ function hoverEffects() {
       $('.split_lower').css('opacity', '0');
       $('.navbar-default').css('opacity', '0');
       $('.video-overlay').css('opacity', '0.2');
+      $('.grey_overlay').css('opacity', '0');
       $('body').addClass('no_cursor');
     }
     //If minus key pressed
@@ -294,6 +295,7 @@ function hoverEffects() {
       $('.split_lower').css('opacity', '0.9');
       $('.navbar-default').css('opacity', '1');
       $('.video-overlay').css('opacity', '0.5');
+      $('.grey_overlay').css('opacity', '1');
       $('body').removeClass('no_cursor');
     }
   });
@@ -823,7 +825,6 @@ function introAnimation(){
 
   //Lets get this party started!
   setTimeout(function(){
-    
     $('.split_upper').addClass("fill");
     $('.split_lower').addClass("fill");
   },1250, true);
@@ -1238,12 +1239,12 @@ function loadingLine(){
   var isFinished = false;
   var percentageWidth;
   var randomColourSeed = Math.floor((Math.random() * 100) + 1);
-  //Set loading line colour to random hue
-  // $('.loading-line').css('filter', 'hue-rotate(' + randomColourSeed + 'deg)');
-  // $('.second-line').css('filter', 'hue-rotate(' + (randomColourSeed + 40) + 'deg)');
-  // $('.third-line').css('filter', 'hue-rotate(' + (randomColourSeed + 60) + 'deg)');
   var loop = setInterval(function(){
     percentageWidth = $('.pace-progress').attr('data-progress-text');
+    if(percentageWidth.slice(0,-1) > 60){
+      console.log(percentageWidth.slice(0,-1));
+      $('.preloader-wrap').css('background', 'rgba(0, 0, 0, ' + (percentageWidth.slice(0,-1) / 100) + ')');
+    }
     if(percentageWidth != '100%'){
       $('.loading-line').css('width', percentageWidth);
     }
@@ -1251,13 +1252,12 @@ function loadingLine(){
       isFinished = true;
       $('.loading-line').css('width', '100%');
       setTimeout(function(){
-        $('.loading-line').css('height', '1px');
-        $('.loading-line').css('background-color', '#fae596');
+        // $('.loading-line').css('background-color', '#fae596');
       },500);
       //If user is at top of webpage, run animation
       if ($('.main').visible(true)) {
         setTimeout(function(){
-          $('.preloader-wrap').fadeOut(400);
+          $('.preloader-wrap').css('left', '100%');
         }, 1300);
       } 
       //If not, simply fade out
