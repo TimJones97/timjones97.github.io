@@ -237,7 +237,7 @@ html:not(html:hover) .cursor::after {
   overflow: hidden;
 }
 .preloader-wrap {
-  background: #fff;
+  background: #000;
   bottom: 0;
   left: 0;
   top: unset;
@@ -248,6 +248,53 @@ html:not(html:hover) .cursor::after {
 }
 .preloader-wrap {
   /*display: none !important;*/
+}
+.preloader-wrap .contact_container .word {
+  position: relative;
+  z-index: 1;
+}
+.preloader-wrap .globe_container .word:before {
+  content: '';
+  /*background: radial-gradient(circle at 40% 20%, #fcfcfc 0%, #ddd 10%, #333 50%, black 70%);*/
+  background: radial-gradient(circle at 40% 20%, #fcfcfc 0%, #ddd 10%, #5d5d5ded 50%, #000000 70%);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  /*height: 80px;*/
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-40%, -35%);
+  filter: blur(0.5px);
+}
+.preloader-wrap .globe_container {
+  position: absolute;
+  height: 200px;
+  width: 100%;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+  font-size: 22px;
+  color: #fff;
+  user-select: none;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+.preloader-wrap .globe_container span {
+  position: absolute;
+  z-index: 1;
+  top: 95px;
+  font-family: 'Poppins';
+  font-weight: 600;
+  color: #fff;
+  transition: color 0.6s ease;
 }
 .dvd-wrap.show {
   display: block !important;
@@ -336,7 +383,7 @@ html:not(html:hover) .cursor::after {
 .preloader-wrap .loading-line {
   width: 0px;
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 0%;
   height: 3px;
   background-color: #e7e7e7;
@@ -547,7 +594,7 @@ html:not(html:hover) .cursor::after {
   right: 0px;
   width: 100%;
   height: 4px;
-  background: #121212;
+  background: #fff;
   border-radius: 20px;
   z-index: -1;
   transition: all 0.6s ease;
@@ -557,7 +604,7 @@ html:not(html:hover) .cursor::after {
   z-index: 1;
 }
 .fade-last:hover a .bottom_border_anim {
-  background: #fff;
+  background: #121212;
   width: 100%;
   left: 0px;
   right: unset;
@@ -639,7 +686,7 @@ html:not(html:hover) .cursor::after {
   z-index: 1;
   height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0,0,0,0.8);
   top: 0;
   left: 0;
   pointer-events: none;
@@ -784,10 +831,13 @@ body.light .grey_overlay {
   background: rgba(255, 255, 255, 0.1);
 }
 body.light .preloader-wrap {
-  background: #000;
+  background: #9b9b9b;
 }
 body.light .preloader-wrap .loading-line {
   background-color: #000;
+}
+body.light .preloader-wrap .globe_container span {
+  color: #000;
 }
 /*-------------------NAVBAR--------------------*/
 
@@ -1518,48 +1568,6 @@ video.banner {
 }
 .contact video.light {
   opacity: 0;
-}
-.contact .contact_container .word {
-  position: relative;
-  z-index: 1;
-}
-.contact .globe_container .word:before {
-  content: '';
-  /*background: radial-gradient(circle at 40% 20%, #fcfcfc 0%, #ddd 10%, #333 50%, black 70%);*/
-  background: radial-gradient(circle at 40% 20%, #fcfcfc 0%, #ddd 10%, #db8d43ed 50%, #261b05 70%);
-  border-radius: 50%;
-  width: 80px;
-  height: 100px;
-  /*height: 80px;*/
-  position: absolute;
-  z-index: 1;
-  left: 50%;
-  top: 50%;
-  transform: translate(-40%, -35%);
-  filter: blur(0.5px);
-}
-.contact .globe_container {
-  position: relative;
-  height: 200px;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 400;
-  font-size: 22px;
-  color: #fff;
-  user-select: none;
-}
-.contact .globe_container span {
-  position: absolute;
-  z-index: 1;
-  top: 95px;
-  font-family: 'Poppins';
-  font-weight: 600;
-  color: #3b3b3b;
-  transition: color 0.6s ease;
 }
 .contact .contact_container {
   display: flex;

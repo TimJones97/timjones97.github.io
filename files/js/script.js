@@ -1221,17 +1221,18 @@ function loadingLine(){
   var randomColourSeed = Math.floor((Math.random() * 100) + 1);
   var loop = setInterval(function(){
     percentageWidth = $('.pace-progress').attr('data-progress-text');
-    if(percentageWidth.slice(0,-1) > 60){
+    if(percentageWidth.slice(0,-1) > 1){
         //Go from black to grey with the progress percentage multiplied by 185 RGB grey 
-      if($('body').hasClass('light')){
-        colourPercentage = (percentageWidth.slice(0,-1) / 100) * 185;
-      }
-      else {
-      //Go from white to black with the progress percentage multiplied by 255 RGB white 
-        colourPercentage = 255 - ((percentageWidth.slice(0,-1) / 100) * 255);
-      }
-      console.log(colourPercentage);
-      $('.preloader-wrap').css('background', 'rgba(' + colourPercentage + ',' + colourPercentage + ',' + colourPercentage + ', 1.0)');
+      // if($('body').hasClass('light')){
+      //   colourPercentage = (percentageWidth.slice(0,-1) / 100) * 185;
+      // }
+      // else {
+      // //Go from white to black with the progress percentage multiplied by 255 RGB white 
+      //   colourPercentage = 255 - ((percentageWidth.slice(0,-1) / 100) * 255);
+      // }
+      // console.log(colourPercentage);
+      // $('.preloader-wrap').css('background', 'rgba(' + colourPercentage + ',' + colourPercentage + ',' + colourPercentage + ', 1.0)');
+      $('.globe_container').css('opacity', '1')
     }
     if(percentageWidth != '100%'){
       $('.loading-line').css('width', percentageWidth);
@@ -1247,6 +1248,9 @@ function loadingLine(){
         setTimeout(function(){
           $('.preloader-wrap').css('left', '100%');
         }, 1300);
+        setTimeout(function(){
+          $('.preloader-wrap').css('display', 'none');
+        }, 2300);
       } 
       //If not, simply fade out
       else {
