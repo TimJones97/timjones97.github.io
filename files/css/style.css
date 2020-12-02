@@ -1140,6 +1140,7 @@ body.light .contact video.light {
   background: #cecece;
   padding: 100px 60px 120px 60px; 
   transition: all 0.7s ease;
+  z-index: 20;
 }
 .skills h1 {
   color: #3b3b3b;
