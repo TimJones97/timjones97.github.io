@@ -1339,8 +1339,6 @@ function animateMainText(){
     $('.overflow-hide').first().css('transform' , 'translateX(-' + $(document).scrollTop() /8 + 'px)');
     $('.overflow-hide').first().next().css('transform' , 'translateX(' + $(document).scrollTop() /8 + 'px)');
     $('.overflow-hide').last().css('transform' , 'translateX(-' + $(document).scrollTop() /16 + 'px)');
-    $('.overflow-hide').last().css('animation-name' , 'none');
-    $('.overflow-hide').last().css('opacity' , '1');
   }
   else {
     $('.overflow-hide').css('transform', 'none');
@@ -1392,6 +1390,11 @@ $( document ).ready(function() {
     animateMainText();
     showYearOnMobile();
   });
+  // Wait 3.2 seconds for load animation to occur before removing animation styles from view-work button
+  setTimeout(function(){
+    $('.overflow-hide').last().css('animation-name' , 'none');
+    $('.overflow-hide').last().css('opacity' , '1');
+  }, 3200);
   if($(document).scrollTop() > 0){
     $(".navbar-default").css('opacity', '1');
   }
