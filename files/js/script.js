@@ -974,6 +974,7 @@ function showLoaderSplash(allowed){
             var firstElement = $('.dvd-wrap').children().first();
             var secondElement = $('.dvd-wrap').children().first().next();
             $('.dvd-wrap').removeClass('show');
+            $('body').removeClass('no_cursor');
 
             secondElement.remove();
             originalEgg.removeClass('cracked');
