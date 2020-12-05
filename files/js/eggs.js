@@ -43,7 +43,7 @@ if($(window).width() > 1){
     var group = new THREE.Object3D();
     var mesh, material;
     scene.add(group);
-    var image = 'https://timothyjones.com.au/files/img/egg.png';
+    var image = 'https://timj.design/files/img/egg.png';
     var loader = new THREE.TextureLoader();
     loader.load( image, function ( texture ) {
         var geometry = new THREE.PlaneGeometry(50, 70);
@@ -66,7 +66,7 @@ if($(window).width() > 1){
     });
 
     //Perfect egg
-    // var image = 'https://timothyjones.com.au/files/img/texture.png';
+    // var image = 'https://timj.design/files/img/texture.png';
     // var loader = new THREE.TextureLoader();
     // loader.load( image, function ( texture ) {
     //     for ( var deg = 0; deg <= 180; deg += 6 ) {
@@ -95,7 +95,7 @@ if($(window).width() > 1){
     // instantiate a loader
     var group = new THREE.Object3D();
     scene.add(group);
-    var image = 'https://timothyjones.com.au/files/img/tim.jpg';
+    var image = 'https://timj.design/files/img/tim.jpg';
     var loader = new THREE.TextureLoader();
     loader.load( image, function ( texture ) {
         var geometry = new THREE.PlaneGeometry(300, 300);
