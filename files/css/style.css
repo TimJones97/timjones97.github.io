@@ -116,7 +116,6 @@ body.no_cursor .cursor {
   display: none !important;
 }
 *::selection { 
-  /*background: rgb(255, 149, 1);*/
   background: #e34c15;
   color: white;
 }
@@ -686,7 +685,7 @@ html:not(html:hover) .cursor::after {
   z-index: 1;
   height: 100%;
   width: 100%;
-  background: rgba(0,0,0,0.8);
+  background: rgba(36,36,36,0.5);
   top: 0;
   left: 0;
   pointer-events: none;
@@ -1609,7 +1608,7 @@ video.banner {
   transition: all 0.6s ease;
 }
 .contact-item:hover .contact-image {
-  transform: translateZ(0) translate(-50%, -50%) scale(0.7);
+  transform: translateZ(0) translate(-50%, -50%) scale(0.64);
 }
 .contact-image img {
   width: 100%;
