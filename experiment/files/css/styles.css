@@ -51,11 +51,11 @@ body {
 	right: 33vw;
 }
 .banner .background-text:nth-child(3) {
-	bottom: 30vh;
+	bottom: 20vh;
 	left: 10vw;
 }
 .banner .background-text:nth-child(4) {
-	bottom: 20vh;
+	bottom: 25vh;
 	right: 10vw;
 }
 /*------------------ABOUT STYLES------------------*/
