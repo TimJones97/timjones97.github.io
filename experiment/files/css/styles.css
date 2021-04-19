@@ -1,0 +1,64 @@
+body {
+	margin: 0;
+	height: 100%;
+	width: 100%;
+	cursor: none;
+}
+.circle {
+	background: #f00;
+	width: 360px;
+	height: 360px;
+	border-radius: 50%;
+	position: absolute;
+	transform: translate3d(-50%, -50%, 0);
+	transition: transform 0.2s cubic-bezier(.02, 1.23, .79, 1.08);
+	z-index: -1;
+}
+
+/*------------------BANNER STYLES------------------*/
+
+.banner {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+}
+.banner .header-text { 
+	color: #000;
+	position: absolute;
+	top: 50%;
+	transform: translate(0%, -50%);
+	width: 100%;
+}
+.banner .header-text h1 { 
+	font-family: 'Montserrat', sans-serif;
+	letter-spacing: 5px;
+	text-align: center;
+	font-size: 10vw;
+}
+
+/*------BACKGROUND TEXT ELEMENTS------*/
+.banner .background-text {
+	position: absolute;
+}
+.banner .background-text span {
+	font-family: 'Courier New', sans-serif;
+	font-size: 3vw;
+	color: #fff;
+}
+.banner .background-text:nth-child(2) {
+	top: 33%;
+	right: 33%;
+}
+.banner .background-text:nth-child(3) {
+	bottom: 30%;
+	left: 10vw;
+}
+.banner .background-text:nth-child(4) {
+	bottom: 20%;
+	right: 10vw;
+}
+/*------------------ABOUT STYLES------------------*/
+
+.about {
+	/*display: none;*/
+}
