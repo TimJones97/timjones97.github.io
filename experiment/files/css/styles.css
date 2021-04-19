@@ -7,8 +7,8 @@ body {
 .circle {
 	/*background: #f00;*/
 	background: orange;
-	width: 360px;
-	height: 360px;
+	width: 500px;
+	height: 500px;
 	border-radius: 50%;
 	position: absolute;
 	transform: translate3d(-50%, -50%, 0);
@@ -47,15 +47,15 @@ body {
 	color: #fff;
 }
 .banner .background-text:nth-child(2) {
-	top: 33%;
-	right: 33%;
+	top: 25vh;
+	right: 33vw;
 }
 .banner .background-text:nth-child(3) {
-	bottom: 30%;
+	bottom: 30vh;
 	left: 10vw;
 }
 .banner .background-text:nth-child(4) {
-	bottom: 20%;
+	bottom: 20vh;
 	right: 10vw;
 }
 /*------------------ABOUT STYLES------------------*/
