@@ -5,7 +5,8 @@ body {
 	cursor: none;
 }
 .circle {
-	background: #f00;
+	/*background: #f00;*/
+	background: orange;
 	width: 360px;
 	height: 360px;
 	border-radius: 50%;
