@@ -18,8 +18,14 @@ body {
 
 /*------------------BANNER STYLES------------------*/
 
-.banner {
+.overflow-anim {
 	position: relative;
+	height: 100vh;
+}
+.banner {
+	position: absolute;
+	top: 0;
+	left: 0;
 	width: 100%;
 	height: 100vh;
 }
@@ -38,6 +44,7 @@ body {
 }
 
 /*------BACKGROUND TEXT ELEMENTS------*/
+
 .banner .background-text {
 	position: absolute;
 }
