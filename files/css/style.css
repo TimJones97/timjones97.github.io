@@ -246,7 +246,7 @@ html:not(html:hover) .cursor::after {
   background: #000;
 }
 .preloader-wrap {
-  /*display: none !important;*/
+  display: none !important;
 }
 .preloader-wrap .contact_container .word {
   position: relative;
@@ -1111,6 +1111,15 @@ body.light .contact video.light {
   right: 20px;
   transform: scale(0.8);
 }
+.tracer {
+  background: url('../img/tracer.png');
+}
+.cartier {
+  background: url('../img/cartier.png');
+}
+.deals {
+  background: url('../img/deals.png');
+}
 .brendan {
   background: url('../img/brendan.jpg');
 }
@@ -1134,6 +1143,18 @@ body.light .contact video.light {
 }
 .new {
   background: url('../img/new.png');
+}
+.tracer-logo {
+  background: url('../img/logos/tracer.svg');
+  background-color: #03065e !important;
+}
+.cartier-logo {
+  background: url('../img/logos/cartier.png');
+  background-color: #000 !important;
+}
+.deals-logo {
+  background: url('../img/logos/deals.png');
+  background-color: #e7e7e7 !important;
 }
 .brendan-logo {
   background: url('../img/logos/brendan_white.png');
@@ -1163,18 +1184,15 @@ body.light .contact video.light {
   background: url('../img/logos/aaron_white.png');
   background-color: #210339 !important;
 }
-.new-logo {
-  background: url('../img/logos/question_mark.png');
-  background-color: #fff !important;
-}
-.brendan, .aml, .tla, .qutrunning,
-.quteb, .daryl, .aaron, .new {
+.tracer, .cartier, .deals, .brendan, .aml, .tla, 
+.qutrunning, .quteb, .daryl, .aaron, .new {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50%;
 }
-.brendan-logo, .aml-logo, .tla-logo, .qutrunning-logo,
-.quteb-logo, .daryl-logo, .aaron-logo, .new-logo {
+.tracer-logo, .cartier-logo, .deals-logo, .brendan-logo, 
+.aml-logo, .tla-logo, .qutrunning-logo, .quteb-logo, 
+.daryl-logo, .aaron-logo {
   background-size: 60% !important;
   background-repeat: no-repeat !important;
   background-position: 50% 50%;
@@ -1479,11 +1497,6 @@ body.light .contact video.light {
   height: 15px;
   z-index: 2;
   transition: all 0.4s ease-in-out, background 0.5s ease;
-}
-.experience-item.edu .period .cover {
-  width: 70px;
-  right: 0px;
-  transition: all 0.5s ease-in-out, background 0.4s ease;
 }
 .experience-item:hover .period {
   opacity: 1;
