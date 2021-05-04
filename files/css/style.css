@@ -1388,6 +1388,10 @@ body.light .contact video.light {
   -webkit-transition: all 0.7s ease;
   transition: all 0.7s ease;
 }
+.experience-item.deloitte,
+.experience-item.deloitte .period .cover {
+  background: #baffc9;
+}
 .experience-item.qut,
 .experience-item.qut .period .cover {
   background: #bae1ff;
@@ -1404,17 +1408,17 @@ body.light .contact video.light {
 .experience-item.urban .period .cover {
   background: #ffdfba;
 }
-.experience-item.edu,
-.experience-item.edu .period .cover {
-  background: #ffffba;
-}
 .experience-item.msoft,
 .experience-item.msoft .period .cover {
-  background: #baffc9;
+  background: #ffffba;
 }
 .experience-item.stack,
 .experience-item.stack .period .cover {
   background: #ffabab;
+}
+.experience-item.deloitte:hover,
+.experience-item.deloitte:hover .period .cover {
+  background: #94f3a9;
 }
 .experience-item.qut:hover,
 .experience-item.qut:hover .period .cover {
@@ -1432,13 +1436,9 @@ body.light .contact video.light {
 .experience-item.urban:hover .period .cover {
   background: #f9c58a;
 }
-.experience-item.edu:hover,
-.experience-item.edu:hover .period .cover {
-  background: #f7f790;
-}
 .experience-item.msoft:hover,
 .experience-item.msoft:hover .period .cover {
-  background: #94f3a9;
+  background: #f7f790;
 }
 .experience-item.stack:hover,
 .experience-item.stack:hover .period .cover {
