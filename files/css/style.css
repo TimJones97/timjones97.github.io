@@ -1062,6 +1062,7 @@ body.light .contact video.light {
   border-bottom-right-radius: 12px;
   border-bottom-left-radius: 12px;
   transition: all 0.7s ease;
+  overflow: hidden;
 }
 .portfolio-item .description_text p {
   position: absolute;
