@@ -1564,7 +1564,7 @@ body.light .contact video.light {
   background: rgba(0, 0, 0, 0.42);
   background-image: url(../img/pattern2.png);
   z-index: -1;
-  mix-blend-mode: soft-light !important;
+  mix-blend-mode: revert !important;
 }
 /* Pull video under overlay */
 video.banner {
