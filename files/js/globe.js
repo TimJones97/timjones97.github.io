@@ -86,6 +86,7 @@ function handleMouse(e) {
   if($(window).width() < 991){
     var clientX = e.touches[0].clientX;
     mouse_X = clientX;
+    // console.log(e.touches);
     console.log(typeof clientX);
   }
 };

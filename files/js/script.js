@@ -908,24 +908,14 @@ function introAnimation(){
 }
 function makeContactVisible(){
   var offset = $(document).scrollTop();
-  if(!isMobile){
-    //Calculate height of contact div to create spacer for fixed element scroll
-    $('.contact').css('margin-top', '-8px');
-    $(".contact").css('position', 'fixed');
-    if (offset <= 1000){
-      $('.contact').css('z-index', '-2');
-      $('.contact').css('opacity', '0');
-    }
-    else if(offset >= 1000){
-      $('.contact').css('z-index', '-1');
-      $('.contact').css('opacity', '1');
-    }
+  //Calculate height of contact div to create spacer for fixed element scroll
+  if (offset <= 1000){
+    $('.contact').css('z-index', '-2');
+    $('.contact').css('opacity', '0');
   }
-  else {
-    $(".contact").css('position', 'relative');
-    $('.contact').css('z-index', '2');
+  else if(offset >= 1000){
+    $('.contact').css('z-index', '-1');
     $('.contact').css('opacity', '1');
-    $('.contact').css('margin-top', '-4px');
   }
 }
 function showLoaderSplash(allowed){

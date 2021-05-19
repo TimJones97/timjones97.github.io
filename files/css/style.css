@@ -1542,6 +1542,7 @@ body.light .contact video.light {
 ------------------------------------------------*/
 
 .contact {
+  position: fixed;
   padding: 60px 60px 70px 60px; 
   background: #fff;
   transition: background 0.7s ease;
@@ -2024,20 +2025,20 @@ footer {
     }
 }
 @-webkit-keyframes fadeNavElements {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
 }
 @keyframes fadeNavElements {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
 }
 
 

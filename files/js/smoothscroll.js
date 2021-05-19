@@ -76,18 +76,12 @@ class SmoothScroll {
     checkMobile()
 
     const resizeMargin = () => {
-      console.log('resized');
-      if(!isMobile){
-        //Is on Desktop
-        $('.body_container__body').css('margin-bottom', $('.contact').outerHeight() + 'px'); 
-        $(window).resize(function(){
-            $('.body_container__body').css('margin-bottom', $('.contact').outerHeight() + 'px'); 
-        });
-      }
+      //If on Desktop
+      $('.body_container__body').css('margin-bottom', ($('.contact').outerHeight() - 8) + 'px'); 
     }
     var interval = setInterval(function(){
       resizeMargin()
-    }, 100);
+    }, 500);
 
     setTimeout(function(){
       clearInterval(interval);
@@ -137,13 +131,17 @@ function checkBrowser(){
 }
 
 checkBrowser();
-$(window).resize(function(){
-  if($(window).width() > 991){
-    //Is on Desktop
-    $('.body_container__body').css('margin-bottom', $('.contact').outerHeight() + 'px'); 
-  }
-  else {
-    $('.body_container__body').css('margin-bottom', '0px'); 
-  }
-});
+$('.body_container__body').css('margin-bottom', ($('.contact').outerHeight() - 8) + 'px'); 
+
+// $(window).resize(function(){
+//   setTimeout(function(){
+//     if($(window).width() > 991){
+//       //If on Desktop
+//       $('.body_container__body').css('margin-bottom', $('.contact').outerHeight() + 'px'); 
+//     }
+//     else {
+//       $('.body_container__body').css('margin-bottom', '0px'); 
+//     }
+//   }, 400);
+// });
 
