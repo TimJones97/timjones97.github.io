@@ -234,13 +234,13 @@ if($(window).width() > 1){
 
     //Check if device is iOS 12 or above
     if($(window).width() < 991){
-        if(typeof DeviceMotionEvent.requestPermission === 'function'){
-            document.querySelector('.main').addEventListener('click', requestPermissionForiOSGyro, false);
-        }
-        //Or Android
-        else {
-            document.querySelector('.main').addEventListener('click', activateAndroidGyro, false);
-        }
+        // if(typeof DeviceMotionEvent.requestPermission === 'function'){
+        //     document.querySelector('.main').addEventListener('click', requestPermissionForiOSGyro, false);
+        // }
+        // //Or Android
+        // else {
+        //     document.querySelector('.main').addEventListener('click', activateAndroidGyro, false);
+        // }
     }
     function requestPermissionForiOSGyro(){
         var tiltX, tiltY, tiltZ;
